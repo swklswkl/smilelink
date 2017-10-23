@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctors extends Model
 {
-    protected $table = 'doctors';
+    protected $table = 'sl_doctors';
     protected $primaryKey = 'id';
     public $timestamps = FALSE;
 
@@ -15,7 +15,7 @@ class Doctors extends Model
      */
     public function Orders ()
     {
-        return $this->hasMany('App\Orders','doctor_id');
+        return $this->hasMany('App\Model\Orders','doctor_id');
     }
 
     /**
@@ -23,6 +23,6 @@ class Doctors extends Model
      */
     public function CaseHistory ()
     {
-        return $this->hasMany('App\CaseHistory','doctor_id');
+        return $this->hasMany('App\Model\CaseHistory','doctor_id');
     }
 }
