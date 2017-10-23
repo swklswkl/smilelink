@@ -15,6 +15,6 @@ class Experts extends Model
      */
     public function Orders ()
     {
-        return $this->hasMany('App\Orders','experts_id');
+        return $this->hasMany('App\Orders','expert_id');
     }
 }

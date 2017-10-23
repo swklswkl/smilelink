@@ -12,5 +12,4 @@ class TestController extends Controller
         $list = DB::table('sl_area')->get();
         dump($list);
     }
-
 }
