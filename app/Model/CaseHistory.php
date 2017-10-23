@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Case_History extends Model
+class CaseHistory extends Model
 {
     protected $table = 'sl_case_history';
     protected $primaryKey = 'id';

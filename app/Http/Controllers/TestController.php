@@ -12,10 +12,9 @@ class TestController extends Controller
     {
 //        $list = DB::table('sl_area')->get();
 //        dump($list);
-        // 查询id为1的医生信息，并且查询该医生的所有订单
-        $data = Doctors::whereHas('orders',function ($q) {
-            $q->where('doctor_id',1);
-        })->with('orders')->get();
+
+        // 查询id为1的医生信息，并且查询该医生的所有订单，跟所有病历
+        $data = Doctors::find(1)->with('orders')->with('casehistory')->get();
         echo json_encode($data);
     }
 }
