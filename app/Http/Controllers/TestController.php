@@ -26,23 +26,24 @@ class TestController extends Controller
      */
     public function Demo(Request $request){
         /*开启事务*/
-        DB::beginTransaction();
-        try{
+      /*  DB::beginTransaction();
+        try{*/
             //数据验证
-            $validation = $this->validate($request,[
-                'mobile' => 'required|unique',
+            return $this->validate($request,[
+                'mobilephone' => 'required|unique:sl_doctors',
                 'password'=>'required|min:6|confirmed',
                 'password_confirmation' => 'required|min:6',
                 'code_number' => 'required',
                 'province' => 'required'
             ]);
-            if($validation->fail()){
+
+            /*if($validation->fail()){
                 throw new Exception($this->error_msg('验证失败',401));
-            }
-            DB::commit();
+            }*/
+       /*     DB::commit();
         }catch (Exception $e){
             DB::rollBack();
             $this->errorResponse($e->getMessage());
-        }
+        }*/
     }
 }
