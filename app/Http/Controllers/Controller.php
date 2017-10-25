@@ -47,5 +47,4 @@ class Controller extends BaseController
     {
         return json_encode(array('msg' => $msg, 'code' => $code));
     }
-
 }
