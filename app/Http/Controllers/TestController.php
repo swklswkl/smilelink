@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Doctors;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,7 @@ class TestController extends Controller
 
         // 开启事物
         DB::beginTransaction();
-        try{
+        try {
             Doctors::insert([
                 'name' => $name,
                 'mobilephone' => $mobilephone,
@@ -46,7 +47,7 @@ class TestController extends Controller
             ]);
             // 提交事务
             DB::commit();
-            $return = array (
+            $return = array(
                 'msg' => '注册成功',
                 'data' => array()
             );
@@ -54,11 +55,37 @@ class TestController extends Controller
         } catch (\Exception $e) {
             // 回滚
             DB::rollBack();
-            $return = array (
+            $return = array(
                 'msg' => '注册失败',
                 'data' => array()
             );
             echo json_encode($return);
+        }
+    }
+
+    /**
+     *  TODO:注册Demo
+     * @param Request $request
+     */
+    public function Demo(Request $request){
+        /*开启事务*/
+        DB::beginTransaction();
+        try{
+            //数据验证
+            $validation = $this->validate($request,[
+                'mobile' => 'required|unique',
+                'password'=>'required|min:6|confirmed',
+                'password_confirmation' => 'required|min:6',
+                'code_number' => 'required',
+                'province' => 'required'
+            ]);
+            if($validation->fail()){
+                throw new Exception($this->error_msg('验证失败',401));
+            }
+            DB::commit();
+        }catch (Exception $e){
+            DB::rollBack();
+            $this->errorResponse($e->getMessage());
         }
     }
 }
