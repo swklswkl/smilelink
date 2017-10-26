@@ -17,6 +17,6 @@ class Orders extends Model
 
     public function Experts ()
     {
-        return $this->belongsTo('App\Model\Exoerts','expert_id');
+        return $this->belongsTo('App\Model\Experts','expert_id');
     }
 }
