@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\Doctors;
+use App\Model\Experts;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -10,9 +10,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Widgets\Collapse;
 
-class DoctorController extends Controller
+class ExpertController extends Controller
 {
     use ModelForm;
 
@@ -22,15 +21,15 @@ class DoctorController extends Controller
      * @return Content
      */
     public function index()
-{
-    return Admin::content(function (Content $content) {
+    {
+        return Admin::content(function (Content $content) {
 
-        $content->header('医生管理');
-        $content->description('');
+            $content->header('专家管理');
+            $content->description('');
 
-        $content->body($this->grid());
-    });
-}
+            $content->body($this->grid());
+        });
+    }
 
     /**
      * Edit interface.
@@ -42,9 +41,9 @@ class DoctorController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('医生编辑');
-            $content->description('');
-//            $content->name();
+            $content->header('header');
+            $content->description('description');
+
             $content->body($this->form()->edit($id));
         });
     }
@@ -62,7 +61,6 @@ class DoctorController extends Controller
             $content->description('description');
 
             $content->body($this->form());
-
         });
     }
 
@@ -73,10 +71,8 @@ class DoctorController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Doctors::class, function (Grid $grid) {
-//            $grid->disableActions();
-//            $grid->disableCreation();
-//            $grid->id('ID')->sortable();
+        return Admin::grid(Experts::class, function (Grid $grid) {
+
             $grid->avatar('头像')->image(env('APP_URL').'/uploads/',40,40);
             $grid->name('姓名');
             $grid->mobilephone('手机号码');
@@ -106,17 +102,12 @@ class DoctorController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Doctors::class, function (Form $form) {
-            $form->image('avatar','头像');
-            $form->text('name','姓名');
-            $form->mobile('mobilephone','手机号码')->options(['mask' => '99999999999']);
-            $form->select('province','省份')->options(['上海' => '上海', '北京' => '北京','dd' => 'dd']);
-            $form->currency('amount','金额')->symbol('￥');
-            $form->radio('sex','性别')->options(['0' => '男', '1'=> '女'])->default('0');
-            $form->display('create_time','注册时间')->with(function ($create_time) {
-                if ($create_time) {return date('Y-m-d H:i:s',$create_time);}
-                return date('Y-m-d H:i:s',time());
-            });
+        return Admin::form(Experts::class, function (Form $form) {
+
+            $form->display('id', 'ID');
+
+            $form->display('created_at', 'Created At');
+            $form->display('updated_at', 'Updated At');
         });
     }
 }

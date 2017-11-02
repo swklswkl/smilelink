@@ -19,4 +19,9 @@ class Orders extends Model
     {
         return $this->belongsTo('App\Model\Experts','expert_id');
     }
+
+    public function CaseHistory ()
+    {
+        return $this->belongsTo(CaseHistory::class,'case_history_id');
+    }
 }

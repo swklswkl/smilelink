@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\CaseHistory;
 use App\Model\Doctors;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,8 @@ class DoctorController extends Controller
      */
     public function register (Request $request)
     {
+//        $data = Doctors::select('*')->orderBy('id', 'desc')->first();
+//        echo json_encode($data);die;
         // 开启事物
         DB::beginTransaction();
         try {
