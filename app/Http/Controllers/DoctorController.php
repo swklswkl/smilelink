@@ -31,6 +31,7 @@ class DoctorController extends Controller
                 'password_confirmation.required' => '确认密码不能为空',
                 'password.min' => '密码不能小于:min位',
                 'password.confirmed' => '两次密码不一致',
+                'password_confirmation.min' => '密码不能小于:min位',
                 'province.required' => '请选择省份',
                 'code_number.required' => '验证码不能为空'
             ];
@@ -45,7 +46,7 @@ class DoctorController extends Controller
             if ($validator->fails())
             {
                 $errors = $validator->errors();
-                return $this->error_msg($errors,401);
+                return $this->errorResponse($errors);
             }
             Doctors::insert([
                 'mobilephone' => $request->post('mobilephone'),
@@ -61,7 +62,7 @@ class DoctorController extends Controller
         {
             // 回滚
             DB::rollBack();
-            return $this->error_msg($e->getMessage(),401);
+            return $this->errorResponse('操作有误');
         }
     }
 
@@ -73,7 +74,7 @@ class DoctorController extends Controller
     public function login (Request $request)
     {
         $mobilephone = $request->post('mobilephone');
-        $password = md5($request->post('password'));
+        $password = bcrypt($request->post('password'));
         try {
             // 设置验证消息
             $messages = [
@@ -89,7 +90,7 @@ class DoctorController extends Controller
             if ($validator->fails())
             {
                 $errors = $validator->errors();
-                return $this->error_msg($errors,401);
+                return $this->errorResponse($errors);
             }
             $result = Doctors::select('mobilephone')->where(['mobilephone' => $mobilephone,'password' => $password])->get();
             if (sizeof($result))
@@ -98,11 +99,11 @@ class DoctorController extends Controller
                 $request->session()->put('doctor.mobilephone',$result[0]['mobilephone']);
                 return $this->successResponse('登录成功',$result);
             }else{
-                return $this->successResponse('账号或密码错误');
+                return $this->errorResponse('账号或密码错误');
             }
         }catch (\Exception $e)
         {
-            return $this->error_msg('登录失败',401);
+            return $this->errorResponse('登录失败');
         }
     }
 
