@@ -12,9 +12,16 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/*******************************************测试demo***************1*********************************/
 Route::post('/test','TestController@test');
+/*******************************************病例管理****************1*********************************/
+//新增病例-选择服务内容信息查询
+Route::get('case/seeService','CaseController@seeService');
+//新增病例-患者基本信息
+Route::post('case/addEssentialInfo','CaseController@addEssentialInfo');
+
+/*******************************************登录注册****************1*********************************/
 Route::post('/doctor/register','DoctorController@register');
 Route::post('/doctor/login','DoctorController@login');
-//Route::post('demo','TestController@Demo');
+
 
