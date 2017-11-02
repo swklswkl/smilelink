@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class CaseController extends Controller
 {
 
+
     /**
      * TODO:新增病例-选择服务内容信息查询
      */
@@ -54,7 +55,7 @@ class CaseController extends Controller
                 return $this->errorResponse($errors);
             }
             $model = new CaseHistory;
-            $model->service_id = $request->post('doctor_id');
+            $model->doctor_id = $request->post('doctor_id');
             $model->service_id = $request->post('service_id');
             $model->name = $request->post('name');
             $model->sex = $request->post('sex');
@@ -63,7 +64,7 @@ class CaseController extends Controller
             $model->mobilephone = $request->post('mobilephone');
             $model->province = $request->post('province');
             $model->city = $request->post('city');
-            $model->archives_number = $this->createArchivesNum();
+            $model->id = $this->createArchivesNum();
             $model->create_time = time();
             $model->last_ip = $request->getClientIp();
             $model->save();
@@ -83,11 +84,11 @@ class CaseController extends Controller
      * TODO:生成档案编号
      * @return \Illuminate\Database\Eloquent\Model|mixed|null|string|static
      */
-    public function createArchivesNum()
+    public function createArchivesNum($table = 'sl_case_history')
     {
-        $ArchivesNum = DB::table('sl_case_history')->select('archives_number')->orderBy('archives_number','desc')->first();
+        $ArchivesNum = DB::table($table)->select('id')->orderBy('id','desc')->first();
         if($ArchivesNum != null ) {
-            $ArchivesNum = $ArchivesNum->archives_number;
+            $ArchivesNum = $ArchivesNum->id;
             $ArchivesNum = "C".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
         } else {
             $ArchivesNum = 'C000000001';
