@@ -127,5 +127,24 @@ class Controller extends BaseController
         }
         return $arg;
     }
+
+    /**
+     * TODO:生成档案编号
+     * @return \Illuminate\Database\Eloquent\Model|mixed|null|string|static
+     */
+    public function createArchivesNum()
+    {
+        $ArchivesNum = DB::table('sl_case_history')->select('id')->orderBy('id','desc')->first();
+        if($ArchivesNum != null ) {
+            $ArchivesNum = $ArchivesNum->archives_number;
+            $ArchivesNum = "C".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
+        } else {
+            $ArchivesNum = 'C000000001';
+        }
+        return $ArchivesNum;
+    }
+
+
+
 }
 

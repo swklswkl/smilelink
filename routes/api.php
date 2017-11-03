@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 /*******************************************测试demo***************1*********************************/
+Route::post('/test','TestController@test');
+/*******************************************公共接口****************1*********************************/
+//文件上传接口
+Route::post('file/upload','CommonController@uploadPictures');
 Route::post('/test','CaseController@createArchivesNum');
 
 
@@ -26,7 +30,7 @@ Route::post('odtcase/addChiefAndComplaint','OrthodonticCaseController@addChiefAn
 /*******************************************病例管理****************1*********************************/
 //新增病例-选择服务内容信息查询
 Route::get('case/seeService','CaseController@seeService');
-//新增病例-患者基本信息
+//新增病例-1
 Route::post('case/addEssentialInfo','CaseController@addEssentialInfo');
 /*******************************************登录注册****************1*********************************/
 Route::post('/doctor/register','DoctorController@register');
