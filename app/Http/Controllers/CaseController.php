@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class CaseController extends Controller
 {
 
+
     /**
      * TODO:新增病例-选择服务内容信息查询
      */
@@ -105,5 +106,6 @@ class CaseController extends Controller
         }
 
     }
+
 
 }

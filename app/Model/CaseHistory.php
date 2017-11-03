@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Database\Eloquent\Model|mixed|null|string|static id
  * @property array|string complaint_options
  * @property array|string other_options
+ * @property array|string doctor_id
  */
 class CaseHistory extends Model
 {

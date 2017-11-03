@@ -25,4 +25,12 @@ class Doctors extends Model
     {
         return $this->hasMany('App\Model\CaseHistory','doctor_id');
     }
+
+    /**
+     * 关联正畸病历表
+     */
+    public function Orthodontics ()
+    {
+        return $this->hasMany(Orthodontics::class,'doctor_id');
+    }
 }

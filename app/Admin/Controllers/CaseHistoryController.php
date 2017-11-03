@@ -10,7 +10,6 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Widgets\Box;
 use Illuminate\Support\Facades\Request;
 
 class CaseHistoryController extends Controller
@@ -78,7 +77,7 @@ class CaseHistoryController extends Controller
                 $tools->append(new UserGender());
             });
             $grid->disableCreation();
-            $grid->id('病历编号')->sortable();
+            $grid->archives_number('病历编号')->sortable();
             $grid->name('患者姓名');
             $grid->create_time('创建时间')->display(function ($create_time) {
                 return date('Y-m-d H:i:s',$create_time);
