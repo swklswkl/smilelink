@@ -16,6 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property CaseController|\Illuminate\Database\Eloquent\Model|mixed|null|string archives_number
  * @property int create_time
  * @property null|string last_ip
+ * @property \Illuminate\Database\Eloquent\Model|mixed|null|string|static id
+ * @property array|string complaint_options
+ * @property array|string other_options
  */
 class CaseHistory extends Model
 {
