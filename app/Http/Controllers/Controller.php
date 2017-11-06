@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends BaseController
@@ -130,13 +131,13 @@ class Controller extends BaseController
 
     /**
      * TODO:生成档案编号
-     * @return \Illuminate\Database\Eloquent\Model|mixed|null|string|static
+     *
      */
     public function createArchivesNum()
     {
         $ArchivesNum = DB::table('sl_case_history')->select('id')->orderBy('id','desc')->first();
         if($ArchivesNum != null ) {
-            $ArchivesNum = $ArchivesNum->archives_number;
+            $ArchivesNum = $ArchivesNum->id;
             $ArchivesNum = "C".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
         } else {
             $ArchivesNum = 'C000000001';

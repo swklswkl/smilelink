@@ -26,6 +26,9 @@ Route::post('odtase/addInformation','OrthodonticCaseController@addInformation');
 Route::get('case/seeService','CaseController@seeService');
 //新增病例-1
 Route::post('case/addEssentialInfo','CaseController@addEssentialInfo');
+//新增病例-2
+Route::post('case/addEssentialInfoSecond','CaseController@addEssentialInfoSecond');
+Route::post('case/addEssentialInfoThird','CaseController@addEssentialInfoThird');
 /*******************************************登录注册****************1*********************************/
 Route::post('/doctor/register','DoctorController@register');
 Route::post('/doctor/login','DoctorController@login');

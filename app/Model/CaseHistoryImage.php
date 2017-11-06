@@ -28,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int create_time
  * @property array|string cbct_anterior_teeth
  * @property array|string cbct_under_teeth
+ * @property array|string type
+ * @property array|string abnormal_teeth
  */
 class CaseHistoryImage extends Model
 {
