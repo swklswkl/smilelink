@@ -26,5 +26,5 @@ Route::get('/', function () {
 /*-------------------------------测试接口-------------------------------*/
 Route::get('test','TestController@Test');
 Route::get('register',function () {
-    return view('test.index');
+    return view('test');
 });

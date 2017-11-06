@@ -18,9 +18,15 @@ Route::post('/test','TestController@test');
 //文件上传接口
 Route::post('file/upload','CommonController@uploadPictures');
 Route::post('/test','CaseController@createArchivesNum');
+
+
 /*******************************************正畸病历*************************************************/
 //新增患者基本信息
-Route::post('odtase/addInformation','OrthodonticCaseController@addInformation');
+Route::post('odtcase/addInformation','OrthodonticCaseController@addInformation');
+//新增主诉和病史
+Route::post('odtcase/addChiefAndComplaint','OrthodonticCaseController@addChiefAndComplaint');
+
+
 /*******************************************病例管理****************1*********************************/
 //新增病例-选择服务内容信息查询
 Route::get('case/seeService','CaseController@seeService');

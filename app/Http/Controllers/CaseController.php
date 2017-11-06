@@ -27,7 +27,6 @@ class CaseController extends Controller
         }catch (Exception $exception){
             return $this->errorResponse('操作有误');
         }
-
     }
     //TODO:新增病例-添加患者资料1
 
@@ -140,7 +139,6 @@ class CaseController extends Controller
             DB::rollBack();
 
         }
-
     }
 
     /**
