@@ -7,6 +7,9 @@
     #xguangfenxi .form-horizontal .control-label {text-align: left}
     #wentiliebiao .form-horizontal .control-label {text-align: left}
     #zhenduan .form-horizontal .control-label {text-align: left}
+    #zhiliaomubiao .form-horizontal .control-label {text-align: left}
+    #zhiliaojihua .form-horizontal .control-label {text-align: left}
+    #zhiliaoguocheng .form-horizontal .control-label {text-align: left}
     #yaliejiancha .form-horizontal .form-group {margin-right: 0px;margin-left: 0px}
 </style>
 
@@ -14,7 +17,7 @@
         <div class="modal-content" id="neirong">
             <div class="modal-body">
                 <ul id="myTab" class="nav nav-tabs">
-                    <li class="active">
+                    <li id="jbxx" class="active">
                         <a href="#home" data-toggle="tab" onclick="bb($('#home').height())">
                             基本信息
                         </a>
@@ -70,12 +73,20 @@
                             <li><a href="#zhiliaojihua" tabindex="-1" data-toggle="tab" onclick="bb($('#zhiliaojihua').height())">治疗计划</a></li>
                         </ul>
                     </li>
+                    <li id="zlgc">
+                        <a href="#zhiliaojinzhan" data-toggle="tab" onclick="bb($('#zhiliaojinzhan').height())">
+                            治疗过程
+                        </a>
+                    </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade in active" id="home">
                         <div class="container bs-docs-container" style="max-width: 700px;">
                             <div class="row form-horizontal">
-                                &ensp;
+                                <div class="form-group">
+                                    <h3>基本信息&ensp;</h3>
+                                    <hr>
+                                </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">档案编号</label>
                                     <div class="col-sm-10">
@@ -122,6 +133,11 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['province'].$data[0]['city'].$data[0]['address']}}" disabled>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    &ensp;
+                                    &ensp;
                                 </div>
                             </div>
                         </div>
@@ -1606,45 +1622,224 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">面型</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="face_type"  value="0" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '0' ? 'checked' : ''}} disabled> 维持
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '1' ? 'checked' : ''}} disabled> II类
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '2' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="face_type"  value="1" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '1' ? 'checked' : ''}} disabled> 改善
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">牙性(安氏)</label>
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">上颌中线</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="maxillary_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '0' ? 'checked' : ''}} disabled> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '1' ? 'checked' : ''}} disabled> II类I分类
+                                            <input type="radio" name="maxillary_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '1' ? 'checked' : ''}} disabled> 左偏斜
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '2' ? 'checked' : ''}} disabled> II类I分类亚类
+                                            <input type="radio" name="maxillary_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '2' ? 'checked' : ''}} disabled> 右偏斜
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">下颌中线</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="mandibular_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '0' ? 'checked' : ''}} disabled> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="3" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '3' ? 'checked' : ''}} disabled> II类II分类
+                                            <input type="radio" name="mandibular_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '1' ? 'checked' : ''}} disabled> 左偏斜
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="4" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '4' ? 'checked' : ''}} disabled> II类II分类亚类
+                                            <input type="radio" name="mandibular_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '2' ? 'checked' : ''}} disabled> 右偏斜
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆牙合</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '0' ? 'checked' : ''}} disabled> 正常
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '1' ? 'checked' : ''}} disabled> 深覆牙合I
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '2' ? 'checked' : ''}} disabled> 深覆牙合II
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '3' ? 'checked' : ''}} disabled> 深覆牙合III
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '4' ? 'checked' : ''}} disabled> 开牙合I
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="5" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '5' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '5' ? 'checked' : ''}} disabled> 开牙合II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="6" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '6' ? 'checked' : ''}} disabled> III类亚类
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '6' ? 'checked' : ''}} disabled> 开牙合III
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆盖</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '0' ? 'checked' : ''}} disabled> 正常
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '1' ? 'checked' : ''}} disabled> 深覆盖I
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '2' ? 'checked' : ''}} disabled> 深覆盖II
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '3' ? 'checked' : ''}} disabled> 深覆盖III
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '4' ? 'checked' : ''}} disabled> 反覆盖I
+                                        </label>
+                                        <label style="margin-left: 0px" class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '5' ? 'checked' : ''}} disabled> 反覆盖II
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '6' ? 'checked' : ''}} disabled> 反覆盖III
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">尖牙关系左侧</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">尖牙关系右侧</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">磨牙关系左侧</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="left_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">磨牙关系右侧</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="right_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
-                                    <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它诊断</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_diagnostic_design']['other_diagnosis']}}</textarea>
+                                    <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它目标</label>
+                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_diagnostic_design']['treatment_other_target']}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    &ensp;
+                                    &ensp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="zhiliaojihua">
+                        <div class="container bs-docs-container " style="max-width: 700px;">
+                            <div class="row form-horizontal">
+                                <div class="form-group">
+                                    <h3>治疗计划&ensp;</h3>
+                                    <hr>
+                                </div>
+                                <div class="form-group" style="margin-left: -4px;">
+                                    <textarea class="form-control" rows="8" disabled>{{$data[0]['orthodontics_diagnostic_design']['treatment_plan']}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    &ensp;
+                                    &ensp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="zhiliaojinzhan">
+                        <div class="container bs-docs-container " style="max-width: 700px;">
+                            <div class="row form-horizontal">
+                                <div class="form-group">
+                                    <h3>治疗进展&ensp;</h3>
+                                </div>
+                                <div class="form-group">
+                                    <table class="table table-condensed">
+                                        <thead style="border-top: 2px solid #f4f4f4">
+                                            <th>档案编号</th>
+                                            <th>治疗进展名称</th>
+                                            <th>提交时间</th>
+                                            <th>操作</th>
+                                        </thead>
+                                        <tbody>
+                                            @if ($data[0]['orthodontics_treatment_process'] == NULL)
+                                                <tr>
+                                                    <td colspan="4">暂无治疗进展</td>
+                                                </tr>
+                                                @else
+                                            @foreach ($data[0]['orthodontics_treatment_process'] as $v)
+                                            <tr>
+                                                <td>
+                                                    {{$v['orthodontics_id']}}
+                                                </td>
+                                                <td>
+                                                    {{$v['name']}}
+                                                </td>
+                                                <td>
+                                                    {{date('Y-m-d h:i:s',$v['create_time'])}}
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0);" data-id="{{$v['id']}}" onclick="cxprocess(this.getAttribute('data-id'))">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    &ensp;
+                                                    <a href="javascript:void(0);" data-id="{{$v['id']}}" os-id="{{$v['orthodontics_id']}}" onclick="jinzhandel(this.getAttribute('data-id'),this.getAttribute('os-id'))">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                                @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -1656,12 +1851,13 @@
                     </div>
                 </div>
                 </div>
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">关闭
                 </button>
             </div>
+            </div>
+
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
     <script>

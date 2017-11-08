@@ -44,4 +44,12 @@ class Orthodontics extends Model
     {
         return $this->hasMany(OrthodonticsTreatmentProcess::class,'orthodontics_id');
     }
+
+    public function scopeStatus($query, $status)
+    {
+        if (!in_array($status, ['1', '2','3'])) {
+            return $query;
+        }
+        return $query->where('status',  $status);
+    }
 }

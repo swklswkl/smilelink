@@ -14,12 +14,13 @@ use Illuminate\Http\Request;
 */
 /*******************************************测试demo***************1*********************************/
 Route::get('/test','TestController@cx');
+Route::get('/cxjz','TestController@cxjz');
 /*******************************************公共接口****************1*********************************/
 //文件上传接口
 Route::post('file/upload','CommonController@uploadPictures');
 Route::post('/test','CaseController@createArchivesNum');
-
-
+Route::get('china/city', 'ChinaController@city');
+Route::get('china/district', 'ChinaController@district');
 /*******************************************正畸病历*************************************************/
 //新增患者基本信息
 Route::post('odtcase/addInformation','OrthodonticCaseController@addInformation');
@@ -53,6 +54,8 @@ Route::post('odtcase/editTreatmentProcess','OrthodonticCaseController@addTreatme
 Route::get('odtcase/inquire','OrthodonticCaseController@inquire');
 //删除正畸病历
 Route::post('odtcase/deleteOrthodontics','OrthodonticCaseController@deleteOrthodontics');
+//删除治疗进展
+Route::post('odtcase/deleteTreatmentProcess','OrthodonticCaseController@deleteTreatmentProcess');
 /*******************************************病例管理****************1*********************************/
 //新增病例-选择服务内容信息查询
 Route::get('case/seeService','CaseController@seeService');
