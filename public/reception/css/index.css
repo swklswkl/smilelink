@@ -1,0 +1,145 @@
+
+*{font-family: 'Microsoft Yahei';margin: 0;padding: 0;text-decoration: none;list-style: none;}
+@media screen  and (max-width: 1440px){
+    .content{width: 1200px;margin: 0 auto; position: relative;}
+    .banner{padding-top: 90px;background: #f0f0f0}
+    .banner-L{float: left}
+    .banner-L h3{font-size: 40px;font-weight: normal;color: #424242;margin-bottom: 18px;}
+    .banner-L p{font-size: 20px;color:#777777;line-height: 50px}
+    .banner-L .join{margin-top: 60px;padding-bottom: 140px}
+    .banner-R{background: url("../img/ScreenCover.png") no-repeat;height: 350px;float: right;width: 585px;margin-top: 30px;}
+    .banner .content{overflow: hidden}
+/*加入我们*/
+    .joinUs{overflow: hidden;}
+    .joinUs .p1{color: #5c5c5c;font-size: 26px;font-family: 微软雅黑;}
+    .joinUsBg{background: url("../img/no2.png") no-repeat;overflow: hidden;height: 481px}
+    .joinUs-R{float: right;text-align: right;position: relative;overflow: hidden}
+    .joinUs-R h3{font-size: 44px;color:#2f2f2f;margin-bottom: 48px;font-weight: normal;margin-top: 20px}
+    .joinUs-R .p3 span{color:#69be28;font-size: 24px }
+    .joinUs-R .p2{font-size: 22px;color:#474747}
+    .joinUs-R .p3{font-size: 16px;color: #7f7f7f;line-height: 40px}
+    .joinUs-R h4{font-size: 24px;color:#3f3f3f}
+    .line1{text-align: right}
+
+    /*博思美技术力量优势*/
+    .advantage{margin-top: 100px}
+    .advBg{background: url("../img/no1.png") no-repeat right}
+    .adv-L .p1{color: #5c5c5c;font-size: 26px;font-family: 微软雅黑;}
+    .adv-L h3{font-size: 44px;color:#2f2f2f;margin-bottom: 28px;font-weight: normal;margin-top: 20px}
+    .adv-L .p3 span{color:#69be28;font-size: 24px }
+    .adv-L .p2{font-size: 22px;color:#474747}
+    .adv-L .p3{font-size: 16px;color: #7f7f7f;line-height: 32px}
+    .adv-L h4{font-size: 24px;color:#3f3f3f;margin-top: 20px}
+    #p2{margin-top: 10px}
+    .advantage .lineY{text-align: right}
+/*博思美产品优势！*/
+    .productAdv{background: #f0f0f0;height: 840px;padding-top: 60px;margin-bottom: 110px;position: relative}
+    .lineRight{width: 600px;position: absolute;top:87px;right: -100px}
+
+    .productAdvBox-L{float: left}
+    .productAdvBox-R{float: right}
+    .productAdvBox{overflow: hidden}
+    .productAdvBox-R img {width: 600px}
+    .productAdv .p1{color: #5c5c5c;font-size: 26px;}
+    .productAdv h3{font-size: 44px;color:#2f2f2f;margin-bottom: 32px;font-weight: normal;margin-top: 20px}
+    .productAdv .p3{font-size: 16px;color: #7f7f7f;margin-bottom: 96px}
+    .productAdv3Img img{width: 350px}
+    .productAdv3Img h4{font-size: 18px;color: #070707;font-weight: normal}
+    .productAdv3Img p{font-size: 14px;color: #717171;}
+    .img3L{float: left;width: 352px;transition: 1s}
+    .img3C{float: left;margin-left: 6.2%;width: 352px;transition: 0.5s}
+    .img3R{float: right;width: 352px;transition: 1s}
+    .img3LCont,.img3CCont,.img3RCont{background: white;height: 215px;}
+    .img3L:hover,.img3C:hover, .img3R:hover{margin-top: -2px;box-shadow:7px -7px 5px  #d7d7d7  }
+    .img3LCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3LCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+    .img3CCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3CCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+    .img3RCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3RCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+/*footer*/
+    footer{background: url("../img/foot.png") no-repeat;padding-top: 40px;}
+    .footL{float: left;margin-left: 20%;}
+    .footL div{margin-bottom: 22px;color: #ffffff;font-size: 18px}
+    .footL div a{color: white}
+    .footL div span{width:100px; height: 30px;display: inline-block;border: 1px solid white;text-align: center;line-height: 30px;border-radius: 10px}
+    .footL div span:hover{border: 1px solid #69be28}
+    .footL img {margin-right: 20px}
+    .footR{float: right;margin-right: 10%}
+     .lineBottom{margin-bottom: 20px}
+    footer p{font-size: 14px;color: #cccccc;text-align: center}
+}
+
+
+@media screen and (min-width: 1440px){
+    .content{width: 1400px;margin: 0 auto; position: relative;}
+    .banner{padding-top: 90px;background: #f0f0f0}
+    .banner-L{float: left}
+    .banner-L h3{font-size: 40px;font-weight: normal;color: #424242;margin-bottom: 18px;}
+    .banner-L p{font-size: 20px;color:#777777;line-height: 50px}
+    .banner-L .join{margin-top: 60px;padding-bottom: 140px}
+    .banner-R{background: url("../img/ScreenCover.png") no-repeat;height: 350px;float: right;width: 585px;margin-top: 30px}
+    .banner .content{overflow: hidden}
+    /*加入我们*/
+
+    .joinUs{overflow: hidden;position: relative}
+    .lineX2{position: absolute;top: 620px;right: 0}
+
+    .joinUs .p1{color: #5c5c5c;font-size: 26px;font-family: 微软雅黑;}
+    .joinUsBg{background: url("../img/no2.png") no-repeat;overflow: hidden;height: 481px}
+    .joinUs-R{float: right;text-align: right;position: relative;overflow: hidden}
+    .joinUs-R h3{font-size: 44px;color:#2f2f2f;margin-bottom: 48px;font-weight: normal;margin-top: 20px}
+    .joinUs-R .p3 span{color:#69be28;font-size: 24px }
+    .joinUs-R .p2{font-size: 22px;color:#474747}
+    .joinUs-R .p3{font-size: 16px;color: #7f7f7f;line-height: 40px}
+    .joinUs-R h4{font-size: 24px;color:#3f3f3f}
+    .line1{text-align: right}
+    /*博思美技术力量优势*/
+    .advantage{margin-top: 100px;position: relative}
+    .lineX1{position: absolute;top: 420px;}
+
+    .advBg{background: url("../img/no1.png") no-repeat right}
+    .adv-L .p1{color: #5c5c5c;font-size: 26px;font-family: 微软雅黑;}
+    .adv-L h3{font-size: 44px;color:#2f2f2f;margin-bottom: 28px;font-weight: normal;margin-top: 20px}
+    .adv-L .p3 span{color:#69be28;font-size: 24px }
+    .adv-L .p2{font-size: 22px;color:#474747}
+    .adv-L .p3{font-size: 16px;color: #7f7f7f;line-height: 32px}
+    .adv-L h4{font-size: 24px;color:#3f3f3f;margin-top: 20px}
+    #p2{margin-top: 10px}
+    .advantage .lineY{text-align: right}
+    /*博思美产品优势！*/
+    .productAdv{background: #f0f0f0;height: 840px;padding-top: 60px;margin-bottom: 110px;position: relative}
+    .productAdvBox-L{float: left}
+    .productAdvBox-R{float: right}
+    .productAdvBox{overflow: hidden}
+    .lineRight{width: 900px;position: absolute;top:87px;right: -240px}
+
+    .productAdv .p1{color: #5c5c5c;font-size: 26px;}
+    .productAdv h3{font-size: 44px;color:#2f2f2f;margin-bottom: 32px;font-weight: normal;margin-top: 20px}
+    .productAdv .p3{font-size: 16px;color: #7f7f7f;margin-bottom: 96px}
+    .productAdv3Img img{width: 350px}
+    .productAdv3Img h4{font-size: 18px;color: #070707;font-weight: normal}
+    .productAdv3Img p{font-size: 14px;color: #717171;}
+    .img3L{float: left;width: 352px;transition: 1s}
+    .img3C{float: left;margin-left: 12.2%;width: 352px;transition: 0.5s}
+    .img3R{float: right;width: 352px;transition: 1s}
+    .img3LCont,.img3CCont,.img3RCont{background: white;height: 215px;}
+    .img3L:hover,.img3C:hover, .img3R:hover{margin-top: -2px;box-shadow:7px -7px 5px  #d7d7d7  }
+    .img3LCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3LCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+    .img3CCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3CCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+    .img3RCont h4{padding-top: 30px;margin-bottom: 30px;padding-left: 20px;}
+    .img3RCont p{line-height: 25px;padding-left: 20px;padding-right: 20px}
+    /*footer*/
+    footer{background: url("../img/foot.png") no-repeat;padding-top: 40px;}
+    .footL{float: left;margin-left: 18%;}
+    .footL div{margin-bottom: 22px;color: #ffffff;font-size: 18px}
+    .footL div a{color: white}
+    .footL div span{width:100px; height: 30px;display: inline-block;border: 1px solid white;text-align: center;line-height: 30px;border-radius: 10px}
+    .footL div span:hover{border: 1px solid #69be28}
+    .footL img {margin-right: 20px}
+    .footR{float: right;margin-right: 12%}
+    .lineBottom{margin-bottom: 20px}
+    footer p{font-size: 14px;color: #cccccc;text-align: center}
+}

@@ -1,0 +1,16 @@
+.crumbs{margin-top: 20px;margin-bottom: 20px;color:#979797;font-size: 16px }
+.part2{padding-top: 10px;margin-bottom: 50px}
+.part2Cont .over{overflow: hidden}
+.part2Title .span2{color: #e56424;font-size: 30px;}
+.part2 .span3{font-size: 24px;color: #e56424}
+.part2Title {padding-bottom: 40px}
+.part2Cont{background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-top: 62px;padding-bottom: 65px}
+.part2-L{float: left;text-align: right;color: #0c0c0c;font-size: 22px;margin-left: 15%}
+.part2-L p{font-size: 22px;color: #0c0c0c;line-height: 57px}
+.part2-R{float: right;margin-right: 17%}
+.part2-R .inputLong{width: 600px;height: 50px}
+.part2-R  p{margin-bottom: 20px}
+.part2-R .inputChe{width: 25px;height: 17px;margin-left: 50px;line-height: 20px}
+.part2-R input{font-size: 20px}
+.button1{text-align: center;padding-top: 65px;padding-bottom: 50px}
+.button1 button{width: 162px;height: 52px;font-size: 20px;margin-right: 50px}

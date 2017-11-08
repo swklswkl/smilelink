@@ -1,0 +1,15 @@
+
+*{margin: 0;padding:0;box-sizing: border-box;font-family: "Microsoft Yahei"}
+body{  padding: 50px;  }
+ .mySelect ul{  list-style:none;  border:1px solid #aaa;  width: 200px;  margin-top: -1px;  display: none;  position: absolute;  background: #fff;  z-index: 2;  }
+.mySelect ul li{ padding: 0 10px;  cursor: pointer;  }
+.mySelect ul li:hover{  background: deepskyblue;  color: #fff;  }
+.mySelect input{  width: 200px;  height: 40px;  padding: 0 5px; border-radius: 10px 0 0 10px;border: 1px solid gainsboro;  text-align: center; font-size: 18px }
+.mySelect{ position: relative;  margin-left: 18%}
+.mySelect select{  display: none;  }
+.search{padding-top: 40px;padding-bottom: 20px;height: 100px}
+.mySelect{float: left}
+.input1 input{float: left; width: 400px;  height: 40px;  padding: 0 15px; border: 1px solid gainsboro; font-size: 18px }
+.searchButton button{float: left;width: 100px;height: 40px;background: #69be28;text-align: center;line-height: 40px;border-radius: 0 15px 15px 0;border: 1px solid gainsboro;color: white;font-size: 18px}
+.search content{overflow: hidden}
+

@@ -1,0 +1,115 @@
+
+.crumbs{margin-top: 20px;margin-bottom: 20px;color:#979797;font-size: 16px }
+.part5{padding-top: 10px}
+/*Part1部分*/
+.part1  .part1Title{margin-top: 30px;margin-bottom: 30px}
+.part1 .span2{color: #e56424;font-size: 30px;}
+.part1 .span3{font-size: 24px;color: #e56424}
+.part1 .span4{font-size: 16px;color: #c3c3c3}
+.part1Cont{border: 2px solid #c2c2c2;padding-left: 20px;position: relative;padding-top: 32px;border-radius: 4px}
+.part1Cont h3{font-size: 22px;color: #0c0c0c;font-weight: normal;margin-bottom: 12px}
+.part1Cont h3 span{font-size: 26px;color: #69be28}
+.part1Cont p{font-size: 14px;color: #4d4d4d;margin-bottom: 20px}
+.part1Cont .try{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid gray;text-align: center;line-height: 30px;border-radius: 4px;line-height: 40px}
+.try0{float: left;margin-right: 50px}
+.try1{float: left}
+.tryBox{overflow: hidden}
+.active{background: url("../img/yes3.png")}
+.c1{width: 165px;height: 40px;z-index: 10;opacity: 0}
+.no1{position: absolute;top: 81px;left: 20px}
+.no2{position: absolute;top: 199px;left: 20px}
+.no3{position: absolute;top: 199px;left: 238px}
+.no4{position: absolute;top: 318px;left: 20px}
+.no5{position: absolute;top: 430px;left: 20px}
+.no6{position: absolute;top: 540px;left: 20px}
+.part1Cont .redP{color: #e76262;font-size: 16px}
+/*Part2部分*/
+.part2{padding-top: 80px}
+
+.part2Title .span2{color: #e56424;font-size: 30px;}
+.part2 .span3{font-size: 24px;color: #e56424}
+.part2Title {padding-bottom: 40px}
+.part2Cont{background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-top: 62px;padding-bottom: 65px}
+.part2-L{float: left;text-align: right;color: #0c0c0c;font-size: 22px;margin-left: 15%}
+.part2-L p{font-size: 22px;color: #0c0c0c;line-height: 57px}
+.part2-R{float: right;margin-right: 17%}
+.part2-R .inputLong{width: 600px;height: 50px}
+.part2-R  p{margin-bottom: 20px}
+.part2-R .inputChe{width: 25px;height: 17px;margin-left: 50px;line-height: 20px}
+.part2-R input{font-size: 20px}
+/*Part3*/
+.part3{padding-top: 80px}
+.part3Title .span2{color: #e56424;font-size: 30px;}
+
+.part3 .span3{font-size: 24px;color: #e56424}
+.part3Title {padding-bottom: 40px}
+.part3Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 20px;padding-top: 35px}
+.part3Cont input{width: 15px;height: 15px}
+.part3Cont .s1{margin-right: 80px}
+.part3Cont .s2{margin-right: 80px}
+.part3Cont .s3{margin-right: 80px}
+.part3Cont .s4{margin-right: 80px}
+.part3Cont .s5{margin-right: 63px}
+.part3Cont .s6{margin-right: 33px}
+.part3Cont .s7{margin-right: 160px}
+.part3Cont .s8{margin-right: 60px}
+.part3Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part3Text span{color: #e56424 ;}
+.part3Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
+textarea{width:1135px;height: 156px;resize:none ;font-size: 16px}
+.formTop{margin-bottom: 20px}
+/*Part4部分*/
+
+.part4{padding-top: 80px}
+.part4Title .span2{color: #e56424;font-size: 30px;}
+
+.part4 .span3{font-size: 24px;color: #e56424}
+.part4Title {padding-bottom: 40px}
+.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 120px;padding-top: 35px;position: relative}
+.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text span{color: #e56424 ;}
+.part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
+
+/*九个图片*/
+.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px;}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont p{margin-top: 10px;margin-bottom: 20px}
+.imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
+.file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 121px;}
+.file2{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 383px;}
+.file3{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 644px;}
+.file4{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 121px;}
+.file5{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 383px;}
+.file6{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 644px;}
+.file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 121px;}
+.file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 383px;}
+.file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 644px;}
+
+/**/
+.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 120px;padding-top: 35px;position: relative}
+.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text span{color: #e56424 ;}
+.part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
+.part4 input{opacity: 0}
+/*九个图片*/
+.part5Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px;}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont p{margin-top: 10px;margin-bottom: 20px}
+.imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
+.file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 121px;}
+.file2{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 383px;}
+.file3{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 644px;}
+.file4{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 121px;}
+.file5{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 383px;}
+.file6{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 289px;  left: 644px;}
+.file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 121px;}
+.file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 383px;}
+.file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 644px;}
+
+footer{text-align: center;padding-top: 65px;padding-bottom: 80px}
+footer button{width: 162px;height: 52px;font-size: 20px}

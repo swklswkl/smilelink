@@ -1,0 +1,6 @@
+.Box .content{overflow: hidden;margin-top: 200px;padding: 20px;margin-bottom: 100px}
+.Box .left{width: 300px;height: 290px;border-radius: 10px;border: 2px solid #cccccc;float: left;margin-left: 20%;margin-right: 10%;
+    text-align: center;padding-top: 100px;transition: 0.5s}
+.Box .right{width: 300px;height: 290px;border-radius: 10px;border: 2px solid #cccccc;float: left;text-align: center;padding-top: 100px;transition: 0.5s}
+.Box p{font-size:24px;color: #4f4f4f ;margin-top: 50px }
+.Box .left:hover,.Box .right:hover{box-shadow: 0px -1px 17px  2px #c2c2c2;}
