@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\DB;
 class Controller extends BaseController
@@ -130,7 +131,7 @@ class Controller extends BaseController
 
     /**
      * TODO:生成档案编号
-     * @return \Illuminate\Database\Eloquent\Model|mixed|null|string|static
+     *
      */
     public function createArchivesNum($table = 'sl_case_history')
     {

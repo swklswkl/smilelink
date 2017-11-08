@@ -58,6 +58,9 @@ Route::post('odtcase/deleteOrthodontics','OrthodonticCaseController@deleteOrthod
 Route::get('case/seeService','CaseController@seeService');
 //新增病例-1
 Route::post('case/addEssentialInfo','CaseController@addEssentialInfo');
+//新增病例-2
+Route::post('case/addEssentialInfoSecond','CaseController@addEssentialInfoSecond');
+Route::post('case/addEssentialInfoThird','CaseController@addEssentialInfoThird');
 /*******************************************登录注册****************1*********************************/
 //手机号注册
 Route::post('/doctor/registerTel','DoctorController@registerTel');
