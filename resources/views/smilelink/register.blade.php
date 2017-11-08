@@ -31,83 +31,86 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">姓名:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email" style="background: #cce8cf">
+                        <input name="name" type="text" class="form-control" id="inputEmail3" placeholder="请输入真实姓名" style="background: #cce8cf">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inlineRadio2" class="col-sm-4 control-label">性别:</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" style="background: #cce8cf;height: 18px;width: 18px;"> 男
+                            <input name="sex" type="radio" name="inlineRadioOptions" id="sex" value="0" style="background: #cce8cf;height: 18px;width: 18px;"> 男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" style="background: #cce8cf;height: 18px;width: 18px;"> 女
+                            <input name="sex" type="radio" name="inlineRadioOptions" id="sex" value="1" style="background: #cce8cf;height: 18px;width: 18px;"> 女
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEamil" class="col-sm-4 control-label">电子邮箱:</label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control" id="inputEamil" placeholder="请输入电子邮箱" style="background: #cce8cf">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputTel" class="col-sm-4 control-label">手机号:</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputTel" placeholder="请输入手机号码" style="background: #cce8cf">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="请输入电子邮箱" style="background: #cce8cf">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">出生年月日:</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="inputDate" placeholder="" >
+                        <input name="birthday" type="date" class="form-control" id="birthday" placeholder="" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-10">
+                        <select name="province" class="col-sm-3 control-label" id="province">
+                            <option value="">省份</option>
+                        </select>
+                        <select name="city" class=" col-sm-3 control-label" id="city">
+                            <option value="">地级市</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inlineRadio2" class="col-sm-4 control-label">是否具备医师资格证:</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2" style="background: white;height: 18px;width: 18px;"> 是
+                            <input name="certificate" type="radio" name="inlineRadioOptions" id="certificate" value="1" style="background: white;height: 18px;width: 18px;"> 是
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option3" style="background: #cce8cf;height: 18px;width: 18px"> 否
+                            <input name="certificate" type="radio" name="inlineRadioOptions" id="certificate" value="0" style="background: #cce8cf;height: 18px;width: 18px"> 否
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">现工作单位:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputWork" placeholder="请输入您的工作单位" style="background: #cce8cf">
+                        <input name="work_unit" type="text" class="form-control" id="work_unit" placeholder="请输入您的工作单位" style="background: #cce8cf">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">从事正畸年限:</label>
                     <div class="col-sm-8">
                         <div class="input-group">
-                            <input type="number" class="form-control" id="inputAge" placeholder="请填写工作年限" style="background: #cce8cf">
+                            <input name="working_years" type="number" class="form-control" id="working_years" placeholder="请填写工作年限" style="background: #cce8cf">
                             <div class="input-group-addon " style="background: white;border: none">年</div>
                         </div>
                     </div>
                 </div>
 
 
-
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-10">
                         <div class="checkbox">
                             <label class="radio-inline">
-                                <input type="checkbox" style="height: 19px;width: 19px; " > <span style="font-size: 17px;">阅读并接受</span> <a href="" style="font-size: 17px">《博思美协议》</a>
+                                <input name="" type="checkbox" style="height: 19px;width: 19px; " > <span style="font-size: 17px;">阅读并接受</span> <a href="" style="font-size: 17px">《博思美协议》</a>
                             </label>
                         </div>
                     </div>
                 </div>
-
-
+{{--隐藏域--}}
+                <input name="mobilephone" value="{{$_GET['mobilephone']}}" type="hidden" class="form-control" id="mobilephone" placeholder="请输入真实姓名" style="background: #cce8cf">
 
                 <div class="form-group">
 
                     <div class="col-sm-6 col-sm-offset-4">
-                        <button type="button" class="btn btn-success btn-lg btn-block" style="background:#69b27d ;width: 400px;height: 40px;margin-top: 10px;">提交</button>
+                        <div type="" onclick="submitForm()" class="btn btn-success btn-lg btn-block" style="background:#69b27d ;width: 400px;height: 40px;margin-top: 10px;">提交</div>
                     </div>
                 </div>
             </form>
@@ -121,6 +124,29 @@
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
-
+<script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
+<script>
+    function submitForm()
+    {
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/doctor/registerInfo')}}',
+            dataType:'json',
+            data:$('.form-horizontal').serialize(),
+            success: function(data) {
+                console.log(data);
+                if (data.code == 200)
+                {
+                    layer.msg(data.msg);
+                    //window.location.href = '{{url('registerSuccess')}}';
+                } else {
+                    $.each(data.msg,function(key,val){
+                        layer.tips(val,'#'+key);
+                    })
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>
