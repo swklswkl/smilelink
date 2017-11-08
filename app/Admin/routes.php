@@ -17,4 +17,6 @@ Route::group([
     $router->resource('experts', ExpertController::class);
     $router->resource('casehistory', CaseHistoryController::class);
     $router->resource('orders',OrderController::class);
+    $router->resource('orthodontics',OrthodonicCaseController::class);
 });
+

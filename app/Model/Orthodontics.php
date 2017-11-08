@@ -20,4 +20,28 @@ class Orthodontics extends Model
         return $this->hasOne(OrthodonticsChiefComplaint::class,'orthodontics_id');
     }
 
+    public function CaseHistoryImages ()
+    {
+        return $this->hasOne('App\Model\CaseHistoryImage','orthodontics_id');
+    }
+
+    public function OrthodonticsClinicalExamination ()
+    {
+        return $this->hasOne(OrthodonticsClinicalExamination::class,'orthodontics_id');
+    }
+
+    public function OrthodonticXAnalysis ()
+    {
+        return $this->hasOne(OrthodonticXAnalysis::class,'orthodontics_id');
+    }
+
+    public function OrthodonticsDiagnosticDesign ()
+    {
+        return $this->hasOne(OrthodonticsDiagnosticDesign::class,'orthodontics_id');
+    }
+
+    public function OrthodonticsTreatmentProcess ()
+    {
+        return $this->hasMany(OrthodonticsTreatmentProcess::class,'orthodontics_id');
+    }
 }

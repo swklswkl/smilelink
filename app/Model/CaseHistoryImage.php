@@ -40,4 +40,9 @@ class CaseHistoryImage extends Model
     {
         return $this->belongsTo('App\Model\CaseHistory','case_history_id');
     }
+
+    public function Orthodontics ()
+    {
+        return $this->belongsTo('App\Model\Orthodontics','orthodontics_id');
+    }
 }

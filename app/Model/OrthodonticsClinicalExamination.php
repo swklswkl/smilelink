@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrthodonticsChiefComplaint extends Model
+class OrthodonticsClinicalExamination extends Model
 {
-    protected $table = 'sl_orthodontics_chief_complaint';
+    protected $table = 'sl_orthodontics_clinical_examination';
     protected $primaryKey = 'orthodontics_id';
     protected $keyType = 'string';
     public $timestamps = FALSE;

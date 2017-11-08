@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Request;
-
+use Illuminate\Support\Facades\DB;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -133,9 +133,9 @@ class Controller extends BaseController
      * TODO:生成档案编号
      *
      */
-    public function createArchivesNum()
+    public function createArchivesNum($table = 'sl_case_history')
     {
-        $ArchivesNum = DB::table('sl_case_history')->select('id')->orderBy('id','desc')->first();
+        $ArchivesNum = DB::table($table)->select('id')->orderBy('id','desc')->first();
         if($ArchivesNum != null ) {
             $ArchivesNum = $ArchivesNum->id;
             $ArchivesNum = "C".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
@@ -144,8 +144,5 @@ class Controller extends BaseController
         }
         return $ArchivesNum;
     }
-
-
-
 }
 
