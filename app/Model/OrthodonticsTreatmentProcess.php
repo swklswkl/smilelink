@@ -4,12 +4,11 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrthodonticsChiefComplaint extends Model
+class OrthodonticsTreatmentProcess extends Model
 {
-    protected $table = 'sl_orthodontics_chief_complaint';
-    protected $primaryKey = 'orthodontics_id';
-    protected $keyType = 'string';
+    protected $table = 'sl_orthodontics_treatment_process';
     public $timestamps = FALSE;
+
     public function Orthodontics ()
     {
         return $this->belongsTo(Orthodontics::class,'orthodontics_id');
