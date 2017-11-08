@@ -63,4 +63,9 @@ class ChinaController extends Controller
 
         return ChinaAreaAdmin::district()->where('parent_id', $cityId)->get(['id', DB::raw('name as text')]);
     }
+
+    public function province(Request $request)
+    {
+        return ChinaAreaAdmin::where('type', '1')->get(['id', DB::raw('name as text')]);
+    }
 }

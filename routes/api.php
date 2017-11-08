@@ -20,6 +20,7 @@ Route::get('/cxjz','TestController@cxjz');
 Route::post('file/upload','CommonController@uploadPictures');
 Route::post('/test','CaseController@createArchivesNum');
 Route::get('china/city', 'ChinaController@city');
+Route::get('china/province', 'ChinaController@province');
 Route::get('china/district', 'ChinaController@district');
 /*******************************************正畸病历*************************************************/
 //新增患者基本信息
