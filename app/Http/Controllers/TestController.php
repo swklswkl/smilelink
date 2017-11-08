@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Doctors;
+use App\Model\OrthodonticsTreatmentProcess;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,9 +38,21 @@ class TestController extends Controller
                 },'OrthodonticsDiagnosticDesign' => function ($query) {
                     $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan']);
                 },'OrthodonticsTreatmentProcess' => function ($query) {
-                    $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other']);
+                    $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other','create_time']);
                 }])->get()->toArray();
-            return view('test',compact('data',$data[0]));
+            return view('admin.test',compact('data',$data[0]));
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function cxjz (Request $request)
+    {
+        try
+        {
+           $data = OrthodonticsTreatmentProcess::where(['id'=>$request->get('id')])->get()->toArray();
+            return view('admin.process',compact('data',$data[0]));
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');

@@ -625,7 +625,7 @@ class OrthodonticCaseController extends Controller
                },'OrthodonticsDiagnosticDesign' => function ($query) {
                    $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan']);
                },'OrthodonticsTreatmentProcess' => function ($query) {
-                   $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other']);
+                   $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other','create_time']);
                }])->get();
             return $this->successResponse('成功',$data);
         }catch (\Exception $e)
@@ -651,6 +651,26 @@ class OrthodonticCaseController extends Controller
             OrthodonticXAnalysis::where(['orthodontics_id' => $request->post('orthodontics_id')])->delete();
             OrthodonticsTreatmentProcess::where(['orthodontics_id' => $request->post('orthodontics_id')])->delete();
             OrthodonticsDiagnosticDesign::where(['orthodontics_id' => $request->post('orthodontics_id')])->delete();
+            DB::commit();
+            return $this->successResponse('删除成功');
+        }catch(\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+            DB::rollBack();
+        }
+    }
+
+    /**
+     * TODO:删除治疗进展
+     * @param Request $request
+     * @return string
+     */
+    public function deleteTreatmentProcess (Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+            OrthodonticsTreatmentProcess::where(['id'=>$request->post('id')])->delete();
             DB::commit();
             return $this->successResponse('删除成功');
         }catch(\Exception $e)
