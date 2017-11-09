@@ -15,8 +15,8 @@
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span class="span1"><a href="#">新建病例</a></span>
-            <span><a href="#">病例管理</a></span>
+            <span class="span1"><a href="{{url('createCase')}}">新建病例</a></span>
+            <span><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
@@ -31,18 +31,23 @@
 
 <div class="Box">
     <div class="content">
+        <a href="{{url('caseOne')}}">
         <div class="left">
             <div class="leftImg">
                 <img src="{{asset('reception/img/caseLog.png')}}" alt="">
             </div>
             <p>新增病例</p>
         </div>
+        </a>
+        <a href="{{url('createZhenJiCaseOne')}}">
         <div class="right">
+
             <div class="leftImg">
                 <img src="{{asset('reception/img/fileLog.png')}}" alt="">
             </div>
             <p>新增正畸档案</p>
         </div>
+        </a>
 
     </div>
 </div>
