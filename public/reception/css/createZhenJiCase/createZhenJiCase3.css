@@ -1,0 +1,60 @@
+.crumbs{margin-top: 20px;margin-bottom: 20px;color:#979797;font-size: 16px }
+/*Part4部分*/
+
+.part4{padding-top: 80px}
+.part4Title .span2{color: #e56424;font-size: 30px;}
+
+.part4 .span3{font-size: 24px;color: #e56424}
+.part4Title {padding-bottom: 40px}
+.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 120px;padding-top: 35px;position: relative}
+.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text span{color: #e56424 ;}
+.part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
+
+/*九个图片*/
+.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px;}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont p{margin-top: 10px;margin-bottom: 20px}
+.imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
+.file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 121px;}
+.file2{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 383px;}
+.file3{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 644px;}
+.file4{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 121px;}
+.file5{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 383px;}
+.file6{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 644px;}
+.file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 121px;}
+.file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 383px;}
+.file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 644px;}
+
+/**/
+.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 120px;padding-top: 35px;position: relative}
+.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text span{color: #e56424 ;}
+.part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
+.part4 input{opacity: 0}
+/*九个图片*/
+.part5Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px;}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont p{margin-top: 10px;margin-bottom: 20px}
+.imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
+.file10{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 121px;}
+.file11{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 383px;}
+.file12{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 644px;}
+.file13{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 121px;}
+.file14{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 383px;}
+.file15{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 644px;}
+.file16{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1392px;  left: 121px;}
+.file17{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1542px;  left: 383px;}
+.file18{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1542px;  left: 644px;}
+.file19{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1794px;  left: 121px;}
+
+
+.spanLR{margin-left: 20px;margin-right: 50px}
+
+.kouSao{background: white;padding-top: 10px;padding-bottom: 10px;padding-left: 30px;width: 900px}
+.button1{text-align: center;padding-top: 65px;padding-bottom: 50px}
+.button1 button{width: 162px;height: 52px;font-size: 20px;margin-right: 50px}

@@ -42,7 +42,25 @@ Route::get('createCase', function () {
 });
 //新增正畸病例模板
 Route::get('createZhenJiCaseOne', function () {
-    return view('smilelink.createZhenJiCase.createZhenJiCase1');
+    return view('smilelink.createZhenJiCase.createZhenJiCaseOne');
+});
+Route::get('createZhenJiCaseTwo', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseTwo');
+});
+Route::get('createZhenJiCaseThree', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseThree');
+});
+Route::get('createZhenJiCaseFour', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseFour');
+});
+Route::get('createZhenJiCaseFif', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseFif');
+});
+Route::get('createZhenJiCaseSix', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseSix');
+});
+Route::get('createZhenJiCaseSeven', function () {
+    return view('smilelink.createZhenJiCase.createZhenJiCaseSeven');
 });
 //新增病例1模板
 Route::get('caseOne', function () {
