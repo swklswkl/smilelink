@@ -47,7 +47,7 @@ class OrthodonticCaseController extends Controller
                     $errors = $validator->errors();
                     return $this->errorResponse($errors);
                 }
-                $id = $CaseController->createOrthodonicArchivesNum('sl_orthodontics_case_history');
+                $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::insert([
                     'id' => $id,
                     'doctor_id' => 1,
@@ -58,7 +58,8 @@ class OrthodonticCaseController extends Controller
                     'mobilephone' => $request->post('mobilephone'),
                     'province' => $request->post('province'),
                     'city' => $request->post('city'),
-                    'address' => $request->post('address')
+                    'address' => $request->post('address'),
+                    'create_time' => time()
                 ]);
                 DB::commit();
                 return $this->successResponse('添加成功',$id);
@@ -522,7 +523,7 @@ class OrthodonticCaseController extends Controller
     }
 
     /**
-     * TODO:添加治疗过程（进展）
+     * TODO:添加/编辑治疗过程（进展）
      * @param Request $request
      * @return string
      */
@@ -682,6 +683,11 @@ class OrthodonticCaseController extends Controller
         }
     }
 
+    /**
+     * TODO:查询治疗进展
+     * @param Request $request
+     * @return string
+     */
     public function inquireTreatmentProcess (Request $request)
     {
         try{
@@ -692,5 +698,76 @@ class OrthodonticCaseController extends Controller
             return $this->errorResponse('操作有误');
         }
 
+    }
+    /**
+     * TODO:查询治疗进展
+     * @param Request $request
+     * @return string
+     */
+    public function inquireOnlyOneTreatmentProcess (Request $request)
+    {
+        try{
+            $data = OrthodonticsTreatmentProcess::where(['id'=>$request->get('id')])->get();
+            return $this->successResponse('查询成功',$data);
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+
+    }
+
+    /**
+     * TODO:新增病例第一页
+     * @param Request $request
+     * @return string
+     */
+    public function addCaseInformationPage1 (Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+            // 设置验证消息
+            $messages = [
+                'name.required' => '患者姓名不能为空',
+                'id_number.required' => '身份证号码不能为空',
+                'birthday.required' => '出生年月日不能为空',
+                'mobilephone.required' => '手机号码不能为空',
+                'mobilephone.regex' => '请输入正确的手机号码'
+            ];
+            // 设置验证规则
+            $validator = \Validator::make($request->all(),[
+                'mobilephone' => ['required','regex:/^1[34578]\d{9}$/'],
+                'name' => 'required',
+                'id_number' => 'required',
+                'birthday' => 'required'
+            ],$messages);
+            if ($validator->fails())
+            {
+                $errors = $validator->errors();
+                return $this->errorResponse($errors);
+            }
+            $CaseController = new CaseController();
+            $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
+            Orthodontics::insert([
+                'id' => $id,
+                'name' => $request->post('name'),
+                'sex' => $request->post('sex'),
+                'birthday' => $request->post('birthday'),
+                'id_number' => $request->post('id_number'),
+                'mobilephone' => $request->post('mobilephone'),
+                'province' => $request->post('province'),
+                'city' => $request->post('city'),
+                'service_id' => $request->post('service_id'),
+                'create_time' => time()
+            ]);
+            OrthodonticsChiefComplaint::inster([
+                'orthodontics_id' => $id,
+                'complained' => $request->post('complained'),
+                ''
+            ]);
+        }catch (\Exception $e)
+        {
+
+        }
     }
 }
