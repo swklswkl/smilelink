@@ -28,6 +28,7 @@
         $('#addBox').show(); //将DIV标签显示出来。
         setTimeout(function(){
             $('#addBox').hide(); //将DIV标签隐藏。
+            window.location.href = "{{url('login')}}";
         }, 3000);
     }, 1000);
     var i = 3;

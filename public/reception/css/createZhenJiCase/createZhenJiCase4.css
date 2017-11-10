@@ -1,0 +1,22 @@
+.crumbs{margin-top: 20px;margin-bottom: 20px;color:#979797;font-size: 16px }
+/*Part4部分*/
+
+/**{font-size: 18px;}*/
+/*input{width: 16px;height: 16px}*/
+
+
+.part4Title .span2{color: #e56424;font-size: 30px;}
+.part4 .span3{font-size: 24px;color: #e56424}
+.part4Title {padding-bottom: 40px}
+.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+    padding-left: 50px;padding-top: 35px;position: relative}
+.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text span{color: #e56424 ;}
+
+
+
+
+
+.kouSao{background: white;padding-top: 10px;padding-bottom: 10px;padding-left: 30px;width: 900px}
+.button1{text-align: center;padding-top: 65px;padding-bottom: 50px}
+.button1 button{width: 162px;height: 52px;font-size: 20px;margin-right: 50px}

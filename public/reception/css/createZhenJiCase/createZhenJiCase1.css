@@ -12,5 +12,5 @@
 .part2-R  p{margin-bottom: 20px}
 .part2-R .inputChe{width: 25px;height: 17px;margin-left: 50px;line-height: 20px}
 .part2-R input{font-size: 20px}
-.button1{text-align: center;padding-top: 65px;padding-bottom: 50px}
-.button1 button{width: 162px;height: 52px;font-size: 20px;margin-right: 50px}
+.button1  a .buttonx{float: left;background: white;width: 162px;height: 50px;font-size: 20px;text-align: center;line-height: 50px;margin-left: 388px;margin-right: 50px}
+.button1 a .buttont{width: 162px;height: 50px;font-size: 20px;float: left;background: white;text-align: center;line-height: 50px}

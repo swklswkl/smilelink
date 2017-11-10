@@ -15,9 +15,24 @@
     <style>
         *{font-size: 20px}
         label{font-weight: normal}
+         .bg{height: 1000px;position: relative;background-color:rgba(0,0,0,0.5)}
+        .box{background: white;text-align: center;border-radius:10px;width: 450px;padding-bottom: 40px ;
+            position: absolute;left: 50%;top: 50%;margin-left: -225px;margin-top: -164px;}
+        .img{padding-top: 40px;margin-bottom: 20px}
+        .box h3{margin-bottom: 30px;}
+        .box span{color: #ff0000}
     </style>
 </head>
 <body>
+<div id="addBox" class="bg" style="width: 100%;height: 100%;display: none;position: absolute;z-index: 999;">
+    <div class="box" >
+        <div class="img">
+            <img src="img/yes.png" alt="">
+        </div>
+        <h3>恭喜你,注册成功！</h3>
+        <p><span id="time">3</span><span>秒</span>后自动跳转到登录页面</p>
+    </div>
+</div>
 <div style="background: #69bd27;margin-bottom: 40px" >
     <img src="{{asset('reception/img/log.jpg')}}" alt="" >
 </div>
@@ -31,7 +46,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">姓名:</label>
                     <div class="col-sm-8">
-                        <input name="name" type="text" class="form-control" id="inputEmail3" placeholder="请输入真实姓名" style="background: #cce8cf">
+                        <input name="name" type="text" class="form-control" id="name" placeholder="请输入真实姓名" style="background: #cce8cf">
                     </div>
                 </div>
                 <div class="form-group">
@@ -58,14 +73,16 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-10">
-                        <select name="province" class="col-sm-3 control-label" id="province">
+                        <label class="col-sm-4 control-label">选择地区:</label>
+                    <div class="col-sm-8">
+                        <select name="province" onchange="city1(this)" class="col-sm-3 control-label" id="province" style="border-radius: 4px;">
                             <option value="">省份</option>
                         </select>
-                        <select name="city" class=" col-sm-3 control-label" id="city">
+                        <select name="city" class=" col-sm-3 control-label" id="city" style="border-radius: 4px;">
                             <option value="">地级市</option>
                         </select>
                     </div>
+
                 </div>
                 <div class="form-group">
                     <label for="inlineRadio2" class="col-sm-4 control-label">是否具备医师资格证:</label>
@@ -126,6 +143,23 @@
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
 <script>
+    function city1(a){
+        $(function(){
+            $.ajax({
+                type: 'get',
+                url:'{{url('/api/china/city')}}',
+                dataType:'json',
+                data:{q:a.selectedIndex+1},
+                success: function(data) {
+                    $('#city').html('');
+                    $.each(data,function(key,val){
+                        $('#city').append('<option>'+val.text+'</option>');
+                    })
+
+                }
+            });
+        })
+    }
     function submitForm()
     {
         $.ajax({
@@ -137,8 +171,9 @@
                 console.log(data);
                 if (data.code == 200)
                 {
-                    layer.msg(data.msg);
-                    //window.location.href = '{{url('registerSuccess')}}';
+                    aa();
+                    {{--layer.msg(data.msg);--}}
+
                 } else {
                     $.each(data.msg,function(key,val){
                         layer.tips(val,'#'+key);
@@ -146,6 +181,36 @@
                 }
             }
         });
+    }
+/*页面加载查询省份*/
+    $(function(){
+        $.ajax({
+            type: 'get',
+            url:'{{url('/api/china/province')}}',
+            dataType:'json',
+            success: function(data) {
+                    $.each(data,function(key,val){
+                        $('#province').append("<option  data-id="+val.id+">"+val.text+'</option>');
+                    })
+            }
+        });
+    })
+    function aa ()
+    {
+        $('#addBox').show(); //将DIV标签显示出来。
+        setTimeout(function(){
+            $('#addBox').hide(); //将DIV标签隐藏。
+        }, 4000);
+        var i = 3;
+        var timer = setInterval(function(){
+            if(i== -1){
+                clearInterval(timer);
+                window.location.href = '{{url('login')}}';
+            }else{
+                --i;
+                document.getElementById('time').innerHTML = i;
+            }
+        },1000);
     }
 </script>
 </body>

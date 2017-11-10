@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link href="Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('reception/css/casePublic.css')}}">
     <link rel="stylesheet" href="{{asset('reception/css/caseManagement.css')}}">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -19,14 +20,13 @@
 </head>
 <body>
 <header>
-
     <div class="content">
         <div class="head-L">
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span ><a href="#">新建病例</a></span>
-            <span class="span1"><a href="#">病例管理</a></span>
+            <span ><a href="{{url('createCase')}}">新建病例</a></span>
+            <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
@@ -35,9 +35,9 @@
         </div>
 
 
-
     </div>
 </header>
+
 <div class="search">
 <div class="content">
     <div class="mySelect">

@@ -141,6 +141,7 @@ class DoctorController extends Controller
                 return $this->errorResponse($errors);
             }
             $result = Doctors::select('mobilephone')->where(['mobilephone' => $mobilephone,'password' => $password])->get();
+
             if (sizeof($result))
             {
                 // 医生信息保存到session
@@ -148,7 +149,7 @@ class DoctorController extends Controller
                 $request->session()->put('doctor.id',$result[0]['id']);
                 return $this->successResponse('登录成功',$result);
             }else{
-                return $this->errorResponse('账号或密码错误');
+                return $this->errorResponse('账号或密码错误',402);
             }
         }catch (\Exception $e)
         {
