@@ -40,10 +40,17 @@ class ChinaAreaAdmin extends Model
 
     public static function options($id)
     {
+
         if (! $self = static::find($id)) {
             return [];
         }
+        return $self->brothers();
+    }
 
-        return $self->brothers()->pluck('name', 'id');
+    public static function cxsf ($id)
+    {
+        $data = static::find($id);
+        $data = $data->attributes['name'];
+        return $data;
     }
 }

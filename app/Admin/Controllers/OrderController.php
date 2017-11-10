@@ -74,6 +74,7 @@ class OrderController extends Controller
         return Admin::grid(Orders::class, function (Grid $grid) {
             $grid->disableCreation();
             $grid->number('订单编号');
+            $grid->orthodontics_id('正畸病例编号');
             $grid->column('CaseHistory.name','患者姓名');
             $grid->service_content('服务内容')->display(function ($content) {
                 if($content=='0') return '3D模型测量分析'; elseif ($content=='1') return 'X光片测量分析'; elseif ($content=='2') return '矫治方案设计';else return '3D模拟治疗方案';
@@ -99,9 +100,16 @@ class OrderController extends Controller
                 return date('Y-m-d H:i:s',$time);
             });
             $grid->actions(function ($actions) {
+
                 $actions->disableEdit();
+
                 $actions->disableDelete();
-                $actions->append('<a href="/admin/casehistory/'.$actions->row->case_history_id.'/edit" class="btn btn-success">查看病历</a>');
+
+                $actions->append('&ensp;<a class="<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="cx(this.getAttribute('."'data-id'".'))" ><i class="fa fa-eye"></i></a>');
+
+                $actions->append('&ensp;');
+
+                $actions->append('&ensp;<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="del(this.getAttribute('."'data-id'".'))" class="grid-row-delete"><i class="fa fa-trash"></i></a>');
             });
 //            $grid->created_at();
 //            $grid->updated_at();

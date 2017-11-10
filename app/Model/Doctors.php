@@ -8,6 +8,8 @@ class Doctors extends Model
 {
     protected $table = 'sl_doctors';
     protected $primaryKey = 'id';
+    protected $hidden = ['password'];
+    protected $fillable  = ['id','mobilephone','password','name','sex','email','birthday','province','city','town','address','work_unit','certificate','working_years','avatar','security_level','alipay','wechat_pay','amount','create_time','last_ip','status'];
     public $timestamps = FALSE;
 
     /**

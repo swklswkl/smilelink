@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 /*******************************************测试demo***************1*********************************/
 Route::get('/test','TestController@cx');
 Route::get('/cxjz','TestController@cxjz');
+Route::get('/yscx','TestController@yscx');
+Route::get('/zjcx','TestController@zjcx');
 /*******************************************公共接口****************1*********************************/
 //文件上传接口
 Route::post('file/upload','CommonController@uploadPictures');
@@ -23,6 +25,7 @@ Route::get('china/city', 'ChinaController@city');
 Route::get('china/province', 'ChinaController@province');
 Route::get('china/district', 'ChinaController@district');
 /*******************************************正畸病历*************************************************/
+Route::post('addInformation','OrthodonticCaseController@addInformation');
 //新增患者基本信息
 Route::post('odtcase/addInformation','OrthodonticCaseController@addInformation');
 //新增主诉和病史
@@ -57,6 +60,8 @@ Route::get('odtcase/inquire','OrthodonticCaseController@inquire');
 Route::post('odtcase/deleteOrthodontics','OrthodonticCaseController@deleteOrthodontics');
 //删除治疗进展
 Route::post('odtcase/deleteTreatmentProcess','OrthodonticCaseController@deleteTreatmentProcess');
+//查询治疗进展
+Route::get('odtcase/inquireTreatmentProcess','OrthodonticCaseController@inquireTreatmentProcess');
 /*******************************************病例管理****************1*********************************/
 //新增病例-选择服务内容信息查询
 Route::get('case/seeService','CaseController@seeService');
@@ -73,4 +78,13 @@ Route::post('/doctor/registerInfo','DoctorController@registerInfo');
 //登录
 Route::post('/doctor/login','DoctorController@login');
 
-
+/*******************************************医生接口****************1*********************************/
+//查询信息
+Route::get('/doctor/information','DoctorController@information');
+//修改资料
+Route::post('/doctor/updateInformation','DoctorController@updateInformation');
+/*******************************************专家接口****************1*********************************/
+//查询信息
+Route::get('/expert/information','ExpertController@information');
+//修改资料
+Route::post('/expert/updateInformation','ExpertController@updateInformation');

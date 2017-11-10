@@ -28,7 +28,6 @@ class OrthodonicCaseController extends Controller
             $content->description('列表');
             $content->body('<div class="modal fade" id="goudan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>');
             $content->body('<div class="modal fade" id="mmda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>');
-
             $content->body($this->grid());
         });
     }
@@ -97,23 +96,29 @@ class OrthodonicCaseController extends Controller
 
                 $actions->append('&ensp;<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="del(this.getAttribute('."'data-id'".'))" class="grid-row-delete"><i class="fa fa-trash"></i></a>');
             });
+
             $grid->id('编号')->sortable();
 
             $grid->name('患者姓名');
+
+            $grid->status('病历状态')->display(function ($status) {
+
+                if ($status == '1')
+                {
+                    return '档案已建立';
+                }elseif($status=='2'){
+                    return '治疗中';
+                }else{
+                    return '已完成';
+                }
+
+            });
 
             $grid->create_time('创建时间')->display(function ($create_time) {
 
                 return date('Y-m-d H:i:s',$create_time);
 
             })->sortable();
-
-            $grid->status('病历状态')->display(function ($status) {
-
-                return $status == '1' ? '档案已建立' : '治疗中';
-
-            });
-
-            $grid->service_id('治疗方式');
 
             $grid->filter(function ($filter) {
 
@@ -127,8 +132,6 @@ class OrthodonicCaseController extends Controller
                 },'')->placeholder('请输入档案编号或患者姓名搜索');
 
             });
-//            $grid->created_at();
-//            $grid->updated_at();
         });
     }
 

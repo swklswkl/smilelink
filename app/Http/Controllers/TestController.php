@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Doctors;
+use App\Model\Experts;
 use App\Model\OrthodonticsTreatmentProcess;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
@@ -55,6 +56,81 @@ class TestController extends Controller
             return view('admin.process',compact('data',$data[0]));
         }catch (\Exception $e)
         {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function yscx (Request $request)
+    {
+        try
+        {
+            $data = Doctors::where(['id'=>$request->get('id')])->get()->toArray();
+            return view('admin.doc',compact('data',$data[0]));
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function zjcx (Request $request)
+    {
+        try
+        {
+            $data = Experts::where(['id'=>$request->get('id')])->get()->toArray();
+            return view('admin.exp',compact('data',$data[0]));
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+    public function xzys (Request $request)
+    {
+        // 开启事物
+        DB::beginTransaction();
+        try {
+            // 设置验证消息
+            $messages = [
+                'mobilephone.required' => '手机号码不能为空',
+                'mobilephone.unique' => '手机号码已存在',
+                'mobilephone.regex' => '请输入正确的手机号码',
+                'password.min' => '密码不能小于:min位',
+                'name.required' => '请输入姓名',
+                'province.required' => '请选择省份',
+                'city.required' => '请选择城市',
+            ];
+            // 设置验证规则
+            $validator = Validator::make($request->all(),[
+                'mobilephone' => ['required','unique:sl_doctors','regex:/^1[34578]\d{9}$/'],
+                'password' => 'required|min:6|confirmed',
+                'name' => 'required',
+                'province' => 'required',
+                'city' => 'required',
+            ],$messages);
+            if ($validator->fails())
+            {
+                $errors = $validator->errors();
+                return $this->errorResponse($errors);
+            }
+            Doctors::inster([
+                'mobilephone' => $request->post('mobilephone'),
+                'password' => $request->post('password'),
+                'name' => $request->post('name'),
+                'sex' => $request->post('sex'),
+                'email' => $request->post('email'),
+                'province' => $request->post('province'),
+                'city' => $request->post('city'),
+                'birthday' => $request->post('birthday'),
+                'certificate' => $request->post('certificate'),
+                'work_unit' => $request->post('work_unit'),
+                'working_years' => $request->post('working_years')
+            ]);
+            // 提交事务
+            DB::commit();
+            return $this->successResponse('新增成功');
+        }catch (\Exception $e)
+        {
+            // 回滚
+            DB::rollBack();
             return $this->errorResponse('操作有误');
         }
     }

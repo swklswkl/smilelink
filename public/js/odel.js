@@ -45,6 +45,37 @@ function cx (id)
     });
 }
 
+function yscx (id)
+{
+    $.ajax({
+        method: 'get',
+        url: '/api/yscx',
+        data: {
+            id:id
+        },
+        success: function (data) {
+            $("#goudan").html(data);
+            $("#goudan").modal({
+            })
+        }
+    });
+}
+
+function zjcx (id)
+{
+    $.ajax({
+        method: 'get',
+        url: '/api/zjcx',
+        data: {
+            id:id
+        },
+        success: function (data) {
+            $("#goudan").html(data);
+            $("#goudan").modal({
+            })
+        }
+    });
+}
 function cxprocess (id)
 {
     $.ajax({

@@ -10,6 +10,7 @@ use Validator;
 
 class DoctorController extends Controller
 {
+
     /**
      * TODO:注册(手机号)
      * @param Request $request
@@ -17,6 +18,7 @@ class DoctorController extends Controller
      */
     public function registerTel (Request $request)
     {
+
         // 开启事物
         DB::beginTransaction();
         try {
@@ -120,7 +122,7 @@ class DoctorController extends Controller
     public function login (Request $request)
     {
         $mobilephone = $request->post('mobilephone');
-        $password = bcrypt($request->post('password'));
+        $password = md5($request->post('password'));
         try {
             // 设置验证消息
             $messages = [
@@ -154,4 +156,61 @@ class DoctorController extends Controller
         }
     }
 
+    /**
+     * TODO:查询医生信息
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
+    public function information (Request $request)
+    {
+        try
+        {
+            $data = Doctors::where(['id'=>$request->get('id')])->get()->toArray();
+            if (sizeof($data))
+            {
+                return $this->successResponse('查询成功',$data);
+            }else{
+                return $this->errorResponse('查询失败');
+            }
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+    /**
+     * TODO:修改医生信息(个人资料)
+     * @param Request $request
+     * @return string
+     */
+    public function updateInformation (Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+           $data = Doctors::where(['id' => $request->post('id')])
+               ->update([
+                   'name' => $request->post('name'),
+                   'sex' => $request->post('sex'),
+                   'email' => $request->post('email'),
+                   'birthday' => $request->post('birthday'),
+                   'province' => $request->post('province'),
+                   'city' => $request->post('city'),
+                   'work_unit' => $request->post('work_unit'),
+                   'certificate' => $request->post('certificate'),
+                   'working_years' => $request->post('working_years')
+               ]);
+            DB::commit();
+            if ($data)
+            {
+                return $this->successResponse('更新成功');
+            }else{
+                return $this->errorResponse('更新失败');
+            }
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+            return $this->errorResponse('操作有误');
+        }
+    }
 }

@@ -129,7 +129,7 @@ class Controller extends BaseController
     }
 
     /**
-     * TODO:生成档案编号
+     * TODO:生成病历编号
      *
      */
     public function createArchivesNum($table = 'sl_case_history')
@@ -140,6 +140,22 @@ class Controller extends BaseController
             $ArchivesNum = "C".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
         } else {
             $ArchivesNum = 'C000000001';
+        }
+        return $ArchivesNum;
+    }
+
+    /**
+     * TODO:生成正畸病历编号
+     *
+     */
+    public function createOrthodonicArchivesNum($table = 'sl_orthodontics_case_history')
+    {
+        $ArchivesNum = DB::table($table)->select('id')->orderBy('id','desc')->first();
+        if($ArchivesNum != null ) {
+            $ArchivesNum = $ArchivesNum->id;
+            $ArchivesNum = "Z".str_pad(intval(substr($ArchivesNum, -9))+1, 9, '0',STR_PAD_LEFT);
+        } else {
+            $ArchivesNum = 'Z000000001';
         }
         return $ArchivesNum;
     }

@@ -28,7 +28,7 @@ EOT;
             'all'   => '全部',
             '1'     => '档案已建立',
             '2'     => '治疗中',
-            '3'     => '专家已指导'
+            '3'     => '已完成'
         ];
 //        dd($options);die;
         return view('admin.tools.gender', compact('options'));

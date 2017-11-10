@@ -47,7 +47,7 @@ class OrthodonticCaseController extends Controller
                     $errors = $validator->errors();
                     return $this->errorResponse($errors);
                 }
-                $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
+                $id = $CaseController->createOrthodonicArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::insert([
                     'id' => $id,
                     'doctor_id' => 1,
@@ -123,17 +123,17 @@ class OrthodonticCaseController extends Controller
             try{
                 OrthodonticsChiefComplaint::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
-                    'complained' => $request->post('complained')!='' ? '['.implode(',',$request->post('complained')).']' : '[]',
+                    'complained' => $request->post('complained')!='' ? implode(',',$request->post('complained')) : '',
                     'other_complained' => $request->post('other_complained'),
                     'height' => $request->post('height'),
                     'weight' => $request->post('weight'),
                     'age' => $request->post('age'),
                     'menarche_age' => $request->post('menarche_age'),
                     'suffering_from_disease' => $request->post('suffering_from_disease'),
-                    'disease_options' => $request->post('disease_options')!='' ? '['.implode(',',$request->post('disease_options')).']' : '[]',
+                    'disease_options' => $request->post('disease_options')!='' ? implode(',',$request->post('disease_options')) : '',
                     'other_disease' => $request->post('other_disease'),
                     'allergy' => $request->post('allergy'),
-                    'allergy_options' => $request->post('allergy_options')!='' ? '['.implode(',',$request->post('allergy_options')).']' : '[]',
+                    'allergy_options' => $request->post('allergy_options')!='' ? implode(',',$request->post('allergy_options')) : '',
                     'other_allergy' => $request->post('other_allergy'),
                     'keep_taking_medicine' => $request->post('keep_taking_medicine'),
                     'drugs_name' => $request->post('drugs_name'),
@@ -142,7 +142,7 @@ class OrthodonticCaseController extends Controller
                     'tooth_trauma' => $request->post('tooth_trauma'),
                     'tooth_wrong_teeth' => $request->post('tooth_wrong_teeth'),
                     'oral_cavity_habits' => $request->post('oral_cavity_habits'),
-                    'oral_cavity_options' => $request->post('oral_cavity_options')!='' ? '['.implode(',',$request->post('oral_cavity_options')).']' : '[]',
+                    'oral_cavity_options' => $request->post('oral_cavity_options')!='' ? implode(',',$request->post('oral_cavity_options')) : '',
                     'other_oral_cavity' => $request->post('other_oral_cavity'),
                     'orthodontic_treatment' => $request->post('orthodontic_treatment'),
                     'orthodontic_treatment_remark' => $request->post('orthodontic_treatment_remark'),
@@ -160,17 +160,17 @@ class OrthodonticCaseController extends Controller
             DB::beginTransaction();
             try{
                 OrthodonticsChiefComplaint::where(['orthodontics_id' => $request->post('orthodontics_id')])->update([
-                    'complained' => $request->post('complained')!='' ? '['.implode(',',$request->post('complained')).']' : '[]',
+                    'complained' => $request->post('complained')!='' ? '['.implode(',',$request->post('complained')).']' : '',
                     'other_complained' => $request->post('other_complained'),
                     'height' => $request->post('height'),
                     'weight' => $request->post('weight'),
                     'age' => $request->post('age'),
                     'menarche_age' => $request->post('menarche_age'),
                     'suffering_from_disease' => $request->post('suffering_from_disease'),
-                    'disease_options' => $request->post('disease_options')!='' ? '['.implode(',',$request->post('disease_options')).']' : '[]',
+                    'disease_options' => $request->post('disease_options')!='' ? implode(',',$request->post('disease_options')) : '',
                     'other_disease' => $request->post('other_disease'),
                     'allergy' => $request->post('allergy'),
-                    'allergy_options' => $request->post('allergy_options')!='' ? '['.implode(',',$request->post('allergy_options')).']' : '[]',
+                    'allergy_options' => $request->post('allergy_options')!='' ? implode(',',$request->post('allergy_options')) : '',
                     'other_allergy' => $request->post('other_allergy'),
                     'keep_taking_medicine' => $request->post('keep_taking_medicine'),
                     'drugs_name' => $request->post('drugs_name'),
@@ -179,7 +179,7 @@ class OrthodonticCaseController extends Controller
                     'tooth_trauma' => $request->post('tooth_trauma'),
                     'tooth_wrong_teeth' => $request->post('tooth_wrong_teeth'),
                     'oral_cavity_habits' => $request->post('oral_cavity_habits'),
-                    'oral_cavity_options' => $request->post('oral_cavity_options')!='' ? '['.implode(',',$request->post('oral_cavity_options')).']' : '[]',
+                    'oral_cavity_options' => $request->post('oral_cavity_options')!='' ? implode(',',$request->post('oral_cavity_options')) : '',
                     'other_oral_cavity' => $request->post('other_oral_cavity'),
                     'orthodontic_treatment' => $request->post('orthodontic_treatment'),
                     'orthodontic_treatment_remark' => $request->post('orthodontic_treatment_remark'),
@@ -469,10 +469,12 @@ class OrthodonticCaseController extends Controller
                     'right_fangs' => $request->post('right_fangs'),
                     'left_molar_fangs' => $request->post('left_molar_fangs'),
                     'right_molar_fangs' => $request->post('right_molar_fangs'),
-                    'teeth_arrangement' => $request->post('teeth_arrangement')!='' ? '['.implode(',',$request->post('teeth_arrangement')).']' : '[]',
+                    'teeth_arrangement' => $request->post('teeth_arrangement')!='' ? implode(',',$request->post('teeth_arrangement')) : '',
                     'gap' => $request->post('gap'),
                     'treatment_other_target' => $request->post('treatment_other_target'),
-                    'treatment_plan' => $request->post('treatment_plan')
+                    'treatment_plan' => $request->post('treatment_plan'),
+                    'maxillary' => $request->post('maxillary'),
+                    'jaws' => $request->post('jaws')
                 ]);
                 DB::commit();
                 return $this->successResponse('添加成功',$request->post('orthodontics_id'));
@@ -504,7 +506,7 @@ class OrthodonticCaseController extends Controller
                     'right_fangs' => $request->post('right_fangs'),
                     'left_molar_fangs' => $request->post('left_molar_fangs'),
                     'right_molar_fangs' => $request->post('right_molar_fangs'),
-                    'teeth_arrangement' => $request->post('teeth_arrangement')!='' ? '['.implode(',',$request->post('teeth_arrangement')).']' : '[]',
+                    'teeth_arrangement' => $request->post('teeth_arrangement')!='' ? implode(',',$request->post('teeth_arrangement')) : '',
                     'gap' => $request->post('gap'),
                     'treatment_other_target' => $request->post('treatment_other_target'),
                     'treatment_plan' => $request->post('treatment_plan')
@@ -678,5 +680,17 @@ class OrthodonticCaseController extends Controller
             return $this->errorResponse('操作有误');
             DB::rollBack();
         }
+    }
+
+    public function inquireTreatmentProcess (Request $request)
+    {
+        try{
+            $data = OrthodonticsTreatmentProcess::where(['orthodontics_id'=>$request->get('orthodontics_id')])->get();
+            return $this->successResponse('查询成功',$data);
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+
     }
 }

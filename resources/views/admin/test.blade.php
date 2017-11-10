@@ -90,48 +90,48 @@
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">档案编号</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputEmail3" value="{{$data[0]['id']}}" disabled>
+                                        <input type="text" class="form-control" id="inputEmail3" value="{{$data[0]['id']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">患者姓名</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['name']}}" disabled>
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['name']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
                                     <div class="col-sm-10">
                                         <label class="radio-inline">
-                                            <input type="radio" name="sex" id="inlineRadio1" value="0" {{$data[0]['sex'] == '0' ? 'checked' : ''}} disabled> 男
+                                            <input type="radio" name="sex" id="inlineRadio1" value="0" {{$data[0]['sex'] == '0' ? 'checked' : ''}} readonly> 男
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="sex" id="inlineRadio2" value="1" {{$data[0]['sex'] == '1' ? 'checked' : ''}} disabled> 女
+                                            <input type="radio" name="sex" id="inlineRadio2" value="1" {{$data[0]['sex'] == '1' ? 'checked' : ''}} readonly> 女
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">出生年月日</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['birthday']}}" disabled>
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['birthday']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">身份证号码</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['id_number']}}" disabled>
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['id_number']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">手机号码</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['mobilephone']}}" disabled>
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['mobilephone']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">现居住地</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['province'].$data[0]['city'].$data[0]['address']}}" disabled>
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$data[0]['province'].$data[0]['city'].$data[0]['address']}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -151,34 +151,34 @@
                                     <hr>
                                     <?php $a = $data[0]['orthodontics_chief_complaint']['complained']; $a = explode(',',$a)?>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> disabled> 牙齿排列不齐
+                                        <input type="checkbox" id="inlineCheckbox1" value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> readonly> 牙齿排列不齐
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> disabled> 牙齿稀疏
+                                        <input type="checkbox" id="inlineCheckbox2" value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> readonly> 牙齿稀疏
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> disabled> 牙齿龅牙
+                                        <input type="checkbox" id="inlineCheckbox3" value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> readonly> 牙齿龅牙
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> disabled> 牙齿地包天
+                                        <input type="checkbox" id="inlineCheckbox1" value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> readonly> 牙齿地包天
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> disabled> 前牙咬合不上
+                                        <input type="checkbox" id="inlineCheckbox2" value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> readonly> 前牙咬合不上
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> disabled> 前牙咬合过深
+                                        <input type="checkbox" id="inlineCheckbox3" value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> readonly> 前牙咬合过深
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="7" <?php if(in_array('7',$a) ){ ?>checked="checked"<?php } ?> disabled> 深覆盖
+                                        <input type="checkbox" id="inlineCheckbox1" value="7" <?php if(in_array('7',$a) ){ ?>checked="checked"<?php } ?> readonly> 深覆盖
                                     </label>
                                     <label class="checkbox-inline" style="margin-left: 0">
-                                        <input type="checkbox" id="inlineCheckbox2" value="8" <?php if(in_array('8',$a) ){ ?>checked="checked"<?php } ?> disabled> 颞下颌关节症状
+                                        <input type="checkbox" id="inlineCheckbox2" value="8" <?php if(in_array('8',$a) ){ ?>checked="checked"<?php } ?> readonly> 颞下颌关节症状
                                     </label>
                                 </div>
                                 <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它主诉</label>
                                 <div class="form-group">
 
-                                        <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['other_complained']}}</textarea>
+                                        <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['other_complained']}}</textarea>
 
                                 </div>
                             </div>
@@ -194,28 +194,28 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">身高</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_chief_complaint']['height']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_chief_complaint']['height']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">cm</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">体重</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['weight']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['weight']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">kg</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">年龄</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['age']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['age']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">岁</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">月经初潮年龄</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['menarche_age']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_chief_complaint']['menarche_age']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">岁</div>
                                             </div>
                                         </div>
@@ -227,10 +227,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">是否患有以下疾病</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="suffering_from_disease"  value="0" {{$data[0]['orthodontics_chief_complaint']['suffering_from_disease'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="suffering_from_disease"  value="0" {{$data[0]['orthodontics_chief_complaint']['suffering_from_disease'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="suffering_from_disease"  value="1" {{$data[0]['orthodontics_chief_complaint']['suffering_from_disease'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="suffering_from_disease"  value="1" {{$data[0]['orthodontics_chief_complaint']['suffering_from_disease'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -238,64 +238,64 @@
                                     {{--疾病选项 1:心脏病 2:高血压 3:糖尿病 4:精神病 5:癫痫 6:肝炎 7:艾滋病 8:肺结核 9:哮喘 10:血液系统疾病 11:慢性鼻炎  12:鼻甲肥大 13:扁桃体肥大  14:腺样体肥大 15:打鼾--}}
                                     <?php $a = $data[0]['orthodontics_chief_complaint']['disease_options']; $a = explode(',',$a)?>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> disabled> 心脏病
+                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> readonly> 心脏病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> disabled> 高血压
+                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> readonly> 高血压
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> disabled> 糖尿病
+                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> readonly> 糖尿病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> disabled> 精神病
+                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> readonly> 精神病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> disabled> 癫痫
+                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> readonly> 癫痫
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> disabled> 肝炎
+                                        <input type="checkbox"  value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> readonly> 肝炎
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="7" <?php if(in_array('7',$a) ){ ?>checked="checked"<?php } ?> disabled> 艾滋病
+                                        <input type="checkbox" value="7" <?php if(in_array('7',$a) ){ ?>checked="checked"<?php } ?> readonly> 艾滋病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="8" <?php if(in_array('8',$a) ){ ?>checked="checked"<?php } ?> disabled> 肺结核
+                                        <input type="checkbox"  value="8" <?php if(in_array('8',$a) ){ ?>checked="checked"<?php } ?> readonly> 肺结核
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="9" <?php if(in_array('9',$a) ){ ?>checked="checked"<?php } ?> disabled> 哮喘
+                                        <input type="checkbox"  value="9" <?php if(in_array('9',$a) ){ ?>checked="checked"<?php } ?> readonly> 哮喘
                                     </label>
                                     <label class="checkbox-inline" style="margin-left: 0px;">
-                                        <input type="checkbox"  value="10" <?php if(in_array('10',$a) ){ ?>checked="checked"<?php } ?> disabled> 血液系统疾病
+                                        <input type="checkbox"  value="10" <?php if(in_array('10',$a) ){ ?>checked="checked"<?php } ?> readonly> 血液系统疾病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="11" <?php if(in_array('11',$a) ){ ?>checked="checked"<?php } ?> disabled> 慢性鼻炎
+                                        <input type="checkbox"  value="11" <?php if(in_array('11',$a) ){ ?>checked="checked"<?php } ?> readonly> 慢性鼻炎
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="12" <?php if(in_array('12',$a) ){ ?>checked="checked"<?php } ?> disabled> 鼻甲肥大
+                                        <input type="checkbox"  value="12" <?php if(in_array('12',$a) ){ ?>checked="checked"<?php } ?> readonly> 鼻甲肥大
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="13" <?php if(in_array('13',$a) ){ ?>checked="checked"<?php } ?> disabled> 扁桃体肥大
+                                        <input type="checkbox"  value="13" <?php if(in_array('13',$a) ){ ?>checked="checked"<?php } ?> readonly> 扁桃体肥大
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="14" <?php if(in_array('14',$a) ){ ?>checked="checked"<?php } ?> disabled> 腺样体肥大
+                                        <input type="checkbox"  value="14" <?php if(in_array('14',$a) ){ ?>checked="checked"<?php } ?> readonly> 腺样体肥大
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="15" <?php if(in_array('15',$a) ){ ?>checked="checked"<?php } ?> disabled> 打鼾
+                                        <input type="checkbox"  value="15" <?php if(in_array('15',$a) ){ ?>checked="checked"<?php } ?> readonly> 打鼾
                                     </label>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它主诉</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['other_disease']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['other_disease']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">是否对以下各项过敏</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="allergy"  value="0" {{$data[0]['orthodontics_chief_complaint']['allergy'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="allergy"  value="0" {{$data[0]['orthodontics_chief_complaint']['allergy'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="allergy"  value="1" {{$data[0]['orthodontics_chief_complaint']['allergy'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="allergy"  value="1" {{$data[0]['orthodontics_chief_complaint']['allergy'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -303,50 +303,50 @@
                                     {{--疾病选项 1:心脏病 2:高血压 3:糖尿病 4:精神病 5:癫痫 6:肝炎 7:艾滋病 8:肺结核 9:哮喘 10:血液系统疾病 11:慢性鼻炎  12:鼻甲肥大 13:扁桃体肥大  14:腺样体肥大 15:打鼾--}}
                                     <?php $a = $data[0]['orthodontics_chief_complaint']['allergy_options']; $a = explode(',',$a)?>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> disabled> 青霉素
+                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> readonly> 青霉素
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> disabled> 口腔局麻药
+                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> readonly> 口腔局麻药
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> disabled> 金属
+                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> readonly> 金属
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> disabled> 塑料
+                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> readonly> 塑料
                                     </label>
                                     <label class="checkbox-inline" >
-                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> disabled> 橡胶
+                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> readonly> 橡胶
                                     </label>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它过敏</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['other_allergy']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['other_allergy']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-6 control-label">近几年是否一直在服用某种药物</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="keep_taking_medicine"  value="0" {{$data[0]['orthodontics_chief_complaint']['keep_taking_medicine'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="keep_taking_medicine"  value="0" {{$data[0]['orthodontics_chief_complaint']['keep_taking_medicine'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="keep_taking_medicine"  value="1" {{$data[0]['orthodontics_chief_complaint']['keep_taking_medicine'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="keep_taking_medicine"  value="1" {{$data[0]['orthodontics_chief_complaint']['keep_taking_medicine'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">药物名称</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['drugs_name']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['drugs_name']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-8 control-label">是否准备或正在怀孕或哺乳(女性)</label>
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="pregnancy"  value="0" {{$data[0]['orthodontics_chief_complaint']['pregnancy'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="pregnancy"  value="0" {{$data[0]['orthodontics_chief_complaint']['pregnancy'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="pregnancy"  value="1" {{$data[0]['orthodontics_chief_complaint']['pregnancy'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="pregnancy"  value="1" {{$data[0]['orthodontics_chief_complaint']['pregnancy'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -354,10 +354,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-8 control-label">患者或患者家长是否能在较长时间内配合医生治疗</label>
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="coordination_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['coordination_treatment'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="coordination_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['coordination_treatment'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="coordination_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['coordination_treatment'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="coordination_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['coordination_treatment'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -365,10 +365,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-8 control-label">是否有过牙齿或颌面部外伤史</label>
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="tooth_trauma"  value="0" {{$data[0]['orthodontics_chief_complaint']['tooth_trauma'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="tooth_trauma"  value="0" {{$data[0]['orthodontics_chief_complaint']['tooth_trauma'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="tooth_trauma"  value="1" {{$data[0]['orthodontics_chief_complaint']['tooth_trauma'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="tooth_trauma"  value="1" {{$data[0]['orthodontics_chief_complaint']['tooth_trauma'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -376,10 +376,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-8 control-label">患者的家族成员中是否有类似牙齿错牙合情况</label>
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="tooth_wrong_teeth"  value="0" {{$data[0]['orthodontics_chief_complaint']['tooth_wrong_teeth'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="tooth_wrong_teeth"  value="0" {{$data[0]['orthodontics_chief_complaint']['tooth_wrong_teeth'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="tooth_wrong_teeth"  value="1" {{$data[0]['orthodontics_chief_complaint']['tooth_wrong_teeth'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="tooth_wrong_teeth"  value="1" {{$data[0]['orthodontics_chief_complaint']['tooth_wrong_teeth'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -388,72 +388,72 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-6 control-label">是否或曾有以下口腔习惯</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="oral_cavity_habits"  value="0" {{$data[0]['orthodontics_chief_complaint']['oral_cavity_habits'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="oral_cavity_habits"  value="0" {{$data[0]['orthodontics_chief_complaint']['oral_cavity_habits'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="oral_cavity_habits"  value="1" {{$data[0]['orthodontics_chief_complaint']['oral_cavity_habits'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="oral_cavity_habits"  value="1" {{$data[0]['orthodontics_chief_complaint']['oral_cavity_habits'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px" >
                                     <?php $a = $data[0]['orthodontics_chief_complaint']['oral_cavity_options']; $a = explode(',',$a)?>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> disabled> 心脏病
+                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> readonly> 心脏病
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> disabled> 吮指
+                                        <input type="checkbox"  value="1" <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> readonly> 吮指
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> disabled> 咬唇
+                                        <input type="checkbox"  value="2" <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> readonly> 咬唇
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> disabled> 口呼吸
+                                        <input type="checkbox"  value="3" <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> readonly> 口呼吸
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> disabled> 咬物
+                                        <input type="checkbox"  value="4" <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> readonly> 咬物
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> disabled> 偏侧咀嚼
+                                        <input type="checkbox"  value="5" <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> readonly> 偏侧咀嚼
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox"  value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> disabled> 吐舌
+                                        <input type="checkbox"  value="6" <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> readonly> 吐舌
                                     </label>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它口腔习惯</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['other_oral_cavity']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['other_oral_cavity']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-6 control-label">是否接受过正畸治疗</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="orthodontic_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="orthodontic_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="orthodontic_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="orthodontic_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">备注</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment_remark']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment_remark']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-6 control-label">患者或患者家长是否还有其它担心或说明的情况</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="orthodontic_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['worry'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="orthodontic_treatment"  value="0" {{$data[0]['orthodontics_chief_complaint']['worry'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="orthodontic_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['worry'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="orthodontic_treatment"  value="1" {{$data[0]['orthodontics_chief_complaint']['worry'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">备注</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['worry_remark']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['worry_remark']}}</textarea>
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -461,7 +461,7 @@
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">备注</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_chief_complaint']['other']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_chief_complaint']['other']}}</textarea>
                                 </div>
                                 </div>
                             </div>
@@ -704,10 +704,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">对称性</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="symmetry"  value="0" {{$data[0]['orthodontics_clinical_examination']['symmetry'] == '0' ? 'checked' : ''}} disabled> 对称
+                                            <input type="radio" name="symmetry"  value="0" {{$data[0]['orthodontics_clinical_examination']['symmetry'] == '0' ? 'checked' : ''}} readonly> 对称
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="symmetry"  value="1" {{$data[0]['orthodontics_clinical_examination']['symmetry'] == '1' ? 'checked' : ''}} disabled> 不对称
+                                            <input type="radio" name="symmetry"  value="1" {{$data[0]['orthodontics_clinical_examination']['symmetry'] == '1' ? 'checked' : ''}} readonly> 不对称
                                         </label>
                                     </div>
                                 </div>
@@ -715,13 +715,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">颏点</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point"  value="0" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '0' ? 'checked' : ''}} disabled> 居中
+                                            <input type="radio" name="chin_point"  value="0" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '0' ? 'checked' : ''}} readonly> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '1' ? 'checked' : ''}} disabled> 偏左
+                                            <input type="radio" name="chin_point"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '1' ? 'checked' : ''}} readonly> 偏左
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '2' ? 'checked' : ''}} disabled> 偏右
+                                            <input type="radio" name="chin_point"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point'] == '2' ? 'checked' : ''}} readonly> 偏右
                                         </label>
                                     </div>
                                 </div>
@@ -729,10 +729,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">开唇露齿</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="teeth_open_lips"  value="0" {{$data[0]['orthodontics_clinical_examination']['teeth_open_lips'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="teeth_open_lips"  value="0" {{$data[0]['orthodontics_clinical_examination']['teeth_open_lips'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="teeth_open_lips"  value="1" {{$data[0]['orthodontics_clinical_examination']['teeth_open_lips'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="teeth_open_lips"  value="1" {{$data[0]['orthodontics_clinical_examination']['teeth_open_lips'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -740,10 +740,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">微笑露龈</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="smile_reveal_gums"  value="0" {{$data[0]['orthodontics_clinical_examination']['smile_reveal_gums'] == '0' ? 'checked' : ''}} disabled> 否
+                                            <input type="radio" name="smile_reveal_gums"  value="0" {{$data[0]['orthodontics_clinical_examination']['smile_reveal_gums'] == '0' ? 'checked' : ''}} readonly> 否
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="smile_reveal_gums"  value="1" {{$data[0]['orthodontics_clinical_examination']['smile_reveal_gums'] == '1' ? 'checked' : ''}} disabled> 是
+                                            <input type="radio" name="smile_reveal_gums"  value="1" {{$data[0]['orthodontics_clinical_examination']['smile_reveal_gums'] == '1' ? 'checked' : ''}} readonly> 是
                                         </label>
                                     </div>
                                 </div>
@@ -751,10 +751,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">平面</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="plane"  value="1" {{$data[0]['orthodontics_clinical_examination']['plane'] == '1' ? 'checked' : ''}} disabled> 偏斜
+                                            <input type="radio" name="plane"  value="1" {{$data[0]['orthodontics_clinical_examination']['plane'] == '1' ? 'checked' : ''}} readonly> 偏斜
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="plane"  value="0" {{$data[0]['orthodontics_clinical_examination']['plane'] == '0' ? 'checked' : ''}} disabled> 不偏斜
+                                            <input type="radio" name="plane"  value="0" {{$data[0]['orthodontics_clinical_examination']['plane'] == '0' ? 'checked' : ''}} readonly> 不偏斜
                                         </label>
                                     </div>
                                 </div>
@@ -766,13 +766,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">侧面形态</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="side_shape"  value="0" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '0' ? 'checked' : ''}} disabled> 直面型
+                                            <input type="radio" name="side_shape"  value="0" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '0' ? 'checked' : ''}} readonly> 直面型
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="side_shape"  value="1" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '1' ? 'checked' : ''}} disabled> 凹面型
+                                            <input type="radio" name="side_shape"  value="1" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '1' ? 'checked' : ''}} readonly> 凹面型
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="side_shape"  value="2" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '2' ? 'checked' : ''}} disabled> 凸面型
+                                            <input type="radio" name="side_shape"  value="2" {{$data[0]['orthodontics_clinical_examination']['side_shape'] == '2' ? 'checked' : ''}} readonly> 凸面型
                                         </label>
                                     </div>
                                 </div>
@@ -780,13 +780,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">鼻唇角</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="nasolabial_angle"  value="0" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="nasolabial_angle"  value="0" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="nasolabial_angle"  value="1" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '1' ? 'checked' : ''}} disabled> 偏大
+                                            <input type="radio" name="nasolabial_angle"  value="1" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '1' ? 'checked' : ''}} readonly> 偏大
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="nasolabial_angle"  value="2" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '2' ? 'checked' : ''}} disabled> 偏小
+                                            <input type="radio" name="nasolabial_angle"  value="2" {{$data[0]['orthodontics_clinical_examination']['nasolabial_angle'] == '2' ? 'checked' : ''}} readonly> 偏小
                                         </label>
                                     </div>
                                 </div>
@@ -794,13 +794,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">颏部凸度</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point_view"  value="0" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="chin_point_view"  value="0" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point_view"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '1' ? 'checked' : ''}} disabled> 后缩
+                                            <input type="radio" name="chin_point_view"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '1' ? 'checked' : ''}} readonly> 后缩
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="chin_point_view"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '2' ? 'checked' : ''}} disabled> 前凸
+                                            <input type="radio" name="chin_point_view"  value="1" {{$data[0]['orthodontics_clinical_examination']['chin_point_view'] == '2' ? 'checked' : ''}} readonly> 前凸
                                         </label>
                                     </div>
                                 </div>
@@ -822,13 +822,13 @@
                                 <div class="form-group">
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="periodontal_tissue"  value="0" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="periodontal_tissue"  value="0" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="periodontal_tissue"  value="1" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '1' ? 'checked' : ''}} disabled> 牙龈红肿
+                                            <input type="radio" name="periodontal_tissue"  value="1" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '1' ? 'checked' : ''}} readonly> 牙龈红肿
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="periodontal_tissue"  value="1" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '2' ? 'checked' : ''}} disabled> 牙龈出血
+                                            <input type="radio" name="periodontal_tissue"  value="1" {{$data[0]['orthodontics_clinical_examination']['periodontal_tissue'] == '2' ? 'checked' : ''}} readonly> 牙龈出血
                                         </label>
                                     </div>
                                 </div>
@@ -851,10 +851,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">恒牙列</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="permanent_dentition"  value="0" {{$data[0]['orthodontics_clinical_examination']['permanent_dentition'] == '0' ? 'checked' : ''}} disabled> 全部正常
+                                            <input type="radio" name="permanent_dentition"  value="0" {{$data[0]['orthodontics_clinical_examination']['permanent_dentition'] == '0' ? 'checked' : ''}} readonly> 全部正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="permanent_dentition"  value="1" {{$data[0]['orthodontics_clinical_examination']['permanent_dentition'] == '1' ? 'checked' : ''}} disabled> 全部缺失
+                                            <input type="radio" name="permanent_dentition"  value="1" {{$data[0]['orthodontics_clinical_examination']['permanent_dentition'] == '1' ? 'checked' : ''}} readonly> 全部缺失
                                         </label>
                                     </div>
                                 </div>
@@ -862,16 +862,16 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">乳牙列</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="deciduous_teeth"  value="0" {{$data[0]['orthodontics_clinical_examination']['deciduous_teeth'] == '0' ? 'checked' : ''}} disabled> 全部正常
+                                            <input type="radio" name="deciduous_teeth"  value="0" {{$data[0]['orthodontics_clinical_examination']['deciduous_teeth'] == '0' ? 'checked' : ''}} readonly> 全部正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="deciduous_teeth"  value="1" {{$data[0]['orthodontics_clinical_examination']['deciduous_teeth'] == '1' ? 'checked' : ''}} disabled> 全部缺失
+                                            <input type="radio" name="deciduous_teeth"  value="1" {{$data[0]['orthodontics_clinical_examination']['deciduous_teeth'] == '1' ? 'checked' : ''}} readonly> 全部缺失
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_clinical_examination']['teeth_condition_other']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_clinical_examination']['teeth_condition_other']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -892,16 +892,16 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">开口度</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_degree"  value="0" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '0' ? 'checked' : ''}} disabled> 一指
+                                            <input type="radio" name="opening_degree"  value="0" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '0' ? 'checked' : ''}} readonly> 一指
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_degree"  value="1" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} disabled> 二指
+                                            <input type="radio" name="opening_degree"  value="1" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} readonly> 二指
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_degree"  value="2" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} disabled> 三指
+                                            <input type="radio" name="opening_degree"  value="2" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} readonly> 三指
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_degree"  value="3" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} disabled> 三指以上
+                                            <input type="radio" name="opening_degree"  value="3" {{$data[0]['orthodontics_clinical_examination']['opening_degree'] == '1' ? 'checked' : ''}} readonly> 三指以上
                                         </label>
                                     </div>
                                 </div>
@@ -909,16 +909,16 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">开口型</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_shape"  value="0" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="opening_shape"  value="0" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_shape"  value="1" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} disabled> 左偏
+                                            <input type="radio" name="opening_shape"  value="1" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} readonly> 左偏
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_shape"  value="2" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} disabled> 右偏
+                                            <input type="radio" name="opening_shape"  value="2" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} readonly> 右偏
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="opening_shape"  value="3" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} disabled> 偏摆
+                                            <input type="radio" name="opening_shape"  value="3" {{$data[0]['orthodontics_clinical_examination']['opening_shape'] == '1' ? 'checked' : ''}} readonly> 偏摆
                                         </label>
                                     </div>
                                 </div>
@@ -926,19 +926,19 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">弹响(左侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="left_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '1' ? 'checked' : ''}} disabled> 张口初
+                                            <input type="radio" name="left_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '1' ? 'checked' : ''}} readonly> 张口初
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '2' ? 'checked' : ''}} disabled> 张口末
+                                            <input type="radio" name="left_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '2' ? 'checked' : ''}} readonly> 张口末
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_sound"  value="3" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '3' ? 'checked' : ''}} disabled> 闭口初
+                                            <input type="radio" name="left_sound"  value="3" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '3' ? 'checked' : ''}} readonly> 闭口初
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_sound"  value="4" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '4' ? 'checked' : ''}} disabled> 闭口末
+                                            <input type="radio" name="left_sound"  value="4" {{$data[0]['orthodontics_clinical_examination']['left_sound'] == '4' ? 'checked' : ''}} readonly> 闭口末
                                         </label>
                                     </div>
                                 </div>
@@ -946,19 +946,19 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">弹响(右侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="right_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '1' ? 'checked' : ''}} disabled> 张口初
+                                            <input type="radio" name="right_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '1' ? 'checked' : ''}} readonly> 张口初
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '2' ? 'checked' : ''}} disabled> 张口末
+                                            <input type="radio" name="right_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '2' ? 'checked' : ''}} readonly> 张口末
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_sound"  value="3" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '3' ? 'checked' : ''}} disabled> 闭口初
+                                            <input type="radio" name="right_sound"  value="3" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '3' ? 'checked' : ''}} readonly> 闭口初
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_sound"  value="4" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '4' ? 'checked' : ''}} disabled> 闭口末
+                                            <input type="radio" name="right_sound"  value="4" {{$data[0]['orthodontics_clinical_examination']['right_sound'] == '4' ? 'checked' : ''}} readonly> 闭口末
                                         </label>
                                     </div>
                                 </div>
@@ -966,13 +966,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">摩擦音(左侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_friction_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="left_friction_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_friction_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '1' ? 'checked' : ''}} disabled> 张口
+                                            <input type="radio" name="left_friction_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '1' ? 'checked' : ''}} readonly> 张口
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_friction_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '2' ? 'checked' : ''}} disabled> 闭口
+                                            <input type="radio" name="left_friction_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_friction_sound'] == '2' ? 'checked' : ''}} readonly> 闭口
                                         </label>
                                     </div>
                                 </div>
@@ -980,13 +980,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">摩擦音(右侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_friction_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="right_friction_sound"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_friction_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '1' ? 'checked' : ''}} disabled> 张口
+                                            <input type="radio" name="right_friction_sound"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '1' ? 'checked' : ''}} readonly> 张口
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_friction_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '2' ? 'checked' : ''}} disabled> 闭口
+                                            <input type="radio" name="right_friction_sound"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_friction_sound'] == '2' ? 'checked' : ''}} readonly> 闭口
                                         </label>
                                     </div>
                                 </div>
@@ -994,22 +994,22 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">疼痛(左侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="left_pain"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '1' ? 'checked' : ''}} disabled> 大张口
+                                            <input type="radio" name="left_pain"  value="1" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '1' ? 'checked' : ''}} readonly> 大张口
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '2' ? 'checked' : ''}} disabled> 左侧动
+                                            <input type="radio" name="left_pain"  value="2" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '2' ? 'checked' : ''}} readonly> 左侧动
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="3" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '3' ? 'checked' : ''}} disabled> 右侧动
+                                            <input type="radio" name="left_pain"  value="3" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '3' ? 'checked' : ''}} readonly> 右侧动
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="4" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '4' ? 'checked' : ''}} disabled> 前伸
+                                            <input type="radio" name="left_pain"  value="4" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '4' ? 'checked' : ''}} readonly> 前伸
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_pain"  value="5" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '5' ? 'checked' : ''}} disabled> 紧咬
+                                            <input type="radio" name="left_pain"  value="5" {{$data[0]['orthodontics_clinical_examination']['left_pain'] == '5' ? 'checked' : ''}} readonly> 紧咬
                                         </label>
                                     </div>
                                 </div>
@@ -1017,28 +1017,28 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">疼痛(右侧)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '0' ? 'checked' : ''}} disabled> 无
+                                            <input type="radio" name="right_pain"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '0' ? 'checked' : ''}} readonly> 无
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '1' ? 'checked' : ''}} disabled> 大张口
+                                            <input type="radio" name="right_pain"  value="1" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '1' ? 'checked' : ''}} readonly> 大张口
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '2' ? 'checked' : ''}} disabled> 左侧动
+                                            <input type="radio" name="right_pain"  value="2" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '2' ? 'checked' : ''}} readonly> 左侧动
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="3" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '3' ? 'checked' : ''}} disabled> 右侧动
+                                            <input type="radio" name="right_pain"  value="3" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '3' ? 'checked' : ''}} readonly> 右侧动
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="4" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '4' ? 'checked' : ''}} disabled> 前伸
+                                            <input type="radio" name="right_pain"  value="4" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '4' ? 'checked' : ''}} readonly> 前伸
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_pain"  value="5" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '5' ? 'checked' : ''}} disabled> 紧咬
+                                            <input type="radio" name="right_pain"  value="5" {{$data[0]['orthodontics_clinical_examination']['right_pain'] == '5' ? 'checked' : ''}} readonly> 紧咬
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_clinical_examination']['joint_examination_other']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_clinical_examination']['joint_examination_other']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -1057,7 +1057,7 @@
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
                                     <label for="inputPassword3" class="col-sm-10 control-label" style="font-weight: 400;padding-left: 0">错颌问题(请用文字描述牙列错颌问题)</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_clinical_examination']['malocclusion_problem']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_clinical_examination']['malocclusion_problem']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <hr>
@@ -1072,7 +1072,7 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">前牙覆盖&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;正常</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                     </div>
                                 </div>
@@ -1080,13 +1080,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;深覆盖</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '1' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '1' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '2' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '2' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '3' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '3' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1094,13 +1094,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;反覆盖</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '4' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '4' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '5' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '5' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '6' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'] == '6' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1109,13 +1109,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">尖牙关系&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;左侧</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1123,13 +1123,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;右侧</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1137,13 +1137,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">磨牙关系&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;左侧</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['left_molar_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1151,13 +1151,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;右侧</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_clinical_examination']['right_molar_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1168,13 +1168,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">spee 曲线</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="speed_curve"  value="0" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="speed_curve"  value="0" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="speed_curve"  value="1" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '1' ? 'checked' : ''}} disabled> 反向
+                                            <input type="radio" name="speed_curve"  value="1" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '1' ? 'checked' : ''}} readonly> 反向
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="speed_curve"  value="2" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '2' ? 'checked' : ''}} disabled> 过深
+                                            <input type="radio" name="speed_curve"  value="2" {{$data[0]['orthodontics_clinical_examination']['speed_curve'] == '2' ? 'checked' : ''}} readonly> 过深
                                         </label>
                                     </div>
                                 </div>
@@ -1182,7 +1182,7 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">前牙覆牙合&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;正常</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="0" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="deep_bite"  value="0" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                     </div>
                                 </div>
@@ -1190,13 +1190,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;深覆牙合</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="1" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '1' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="deep_bite"  value="1" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '1' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="2" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '2' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="deep_bite"  value="2" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '2' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="3" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '3' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="deep_bite"  value="3" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '3' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1204,13 +1204,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;开牙合</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="4" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '4' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="deep_bite"  value="4" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '4' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="5" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '5' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="deep_bite"  value="5" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '5' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="deep_bite"  value="6" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '6' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="deep_bite"  value="6" {{$data[0]['orthodontics_clinical_examination']['deep_bite'] == '6' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1218,7 +1218,7 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">后牙&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;正常</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="0" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="posterior_teeth"  value="0" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                     </div>
                                 </div>
@@ -1226,13 +1226,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;左侧开牙合</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="1" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '1' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="posterior_teeth"  value="1" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '1' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="2" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '2' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="posterior_teeth"  value="2" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '2' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="3" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '3' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="posterior_teeth"  value="3" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '3' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1240,13 +1240,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;右侧开牙合</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="4" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '4' ? 'checked' : ''}} disabled> I度
+                                            <input type="radio" name="posterior_teeth"  value="4" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '4' ? 'checked' : ''}} readonly> I度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="5" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '5' ? 'checked' : ''}} disabled> II度
+                                            <input type="radio" name="posterior_teeth"  value="5" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '5' ? 'checked' : ''}} readonly> II度
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="posterior_teeth"  value="6" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '6' ? 'checked' : ''}} disabled> III度
+                                            <input type="radio" name="posterior_teeth"  value="6" {{$data[0]['orthodontics_clinical_examination']['posterior_teeth'] == '6' ? 'checked' : ''}} readonly> III度
                                         </label>
                                     </div>
                                 </div>
@@ -1257,13 +1257,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">上颌弓牙</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_arch_teeth"  value="4" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="maxillary_arch_teeth"  value="4" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_arch_teeth"  value="5" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '1' ? 'checked' : ''}} disabled> 狭窄
+                                            <input type="radio" name="maxillary_arch_teeth"  value="5" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '1' ? 'checked' : ''}} readonly> 狭窄
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_arch_teeth"  value="6" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '2' ? 'checked' : ''}} disabled> 过宽
+                                            <input type="radio" name="maxillary_arch_teeth"  value="6" {{$data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'] == '2' ? 'checked' : ''}} readonly> 过宽
                                         </label>
                                     </div>
                                 </div>
@@ -1271,13 +1271,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">下颌弓牙</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="lower_dental_arch"  value="0" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="lower_dental_arch"  value="0" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="lower_dental_arch"  value="1" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '1' ? 'checked' : ''}} disabled> 狭窄
+                                            <input type="radio" name="lower_dental_arch"  value="1" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '1' ? 'checked' : ''}} readonly> 狭窄
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="lower_dental_arch"  value="2" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '2' ? 'checked' : ''}} disabled> 过宽
+                                            <input type="radio" name="lower_dental_arch"  value="2" {{$data[0]['orthodontics_clinical_examination']['lower_dental_arch'] == '2' ? 'checked' : ''}} readonly> 过宽
                                         </label>
                                     </div>
                                 </div>
@@ -1285,13 +1285,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">上颌中线</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="0" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '0' ? 'checked' : ''}} disabled> 居中
+                                            <input type="radio" name="maxillary_midline"  value="0" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '0' ? 'checked' : ''}} readonly> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="1" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '1' ? 'checked' : ''}} disabled> 右偏斜 {{$data[0]['orthodontics_clinical_examination']['maxillary_midline_left'].'mm'}}
+                                            <input type="radio" name="maxillary_midline"  value="1" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '1' ? 'checked' : ''}} readonly> 右偏斜 {{$data[0]['orthodontics_clinical_examination']['maxillary_midline_left'].'mm'}}
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="2" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '2' ? 'checked' : ''}} disabled> 左偏斜 {{$data[0]['orthodontics_clinical_examination']['maxillary_midline_right'].'mm'}}
+                                            <input type="radio" name="maxillary_midline"  value="2" {{$data[0]['orthodontics_clinical_examination']['maxillary_midline'] == '2' ? 'checked' : ''}} readonly> 左偏斜 {{$data[0]['orthodontics_clinical_examination']['maxillary_midline_right'].'mm'}}
                                         </label>
                                     </div>
                                 </div>
@@ -1302,7 +1302,7 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">后牙&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;正常</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="0" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="mandibular_midline"  value="0" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                     </div>
                                 </div>
@@ -1310,17 +1310,17 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;左侧</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="1" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '1' ? 'checked' : ''}} disabled> 反牙合
+                                            <input type="radio" name="mandibular_midline"  value="1" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '1' ? 'checked' : ''}} readonly> 反牙合
                                         </label>
 
 
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="2" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '2' ? 'checked' : ''}} disabled> 正锁牙合
+                                            <input type="radio" name="mandibular_midline"  value="2" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '2' ? 'checked' : ''}} readonly> 正锁牙合
                                         </label>
 
 
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="3" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '3' ? 'checked' : ''}} disabled> 反锁牙合
+                                            <input type="radio" name="mandibular_midline"  value="3" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '3' ? 'checked' : ''}} readonly> 反锁牙合
                                         </label>
                                     </div>
                                 </div>
@@ -1328,14 +1328,14 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-4 control-label">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;反覆盖</label>
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="4" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '4' ? 'checked' : ''}} disabled> 反牙合
+                                            <input type="radio" name="mandibular_midline"  value="4" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '4' ? 'checked' : ''}} readonly> 反牙合
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="5" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '5' ? 'checked' : ''}} disabled> 正锁牙合
+                                            <input type="radio" name="mandibular_midline"  value="5" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '5' ? 'checked' : ''}} readonly> 正锁牙合
                                         </label>
 
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="6" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '6' ? 'checked' : ''}} disabled> 反锁牙合
+                                            <input type="radio" name="mandibular_midline"  value="6" {{$data[0]['orthodontics_clinical_examination']['mandibular_midline'] == '6' ? 'checked' : ''}} readonly> 反锁牙合
                                         </label>
                                     </div>
                                 </div>
@@ -1345,14 +1345,14 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">上颌</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">mm</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-addon" style="border: 0">下颌</div>
-                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_clinical_examination']['crowded_degree_jaw']}}" disabled>
+                                                <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_clinical_examination']['crowded_degree_jaw']}}" readonly>
                                                 <div class="input-group-addon" style="border: 0">mm</div>
                                             </div>
                                         </div>
@@ -1364,14 +1364,14 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-addon" style="border: 0">前牙比</div>
-                                                    <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth']}}" disabled>
+                                                    <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount" value="{{$data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth']}}" readonly>
                                                     <div class="input-group-addon" style="border: 0">%</div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-addon" style="border: 0">全牙比</div>
-                                                    <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_clinical_examination']['bolton_all_teeth']}}" disabled>
+                                                    <input style="width: 60px" type="text" class="form-control" id="exampleInputAmount"  value="{{$data[0]['orthodontics_clinical_examination']['bolton_all_teeth']}}" readonly>
                                                     <div class="input-group-addon" style="border: 0">%</div>
                                                 </div>
                                             </div>
@@ -1395,19 +1395,19 @@
                                 <div class="form-group">
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="surface_fault_slice"  value="0" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '0' ? 'checked' : ''}} disabled> 乳牙列
+                                            <input type="radio" name="surface_fault_slice"  value="0" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '0' ? 'checked' : ''}} readonly> 乳牙列
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="surface_fault_slice"  value="1" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '1' ? 'checked' : ''}} disabled> 恒牙列
+                                            <input type="radio" name="surface_fault_slice"  value="1" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '1' ? 'checked' : ''}} readonly> 恒牙列
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="surface_fault_slice"  value="2" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '2' ? 'checked' : ''}} disabled> 混合牙列
+                                            <input type="radio" name="surface_fault_slice"  value="2" {{$data[0]['orthodontic_x_analysis']['surface_fault_slice'] == '2' ? 'checked' : ''}} readonly> 混合牙列
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: 12px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它目标</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontic_x_analysis']['other_target']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontic_x_analysis']['other_target']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -1428,13 +1428,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">正面</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="positive"  value="0" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '0' ? 'checked' : ''}} disabled> 直面型
+                                            <input type="radio" name="positive"  value="0" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '0' ? 'checked' : ''}} readonly> 直面型
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="positive"  value="1" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '1' ? 'checked' : ''}} disabled> 凹面型
+                                            <input type="radio" name="positive"  value="1" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '1' ? 'checked' : ''}} readonly> 凹面型
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="positive"  value="2" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '2' ? 'checked' : ''}} disabled> 凸面型
+                                            <input type="radio" name="positive"  value="2" {{$data[0]['orthodontics_diagnostic_design']['positive'] == '2' ? 'checked' : ''}} readonly> 凸面型
                                         </label>
                                     </div>
                                 </div>
@@ -1442,13 +1442,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">骨性</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_bone_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="question_bone_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '0' ? 'checked' : ''}} readonly> I类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_bone_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '1' ? 'checked' : ''}} disabled> II类
+                                            <input type="radio" name="question_bone_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '1' ? 'checked' : ''}} readonly> II类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_bone_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '2' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="question_bone_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_bone_nature'] == '2' ? 'checked' : ''}} readonly> III类
                                         </label>
                                     </div>
                                 </div>
@@ -1456,13 +1456,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">生长型</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="growth_type"  value="0" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '0' ? 'checked' : ''}} disabled> 均角
+                                            <input type="radio" name="growth_type"  value="0" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '0' ? 'checked' : ''}} readonly> 均角
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="growth_type"  value="1" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '1' ? 'checked' : ''}} disabled> 高角
+                                            <input type="radio" name="growth_type"  value="1" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '1' ? 'checked' : ''}} readonly> 高角
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="growth_type"  value="2" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '2' ? 'checked' : ''}} disabled> 低角
+                                            <input type="radio" name="growth_type"  value="2" {{$data[0]['orthodontics_diagnostic_design']['growth_type'] == '2' ? 'checked' : ''}} readonly> 低角
                                         </label>
                                     </div>
                                 </div>
@@ -1470,25 +1470,25 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">牙性(安氏)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="question_teeth_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '0' ? 'checked' : ''}} readonly> I类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '1' ? 'checked' : ''}} disabled> II类I分类
+                                            <input type="radio" name="question_teeth_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '1' ? 'checked' : ''}} readonly> II类I分类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '2' ? 'checked' : ''}} disabled> II类I分类亚类
+                                            <input type="radio" name="question_teeth_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '2' ? 'checked' : ''}} readonly> II类I分类亚类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '3' ? 'checked' : ''}} disabled> II类II分类
+                                            <input type="radio" name="question_teeth_nature"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '3' ? 'checked' : ''}} readonly> II类II分类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '4' ? 'checked' : ''}} disabled> II类II分类亚类
+                                            <input type="radio" name="question_teeth_nature"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '4' ? 'checked' : ''}} readonly> II类II分类亚类
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '5' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="question_teeth_nature"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '5' ? 'checked' : ''}} readonly> III类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_teeth_nature"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '6' ? 'checked' : ''}} disabled> III类亚类
+                                            <input type="radio" name="question_teeth_nature"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_teeth_nature'] == '6' ? 'checked' : ''}} readonly> III类亚类
                                         </label>
                                     </div>
                                 </div>
@@ -1496,25 +1496,25 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆牙合</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '1' ? 'checked' : ''}} disabled> 深覆牙合I
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '1' ? 'checked' : ''}} readonly> 深覆牙合I
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '2' ? 'checked' : ''}} disabled> II深覆牙合II
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '2' ? 'checked' : ''}} readonly> II深覆牙合II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '3' ? 'checked' : ''}} disabled> 深覆牙合III
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '3' ? 'checked' : ''}} readonly> 深覆牙合III
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '4' ? 'checked' : ''}} disabled> 开牙合I
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '4' ? 'checked' : ''}} readonly> 开牙合I
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '5' ? 'checked' : ''}} disabled> 开牙合II
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '5' ? 'checked' : ''}} readonly> 开牙合II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_overbite"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '6' ? 'checked' : ''}} disabled> 开牙合III
+                                            <input type="radio" name="question_anterior_teeth_overbite"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'] == '6' ? 'checked' : ''}} readonly> 开牙合III
                                         </label>
                                     </div>
                                 </div>
@@ -1522,25 +1522,25 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆盖</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '1' ? 'checked' : ''}} disabled> 深覆盖I
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '1' ? 'checked' : ''}} readonly> 深覆盖I
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '2' ? 'checked' : ''}} disabled> 深覆盖II
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '2' ? 'checked' : ''}} readonly> 深覆盖II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '3' ? 'checked' : ''}} disabled> 深覆盖III
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '3' ? 'checked' : ''}} readonly> 深覆盖III
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '4' ? 'checked' : ''}} disabled> 反覆盖I
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '4' ? 'checked' : ''}} readonly> 反覆盖I
                                         </label>
                                         <label  class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '5' ? 'checked' : ''}} disabled> 反覆盖II
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '5' ? 'checked' : ''}} readonly> 反覆盖II
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="question_anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '6' ? 'checked' : ''}} disabled> 反覆盖III
+                                            <input type="radio" name="question_anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'] == '6' ? 'checked' : ''}} readonly> 反覆盖III
                                         </label>
                                     </div>
                                 </div>
@@ -1563,13 +1563,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">骨性</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="diagnosis_bone_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '0' ? 'checked' : ''}} readonly> I类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '1' ? 'checked' : ''}} disabled> II类
+                                            <input type="radio" name="diagnosis_bone_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '1' ? 'checked' : ''}} readonly> II类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_bone_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '2' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="diagnosis_bone_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'] == '2' ? 'checked' : ''}} readonly> III类
                                         </label>
                                     </div>
                                 </div>
@@ -1577,31 +1577,31 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">牙性(安氏)</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '0' ? 'checked' : ''}} disabled> I类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="0" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '0' ? 'checked' : ''}} readonly> I类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '1' ? 'checked' : ''}} disabled> II类I分类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="1" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '1' ? 'checked' : ''}} readonly> II类I分类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '2' ? 'checked' : ''}} disabled> II类I分类亚类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="2" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '2' ? 'checked' : ''}} readonly> II类I分类亚类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="3" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '3' ? 'checked' : ''}} disabled> II类II分类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="3" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '3' ? 'checked' : ''}} readonly> II类II分类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="4" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '4' ? 'checked' : ''}} disabled> II类II分类亚类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="4" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '4' ? 'checked' : ''}} readonly> II类II分类亚类
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="5" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '5' ? 'checked' : ''}} disabled> III类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="5" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '5' ? 'checked' : ''}} readonly> III类
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="diagnosis_teeth_nature"  value="6" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '6' ? 'checked' : ''}} disabled> III类亚类
+                                            <input type="radio" name="diagnosis_teeth_nature"  value="6" {{$data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'] == '6' ? 'checked' : ''}} readonly> III类亚类
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它诊断</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_diagnostic_design']['other_diagnosis']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_diagnostic_design']['other_diagnosis']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -1622,10 +1622,10 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">面型</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="face_type"  value="0" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '0' ? 'checked' : ''}} disabled> 维持
+                                            <input type="radio" name="face_type"  value="0" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '0' ? 'checked' : ''}} readonly> 维持
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="face_type"  value="1" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '1' ? 'checked' : ''}} disabled> 改善
+                                            <input type="radio" name="face_type"  value="1" {{$data[0]['orthodontics_diagnostic_design']['face_type'] == '1' ? 'checked' : ''}} readonly> 改善
                                         </label>
                                     </div>
                                 </div>
@@ -1633,13 +1633,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">上颌中线</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '0' ? 'checked' : ''}} disabled> 居中
+                                            <input type="radio" name="maxillary_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '0' ? 'checked' : ''}} readonly> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '1' ? 'checked' : ''}} disabled> 左偏斜
+                                            <input type="radio" name="maxillary_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '1' ? 'checked' : ''}} readonly> 左偏斜
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="maxillary_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '2' ? 'checked' : ''}} disabled> 右偏斜
+                                            <input type="radio" name="maxillary_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['maxillary_midline'] == '2' ? 'checked' : ''}} readonly> 右偏斜
                                         </label>
                                     </div>
                                 </div>
@@ -1647,13 +1647,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">下颌中线</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '0' ? 'checked' : ''}} disabled> 居中
+                                            <input type="radio" name="mandibular_midline"  value="0" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '0' ? 'checked' : ''}} readonly> 居中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '1' ? 'checked' : ''}} disabled> 左偏斜
+                                            <input type="radio" name="mandibular_midline"  value="1" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '1' ? 'checked' : ''}} readonly> 左偏斜
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="mandibular_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '2' ? 'checked' : ''}} disabled> 右偏斜
+                                            <input type="radio" name="mandibular_midline"  value="2" {{$data[0]['orthodontics_diagnostic_design']['mandibular_midline'] == '2' ? 'checked' : ''}} readonly> 右偏斜
                                         </label>
                                     </div>
                                 </div>
@@ -1661,25 +1661,25 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆牙合</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '1' ? 'checked' : ''}} disabled> 深覆牙合I
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '1' ? 'checked' : ''}} readonly> 深覆牙合I
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '2' ? 'checked' : ''}} disabled> 深覆牙合II
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '2' ? 'checked' : ''}} readonly> 深覆牙合II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '3' ? 'checked' : ''}} disabled> 深覆牙合III
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '3' ? 'checked' : ''}} readonly> 深覆牙合III
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '4' ? 'checked' : ''}} disabled> 开牙合I
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '4' ? 'checked' : ''}} readonly> 开牙合I
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '5' ? 'checked' : ''}} disabled> 开牙合II
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '5' ? 'checked' : ''}} readonly> 开牙合II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_overbite"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '6' ? 'checked' : ''}} disabled> 开牙合III
+                                            <input type="radio" name="target_anterior_teeth_overbite"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'] == '6' ? 'checked' : ''}} readonly> 开牙合III
                                         </label>
                                     </div>
                                 </div>
@@ -1687,25 +1687,25 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">前牙覆盖</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '0' ? 'checked' : ''}} disabled> 正常
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="0" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '0' ? 'checked' : ''}} readonly> 正常
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '1' ? 'checked' : ''}} disabled> 深覆盖I
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="1" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '1' ? 'checked' : ''}} readonly> 深覆盖I
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '2' ? 'checked' : ''}} disabled> 深覆盖II
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="2" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '2' ? 'checked' : ''}} readonly> 深覆盖II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '3' ? 'checked' : ''}} disabled> 深覆盖III
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="3" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '3' ? 'checked' : ''}} readonly> 深覆盖III
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '4' ? 'checked' : ''}} disabled> 反覆盖I
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="4" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '4' ? 'checked' : ''}} readonly> 反覆盖I
                                         </label>
                                         <label style="margin-left: 0px" class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '5' ? 'checked' : ''}} disabled> 反覆盖II
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="5" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '5' ? 'checked' : ''}} readonly> 反覆盖II
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="target_anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '6' ? 'checked' : ''}} disabled> 反覆盖III
+                                            <input type="radio" name="target_anterior_teeth_covered"  value="6" {{$data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'] == '6' ? 'checked' : ''}} readonly> 反覆盖III
                                         </label>
                                     </div>
                                 </div>
@@ -1713,13 +1713,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">尖牙关系左侧</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="left_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="left_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="left_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1727,13 +1727,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">尖牙关系右侧</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="right_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="right_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="right_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1741,13 +1741,13 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">磨牙关系左侧</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="left_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="left_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="left_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="left_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['left_molar_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
@@ -1755,19 +1755,19 @@
                                     <label for="inputPassword3" style="padding-left: 11px" class="col-sm-3 control-label">磨牙关系右侧</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '0' ? 'checked' : ''}} disabled> 中性
+                                            <input type="radio" name="right_molar_fangs"  value="0" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '0' ? 'checked' : ''}} readonly> 中性
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '1' ? 'checked' : ''}} disabled> 近中
+                                            <input type="radio" name="right_molar_fangs"  value="1" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '1' ? 'checked' : ''}} readonly> 近中
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="right_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '2' ? 'checked' : ''}} disabled> 远中
+                                            <input type="radio" name="right_molar_fangs"  value="2" {{$data[0]['orthodontics_diagnostic_design']['right_molar_fangs'] == '2' ? 'checked' : ''}} readonly> 远中
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
                                     <label for="inputPassword3" class="col-sm-2 control-label" style="font-weight: 400;padding-left: 0">其它目标</label>
-                                    <textarea class="form-control" rows="5" disabled>{{$data[0]['orthodontics_diagnostic_design']['treatment_other_target']}}</textarea>
+                                    <textarea class="form-control" rows="5" readonly>{{$data[0]['orthodontics_diagnostic_design']['treatment_other_target']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
@@ -1785,7 +1785,7 @@
                                     <hr>
                                 </div>
                                 <div class="form-group" style="margin-left: -4px;">
-                                    <textarea class="form-control" rows="8" disabled>{{$data[0]['orthodontics_diagnostic_design']['treatment_plan']}}</textarea>
+                                    <textarea class="form-control" rows="8" readonly>{{$data[0]['orthodontics_diagnostic_design']['treatment_plan']}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <br>
