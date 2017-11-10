@@ -140,7 +140,7 @@ class DoctorController extends Controller
                 $errors = $validator->errors();
                 return $this->errorResponse($errors);
             }
-            $result = Doctors::select('mobilephone')->where(['mobilephone' => $mobilephone,'password' => $password])->get();
+            $result = Doctors::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone,'password' => $password])->get();
 
             if (sizeof($result))
             {

@@ -763,7 +763,30 @@ class OrthodonticCaseController extends Controller
             OrthodonticsChiefComplaint::inster([
                 'orthodontics_id' => $id,
                 'complained' => $request->post('complained'),
-                ''
+                'other_complained' => $request->post('other_complained')
+            ]);
+            CaseHistoryImage::insert([
+                'orthodontics_id' => $id,
+                'positive_photo' => $request->post('positive_photo'),
+                'side_photo' => $request->post('side_photo'),
+                'positive_smile_photo' => $request->post('positive_smile_photo'),
+                'upper_arch_photo' => $request->post('upper_arch_photo'),
+                'positive_45_photo' => $request->post('positive_45_photo'),
+                'under_arch_photo' => $request->post('under_arch_photo'),
+                'right_bite_photo' => $request->post('right_bite_photo'),
+                'positive_bite_photo' => $request->post('positive_bite_photo'),
+                'left_bite_photo' => $request->post('left_bite_photo'),
+                'panorama_photo' => $request->post('panorama_photo'),
+                'side_x_photo' => $request->post('side_x_photo'),
+                'positive_x_photo' => $request->post('positive_x_photo'),
+                'tooth_photo' => $request->post('tooth_photo'),
+                'cbct_joint_sagittal' => $request->post('cbct_joint_sagittal'),
+                'cbct_coronary_joint' => $request->post('cbct_coronary_joint'),
+                'cbct_anterior_teeth' => $request->post('cbct_anterior_teeth'),
+                'cbct_under_teeth' => $request->post('cbct_under_teeth'),
+                'abnormal_teeth' => $request->post('abnormal_teeth'),
+                'air_passage' => $request->post('air_passage'),
+                'other' => $request->post('other')
             ]);
         }catch (\Exception $e)
         {
