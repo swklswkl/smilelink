@@ -69,6 +69,7 @@ Route::get('odtcase/inquireOnlyOneTreatmentProcess','OrthodonticCaseController@i
 Route::get('case/seeService','CaseController@seeService');
 //新增病例-1
 Route::post('case/addEssentialInfo','CaseController@addEssentialInfo');
+Route::post('case/addCaseInformationPage1','OrthodonticCaseController@addCaseInformationPage1');
 //新增病例-2
 Route::post('case/addEssentialInfoSecond','CaseController@addEssentialInfoSecond');
 Route::post('case/addEssentialInfoThird','CaseController@addEssentialInfoThird');

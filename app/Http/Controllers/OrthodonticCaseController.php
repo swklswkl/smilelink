@@ -691,7 +691,11 @@ class OrthodonticCaseController extends Controller
     public function inquireTreatmentProcess (Request $request)
     {
         try{
-            $data = OrthodonticsTreatmentProcess::where(['orthodontics_id'=>$request->get('orthodontics_id')])->get();
+            $data = OrthodonticsTreatmentProcess::where(['orthodontics_id'=>$request->get('orthodontics_id')])->get()->toArray();
+            for ($i=0;$i<sizeof($data);$i++)
+            {
+                $data[$i]['create_time'] = date('Y-m-d H:i:s',$data[$i]['create_time']);
+            }
             return $this->successResponse('查询成功',$data);
         }catch (\Exception $e)
         {
@@ -700,7 +704,7 @@ class OrthodonticCaseController extends Controller
 
     }
     /**
-     * TODO:查询治疗进展
+     * TODO:查询单个治疗进展
      * @param Request $request
      * @return string
      */
@@ -708,7 +712,13 @@ class OrthodonticCaseController extends Controller
     {
         try{
             $data = OrthodonticsTreatmentProcess::where(['id'=>$request->get('id')])->get();
-            return $this->successResponse('查询成功',$data);
+            if (sizeof($data))
+            {
+                return $this->successResponse('查询成功',$data);
+            }else{
+                return $this->errorResponse('查询失败');
+            }
+
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');
@@ -750,6 +760,7 @@ class OrthodonticCaseController extends Controller
             $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
             Orthodontics::insert([
                 'id' => $id,
+                'doctor_id' => $request->session()->get('doctor.id'),
                 'name' => $request->post('name'),
                 'sex' => $request->post('sex'),
                 'birthday' => $request->post('birthday'),
@@ -760,7 +771,7 @@ class OrthodonticCaseController extends Controller
                 'service_id' => $request->post('service_id'),
                 'create_time' => time()
             ]);
-            OrthodonticsChiefComplaint::inster([
+            OrthodonticsChiefComplaint::insert([
                 'orthodontics_id' => $id,
                 'complained' => $request->post('complained'),
                 'other_complained' => $request->post('other_complained')
@@ -788,9 +799,18 @@ class OrthodonticCaseController extends Controller
                 'air_passage' => $request->post('air_passage'),
                 'other' => $request->post('other')
             ]);
+            DB::commit();
+            return $this->successResponse('添加成功',$id);
         }catch (\Exception $e)
         {
-
+            DB::rollBack();
+            return $this->errorResponse('操作有误');
         }
+    }
+
+    public function addCaseInformationPage2 (Request $request)
+    {
+        DB::beginTransaction();
+
     }
 }
