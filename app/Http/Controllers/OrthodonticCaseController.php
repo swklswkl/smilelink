@@ -50,7 +50,7 @@ class OrthodonticCaseController extends Controller
                 $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::insert([
                     'id' => $id,
-                    'doctor_id' => 1,
+                    'doctor_id' => $request->session()->get('doctor.id'),
                     'name' => $request->post('name'),
                     'sex' => $request->post('sex'),
                     'birthday' => $request->post('birthday'),

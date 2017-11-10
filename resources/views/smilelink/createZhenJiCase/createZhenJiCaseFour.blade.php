@@ -26,7 +26,7 @@
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span ><a href="{{url('createZhenJiCaseOne')}}">新建病例</a></span>
+            <span ><a href="{{url('createCase')}}">新建病例</a></span>
             <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
@@ -59,7 +59,7 @@
                 <span class="span3">面部分析</span>
             </div>
 
-            <form action="">
+            <form class="form-horizontal">
                 <div class="row">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2"><h3>正面</h3></div>
@@ -249,6 +249,31 @@
                     <div class="col-lg-1"><input type="radio" name="right_friction_sound" value="1">张口</div>
                     <div class="col-lg-1"><input type="radio" name="right_friction_sound" value="2">闭口</div>
                 </div>
+                <!--疼痛-->
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2"><h3>疼痛</h3></div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right">左侧：</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="0">无</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="1">大张口</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="2">左侧动</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="3">右侧动</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="4">前伸</div>
+                    <div class="col-lg-1"><input type="radio" name="left_pain" value="5">紧咬</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right">右侧：</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="0">无</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="1">大张口</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="2">左侧动</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="3">右侧动</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="4">前伸</div>
+                    <div class="col-lg-1"><input type="radio" name="right_pain" value="5">紧咬</div>
+                </div>
 
                 <!--其他-->
                 <div class="row">
@@ -259,35 +284,285 @@
                 <div class="row">
                     <div class="col-lg-1"></div>
 
-                    <textarea name="" id="" cols="30" rows="10" style="width: 900px"></textarea>
+                    <textarea name="joint_examination_other" id="" cols="30" rows="10" style="width: 900px"></textarea>
 
                 </div>
 
+                <!--Part5 牙列检查-->
+
+                <div class="part4Title">
+                    <span class="span2">Part5</span>
+                    <span class="span3">牙列检查</span>
+                </div>
+
+                <!--错颌问题-->
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6"><h3>错颌问题（请用文字描述牙列错颌问题）</h3></div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+
+                    <textarea name="malocclusion_problem" id="" cols="30" rows="10" style="width: 900px"></textarea>
+
+                </div>
+
+                <!--上下牙弓关系-->
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2"><h3>上下牙弓关系</h3></div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="2">矢状关系：</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">前牙覆盖</div>
+                    <div class="col-lg-1">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="0">正常</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">深覆盖</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="1">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="2">II度</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="3">III度</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">反覆盖</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="4">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="5">II度</div>
+                    <div class="col-lg-1"><input type="radio" name="anterior_teeth_covered" value="6">III度</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">尖牙关系</div>
+                    <div class="col-lg-1">左侧</div>
+                    <div class="col-lg-1"><input type="radio" name="left_fangs" value="0">中性</div>
+                    <div class="col-lg-1"><input type="radio" name="left_fangs" value="1">近中</div>
+                    <div class="col-lg-1"><input type="radio" name="left_fangs" value="2">远中</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">右侧</div>
+                    <div class="col-lg-1"><input type="radio" name="right_fangs" value="0">中性</div>
+                    <div class="col-lg-1"><input type="radio" name="right_fangs" value="1">近中</div>
+                    <div class="col-lg-1"><input type="radio" name="right_fangs" value="2">远中</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">磨牙关系</div>
+                    <div class="col-lg-1">左侧</div>
+                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" value="0">中性</div>
+                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" value="1">近中</div>
+                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" value="2">远中</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">右侧</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" value="0">中性</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" value="1">近中</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" value="2">远中</div>
+
+                </div>
+
+                <!--垂直关系-->
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="2">垂直关系：</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1">Spee曲线</div>
+                    <div class="col-lg-1"><input type="radio" name="speed_curve" value="0">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="speed_curve" value="1">反向</div>
+
+                    <div class="col-lg-1"><input type="radio" name="speed_curve" value="2">过深</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1  "></div>
+                    <div class="col-lg-2 text-right">前牙覆牙合</div>
+                    <div class="col-lg-1">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="0">正常</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-1">深覆牙合</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="1">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="2">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="3">III度</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-1">开牙合</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="4">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="5">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="deep_bite" value="6">III度</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1  "></div>
+                    <div class="col-lg-2 text-right">后牙</div>
+                    <div class="col-lg-1">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="0">正常</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 "></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-2 ">左侧开牙合</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="1">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="2">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="3">III度</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-2">右侧开牙合</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="4">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="5">I度</div>
+                    <div class="col-lg-1"><input type="radio" name="posterior_teeth" value="6">III度</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="2">横向关系：</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1">上颌弓牙:</div>
+                    <div class="col-lg-1"><input type="radio" name="maxillary_arch_teeth	" value="0">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="maxillary_arch_teeth	" value="1">狭窄</div>
+                    <div class="col-lg-1"><input type="radio" name="maxillary_arch_teeth	" value="2">过框</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1">下颌弓牙:</div>
+                    <div class="col-lg-1"><input type="radio" name="lower_dental_arch" value="0">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="lower_dental_arch" value="1">狭窄</div>
+                    <div class="col-lg-1"><input type="radio" name="lower_dental_arch" value="2">过宽</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1">上颌中线:</div>
+                    <div class="col-lg-1"><input type="radio" name="maxillary_midline" value="0">居中</div>
+                    <div class="col-lg-2"><input type="radio" name="maxillary_midline" value="1">右偏斜 <input name="maxillary_midline_right" type="text" style="width: 50px">mm</div>
+                    <div class="col-lg-2"><input type="radio" name="maxillary_midline" value="2">左偏斜 <input name="maxillary_midline_left" type="text" style="width: 50px">mm</div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1">下颌中线:</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-1  "></div>
+                    <div class="col-lg-2 text-right">后牙</div>
+                    <div class="col-lg-1">正常</div>
+                    <div class="col-lg-1"><input type="radio" name="mandibular_midline" value="0">正常</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-1">左侧</div>
+                    <div class="col-lg-1"><input type="radio" name="mandibular_midline" value="1">反咬合</div>
+                    <div class="col-lg-2 text-center"><input type="radio" name="mandibular_midline" value="2">正锁咬合</div>
+                    <div class="col-lg-2 text-center"><input type="radio" name="mandibular_midline" value="3">反锁咬合</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 text-right"></div>
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-1">反覆盖</div>
+                    <div class="col-lg-1"><input type="radio" name="mandibular_midline" value="4">反咬合</div>
+                    <div class="col-lg-2 text-center "><input type="radio" name="mandibular_midline" value="5">正锁咬合</div>
+                    <div class="col-lg-2 text-center"><input type="radio" name="mandibular_midline" value="6">反锁咬合</div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-2 text-right">拥挤度</div>
+                    <div class="col-lg-1 text-right">上颌 </div>
+                    <div class="col-lg-3 "><input name="crowd_degree_maxillary" type="text">mm </div>
+
+                    <div class="col-lg-1 text-right">下颌 </div>
+                    <div class="col-lg-3 "><input name="crowded_degree_jaw" type="text">mm </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-2 text-right">Bolton</div>
+                    <div class="col-lg-1 text-right">前牙比 </div>
+                    <div class="col-lg-3 "><input name="bolton_anterior_teeth" type="text">% </div>
+
+                    <div class="col-lg-1 text-right">全牙比 </div>
+                    <div class="col-lg-3 "><input name="bolton_all_teeth" type="text">% </div>
+
+
+                </div>
+
+                    <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}"/>
             </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="button1">
-                <a href=""> <button>上一步 </button></a>
-                <a href=""> <button>下一步 </button></a>
-
-
-
-                <a href=""> <button>退出 </button></a>
+               {{-- <a href=""> <button>上一步 </button></a>--}}
+                <a> <button type="button" onclick="submitForm()" >下一步 </button></a>
             </div>
         </div>
 
@@ -304,21 +579,21 @@
 
 
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
-<script src="{{asset('reception/')}}Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
 <script>
     function submitForm()
     {
         $.ajax({
             type: 'post',
-            url:'{{url('/api/odtcase/addChiefAndComplaint')}}',
+            url:'{{url('/api/odtcase/addClinicalExamination')}}',
             dataType:'json',
             data:$('.form-horizontal').serialize(),
             success: function(data) {
                 console.log(data);
                 if (data.code == 200)
                 {
-                    window.location.href = "{{url('createZhenJiCaseThree?orthodontics_id=')}}"+data.data;
+                    window.location.href = "{{url('createZhenJiCaseFif?orthodontics_id=')}}"+data.data;
                 } else {
                     if(data.code==401) {
                         $.each(data.msg, function (key, val) {

@@ -1,6 +1,5 @@
 
 *{margin: 0;padding:0;box-sizing: border-box;font-family: "Microsoft Yahei"}
-body{  padding: 50px;  }
  .mySelect ul{  list-style:none;  border:1px solid #aaa;  width: 200px;  margin-top: -1px;  display: none;  position: absolute;  background: #fff;  z-index: 2;  }
 .mySelect ul li{ padding: 0 10px;  cursor: pointer;  }
 .mySelect ul li:hover{  background: deepskyblue;  color: #fff;  }
