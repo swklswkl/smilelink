@@ -122,7 +122,7 @@ class DoctorController extends Controller
     public function login (Request $request)
     {
         $mobilephone = $request->post('mobilephone');
-        $password = md5($request->post('password'));
+//        $password = md5($request->post('password'));
         try {
             // 设置验证消息
             $messages = [
@@ -140,8 +140,8 @@ class DoctorController extends Controller
                 $errors = $validator->errors();
                 return $this->errorResponse($errors);
             }
-            $result = Doctors::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone,'password' => $password])->get();
-
+            $result = Doctors::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone])->get()->toArray();
+       
             if (sizeof($result))
             {
                 // 医生信息保存到session
