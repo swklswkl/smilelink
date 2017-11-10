@@ -147,6 +147,7 @@ class DoctorController extends Controller
                 // 医生信息保存到session
                 $request->session()->put('doctor.mobilephone',$result[0]['mobilephone']);
                 $request->session()->put('doctor.id',$result[0]['id']);
+
                 return $this->successResponse('登录成功',$result);
             }else{
                 return $this->errorResponse('账号或密码错误',402);

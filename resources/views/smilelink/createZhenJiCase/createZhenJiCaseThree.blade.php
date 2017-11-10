@@ -16,7 +16,7 @@
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span ><a href="{{url('createZhenJiCaseOne')}}">新建病例</a></span>
+            <span ><a href="{{url('createCase')}}">新建病例</a></span>
             <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
@@ -229,7 +229,7 @@
 
             </form>
             <div class="button1">
-                <a > <button type="button" onclick="submitForm()">下一步 </button></a>
+                <a > <button type="button" onclick="submitForm()" style="margin-left: -95px">下一步 </button></a>
             </div>
         </div>
 

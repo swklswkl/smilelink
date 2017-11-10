@@ -14,7 +14,7 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="{{asset('reception/css/casePublic.css')}}">
-    <link rel="stylesheet" href="{{asset('reception/css/case3.css')}}">
+    <link rel="stylesheet" href="{{asset('reception/css/createZhenJiCase/createZhenJiCase4.css')}}">
     <style>
         .row{margin-bottom: 8px}
 
@@ -27,7 +27,7 @@
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span ><a href="{{url('createZhenJiCaseOne')}}">新建病例</a></span>
+            <span ><a href="{{url('createCase')}}">新建病例</a></span>
             <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
@@ -77,50 +77,17 @@
                     <tr class="success">
                         <td >XX10086</td>
                         <td >2017/8/8</td>
-
                         <td ><a href="look.blade.php">查看</a> <a href="compile.blade.php">编辑</a> <a href="">删除</a></td>
                     </tr>
-                    <tr class="success">
-                        <td >XX10086</td>
-                        <td >2017/8/8</td>
-
-                        <td ><a href="#">查看</a> <a href="">编辑</a> <a href="">删除</a></td>
-                    </tr>
-                    <tr class="success">
-                        <td >XX10086</td>
-                        <td >2017/8/8</td>
-
-                        <td ><a href="#">查看</a> <a href="#">编辑</a> <a href="">删除</a></td>
-                    </tr>
-
                 </table>
 
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="button1">
-                <a href="createZhenJiCaseSix.blade.php"> <button>上一页 </button></a>
 
 
 
-
-                <a href=""> <button>退出 </button></a>
-                <a href=""> <button>保存 </button></a>
+                <a href=""> <button >保存 </button></a>
 
             </div>
         </div>
@@ -132,12 +99,38 @@
 
 </div>
 
-
-
-
-
-
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
+<script>
+   $(function(){
+       $.ajax({
+           type: 'get',
+           url:'{{url('/api/odtcase/inquireTreatmentProcess')}}',
+           dataType:'json',
+           data:{orthodontics_id:"{{$_GET['orthodontics_id']}}"},
+           success: function(data) {
+               console.log(data);
+               if (data.code == 200)
+               {
+                $('tr.success').append("<td >XX10086</td>\n" +
+                    "                 <td >2017/8/8</td>\n" +
+                    "                 <td ><a href=\"look.blade.php\">查看</a> <a href=\"compile.blade.php\">编辑</a> <a href=\"\">删除</a></td>")
+               } else {
+                   if(data.code==401) {
+                       $.each(data.msg, function (key, val) {
+                           layer.tips(val, '#' + key);
+                       })
+                   }
+                   if(data.code==402){
+                       layer.msg(data.msg);
+                   }
+
+               }
+           }
+       });
+   })
+
+</script>
 </body>
 </html>
