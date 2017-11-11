@@ -74,27 +74,15 @@
 
 
                     </tr>
-                    <tr class="success">
-                        <td >XX10086</td>
-                        <td >2017/8/8</td>
-                        <td ><a href="look.blade.php">查看</a> <a href="compile.blade.php">编辑</a> <a href="">删除</a></td>
-                    </tr>
+
                 </table>
 
             </div>
 
-            <div class="button1">
-
-
-
-                <a href=""> <button >保存 </button></a>
-
-            </div>
+          {{--  <div class="button1">
+                 <a href=""> <button >保存 </button></a>
+            </div>--}}
         </div>
-
-
-
-
     </div>
 
 </div>
@@ -103,6 +91,7 @@
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
 <script>
+    //加载治疗列表
    $(function(){
        $.ajax({
            type: 'get',
@@ -113,9 +102,13 @@
                console.log(data);
                if (data.code == 200)
                {
-                $('tr.success').append("<td >XX10086</td>\n" +
-                    "                 <td >2017/8/8</td>\n" +
-                    "                 <td ><a href=\"look.blade.php\">查看</a> <a href=\"compile.blade.php\">编辑</a> <a href=\"\">删除</a></td>")
+                   $.each(data.data,function(key,val){
+                   $('.table.table-condensed.table-hover').append('<tr class="success">\n' +
+                            '                        <td >'+val.name+'</td>\n' +
+                            '                        <td >'+val.create_time+'</td>\n' +
+                            '                        <td ><a href="{{url('createZhenJiCaseSeven/check?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'">查看</a> <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'">编辑</a> <a href="">删除</a></td>\n' +
+                            '                    </tr>');
+                   })
                } else {
                    if(data.code==401) {
                        $.each(data.msg, function (key, val) {

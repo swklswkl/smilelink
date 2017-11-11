@@ -5,25 +5,24 @@
 
     <title>新建病例一</title>
 
-    <link rel="stylesheet" href="../css/casePublic.css">
-    <link rel="stylesheet" href="../css/createZhenJiCasecss/look.css">
+    <link rel="stylesheet" href="{{asset('reception/css/casePublic.css')}}">
+    <link rel="stylesheet" href="{{asset('reception/css/createZhenJiCase/look.css')}}">
 </head>
 <body>
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="../img/bonsmilelogo.png" alt="">
+            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
         </div>
         <div class="head-C">
-            <span class="span1"><a href="#">新建病例</a></span>
-            <span><a href="#">病例管理</a></span>
+            <span ><a href="{{url('createCase')}}">新建病例</a></span>
+            <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
             <span><a href="#">个人中心</a></span>
             <span class="span2"><a href="#">退出</a></span>
         </div>
-
 
 
     </div>
@@ -40,7 +39,7 @@
 <div class="part2">
     <div class="content">
         <div class="ImgTop">
-            <img src="../img/7.png" alt="" >
+            <img src="{{asset('reception/img/7.png')}}" alt="" >
 
         </div>
         <div class="part2Cont">
@@ -50,11 +49,11 @@
                 <span class="span3">查看治疗进展</span>
             </div>
             <div style="text-align: right" class="rButton">
-                <a href="#">确定</a>
-                <a href="createZhenJiCaseSeven.blade.php"> 返回
+               {{-- <a href="#">确定</a>--}}
+                <a href="{{url('createZhenJiCaseSeven?orthodontics_id=').$_GET['orthodontics_id']}}"> 返回
                 </a>
             </div>
-            <p>名称：<input type="text" style="width: 1000px;height: 35px;margin-left: 10px;margin-top: 20px;font-size: 17px"></p>
+            <p>名称：<input name="name" value="" type="text" style="width: 1000px;height: 35px;margin-left: 10px;margin-top: 20px;font-size: 17px"></p>
             <p>  内容：</p>
             <textarea name="" id="" cols="30" rows="10" style="width: 1000px;margin-left: 60px;font-size: 17px"></textarea>
 
@@ -80,33 +79,33 @@
                 <div class="imgBox">
                     <div class="imgBox-T">
                         <div class="imgBox-T-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file1"  onchange="c(this)" >
 
                         </div>
                         <div class="imgBox-T-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file2"  onchange="c(this)">
 
                         </div>
                         <div class="imgBox-T-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file3"  onchange="c(this)">
                         </div>
                     </div>
                     <p><span style="margin-right: 220px;margin-left: 65px">正面照</span> <span style="margin-right: 200px">侧面照</span> <span>正面微笑照</span></p>
                     <div class="imgBox-C">
                         <div class="imgBox-C-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file4"  onchange="c(this)">
 
                         </div>
                         <div class="imgBox-C-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file5"  onchange="c(this)">
                         </div>
                         <div class="imgBox-C-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file6"  onchange="c(this)">
                         </div>
                     </div>
@@ -115,15 +114,15 @@
 
                     <div class="imgBox-B">
                         <div class="imgBox-B-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file7"  onchange="c(this)">
                         </div>
                         <div class="imgBox-B-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file8"  onchange="c(this)">
                         </div>
                         <div class="imgBox-B-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file9"  onchange="c(this)">
                         </div>
                     </div>
@@ -151,15 +150,15 @@
                 <div class="imgBox">
                     <div class="imgBox-T">
                         <div class="imgBox-T-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file1"  onchange="c(this)">
                         </div>
                         <div class="imgBox-T-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file2"  onchange="c(this)">
                         </div>
                         <div class="imgBox-T-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file3"  onchange="c(this)">
                         </div>
                     </div>
@@ -167,15 +166,15 @@
 
                     <div class="imgBox-C">
                         <div class="imgBox-C-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file4"  onchange="c(this)">
                         </div>
                         <div class="imgBox-C-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file5"  onchange="c(this)">
                         </div>
                         <div class="imgBox-C-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file6"  onchange="c(this)">
                         </div>
                     </div>
@@ -184,26 +183,26 @@
 
                     <div class="imgBox-B">
                         <div class="imgBox-B-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file7"  onchange="c(this)">
                         </div>
                         <div class="imgBox-B-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file8"  onchange="c(this)">
                         </div>
                         <div class="imgBox-B-R">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file9"  onchange="c(this)">
                         </div>
                     </div>
                     <p><span style="margin-right: 153px;margin-left: 54px">CBCT上前牙根</span> <span style="margin-right: 175px">CBCT下前牙根</span> <span>异常牙</span></p>
                     <div class="imgBox-B">
                         <div class="imgBox-B-L">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file10"  onchange="c(this)">
                         </div>
                         <div class="imgBox-B-C">
-                            <img src="holder.js/200x200?text=点击添加" alt=""  width="200" height="200px" >
+                            <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                             <input type="file" class="file11"  onchange="c(this)">
                         </div>
 
@@ -225,9 +224,9 @@
     </a>
 </footer>
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/holder.min.js"></script>
-
+<script src="{{asset('reception/js/jquery.min.js')}}"></script>
+<script src="{{asset('reception/js/holder.min.js')}}"></script>
+<script src="{{asset('reception/js/vue.min.js')}}"></script>
 <script>
     var cbtn = document.getElementsByClassName('c1');
     var div = document.getElementsByClassName('try');
@@ -276,6 +275,30 @@
 //        };
 //    }
 
+    //数据接口
+    $(function(){
+        $.ajax({
+            type: 'get',
+            url:'{{url('/api/odtcase/inquireOnlyOneTreatmentProcess')}}',
+            dataType:'json',
+            data:{id:"{{$_GET['id']}}"},
+            success: function(data) {
+                console.log(data)
+                if (data.code == 200)
+                {
+                    new Vue({
+                        el: '#app',
+                        data: data.data[0]
+                    })
+                } else {
+                    if(data.code==402){
+                        layer.msg(data.msg);
+                    }
+
+                }
+            }
+        });
+    })
 
 </script>
 

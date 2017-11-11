@@ -62,6 +62,14 @@ Route::get('createZhenJiCaseSix', function () {
 Route::get('createZhenJiCaseSeven', function () {
     return view('smilelink.createZhenJiCase.createZhenJiCaseSeven');
 });
+//治疗过程-编辑
+Route::get('createZhenJiCaseSeven/edit', function () {
+    return view('smilelink.createZhenJiCase.compile');
+});
+//治疗过程-查看
+Route::get('createZhenJiCaseSeven/check', function () {
+    return view('smilelink.createZhenJiCase.look');
+});
 //新增病例1模板
 Route::get('caseOne', function () {
     return view('smilelink.createCase.case1');
