@@ -52,4 +52,9 @@ class Orthodontics extends Model
         }
         return $query->where('status',  $status);
     }
+
+    public function Program ()
+    {
+        return $this->hasMany('App\Model\Program','orthodontics_id');
+    }
 }

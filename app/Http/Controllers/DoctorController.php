@@ -215,4 +215,9 @@ class DoctorController extends Controller
             return $this->errorResponse('操作有误');
         }
     }
+
+    public function findOrthdonicCase ()
+    {
+
+    }
 }

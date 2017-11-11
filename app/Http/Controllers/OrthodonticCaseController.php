@@ -9,6 +9,7 @@ use App\Model\OrthodonticsClinicalExamination;
 use App\Model\OrthodonticsDiagnosticDesign;
 use App\Model\OrthodonticsTreatmentProcess;
 use App\Model\OrthodonticXAnalysis;
+use App\Model\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,7 @@ class OrthodonticCaseController extends Controller
                 if ($validator->fails())
                 {
                     $errors = $validator->errors();
-                    return $this->errorResponse($errors);
+                    return $this->errorResponse($errors,402);
                 }
                 $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::insert([
@@ -88,7 +89,7 @@ class OrthodonticCaseController extends Controller
                 if ($validator->fails())
                 {
                     $errors = $validator->errors();
-                    return $this->errorResponse($errors);
+                    return $this->errorResponse($errors,402);
                 }
                 $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::where(['id' => $request->post('id')])->update([
@@ -510,7 +511,9 @@ class OrthodonticCaseController extends Controller
                     'teeth_arrangement' => $request->post('teeth_arrangement')!='' ? implode(',',$request->post('teeth_arrangement')) : '',
                     'gap' => $request->post('gap'),
                     'treatment_other_target' => $request->post('treatment_other_target'),
-                    'treatment_plan' => $request->post('treatment_plan')
+                    'treatment_plan' => $request->post('treatment_plan'),
+                    'maxillary' => $request->post('maxillary'),
+                    'jaws' => $request->post('jaws')
                 ]);
                 DB::commit();
                 return $this->successResponse('更新成功',$request->post('orthodontics_id'));
@@ -535,6 +538,19 @@ class OrthodonticCaseController extends Controller
             DB::beginTransaction();
             try
             {
+                // 设置验证消息
+                $messages = [
+                    'name.required' => '患者姓名不能为空',
+                ];
+                // 设置验证规则
+                $validator = \Validator::make($request->all(),[
+                    'name' => 'required',
+                ],$messages);
+                if ($validator->fails())
+                {
+                    $errors = $validator->errors();
+                    return $this->errorResponse($errors,402);
+                }
                 OrthodonticsTreatmentProcess::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
                     'name' => $request->post('name'),
@@ -754,7 +770,7 @@ class OrthodonticCaseController extends Controller
             if ($validator->fails())
             {
                 $errors = $validator->errors();
-                return $this->errorResponse($errors);
+                return $this->errorResponse($errors,402);
             }
             $CaseController = new CaseController();
             $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
@@ -808,9 +824,83 @@ class OrthodonticCaseController extends Controller
         }
     }
 
+    /**
+     * TODO:新增病历第二页
+     * @param Request $request
+     * @return string
+     */
     public function addCaseInformationPage2 (Request $request)
     {
         DB::beginTransaction();
+        try
+        {
+            OrthodonticsChiefComplaint::where(['orthodontics_id'=>$request->post('orthodontics_id')])
+                ->update([
+                    'other' => $request->post('other')
+                ]);
+            OrthodonticsDiagnosticDesign::insert([
+                'orthodontics_id' => $request->post('orthodontics_id'),
+                'positive' => $request->post('positive'),
+                'question_bone_nature' => $request->post('question_bone_nature'),
+                'growth_type' => $request->post('growth_type'),
+                'question_teeth_nature' => $request->post('question_teeth_nature'),
+                'question_anterior_teeth_overbite' => $request->post('question_anterior_teeth_overbite'),
+                'question_anterior_teeth_covered' => $request->post('question_anterior_teeth_covered'),
+                'maxillary' => $request->post('maxillary'),
+                'jaws' => $request->post('jaws'),
+                'diagnosis_bone_nature' => $request->post('diagnosis_bone_nature'),
+                'diagnosis_teeth_nature' => $request->post('diagnosis_teeth_nature'),
+                'other_diagnosis' => $request->post('other_diagnosis')
+            ]);
+            DB::commit();
+            return $this->successResponse('添加成功',$request->post('orthodontics_id'));
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+            return $this->errorResponse('操作有误');
+        }
 
+    }
+
+    /**
+     * TODO:新增病历第三页
+     * @param Request $request
+     * @return string
+     */
+    public function addCaseInformationPage3(Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+            //方案数量
+            $num = $request->post('num');
+            OrthodonticsDiagnosticDesign::where(['orthodontics_id' => $request->post('orthodontics_id')])
+                ->update([
+                    'face_type' => $request->post('face_type'),
+                    'maxillary_midline' => $request->post('maxillary_midline'),
+                    'mandibular_midline' => $request->post('mandibular_midline'),
+                    'target_anterior_teeth_overbite' => $request->post('target_anterior_teeth_overbite'),
+                    'target_anterior_teeth_covered' => $request->post('target_anterior_teeth_covered'),
+                    'left_fangs' => $request->post('left_fangs'),
+                    'right_fangs' => $request->post('right_fangs'),
+                    'left_molar_fangs' => $request->post('left_molar_fangs'),
+                    'right_molar_fangs' => $request->post('right_molar_fangs'),
+                    'treatment_other_target' => $request->post('treatment_other_target')
+                ]);
+            for ($i = 0;$i < $num;$i++)
+            {
+                Program::insert([
+                    'orthodontics_id' => $request->post('orthodontics_id'),
+                    'program_name' => '方案'.$request->post('program_name'.$i),
+                    'content' => $request->post('content'.$i)
+                ]);
+            }
+            DB::commit();
+            return $this->successResponse('保存成功');
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+            return $this->errorResponse('操作有误');
+        }
     }
 }
