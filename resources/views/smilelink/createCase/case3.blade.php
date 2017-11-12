@@ -19,7 +19,6 @@
     <style>
         .col-md-1 {
             width: 9.333333%;
-
         }
         .row{margin-bottom: 10px}
 

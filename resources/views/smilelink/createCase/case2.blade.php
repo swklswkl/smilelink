@@ -1,3 +1,5 @@
+@extends('smilelink.header')
+        @section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,112 +28,89 @@
     </style>
 </head>
 <body>
-<header>
-    <div class="content">
-        <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
-        </div>
-        <div class="head-C">
-            <span class="span1"><a href="#">新建病例</a></span>
-            <span><a href="#">病例管理</a></span>
-            <span><a href="#">我的订单</a></span>
-        </div>
-        <div class="head-R">
-            <span><a href="#">个人中心</a></span>
-            <span class="span2"><a href="#">退出</a></span>
-        </div>
-
-
-
-    </div>
-</header>
-
 <div class=" crumbs">
     <div class="content">
         <p>新建病例&gt;&gt;新增病例</p>
 
     </div>
 </div>
-<div class="part5">
-    <div class="content">
-        <div class="part5Title">
-            <span class="span2">Part5</span>
-            <span class="span3">病史</span>
-        </div>
-        <div class="part5Text">
-            病史
-            <div class="sel" id="click_event4">^</div>
-        </div>
-        <div class="part5Cont" id="hidden_enent4">
-            <form action="">
+<form id="oform">
+    <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}">
+    <div class="part5">
+        <div class="content">
+            <div class="part5Title">
+                <span class="span2">Part5</span>
+                <span class="span3">病史</span>
+            </div>
+            <div class="part5Text">
+                病史
+                <div class="sel" id="click_event4">^</div>
+            </div>
+            <div class="part5Cont" id="hidden_enent4">
                 <p>                内容：
                 </p>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-
-            </form>
+                <textarea name="medical_history" id="" cols="30" rows="10"></textarea>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="part6">
-    <div class="content">
-        <div class="part6Title">
-            <span class="span2">Part6</span>
-            <span class="span3">检查情况</span>
-        </div>
-        <div class="part6Text">
-            <span>*</span>问题列表
-            <div class="sel" id="click_event5">^</div>
-        </div>
-        <div class="part6Cont" id="hidden_enent5">
-            <form action="">
-
+    <div class="part6">
+        <div class="content">
+            <div class="part6Title">
+                <span class="span2">Part6</span>
+                <span class="span3">检查情况</span>
+            </div>
+            <div class="part6Text">
+                <span>*</span>问题列表
+                <div class="sel" id="click_event5">^</div>
+            </div>
+            <div class="part6Cont" id="hidden_enent5">
                 <div class="row">
                     <div class="col-md-1 text-right">面型：</div>
                     <div class="col-md-2">
-                        <input type="radio" name="face" value="0">直面型
+                        <input type="radio" name="positive" value="0">直面型
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="face" value="1">凹面型
+                        <input type="radio" name="positive" value="1">凹面型
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="face" value="3">凸面型
+                        <input type="radio" name="positive" value="2">凸面型
                     </div>
                     <div class="col-md-4"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1 text-right">骨性：</div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone" value="0">I类
+                        <input type="radio" name="question_bone_nature" value="0">I类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone" value="1">II类
+                        <input type="radio" name="question_bone_nature" value="1">II类
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone" value="3">III类
+                        <input type="radio" name="question_bone_nature" value="2">III类
                     </div>
                     <div class="col-md-5"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1 text-right">生长型：</div>
                     <div class="col-md-2">
-                        <input type="radio" name="grow" value="0">均角
+                        <input type="radio" name="growth_type" value="0">均角
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="grow" value="1">高角
+                        <input type="radio" name="growth_type" value="1">高角
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="grow" value="3">低角
+                        <input type="radio" name="growth_type" value="2">低角
                     </div>
                     <div class="col-md-5"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1 text-right">牙性(安氏:</div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="0">I类
+                        <input type="radio" name="question_teeth_nature" value="0">I类
                     </div>
                     <div class="col-md-2">
 
@@ -144,17 +123,17 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="1">II类I分类
+                        <input type="radio" name="question_teeth_nature" value="1">II类I分类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="2">II类I分类亚类
+                        <input type="radio" name="question_teeth_nature" value="2">II类I分类亚类
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="3">II类II分类
+                        <input type="radio" name="question_teeth_nature" value="3">II类II分类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="4">II类II分类亚类
+                        <input type="radio" name="question_teeth_nature" value="4">II类II分类亚类
 
                     </div>
                     <div class="col-md-3">
@@ -164,10 +143,10 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="5">III类
+                        <input type="radio" name="question_teeth_nature" value="5">III类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="6">III类亚类
+                        <input type="radio" name="question_teeth_nature" value="6">III类亚类
 
                     </div>
                     <div class="col-md-2">
@@ -184,7 +163,7 @@
                 <div class="row">
                     <div class="col-md-1 text-right">前牙覆牙合:</div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="0">正常
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="0">正常
                     </div>
                     <div class="col-md-2">
 
@@ -197,14 +176,14 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="1">深覆牙合I
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="1">深覆牙合I
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="2">深覆牙合II
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="2">深覆牙合II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="3">深覆牙合III
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="3">深覆牙合III
 
                     </div>
                     <div class="col-md-5"></div>
@@ -212,21 +191,21 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="4">开牙合I
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="4">开牙合I
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth1" value="5">开牙合II
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="5">开牙合II
 
                     </div>
                     <div class="col-md-2">
-
+                        <input type="radio" name="question_anterior_teeth_overbite	" value="6">开牙合III
                     </div>
                     <div class="col-md-5"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1  text-right">前牙覆盖:</div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth2" value="0">正常
+                        <input type="radio" name="question_anterior_teeth_covered	" value="0">正常
                     </div>
                     <div class="col-md-2">
 
@@ -237,31 +216,31 @@
                     <div class="col-md-5"></div>
                 </div>
                 <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <input type="radio" name="teeth2" value="1">深覆盖I
-                </div>
-                <div class="col-md-2">
-                    <input type="radio" name="teeth2" value="2">深覆盖II
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <input type="radio" name="question_anterior_teeth_covered	" value="1">深覆盖I
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="question_anterior_teeth_covered	" value="2">深覆盖II
 
-                </div>
-                <div class="col-md-2">
-                    <input type="radio" name="teeth2" value="3">深覆盖III
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="question_anterior_teeth_covered	" value="3">深覆盖III
 
+                    </div>
+                    <div class="col-md-5"></div>
                 </div>
-                <div class="col-md-5"></div>
-            </div>
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth2" value="4">反覆盖I
+                        <input type="radio" name="question_anterior_teeth_covered	" value="4">反覆盖I
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth2" value="5">反覆盖II
+                        <input type="radio" name="question_anterior_teeth_covered	" value="5">反覆盖II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth2" value="6">反覆盖III
+                        <input type="radio" name="question_anterior_teeth_covered	" value="6">反覆盖III
 
                     </div>
                     <div class="col-md-5"></div>
@@ -269,10 +248,10 @@
                 <div class="row">
                     <div class="col-md-1 text-right">拥挤度:</div>
                     <div class="col-md-3">
-                        上颚 <input type="text" style="width: 42px">mm
+                        上颚 <input type="text" name="maxillary" style="width: 42px">mm
                     </div>
                     <div class="col-md-3">
-                        下颚 <input type="text" style="width: 42px">mm
+                        下颚 <input type="text" name="jaws" style="width: 42px">mm
 
 
                     </div>
@@ -282,44 +261,30 @@
                     </div>
                     <div class="col-md-5"></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2">其他问题：</div>
-
-                        <textarea name="" id="ss" cols="30" rows="10" style="margin-left: 25px"></textarea>
-
-                    <div class="col-md-2">
-
-                    </div>
-
-
-                </div>
-            </form>
-        </div>
-        <div class="part6Text">
-            <span>*</span>诊断
-            <div class="sel" id="click_event6">^</div>
-        </div>
-        <div class="part6Cont" id="hidden_enent6">
-            <form action="">
-
+            </div>
+            <div class="part6Text">
+                <span>*</span>诊断
+                <div class="sel" id="click_event6">^</div>
+            </div>
+            <div class="part6Cont" id="hidden_enent6">
                 <div class="row">
                     <div class="col-md-1 text-right">骨性：</div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone1" value="0">I类
+                        <input type="radio" name="diagnosis_bone_nature" value="0">I类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone1" value="1">II类
+                        <input type="radio" name="diagnosis_bone_nature" value="1">II类
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="bone1" value="3">III类
+                        <input type="radio" name="diagnosis_bone_nature" value="2">III类
                     </div>
                     <div class="col-md-4"></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-1 text-right">性(安氏)：</div>
+                    <div class="col-md-1 text-right">牙性(安氏)：</div>
                     <div class="col-md-2">
-                        <input type="radio" name="sex" value="0">I类
+                        <input type="radio" name="diagnosis_teeth_nature" value="0">I类
 
                     </div>
                     <div class="col-md-2">
@@ -335,28 +300,28 @@
                 <div class="row">
                     <div class="col-md-1 text-right"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="sex" value="1">II类I分类
+                        <input type="radio" name="diagnosis_teeth_nature" value="1">II类I分类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="sex" value="2">II类I分类亚类
+                        <input type="radio" name="diagnosis_teeth_nature" value="2">II类I分类亚类
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="sex" value="3">II类II分类
+                        <input type="radio" name="diagnosis_teeth_nature" value="3">II类II分类
                     </div>
                     <div class="col-md-5"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-1 text-right"></div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="4">III类
+                        <input type="radio" name="diagnosis_teeth_nature" value="4">III类
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="5">II压类
+                        <input type="radio" name="diagnosis_teeth_nature" value="5">II压类
 
                     </div>
                     <div class="col-md-2">
-
+                        <input type="radio" name="diagnosis_teeth_nature" value="6">III类亚类
                     </div>
                     <div class="col-md-5"></div>
                 </div>
@@ -364,7 +329,7 @@
                 <div class="row">
                     <div class="col-md-2">其他诊断：</div>
 
-                    <textarea name="" id="s" cols="30" rows="10" style="margin-left: 25px"></textarea>
+                    <textarea name="other_diagnosis" id="s" cols="30" rows="10" style="margin-left: 25px"></textarea>
 
                     <div class="col-md-2">
 
@@ -372,15 +337,16 @@
 
 
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
+
+
 <footer>
     <div class="content">
-        <a href="{{url('caseOne')}}"><button class="pre">上一页</button></a>
-        <a href="{{url('caseThree')}}"><button>下一页</button></a>
-
+        {{--<a href="{{url('caseOne')}}"><button class="pre">上一页</button></a>--}}
+        <button onclick="submitForm()">下一页</button>
     </div>
 
 </footer>
@@ -391,7 +357,34 @@
 <script>
 
 
+    function submitForm()
+    {
 
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/case/addCaseInformationPage2')}}',
+            dataType:'json',
+            data:$('#oform').serialize(),
+            success: function(data) {
+                console.log(data);
+                if (data.code == 200)
+                {
+                    window.location.href = "{{url('caseThree?orthodontics_id=')}}"+data.data;
+                } else {
+                    if(data.code==401) {
+                        $.each(data.msg, function (key, val) {
+                            layer.tips(val, '#' + key);
+                        })
+                    }
+                    if(data.code==402){
+                        layer.msg(data.msg);
+                    }
+
+                }
+            }
+        });
+
+    }
 
 
     $('#click_event4').click(function(){
@@ -416,3 +409,4 @@
 
 </body>
 </html>
+@stop

@@ -13,7 +13,6 @@ use Validator;
 
 class DoctorController extends Controller
 {
-
     /**
      * TODO:注册(手机号)
      * @param Request $request
@@ -157,7 +156,7 @@ class DoctorController extends Controller
             }
         }catch (\Exception $e)
         {
-            return $this->errorResponse('登录失败');
+            return $this->errorResponse('操作有误');
         }
     }
 
@@ -230,7 +229,7 @@ class DoctorController extends Controller
         {
             $data = Orthodontics::select(['id','name','create_time','status','service_id'])
                 ->where(['doctor_id'=>$request->get('doctor_id')])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($data['data'] == [])
             {
@@ -243,7 +242,7 @@ class DoctorController extends Controller
                 if (! strlen($service_id) < 1 && $service_id < 10)
                 {
                     $service_id = explode(',',$service_id);
-                    $service = [];
+                    $service = array();
                     for ($j=0;$j<sizeof($service_id);$j++)
                     {
                         $sName =Service::select(['service_name as '.$j])
@@ -285,7 +284,7 @@ class DoctorController extends Controller
                     $query->where('doctor_id',$request->get('doctor_id'))->where('id','like','%'.$request->get('content').'%');
                 })->orWhere(function ($query) use ($request) {
                     $query->where('doctor_id',$request->get('doctor_id'))->where('name','like','%'.$request->get('content').'%');
-                })->paginate($request->get('show_num'))->toArray();
+                })->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))->toArray();
 
             if ($data['data'] == [])
             {
@@ -335,7 +334,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                     ->where(['doctor_id' => $request->get('doctor_id')])
-                    ->paginate($request->get('show_num'))
+                    ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                     ->toArray();
             if ($orders['data'] == [])
             {
@@ -369,7 +368,9 @@ class DoctorController extends Controller
                                     ->toArray();
                                 $sName = $sName[0];
                                 $service[$k] = $sName;
+
                                 $data[$j]['service_name'] = $service;
+//
                             }
                         }else{
                             $ser = Service::select(['service_name'])
@@ -377,6 +378,7 @@ class DoctorController extends Controller
                                 ->get()
                                 ->toArray();
                             $data[$j]['service_name'] = $ser;
+
                         }
                     }
 
@@ -403,7 +405,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                 ->where(['doctor_id' => $request->get('doctor_id'),'status'=>'0'])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($orders['data'] == [])
             {
@@ -471,7 +473,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                 ->where(['doctor_id' => $request->get('doctor_id'),'status'=>'1'])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($orders['data'] == [])
             {
@@ -539,7 +541,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                 ->where(['doctor_id' => $request->get('doctor_id'),'status'=>'2'])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($orders['data'] == [])
             {
@@ -607,7 +609,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                 ->where(['doctor_id' => $request->get('doctor_id'),'status'=>'3'])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($orders['data'] == [])
             {
@@ -675,7 +677,7 @@ class DoctorController extends Controller
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
                 ->where(['doctor_id' => $request->get('doctor_id'),'status'=>'4'])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($orders['data'] == [])
             {

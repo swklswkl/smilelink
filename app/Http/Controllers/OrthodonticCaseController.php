@@ -647,6 +647,10 @@ class OrthodonticCaseController extends Controller
                },'OrthodonticsTreatmentProcess' => function ($query) {
                    $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other','create_time']);
                }])->get()->toArray();
+            if ($data == [])
+            {
+                return $this->successResponse('暂未查询到相关病历');
+            }
             for ($i=0;$i<sizeof($data);$i++)
             {
                 $service_id = $data[$i]['service_id'];
@@ -664,14 +668,24 @@ class OrthodonticCaseController extends Controller
                         $service[$j] = $sName;
                         $data[$i]['service_name'] = $service;
                     }
-                    return $this->successResponse('成功',$data);
+                    if ($this->webOrApi($request->getRequestUri()) == 'api')
+                    {
+                        return $this->successResponse('成功',$data);
+                    }else{
+                        return view('smilelink.caseManage')->with('data',$data);
+                    }
                 }else{
                     $ser = Service::select(['service_name'])
                         ->where(['id'=>$data['data'][$i]['service_id']])
                         ->get()
                         ->toArray();
                     $data[$i]['service_name'] = $ser;
-                    return $this->successResponse('成功',$data);
+                    if ($this->webOrApi($request->getRequestUri()) == 'api')
+                    {
+                        return $this->successResponse('成功',$data);
+                    }else{
+                        return view('smilelink.caseManage')->with('data',$data);
+                    }
                 }
             }
         }catch (\Exception $e)
@@ -744,7 +758,6 @@ class OrthodonticCaseController extends Controller
         {
             return $this->errorResponse('操作有误');
         }
-
     }
     /**
      * TODO:查询单个治疗进展
@@ -766,7 +779,6 @@ class OrthodonticCaseController extends Controller
         {
             return $this->errorResponse('操作有误');
         }
-
     }
 
     /**
@@ -776,6 +788,19 @@ class OrthodonticCaseController extends Controller
      */
     public function addCaseInformationPage1 (Request $request)
     {
+        $service_id = $request->post('service_id');
+        if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
+        {
+            $service_id = implode(',',$request->post('service_id'));
+        }
+
+        $complained = $request->post('complained');
+        if (sizeof($request->post('complained')) > 1 && sizeof($request->post('complained')) !== '')
+        {
+            $complained = implode(',',$request->post('complained'));
+        }
+
+
         DB::beginTransaction();
         try
         {
@@ -811,12 +836,12 @@ class OrthodonticCaseController extends Controller
                 'mobilephone' => $request->post('mobilephone'),
                 'province' => $request->post('province'),
                 'city' => $request->post('city'),
-                'service_id' => $request->post('service_id'),
+                'service_id' => $service_id,
                 'create_time' => time()
             ]);
             OrthodonticsChiefComplaint::insert([
                 'orthodontics_id' => $id,
-                'complained' => $request->post('complained'),
+                'complained' => $complained,
                 'other_complained' => $request->post('other_complained')
             ]);
             CaseHistoryImage::insert([
@@ -863,7 +888,7 @@ class OrthodonticCaseController extends Controller
         {
             OrthodonticsChiefComplaint::where(['orthodontics_id'=>$request->post('orthodontics_id')])
                 ->update([
-                    'other' => $request->post('other')
+                    'other' => $request->post('medical_history')
                 ]);
             OrthodonticsDiagnosticDesign::insert([
                 'orthodontics_id' => $request->post('orthodontics_id'),
@@ -914,7 +939,7 @@ class OrthodonticCaseController extends Controller
                     'right_molar_fangs' => $request->post('right_molar_fangs'),
                     'treatment_other_target' => $request->post('treatment_other_target')
                 ]);
-            for ($i = 0;$i < $num;$i++)
+            for ($i=0;$i<$num;$i++)
             {
                 Program::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
