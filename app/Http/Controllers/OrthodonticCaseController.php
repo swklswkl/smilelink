@@ -630,8 +630,8 @@ class OrthodonticCaseController extends Controller
      */
     public function inquire (Request $request)
     {
-        try
-        {
+//        try
+//        {
            $orthodontics_id = $request->get('orthodontics_id');
            $data = Orthodontics::select(['id','name', 'create_time','sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address','service_id'])->where(['id' => $orthodontics_id])
                ->with(['OrthodonticsChiefComplaint' => function ($query){
@@ -654,6 +654,7 @@ class OrthodonticCaseController extends Controller
             for ($i=0;$i<sizeof($data);$i++)
             {
                 $service_id = $data[$i]['service_id'];
+
                 if (! strlen($service_id) < 1 && $service_id < 10)
                 {
                     $service_id = explode(',',$service_id);
@@ -676,10 +677,9 @@ class OrthodonticCaseController extends Controller
                     }
                 }else{
                     $ser = Service::select(['service_name'])
-                        ->where(['id'=>$data['data'][$i]['service_id']])
+                        ->where(['id'=>$data[$i]['service_id']])
                         ->get()
                         ->toArray();
-                    $data[$i]['service_name'] = $ser;
                     if ($this->webOrApi($request->getRequestUri()) == 'api')
                     {
                         return $this->successResponse('成功',$data);
@@ -688,10 +688,10 @@ class OrthodonticCaseController extends Controller
                     }
                 }
             }
-        }catch (\Exception $e)
-        {
-            return $this->errorResponse('操作有误');
-        }
+//        }catch (\Exception $e)
+//        {
+//            return $this->errorResponse('操作有误');
+//        }
     }
 
     /**

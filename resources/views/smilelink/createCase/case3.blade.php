@@ -1,3 +1,5 @@
+@extends('smilelink.header')
+        @section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,26 +27,6 @@
     </style>
 </head>
 <body>
-<header>
-    <div class="content">
-        <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
-        </div>
-        <div class="head-C">
-            <span class="span1"><a href="#">新建病例</a></span>
-            <span><a href="#">病例管理</a></span>
-            <span><a href="#">我的订单</a></span>
-        </div>
-        <div class="head-R">
-            <span><a href="#">个人中心</a></span>
-            <span class="span2"><a href="#">退出</a></span>
-        </div>
-
-
-
-    </div>
-</header>
-
 <div class=" crumbs">
     <div class="content"><p>新建病例&gt;&gt;新增病例</p></div>
 
@@ -61,18 +43,18 @@
         </div>
         <div class="part5Cont" id="hidden_enent4">
             <form action="">
-
+                <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}">
                 <div class="row">
                     <div class="col-md-1 text-right">面型:</div>
                     <div class="col-md-1">
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="face" value="0">维持
+                        <input type="radio" name="face_type" value="0">维持
                     </div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="face" value="1">改善
+                        <input type="radio" name="face_type" value="1">改善
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -83,14 +65,14 @@
                        上颌中线:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="bone" value="1">居中
+                        <input type="radio" name="maxillary_midline" value="0">居中
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="bone" value="3">左偏斜
+                        <input type="radio" name="maxillary_midline" value="1">左偏斜
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="bone" value="3">右偏斜
+                        <input type="radio" name="maxillary_midline" value="2">右偏斜
                     </div>
                     <div class="col-md-6"></div>
                 </div>
@@ -100,14 +82,14 @@
                        下颌中线:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="grow" value="1">居中
+                        <input type="radio" name="mandibular_midline" value="0">居中
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="grow" value="3">左偏斜
+                        <input type="radio" name="mandibular_midline" value="1">左偏斜
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="grow" value="3">右偏斜
+                        <input type="radio" name="mandibular_midline" value="2">右偏斜
                     </div>
                     <div class="col-md-7"></div>
                 </div>
@@ -117,11 +99,7 @@
                        前牙覆牙合:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">正常
-
-                    </div>
-                    <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">III类亚类
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="0">正常
 
                     </div>
                     <div class="col-md-5"></div>
@@ -131,14 +109,14 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">深覆牙合I
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="1">深覆牙合I
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">深覆牙合II
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="2">深覆牙合II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="3">深覆牙合III
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="3">深覆牙合III
                     </div>
                     <div class="col-md-6"></div>
 
@@ -148,14 +126,14 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">开牙合I
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="4">开牙合I
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">开牙合II
+                        <input type="radio" name="target_anterior_teeth_overbite	" value="5">开牙合II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="3">开牙合III
+                        <input type="radio" name="teeth" value="6">开牙合III
                     </div>
                     <div class="col-md-6"></div>
 
@@ -166,7 +144,7 @@
                         前牙覆盖:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">正常
+                        <input type="radio" name="target_anterior_teeth_covered	" value="0">正常
 
                     </div>
 
@@ -176,14 +154,14 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">深覆盖I
+                        <input type="radio" name="target_anterior_teeth_covered	" value="1">深覆盖I
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">深覆盖II
+                        <input type="radio" name="target_anterior_teeth_covered	" value="2">深覆盖II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="3">深覆盖III
+                        <input type="radio" name="target_anterior_teeth_covered	" value="3">深覆盖III
                     </div>
                     <div class="col-md-6"></div>
 
@@ -193,14 +171,14 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">反覆盖I
+                        <input type="radio" name="target_anterior_teeth_covered	" value="4">反覆盖I
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">反腐败II
+                        <input type="radio" name="target_anterior_teeth_covered	" value="5">反腐败II
 
                     </div>
                     <div class="col-md-2">
-                        <input type="radio" name="teeth" value="3">反覆盖III
+                        <input type="radio" name="target_anterior_teeth_covered	" value="6">反覆盖III
                     </div>
                     <div class="col-md-6"></div>
 
@@ -209,22 +187,22 @@
                 <div class="row">
                     <div class="col-md-1 text-right"></div>
                     <div class="col-md-1">
-                        尖牙覆盖:
+                        尖牙关系:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">左侧
+                        左侧
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">中性
+                        <input type="radio" name="left_fangs" value="0">中性
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">近中
+                        <input type="radio" name="left_fangs" value="1">近中
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">远中
+                        <input type="radio" name="left_fangs" value="2">远中
 
                     </div>
                     <div class="col-md-6"></div>
@@ -234,17 +212,17 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">右侧
+                        右侧
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">中性
+                        <input type="radio" name="right_fangs" value="0">中性
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="3">近中
+                        <input type="radio" name="right_fangs" value="1">近中
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="3">远中
+                        <input type="radio" name="right_fangs" value="2">远中
                     </div>
 
                     <div class="col-md-6"></div>
@@ -257,19 +235,19 @@
                         磨牙关系:
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">左侧
+                        左侧
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">中性
+                        <input type="radio" name="left_molar_fangs" value="0">中性
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">近中
+                        <input type="radio" name="left_molar_fangs" value="1">近中
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">远中
+                        <input type="radio" name="left_molar_fangs" value="2">远中
 
                     </div>
                     <div class="col-md-6"></div>
@@ -279,42 +257,36 @@
                     <div class="col-md-1"></div>
 
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="1">右侧
+                        右侧
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="2">中性
+                        <input type="radio" name="right_molar_fangs" value="0">中性
 
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="3">近中
+                        <input type="radio" name="right_molar_fangs" value="1">近中
                     </div>
                     <div class="col-md-1">
-                        <input type="radio" name="teeth" value="3">远中
+                        <input type="radio" name="right_molar_fangs" value="2">远中
                     </div>
 
                     <div class="col-md-6"></div>
 
                 </div>
                 其他目标:
-                <textarea name="" id="1" cols="30" rows="10"></textarea>
+                <textarea name="treatment_other_target" id="1" cols="30" rows="10"></textarea>
 
-
+                <input type="hidden" name="num" value="1">
                 <div class="part6Text" style="border: 2px solid #c2c2c2 ;">
                     <span>*</span>治疗方案
                     <div class="sel" id="click_event7">^</div>
                 </div>
                 <div class="part6Cont1" id="hidden_enent7">
-                    <input type="radio">待测量分析报告上传后再填写方案，请点击勾选。
+                    {{--<input type="radio">待测量分析报告上传后再填写方案，请点击勾选。--}}
                     <p>    方案1：</p>
-
-
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea name="content1" id="" cols="30" rows="10"></textarea>
                     <button>+ 添加新方案</button>
                 </div>
-
-
-
-
 
             </form>
 
@@ -341,7 +313,6 @@
 </footer>
 
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
-
 
 <script>
 
@@ -371,3 +342,4 @@
 
 </body>
 </html>
+@stop
