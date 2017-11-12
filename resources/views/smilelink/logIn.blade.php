@@ -88,7 +88,7 @@
                 console.log(data);
                 if (data.code == 200)
                 {
-                    window.location.href = "{{url('caseManage')}}";
+                    window.location.href = "{{url('caseManagement')}}";
                 } else {
                     if(data.code==401) {
                         $.each(data.msg, function (key, val) {
