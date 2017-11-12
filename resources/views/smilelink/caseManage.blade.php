@@ -10,6 +10,7 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <header>
     <div class="content">
         <div class="head-L">
@@ -26,8 +27,6 @@
         </div>
     </div>
 </header>
-=======
->>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8
 <div class="content">
     <!--基本信息-->
     <div class="messageBox">
@@ -537,10 +536,9 @@
 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 </body>
 </html>
-=======
->>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>
@@ -632,10 +630,5 @@
     }
 
 </script>
-<<<<<<< HEAD
-=======
-
 </body>
 </html>
-@stop
->>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8
