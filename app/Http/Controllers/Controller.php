@@ -159,5 +159,10 @@ class Controller extends BaseController
         }
         return $ArchivesNum;
     }
+
+    public function webOrApi ($url)
+    {
+        return substr($url,1,3);
+    }
 }
 

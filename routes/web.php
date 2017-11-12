@@ -31,9 +31,7 @@ Route::get('registerTel', function () {
     return view('smilelink.registerTel');
 });
 /*-----------------------------医生病例模板-----------------------------*/
-Route::get('caseManage', function () {
-    return view('smilelink.caseManage');
-});
+Route::get('caseManage','OrthodonticCaseController@inquire');
 Route::get('caseManagement', function () {
     return view('smilelink.caseManagement');
 });

@@ -668,14 +668,24 @@ class OrthodonticCaseController extends Controller
                         $service[$j] = $sName;
                         $data[$i]['service_name'] = $service;
                     }
-                    return $this->successResponse('成功',$data);
+                    if ($this->webOrApi($request->getRequestUri()) == 'api')
+                    {
+                        return $this->successResponse('成功',$data);
+                    }else{
+                        return view('smilelink.caseManage')->with('data',$data);
+                    }
                 }else{
                     $ser = Service::select(['service_name'])
                         ->where(['id'=>$data['data'][$i]['service_id']])
                         ->get()
                         ->toArray();
                     $data[$i]['service_name'] = $ser;
-                    return $this->successResponse('成功',$data);
+                    if ($this->webOrApi($request->getRequestUri()) == 'api')
+                    {
+                        return $this->successResponse('成功',$data);
+                    }else{
+                        return view('smilelink.caseManage')->with('data',$data);
+                    }
                 }
             }
         }catch (\Exception $e)
@@ -778,6 +788,19 @@ class OrthodonticCaseController extends Controller
      */
     public function addCaseInformationPage1 (Request $request)
     {
+        $service_id = $request->post('service_id');
+        if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
+        {
+            $service_id = implode(',',$request->post('service_id'));
+        }
+
+        $complained = $request->post('complained');
+        if (sizeof($request->post('complained')) > 1 && sizeof($request->post('complained')) !== '')
+        {
+            $complained = implode(',',$request->post('complained'));
+        }
+
+
         DB::beginTransaction();
         try
         {
@@ -813,12 +836,12 @@ class OrthodonticCaseController extends Controller
                 'mobilephone' => $request->post('mobilephone'),
                 'province' => $request->post('province'),
                 'city' => $request->post('city'),
-                'service_id' => $request->post('service_id'),
+                'service_id' => $service_id,
                 'create_time' => time()
             ]);
             OrthodonticsChiefComplaint::insert([
                 'orthodontics_id' => $id,
-                'complained' => $request->post('complained'),
+                'complained' => $complained,
                 'other_complained' => $request->post('other_complained')
             ]);
             CaseHistoryImage::insert([
