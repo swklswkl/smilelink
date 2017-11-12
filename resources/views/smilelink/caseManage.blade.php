@@ -1,3 +1,5 @@
+@extends('smilelink.header')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('reception/css/caseManage.css')}}">
 </head>
 <body>
+<<<<<<< HEAD
 <header>
     <div class="content">
         <div class="head-L">
@@ -14,7 +17,7 @@
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
-            <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
+            <span class="span1"><a href="{{url('caseManagement')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
@@ -23,6 +26,8 @@
         </div>
     </div>
 </header>
+=======
+>>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8
 <div class="content">
     <!--基本信息-->
     <div class="messageBox">
@@ -41,24 +46,24 @@
                 </div>
                 <div class="messageBottom">
                     <div class="messageBottom1">
-                        病例号：<span>XXX000000000</span>
+                        病例号：<span id="id"></span>
                     </div>
                     <div class="messageBottom1">
-                        患者姓名：<span>Sample</span>
+                        患者姓名：<span id="name">Sample</span>
                     </div><div class="messageBottom1">
-                    性别：<span>男</span>
+                    性别：<span id="sex">男</span>
                 </div><div class="messageBottom1">
-                    出生日期：<span>1989-09-07</span>
+                    出生日期：<span id="birthday">1989-09-07</span>
                 </div>
                     <div class="messageBottom1">
-                        手机号码：<span>000000000</span>
+                        手机号码：<span id="mobilephone">000000000</span>
                     </div>
                     <div class="messageBottom1">
-                        身份证：<span>213213132111123</span>
+                        身份证：<span id="id_number">213213132111123</span>
                     </div><div class="messageBottom1">
-                    创建日期：<span>123131321321321</span>
+                    创建日期：<span id="create_time">123131321321321</span>
                 </div><div class="messageBottom1">
-                    现居住地址：<span>aXXXXXXXXXXXX</span>
+                    现居住地址：<span id="address">aXXXXXXXXXXXX</span>
                 </div>
 
                 </div>
@@ -530,10 +535,56 @@
         </div>
     </div>
 </div>
+
+<<<<<<< HEAD
+</body>
+</html>
+=======
+>>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>
+<script>
+   /* $.ajax({
+        type: 'get',
+        url:'{{url('/api/odtcase/inquire')}}',
+        dataType:'json',
+        data:{orthodontics_id:'{{$_GET['orthodontics_id']}}'},
+        success: function(data) {
+            console.log(data.data[0]);
+            if (data.code == 200)
+            {
+                var result = data.data[0];
+                $.each(result,function(k,v){
+                    console.log(k+"--"+v)
+                    //患者基本信息
+                    $('#'+k).html(v);
+                    $('#sex').html(function(){
+                        if((k=='sex')&(v==0)){
+                            return "男"
+                        }else if((k=='sex')&(v==1)){
+                            return "女"
+                        }
+                    });
 
+                })
+
+
+
+            }else {
+                if(data.code==401) {
+                    $.each(data.msg, function (key, val) {
+                        layer.tips(val, '#' + key);
+                    })
+                }
+                if(data.code==402){
+                    layer.msg(data.msg);
+                }
+
+            }
+        }
+    });*/
+</script>
 <script>
     $('#serverR1').click(function(){
         $('#serverCont1').slideToggle();
@@ -581,6 +632,10 @@
     }
 
 </script>
+<<<<<<< HEAD
+=======
 
 </body>
 </html>
+@stop
+>>>>>>> 57bbbcb6bfba33b948ab5fcb4ba10e39269154e8

@@ -77,7 +77,7 @@
                 <div class="imgBox">
                     <div class="imgBox-T">
                         <div class="imgBox-T-L">
-                            <img src="@{{ positive_photo }}" alt=""  width="200" height="200px" >
+                            <img v-bin:src="side_photo" alt=""  width="200" height="200px" >
                             <!--<input type="file" class="file1"  onchange="c(this)" >-->
 
                         </div>

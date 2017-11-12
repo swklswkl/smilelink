@@ -28,7 +28,7 @@
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
-            <span class="span1"><a href="{{url('caseManage')}}">病例管理</a></span>
+            <span class="span1"><a href="{{url('caseManagement')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
@@ -61,7 +61,7 @@
                 <span class="span3" style="font-size: 20px;color: #e56424;">治疗进展</span>
             </div>
             <div style="text-align: right">
-                <button style="margin-right: 47px;background:#6abe28;color: white;font-size:18px;height: 50px;width: 150px;border-radius: 10px;border: 1px solid gainsboro;">新增治疗方案</button>
+                <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=').$_GET['orthodontics_id'].'&add=1'}}"> <button style="margin-right: 47px;background:#6abe28;color: white;font-size:18px;height: 50px;width: 150px;border-radius: 10px;border: 1px solid gainsboro;">新增治疗方案</button></a>
             </div>
 
             <div class="table" style="width: 1100px;margin-top: 20px">
@@ -106,7 +106,7 @@
                    $('.table.table-condensed.table-hover').append('<tr class="success">\n' +
                             '                        <td >'+val.name+'</td>\n' +
                             '                        <td >'+val.create_time+'</td>\n' +
-                            '                        <td ><a href="{{url('createZhenJiCaseSeven/check?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'">查看</a> <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'">编辑</a> <a href="">删除</a></td>\n' +
+                            '                        <td ><a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'">查看</a> <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'&edit=1">编辑</a> <a onclick="Delplan('+val.id+')">删除</a></td>\n' +
                             '                    </tr>');
                    })
                } else {
@@ -123,7 +123,30 @@
            }
        });
    })
+//删除
+    function Delplan(a) {
+        $.ajax({
+            type: 'post',
+            url: '{{url('/api/odtcase/deleteTreatmentProcess')}}',
+            dataType: 'json',
+            data: {id: a},
+            success: function (data) {
+                if (data.code == 200) {
+                    window.location.href = "{{url('createZhenJiCaseSeven?orthodontics_id=').$_GET['orthodontics_id']}}";
+                } else {
+                    if (data.code == 401) {
+                        $.each(data.msg, function (key, val) {
+                            layer.tips(val, '#' + key);
+                        })
+                    }
+                    if (data.code == 402) {
+                        layer.msg(data.msg);
+                    }
 
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>

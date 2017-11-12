@@ -16,7 +16,7 @@
         </div>
         <div class="head-C">
             <span class="span1"><a href="{{url('createCase')}}">新建病例</a></span>
-            <span><a href="{{url('caseManage')}}">病例管理</a></span>
+            <span><a href="{{url('caseManagement')}}">病例管理</a></span>
             <span><a href="#">我的订单</a></span>
         </div>
         <div class="head-R">
