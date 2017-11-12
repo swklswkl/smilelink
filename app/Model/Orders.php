@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
     protected $table = 'sl_orders';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'number';
     public $timestamps = FALSE;
 
     public function Doctors ()

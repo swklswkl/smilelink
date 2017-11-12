@@ -10,6 +10,7 @@ use App\Model\OrthodonticsDiagnosticDesign;
 use App\Model\OrthodonticsTreatmentProcess;
 use App\Model\OrthodonticXAnalysis;
 use App\Model\Program;
+use App\Model\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -632,7 +633,7 @@ class OrthodonticCaseController extends Controller
         try
         {
            $orthodontics_id = $request->get('orthodontics_id');
-           $data = Orthodontics::select(['id','name', 'sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address'])->where(['id' => $orthodontics_id])
+           $data = Orthodontics::select(['id','name', 'sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address','service_id'])->where(['id' => $orthodontics_id])
                ->with(['OrthodonticsChiefComplaint' => function ($query){
                    $query->select(['orthodontics_id','complained', 'other_complained', 'height', 'weight', 'age', 'menarche_age', 'suffering_from_disease', 'disease_options', 'other_disease', 'allergy', 'allergy_options', 'other_allergy', 'keep_taking_medicine', 'drugs_name', 'pregnancy', 'coordination_treatment', 'tooth_trauma', 'tooth_wrong_teeth', 'oral_cavity_habits', 'oral_cavity_options', 'other_oral_cavity', 'orthodontic_treatment', 'orthodontic_treatment_remark', 'worry', 'worry_remark', 'other']);
                },'CaseHistoryImages' => function ($query){
@@ -645,8 +646,34 @@ class OrthodonticCaseController extends Controller
                    $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan']);
                },'OrthodonticsTreatmentProcess' => function ($query) {
                    $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other','create_time']);
-               }])->get();
-            return $this->successResponse('成功',$data);
+               }])->get()->toArray();
+            for ($i=0;$i<sizeof($data);$i++)
+            {
+                $service_id = $data[$i]['service_id'];
+                if (! strlen($service_id) < 1 && $service_id < 10)
+                {
+                    $service_id = explode(',',$service_id);
+                    $service = [];
+                    for ($j=0;$j<sizeof($service_id);$j++)
+                    {
+                        $sName =Service::select(['service_name as '.$j])
+                            ->where(['id'=>$service_id[$j]])
+                            ->get()
+                            ->toArray();
+                        $sName = $sName[0];
+                        $service[$j] = $sName;
+                        $data[$i]['service_name'] = $service;
+                    }
+                    return $this->successResponse('成功',$data);
+                }else{
+                    $ser = Service::select(['service_name'])
+                        ->where(['id'=>$data['data'][$i]['service_id']])
+                        ->get()
+                        ->toArray();
+                    $data[$i]['service_name'] = $ser;
+                    return $this->successResponse('成功',$data);
+                }
+            }
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');
