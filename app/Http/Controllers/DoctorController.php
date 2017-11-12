@@ -230,7 +230,7 @@ class DoctorController extends Controller
         {
             $data = Orthodontics::select(['id','name','create_time','status','service_id'])
                 ->where(['doctor_id'=>$request->get('doctor_id')])
-                ->paginate($request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($data['data'] == [])
             {
