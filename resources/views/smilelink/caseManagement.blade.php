@@ -1,4 +1,5 @@
-
+@extends('smilelink.header')
+        @section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,25 +20,6 @@
 
 </head>
 <body>
-<header>
-    <div class="content">
-        <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
-        </div>
-        <div class="head-C">
-            <span ><a href="{{url('createCase')}}">新建病例</a></span>
-            <span class="span1"><a href="{{url('caseManagement')}}">病例管理</a></span>
-            <span><a href="#">我的订单</a></span>
-        </div>
-        <div class="head-R">
-            <span><a href="#">个人中心</a></span>
-            <span class="span2"><a href="#">退出</a></span>
-        </div>
-
-
-    </div>
-</header>
-
 <div class="search">
 <div class="content">
     <div class="mySelect">
@@ -141,17 +123,22 @@
                 });
                 //遍历列表信息
                 $.each(data.data.data,function(k,v){
+                    var oid = v.id;
                     var status='';
                     var option_service='';
                     var perfect='';
                     if( v.status=='1' ){
                         status ='档案已建立';
                         option_service = '<a href="#">选择服务</a>';
-                        perfect = '<a href="#">完善档案</a>';
+                        perfect = '<a href="/">完善档案</a>';
                     }else if(v.status=='2'){
+                        status ='档案已提交';
+                        perfect = '<a href="/editprogram?orthodontics_id='+oid+'">维护方案</a>';
+                    }else if (v.status=='3')
+                    {
                         status ='治疗中';
-                        perfect = '<a href="#">完善档案</a>';
-                    }else{
+//                        perfect = '<a href="#">完善档案</a>';
+                    } else{
                         status ='已完成';
                     }
                     var service='';
@@ -180,10 +167,10 @@
                 if (data.code == 402) {
                     layer.msg(data.msg);
                 }
-
             }
         }
     })
 </script>
 </body>
 </html>
+@stop

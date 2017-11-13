@@ -52,13 +52,21 @@
                         <input name="password" type="password" class="form-control" id="password" placeholder="请输入密码" style="padding-left: 40px" >
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="form-group ">
+                        <select name="select" class="form-control">
+                            <option value="1">医生</option>
+                            <option value="2">专家</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="form-group ">
                         <div type="" onclick="submitForm()" class="btn btn-primary btn-lg btn-block" style="background: #69be28;border:none ">登录</div>
                     </div>
 
                 </div>
+
             </form>
         </div>
         <div class="col-lg-1 col-md-1"></div>

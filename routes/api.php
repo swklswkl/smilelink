@@ -86,6 +86,8 @@ Route::post('/doctor/registerTel','DoctorController@registerTel');
 Route::post('/doctor/registerInfo','DoctorController@registerInfo');
 //登录
 Route::post('/doctor/login','DoctorController@login');
+//退出
+Route::post('/doctor/loginOut','DoctorController@loginOut');
 
 /*******************************************医生接口****************1*********************************/
 //查询信息
@@ -108,8 +110,10 @@ Route::get('/doctor/findEndOrders','DoctorController@findEndOrders');
 Route::get('/doctor/findOrdersQuantity','DoctorController@findOrdersQuantity');
 //搜索病历
 Route::get('/doctor/searchOrthdonicCase','DoctorController@searchOrthdonicCase');
+
 /*******************************************专家接口****************1*********************************/
 //查询信息
 Route::get('/expert/information','ExpertController@information');
 //修改资料
 Route::post('/expert/updateInformation','ExpertController@updateInformation');
+Route::get('createOrderNum','Controller@createOrderNum');

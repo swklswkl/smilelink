@@ -160,6 +160,11 @@ class Controller extends BaseController
         return $ArchivesNum;
     }
 
+    public function createOrderNum ($ip)
+    {
+        return date('YmdHi',time()).substr(ip2long($ip),-6).rand(1000,9999);
+    }
+
     public function webOrApi ($url)
     {
         return substr($url,1,3);
