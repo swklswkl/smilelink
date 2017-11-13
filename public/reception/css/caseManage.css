@@ -58,7 +58,8 @@
 .historyDesc p  span{display: inline-block;width: 10px ;height: 10px;background: #69be28;border-radius:5px;margin-right: 10px }
 /*图像资料*/
 /*面像照部分*/
-.imgFixed{width: 235px;height: 235px;margin-right: 20px;margin-right: 73px;margin-left: 73px}
+.imgFixed{width: 235px;height: 235px;margin-right: 20px;margin-right: 73px;margin-left: 73px;overflow: hidden;text-align: center}
+.imgFixed img{width: 100%;height: 100%}
 .faceImg .imgBigBox .imgSmallBox{float: left;text-align: center;}
 .imgBigBox {overflow: hidden}
 /*内口照*/

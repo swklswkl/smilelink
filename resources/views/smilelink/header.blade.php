@@ -1,3 +1,4 @@
+
 <header>
     <div class="content">
         <div class="head-L">
@@ -17,6 +18,6 @@
     </div>
 </header>
 @section('content')
-@show
+@endsection
 
 
