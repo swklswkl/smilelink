@@ -70,26 +70,40 @@
             </div>
             <div class="serverCont" id="serverCont1">
                 <div class="part1">
-
-
                         <div class="part1Cont">
 
-                                <input class="c1 no1" type="checkbox" switch="0" >
-                                <input  class="c1 no2" type="checkbox" switch="0" >
-                                <input class="c1 no3" type="checkbox" switch="0" >
-                                <input  class="c1 no4" type="checkbox" switch="0" >
-                                <input class="c1 no5" type="checkbox" switch="0" >
+
+                                <input  class="c1 no2" type="checkbox" switch="0"  checked>
+                                <input class="c1 no3" type="checkbox" switch="0" checked>
+                                <input  class="c1 no4" type="checkbox" switch="0" checked>
+                                <input class="c1 no5" type="checkbox" switch="0"  checked>
 
 
 
                             <div class="tryBox">
-                                <div class="try ">X片分析</div>
-                                <div class="try">面部照片分析</div>
-                                <div  class="try">正畸档案</div>
-                                <div class="try">治疗计划专家指导</div>
-                                <div class="try">隐适美矫治方案</div>
+                                <?php
+                                $a=explode(',',$data[0]['service_id']) ;
+                                //                                        dump(count($a));die;
+                                for($i=0;$i<count($a);$i++){
+                                    switch ($a[$i]){
+                                        case 3:
+                                            echo "<div class=\"try \" style=\"background: url('reception/img/yes3.png')\">X片分析</div>";
+                                            break;
+                                        case 4:
+                                            echo "<div class=\"try\" style=\"background: url('reception/img/yes3.png')\">面部照片分析</div>";
+                                            break;
+                                        case 1:
+                                            echo "<div  class=\"try\" style=\"background: url('reception/img/yes3.png')\">正畸档案</div>";
+                                            break;
+                                        case 7:
+                                            echo "<div class=\"try\" style=\"background: url('reception/img/yes3.png')\">治疗计划专家指导</div>";
+                                            break;
+                                        default:
 
-
+                                            break;
+                                    }
+                                }
+                                ?>
                             </div>
 
 
@@ -104,7 +118,6 @@
 
         </div>
     </div>
-{{dump($data)}}
     <!--临床资料-->
     <div class="serverBox">
         <div class="content">
@@ -131,27 +144,251 @@
                                     主诉
                                 </div>
                                 <div class="zhuSuDesc">
-                                    <p> <span></span>牙齿排列不齐（拥挤）、牙齿稀疏（间隙）</p>
-                                    <p> <span></span>其他主诉：</p>
+                                    <p> <span></span>
+                                        <?php
+                                        $a=explode(',',$data[0]['orthodontics_chief_complaint']['complained']) ;
+//                                        dump(count($a));die;
+                                        for($i=0;$i<count($a);$i++){
+                                            switch ($a[$i]){
+                                                case 1:
+                                                    echo "牙齿排列不齐&ensp;";
+                                                    break;
+                                                case 2:
+                                                    echo "牙齿稀疏&ensp;";
+                                                    break;
+                                                case 3:
+                                                    echo "牙齿龅牙&ensp;";
+                                                    break;
+                                                case 4:
+                                                    echo "牙齿地包天&ensp;";
+                                                    break;
+                                                case 5:
+                                                    echo "前牙咬合不上&ensp;";
+                                                    break;
+                                                case 6:
+                                                    echo "前牙咬合过深&ensp;";
+                                                    break;
+                                                case 7:
+                                                    echo "深覆盖&ensp;";
+                                                    break;
+                                                case 8:
+                                                    echo "颞下颌关节症状&ensp;";
+                                                    break;
+                                                default:
+                                                    echo "&ensp;";
+                                                    break;
+                                            }
+                                        }
+                                        ?>
+                                    </p>
+                                    <p> <span></span>其他主诉：{{$data[0]['orthodontics_chief_complaint']['other_complained']}}</p>
                                 </div>
                                 <div class="historyTitle">病史</div>
                                 <div class="historyDesc">
-                                    <p><span></span>是否患有或曾患有以下疾病：</p>
-                                    <p><span></span>是否对以下各项过敏：</p>
-                                    <p><span></span>近几年是否一直在服用某种药物：</p>
-                                    <p><span></span>是否准备或在怀孕或哺乳（女性）：</p>
-                                    <p><span></span>患者或患者家长是否在较长时间里一致配合医生治疗：</p>
-                                    <p><span></span>是否有过牙齿或颌面部外伤史：</p>
-                                    <p><span></span>患者的家族成员中是否有类似牙齿错牙合情况：</p>
-                                    <p><span></span>是否有或曾有以下口腔习惯：</p>
-                                    <p><span></span>是否接受过正畸治疗：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
+                                    <p><span></span>是否患有或曾患有以下疾病：
+                                        @if($data[0]['orthodontics_chief_complaint']['suffering_from_disease']=='1')
+                                            是
+                                            @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        <?php
+                                        $a=explode(',',$data[0]['orthodontics_chief_complaint']['disease_options']) ;
+                                        //                                        dump(count($a));die;
+                                        for($i=0;$i<count($a);$i++){
+                                            switch ($a[$i]){
+                                                case 1:
+                                                    echo "心脏病&ensp;";
+                                                    break;
+                                                case 2:
+                                                    echo "高血压&ensp;";
+                                                    break;
+                                                case 3:
+                                                    echo "糖尿病&ensp;";
+                                                    break;
+                                                case 4:
+                                                    echo "精神病&ensp;";
+                                                    break;
+                                                case 5:
+                                                    echo "癫痫&ensp;";
+                                                    break;
+                                                case 6:
+                                                    echo "肝炎&ensp;";
+                                                    break;
+                                                case 7:
+                                                    echo "艾滋病&ensp;";
+                                                    break;
+                                                case 8:
+                                                    echo "肺结核&ensp;";
+                                                    break;
+                                                case 9:
+                                                    echo "哮喘&ensp;";
+                                                    break;
+                                                case 10:
+                                                    echo "血液系统疾病&ensp;";
+                                                    break;
+                                                case 11:
+                                                    echo "慢性鼻炎&ensp;";
+                                                    break;
+                                                case 12:
+                                                    echo "鼻甲肥大&ensp;";
+                                                    break;
+                                                case 13:
+                                                    echo "扁桃体肥大&ensp;";
+                                                    break;
+                                                case 14:
+                                                    echo "腺样体肥大&ensp;";
+                                                    break;
+                                                case 15:
+                                                    echo "腺样体肥大&ensp;";
+                                                    break;
+                                                default:
+                                                    echo "&ensp;";
+                                                    break;
+                                            }
+                                        }
+                                        ?>
+                                        &ensp;{{$data[0]['orthodontics_chief_complaint']['other_disease']}}
+                                    </p>
+                                    <p><span></span>是否对以下各项过敏：
+                                        @if($data[0]['orthodontics_chief_complaint']['allergy']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        <?php
+                                        $a=explode(',',$data[0]['orthodontics_chief_complaint']['allergy_options']) ;
+                                        //                                        dump(count($a));die;
+                                        for($i=0;$i<count($a);$i++){
+                                            switch ($a[$i]){
+                                                case 1:
+                                                    echo "青霉素&ensp;";
+                                                    break;
+                                                case 2:
+                                                    echo "口腔局麻药&ensp;";
+                                                    break;
+                                                case 3:
+                                                    echo "金属&ensp;";
+                                                    break;
+                                                case 4:
+                                                    echo "塑料&ensp;";
+                                                    break;
+                                                case 5:
+                                                    echo "橡胶&ensp;";
+                                                    break;
+                                                default:
+                                                    echo "&ensp;";
+                                                    break;
+                                            }
+                                        }
+                                        ?>
+                                        &ensp;{{$data[0]['orthodontics_chief_complaint']['other_allergy']}}
+                                    </p>
+                                    <p><span></span>近几年是否一直在服用某种药物：
+                                        @if($data[0]['orthodontics_chief_complaint']['keep_taking_medicine']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        &ensp;{{$data[0]['orthodontics_chief_complaint']['drugs_name']}}
+                                    </p>
+                                    <p><span></span>是否准备或在怀孕或哺乳（女性）：
+                                        @if($data[0]['orthodontics_chief_complaint']['pregnancy']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                    </p>
+                                    <p><span></span>患者或患者家长是否在较长时间里一致配合医生治疗：
+                                        @if($data[0]['orthodontics_chief_complaint']['coordination_treatment']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                    </p>
+                                    <p><span></span>是否有过牙齿或颌面部外伤史：
+                                        @if($data[0]['orthodontics_chief_complaint']['tooth_trauma']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                    </p>
+                                    <p><span></span>患者的家族成员中是否有类似牙齿错牙合情况：
+                                        @if($data[0]['orthodontics_chief_complaint']['tooth_wrong_teeth']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                    </p>
+                                    <p><span></span>是否有或曾有以下口腔习惯：
+                                        @if($data[0]['orthodontics_chief_complaint']['oral_cavity_habits']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        <?php
+                                        $a=explode(',',$data[0]['orthodontics_chief_complaint']['oral_cavity_options']) ;
+                                        //                                        dump(count($a));die;
+                                        for($i=0;$i<count($a);$i++){
+                                            switch ($a[$i]){
+                                                case 1:
+                                                    echo "吮指&ensp;";
+                                                    break;
+                                                case 2:
+                                                    echo "咬唇&ensp;";
+                                                    break;
+                                                case 3:
+                                                    echo "口呼吸&ensp;";
+                                                    break;
+                                                case 4:
+                                                    echo "咬物&ensp;";
+                                                    break;
+                                                case 5:
+                                                    echo "偏侧咀嚼&ensp;";
+                                                    break;
+                                                case 6:
+                                                    echo "吐舌&ensp;";
+                                                    break;
+                                                default:
+                                                    echo "&ensp;";
+                                                    break;
+                                            }
+                                        }
+                                        ?>
+                                        &ensp;{{$data[0]['orthodontics_chief_complaint']['other_oral_cavity']}}
+                                    </p>
+                                    <p><span></span>是否接受过正畸治疗：
+                                        @if($data[0]['orthodontics_chief_complaint']['orthodontic_treatment']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        &ensp;{{$data[0]['orthodontics_chief_complaint']['orthodontic_treatment_remark']}}
+                                    </p>
+                                    <p><span></span>患者或家长是否还有担心或要说明的情况：
+                                        @if($data[0]['orthodontics_chief_complaint']['coordination_treatment']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                    </p>
+                                    <p><span></span>患者或家长是否还有担心或要说明的情况：
+                                        @if($data[0]['orthodontics_chief_complaint']['worry']=='1')
+                                            是
+                                        @else
+                                            否
+                                        @endif
+                                        <br/>
+                                        {{$data[0]['orthodontics_chief_complaint']['worry_remark']}}
+                                    </p>
+                                    <p><span></span>其它备注：<br/>
+                                        {{$data[0]['orthodontics_chief_complaint']['other']}}
+                                    </p>
+
                                 </div>
 
                             </div>
@@ -165,7 +402,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_photo']}}" alt="">
 
                                             </div>
                                             <p>正面照</p>
@@ -173,7 +410,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_smile_photo']}}" alt="">
 
                                             </div>
                                             <p>正面微笑照</p>
@@ -181,7 +418,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['side_photo']}}" alt="">
 
                                             </div>
                                             <p>侧面照</p>
@@ -194,7 +431,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['upper_arch_photo']}}" alt="">
 
                                             </div>
 
@@ -203,7 +440,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝5.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_45_photo']}}" alt="">
 
                                             </div>
                                             <p>正面咬合向上45度像</p>
@@ -211,7 +448,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['under_arch_photo']}}" alt="">
 
                                             </div>
                                             <p>下牙弓像</p>
@@ -220,7 +457,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['right_bite_photo']}}" alt="">
 
                                             </div>
                                             <p>右咬合像</p>
@@ -228,7 +465,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝5.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_bite_photo']}}" alt="">
 
                                             </div>
                                             <p>正面咬合像</p>
@@ -236,7 +473,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['left_bite_photo']}}" alt="">
 
                                             </div>
                                             <p>左咬合像</p>
@@ -248,7 +485,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/sfvcdf.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['side_x_photo']}}" alt="">
 
                                             </div>
                                             <p>侧面X光片</p>
@@ -256,7 +493,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/sfvcdf.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['panorama_photo']}}" alt="">
 
 
                                             </div>
@@ -265,7 +502,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_x_photo']}}" alt="">
 
                                             </div>
                                             <p>正面X光片</p>
@@ -274,7 +511,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['tooth_photo']}}" alt="">
 
                                             </div>
                                             <p>牙片</p>
@@ -282,7 +519,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝5.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['cbct_joint_sagittal']}}" alt="">
 
                                             </div>
                                             <p>CBCT关节矢状位</p>
@@ -290,7 +527,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['cbct_coronary_joint']}}" alt="">
 
                                             </div>
                                             <p>CBCT关节冠状位</p>
@@ -299,7 +536,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['cbct_anterior_teeth']}}" alt="">
 
                                             </div>
                                             <p>CBCT上前牙牙根</p>
@@ -307,7 +544,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝5.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['cbct_under_teeth']}}" alt="">
 
                                             </div>
                                             <p>CBCT前牙牙根</p>
@@ -315,7 +552,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['abnormal_teeth']}}" alt="">
 
                                             </div>
                                             <p>异常牙</p>
@@ -324,7 +561,7 @@
                                     <div class="imgBigBox">
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['air_passage']}}" alt="">
 
                                             </div>
                                             <p>气道</p>
@@ -332,7 +569,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4拷贝5.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['other']}}" alt="">
 
                                             </div>
                                             <p>其他</p>
@@ -340,7 +577,7 @@
 
                                         <div class="imgSmallBox">
                                             <div class="imgFixed">
-                                                <img src="{{asset('reception/img/形状4.png')}}" alt="">
+                                                <img src="{{$data[0]['case_history_images']['positive_photo']}}" alt="">
 
                                             </div>
                                             <p>其他</p>
@@ -359,46 +596,275 @@
                                     <h3>面部分析：</h3>
                                 </div>
                                 <div class="checkCont">
-                                    <p><span></span>正面</p>
-                                    <p><span></span>侧面</p>
+                                    <p><span></span>正面<br/>
+                                    @if($data[0]['orthodontics_clinical_examination']['symmetry']=1)
+                                            对称性:不对称
+                                        @else
+                                            对称性:对称
+                                    @endif
+                                        &ensp;
+                                    @if($data[0]['orthodontics_clinical_examination']['chin_point']=1)
+                                                颏点:偏右
+                                        @elseif($data[0]['orthodontics_clinical_examination']['chin_point']=2)
+                                                颏点:偏左
+                                        @else
+                                                颏点:居中
+                                    @endif
+                                    &ensp;
+                                    @if($data[0]['orthodontics_clinical_examination']['teeth_open_lips']=0)
+                                                    开唇露齿 :否
+                                        @else
+                                                    开唇露齿 :是
+                                    @endif
+                                        &ensp;
+                                    @if($data[0]['orthodontics_clinical_examination']['smile_reveal_gums']=0)
+                                                        微笑露龈 :否
+                                    @else
+                                                        微笑露龈 :是
+                                        @endif
+                                        &ensp;
+                                    @if($data[0]['orthodontics_clinical_examination']['plane']=0)
+                                                            平面  :不偏斜
+                                    @else
+                                                            平面  :偏斜
+                                        @endif
+                                        &ensp;
+                                    </p>
+                                    <p><span></span>侧面<br/>
+                                        @if($data[0]['orthodontics_clinical_examination']['side_shape']=1)
+                                            侧面形态:凹面型
+                                        @elseif($data[0]['orthodontics_clinical_examination']['side_shape']=2)
+                                            侧面形态:凸面型
+                                        @else
+                                            侧面形态:直面型
+                                            @endif
+                                            &ensp;
+                                        @if($data[0]['orthodontics_clinical_examination']['nasolabial_angle']=1)
+                                            鼻唇角:偏大
+                                        @elseif($data[0]['orthodontics_clinical_examination']['nasolabial_angle']=2)
+                                            鼻唇角:偏小
+                                        @else
+                                            鼻唇角:正常
+                                            @endif
+                                            &ensp;
+                                        @if($data[0]['orthodontics_clinical_examination']['nasolabial_angle']=1)
+                                            颏部凸度:后缩
+                                        @elseif($data[0]['orthodontics_clinical_examination']['nasolabial_angle']=2)
+                                            颏部凸度:前凸
+                                        @else
+                                            颏部凸度:正常
+                                            @endif
+                                            &ensp;
+                                    </p>
                                 </div>
 
                                 <div class="checkTitle">
-                                    <h3>牙齿周围：</h3>
+                                    <h3>牙齿周围：
+
+                                    </h3>
                                 </div>
                                 <div class="checkCont">
-                                    <p><span></span>正面</p>
-                                   <p> <span></span>侧面</p>
+                                    <p><span></span>
+                                        @if($data[0]['orthodontics_clinical_examination']['periodontal_tissue']=1)
+                                            牙周组织:牙龈红肿
+                                        @elseif($data[0]['orthodontics_clinical_examination']['periodontal_tissue']=2)
+                                            牙周组织:牙龈出血
+                                        @else
+                                            牙周组织:正常
+                                            @endif
+                                            &ensp;
+                                    </p>
                                 </div>
 
                                 <div class="checkTitle">
                                     <h3>牙齿状态：</h3>
                                 </div>
                                 <div class="checkCont">
-                                    <p><span></span>恒牙列</p>
-                                    <p>31 32 12 31 32 13 13 13 13 13 12</p>
-                                    <p>13 22 31 32 13 13 21 32 13 13 13 </p>
-                                    <p><span></span>乳牙列</p>
-                                    <p>31 32 12 31 32 13 13 13 13 13 12</p>
-                                    <p>13 22 31 32 13 13 21 32 13 13 13 </p>
+                                    <p><span></span>恒牙列:
+                                        @if($data[0]['orthodontics_clinical_examination']['permanent_dentition']=1)
+                                            缺失
+                                        @else
+                                            正常
+                                            @endif
+                                            &ensp;
+                                    </p>
+                                    <p><span></span>乳牙列:
+                                        @if($data[0]['orthodontics_clinical_examination']['deciduous_teeth']=1)
+                                            缺失
+                                        @else
+                                            正常
+                                            @endif
+                                            &ensp;</p>
+                                    <p><span></span>牙齿状态其它:</p>
+                                    <p>
+                                        @isset($data[0]['orthodontics_clinical_examination']['teeth_condition_other'])
+                                        {{$data[0]['orthodontics_clinical_examination']['teeth_condition_other']}}
+                                        @endisset
+                                    </p>
                                 </div>
 
                                 <div class="checkTitle">
                                     <h3>关节检查：</h3>
                                 </div>
                                 <div class="checkCont">
-                                    <p><span></span>开口度：</p>
-                                    <p><span></span>开口型：</p>
-                                    <p><span></span>弹响：</p>
-                                    <p>左侧：</p>
-                                    <p>右侧：</p>
+                                    <p><span></span>开口度：
+                                        @if($data[0]['orthodontics_clinical_examination']['opening_degree']=0)
+                                            一指
+                                        @elseif($data[0]['orthodontics_clinical_examination']['opening_degree']=1)
+                                            二指
+                                        @elseif($data[0]['orthodontics_clinical_examination']['opening_degree']=2)
+                                            三指
+                                            @else
+                                            三指以上
+                                        @endif
+                                            &ensp;
+                                    </p>
+                                    <p><span></span>开口型：
+                                        @if($data[0]['orthodontics_clinical_examination']['opening_degree']=0)
+                                            正常
+                                        @elseif($data[0]['orthodontics_clinical_examination']['opening_degree']=1)
+                                            左偏
+                                        @elseif($data[0]['orthodontics_clinical_examination']['opening_degree']=2)
+                                            右偏
+                                        @else
+                                            偏摆
+                                            @endif
+                                            &ensp;
+                                    </p>
+                                    <p><span></span>弹响：
+                                    </p>
+                                    <p>左侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_sound'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['left_sound'])
+                                            @case(4)
+                                            闭口末
+                                            @break
+                                            @case(1)
+                                            张口初
+                                            @break
+                                            @case(2)
+                                            张口末
+                                            @break
+                                            @case(3)
+                                            闭口初
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                                @endisset
+                                            &ensp;
+                                    </p>
+                                    <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_sound'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['right_sound'])
+                                            @case(1)
+                                            张口初
+                                            @break
+                                            @case(2)
+                                            张口末
+                                            @break
+                                            @case(3)
+                                            闭口初
+                                            @break
+                                            @case(4)
+                                            闭口末
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                        @endisset
+                                    </p>
                                     <p><span></span>摩擦音</p>
 
-                                    <p>左侧：</p>
-                                    <p>右侧：</p>
+                                    <p>左侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_sound'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['right_sound'])
+                                            @case(1)
+                                            张口
+                                            @break
+                                            @case(2)
+                                            闭口
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                            @endisset
+                                    </p>
+                                    <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_friction_sound'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['right_friction_sound'])
+                                            @case(1)
+                                            张口
+                                            @break
+                                            @case(2)
+                                            闭口
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                        @endisset
+                                    </p>
                                     <p><span></span>疼痛</p>
-                                    <p>左侧：</p>
-                                    <p>右侧：</p>
+                                    <p>左侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_pain'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['left_pain'])
+                                            @case(1)
+                                            大张口
+                                            @break
+                                            @case(2)
+                                            左侧动
+                                            @break
+                                            @case(3)
+                                            右侧动
+                                            @break
+                                            @case(4)
+                                            前伸
+                                            @break
+                                            @case(5)
+                                            紧咬
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_pain'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['right_pain'])
+                                            @case(1)
+                                            大张口
+                                            @break
+                                            @case(2)
+                                            左侧动
+                                            @break
+                                            @case(3)
+                                            右侧动
+                                            @break
+                                            @case(4)
+                                            前伸
+                                            @break
+                                            @case(5)
+                                            紧咬
+                                            @break
+                                            @default
+                                            无
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>其它：
+                                        @isset($data[0]['orthodontics_clinical_examination']['joint_examination_other'])
+                                        {{$data[0]['orthodontics_clinical_examination']['joint_examination_other']}}
+                                        @endisset
+                                    </p>
+                                </div>
+                                <div class="checkTitle">
+                                    <h3>错颌问题：</h3>
+                                </div>
+                                <div class="checkCont">
+                                    @isset($data[0]['orthodontics_clinical_examination']['joint_examination_other'])
+                                    <p>{{$data[0]['orthodontics_clinical_examination']['malocclusion_problem']}}</p>
+                                    @endisset
+
                                 </div>
 
                                 <div class="checkTitle">
@@ -406,11 +872,244 @@
                                 </div>
                                 <div class="checkCont">
                                     <p><span></span>上下牙弓关系</p>
-                                    <p>矢状关系：</p>
-                                    <p>垂直关系</p>
-                                    <p>横向关系</p>
-                                    <p>拥挤度</p>
-                                    <p>Bolton指数</p>
+                                    <p>矢状关系：<br/> 前牙覆盖:
+                                        @isset($data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'])
+                                            @case(1)
+                                            深覆盖I度
+                                            @break
+                                            @case(2)
+                                            深覆盖II度
+                                            @break
+                                            @case(3)
+                                            深覆盖III度
+                                            @break
+                                            @case(4)
+                                            反覆盖I度
+                                            @break
+                                            @case(5)
+                                            反覆盖II度
+                                            @break
+                                            @case(6)
+                                            反覆盖III度
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                        @endisset
+                                                <br/>
+                                        尖牙关系&ensp;左侧:
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_fangs'])
+                                            @switch($data[0]['orthodontics_clinical_examination']['left_fangs'])
+                                                @case(1)
+                                                近中
+                                                @break
+                                                @case(2)
+                                                远中
+                                                @break
+                                                @default
+                                                中性
+                                                @endswitch
+                                                        @endisset
+                                                &ensp;&ensp;右侧:
+                                                @isset($data[0]['orthodontics_clinical_examination']['right_fangs'])
+                                                @switch($data[0]['orthodontics_clinical_examination']['right_fangs'])
+                                                    @case(1)
+                                                    近中
+                                                    @break
+                                                    @case(2)
+                                                    远中
+                                                    @break
+                                                    @default
+                                                    中性
+                                                    @endswitch
+                                                    &ensp;<br/>
+                                                        @endisset
+                                                磨牙关系&ensp;左侧:
+                                                    @isset($data[0]['orthodontics_clinical_examination']['left_molar_fangs'])
+                                                @switch($data[0]['orthodontics_clinical_examination']['left_molar_fangs'])
+                                                    @case(1)
+                                                    近中
+                                                    @break
+                                                    @case(2)
+                                                    远中
+                                                    @break
+                                                    @default
+                                                    中性
+                                                    @endswitch
+                                                    @endisset
+                                                    &ensp;&ensp;右侧:
+                                                                @isset($data[0]['orthodontics_clinical_examination']['right_molar_fangs'])
+                                                    @switch($data[0]['orthodontics_clinical_examination']['right_molar_fangs'])
+                                                        @case(1)
+                                                        近中
+                                                        @break
+                                                        @case(2)
+                                                        远中
+                                                        @break
+                                                        @default
+                                                        中性
+                                                        @endswitch
+                                                        &ensp;
+                                            @endisset
+
+                                    </p>
+                                    <p>垂直关系:</p>
+                                    <p>speed曲线:
+                                        @isset($data[0]['orthodontics_clinical_examination']['speed_curve'])
+                                    @switch($data[0]['orthodontics_clinical_examination']['speed_curve'])
+                                            @case(1)
+                                            反向
+                                            @break
+                                            @case(2)
+                                            过深
+                                            @break
+                                            @default
+                                            正常
+                                            @endswitch
+                                            &ensp;
+                                            @endisset
+                                    </p>
+                                    <p>前牙覆牙合:
+                                        @isset($data[0]['orthodontics_clinical_examination']['deep_bite'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['deep_bite'])
+                                            @case(1)
+                                            深覆牙合I度
+                                            @break
+                                            @case(2)
+                                            深覆盖II度
+                                            @break
+                                            @case(3)
+                                            深覆盖III度
+                                            @break
+                                            @case(4)
+                                            开牙合I度
+                                            @break
+                                            @case(5)
+                                            开牙合II度
+                                            @break
+                                            @case(6)
+                                            开牙合III度
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>后牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['posterior_teeth'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['posterior_teeth'])
+                                            @case(1)
+                                            左侧开牙合I度
+                                            @break
+                                            @case(2)
+                                            左侧开牙合II度
+                                            @break
+                                            @case(3)
+                                            左侧开牙合III度
+                                            @break
+                                            @case(4)
+                                            右侧开牙合I度
+                                            @break
+                                            @case(5)
+                                            右侧开牙合II度
+                                            @break
+                                            @case(6)
+                                            右侧开牙合III度
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>横向关系:</p>
+                                    <p>上颌弓牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
+                                            @case(1)
+                                            狭窄
+                                            @break
+                                            @case(2)
+                                            过宽
+                                            @break
+                                            @default
+                                            正常
+                                            @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>下颌弓牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
+                                            @case(1)
+                                            狭窄
+                                            @break
+                                            @case(2)
+                                            过宽
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>上颌中线:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
+                                            @case(1)
+                                            右偏斜{{$data[0]['orthodontics_clinical_examination']['maxillary_midline_right']}}
+                                            @break
+                                            @case(2)
+                                            左偏斜{{$data[0]['orthodontics_clinical_examination']['maxillary_midline_left']}}
+                                            @break
+                                            @default
+                                            居中
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>下颌中线&ensp;后牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
+                                            @case(1)
+                                            左侧反牙合
+                                            @break
+                                            @case(2)
+                                            左侧正锁牙合
+                                            @break
+                                            @case(3)
+                                            左侧反锁牙合
+                                            @break
+                                            @case(4)
+                                            反覆盖反牙合
+                                            @break
+                                            @case(5)
+                                            左侧反牙合
+                                            @break
+                                            @case(6)
+                                            反覆盖正锁牙合
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                        @endisset
+                                    </p>
+                                    <p>拥挤度:&ensp;上颌:
+                                        @isset($data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary'])
+                                        {{$data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary']}}
+                                        @endisset
+                                        &ensp;下颌:
+                                        @isset($data[0]['orthodontics_clinical_examination']['crowded_degree_jaw'])
+                                        {{$data[0]['orthodontics_clinical_examination']['crowded_degree_jaw']}}
+                                        @endisset
+                                    </p>
+
+                                    <p>Bolton指数:&ensp;前牙比:
+                                        @isset($data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth'])
+                                        {{$data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth']}}
+                                        @endisset
+                                        &ensp;全牙比:
+                                        @isset($data[0]['orthodontics_clinical_examination']['bolton_all_teeth'])
+                                        {{$data[0]['orthodontics_clinical_examination']['bolton_all_teeth']}}
+                                        @endisset
+                                    </p>
 
                                 </div>
 
@@ -420,7 +1119,27 @@
                         </ul>
                         <!--X片分析-->
                         <ul id="xg">
-                            <div><img src="{{asset('reception/img/曲面断层片.png')}}" alt=""></div>
+                            {{--<div class="zhuSuTitle">
+
+                            </div>--}}
+                            <div class="zhuSuDesc">
+                                <p> <span></span>曲面断层片:</p>
+                                <p>
+                                    @switch($data[0]['orthodontic_x_analysis']['surface_fault_slice'])
+                                        @case(1)
+                                        恒牙列
+                                        @break
+                                        @case(2)
+                                        混合牙列
+                                        @break
+                                        @default
+                                        乳牙列
+                                    @endswitch
+                                </p>
+                                <p> <span></span>其它目标</p>
+                                <p>{{$data[0]['orthodontic_x_analysis']['other_target']}}</p>
+
+                            </div>
                         </ul>
                         <!--诊断设计-->
                         <ul id="zd">
@@ -429,33 +1148,285 @@
                                     问题列表
                                 </div>
                                 <div class="zhuSuDesc">
-                                    <p> <span></span>面型：直面型</p>
-                                    <p> <span></span>骨性：I类</p>
-                                    <p> <span></span>生长型：均角</p>
-                                    <p> <span></span>牙性（安氏）：II类I分类亚类</p>
-                                    <p> <span></span>前牙覆牙合：深覆牙合II</p>
-                                    <p> <span></span>前牙覆盖：深覆盖I</p>
-                                    <p> <span></span>拥挤度：上颌2mm 下颌3mm</p>
-
+                                    <p> <span></span>面型：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['positive'])
+                                            @case(1)
+                                            凹面型
+                                            @break
+                                            @case(2)
+                                            凸面型
+                                            @break
+                                            @default
+                                            直面型
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>骨性：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['question_bone_nature'])
+                                            @case(1)
+                                            II类
+                                            @break
+                                            @case(2)
+                                            III类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>生长型：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['growth_type'])
+                                            @case(1)
+                                            高角
+                                            @break
+                                            @case(2)
+                                            低角
+                                            @break
+                                            @default
+                                            均角
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>牙性（安氏）：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['question_teeth_nature'])
+                                            @case(1)
+                                            II类I分类
+                                            @break
+                                            @case(2)
+                                            II类I分类亚类
+                                            @case(3)
+                                            II类II分类
+                                            @break
+                                            @case(4)
+                                            II类II分类亚类
+                                            @case(5)
+                                            III类
+                                            @break
+                                            @case(6)
+                                            III类亚类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>前牙覆牙合：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_overbite'])
+                                            @case(1)
+                                            深覆牙合I
+                                            @break
+                                            @case(2)
+                                            II深覆牙合II
+                                            @case(3)
+                                            深覆牙合III
+                                            @break
+                                            @case(4)
+                                            开牙合I
+                                            @case(5)
+                                            开牙合II
+                                            @break
+                                            @case(6)
+                                            开牙合III
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>前牙覆盖：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['question_anterior_teeth_covered'])
+                                            @case(1)
+                                            深覆盖I
+                                            @break
+                                            @case(2)
+                                            深覆盖II
+                                            @case(3)
+                                            深覆盖III
+                                            @break
+                                            @case(4)
+                                            反覆盖I
+                                            @case(5)
+                                            反覆盖II
+                                            @break
+                                            @case(6)
+                                            反覆盖III
+                                            @break
+                                            @default
+                                            正常
+                                        @endswitch
+                                    </p>
+                                    <p> <span></span>拥挤度：上颌{{$data[0]['orthodontics_diagnostic_design']['maxillary']}}mm 下颌{{$data[0]['orthodontics_diagnostic_design']['jaws']}}mm</p>
 
                                 </div>
-                                <div class="historyTitle">诊断</div>
+                                <div class="zhuSuTitle">诊断</div>
                                 <div class="historyDesc">
-                                    <p><span></span>是否患有或曾患有以下疾病：</p>
-                                    <p><span></span>是否对以下各项过敏：</p>
-                                    <p><span></span>近几年是否一直在服用某种药物：</p>
-                                    <p><span></span>是否准备或在怀孕或哺乳（女性）：</p>
-                                    <p><span></span>患者或患者家长是否在较长时间里一致配合医生治疗：</p>
-                                    <p><span></span>是否有过牙齿或颌面部外伤史：</p>
-                                    <p><span></span>患者的家族成员中是否有类似牙齿错牙合情况：</p>
-                                    <p><span></span>是否有或曾有以下口腔习惯：</p>
-                                    <p><span></span>是否接受过正畸治疗：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-
-
-
-
-
+                                    <p><span></span>骨性 :
+                                        @switch($data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'])
+                                            @case(1)
+                                            II类
+                                            @break
+                                            @case(2)
+                                            III类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p><span></span>牙性（安氏）：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'])
+                                            @case(1)
+                                            II类I分类
+                                            @break
+                                            @case(2)
+                                            II类I分类亚类
+                                            @case(3)
+                                            II类II分类
+                                            @break
+                                            @case(4)
+                                            II类II分类亚类
+                                            @case(5)
+                                            III类
+                                            @break
+                                            @case(6)
+                                            III类亚类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p>其他诊断:{{$data[0]['orthodontics_diagnostic_design']['other_diagnosis']}}</p>
+                                    <div class="zhuSuTitle">
+                                        治疗目标
+                                    </div>
+                                    <div class="zhuSuDesc">
+                                        <p>面型 :
+                                            @switch($data[0]['orthodontics_diagnostic_design']['face_type'])
+                                                @case(1)
+                                                改善
+                                                @break
+                                                @default
+                                                维持
+                                            @endswitch
+                                        </p>
+                                        <p>上颌中线:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['maxillary_midline'])
+                                                @case(1)
+                                                右偏斜
+                                                @break
+                                                @case(2)
+                                                左偏斜
+                                                @break
+                                                @default
+                                                居中
+                                            @endswitch
+                                        </p>
+                                        <p>上颌中线:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['mandibular_midline'])
+                                                @case(1)
+                                                右偏斜
+                                                @break
+                                                @case(2)
+                                                左偏斜
+                                                @break
+                                                @default
+                                                居中
+                                            @endswitch
+                                        </p>
+                                        <p>前牙覆牙合:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'])
+                                                @case(1)
+                                                深覆牙合I
+                                                @break
+                                                @case(2)
+                                                II深覆牙合II
+                                                @case(3)
+                                                深覆牙合III
+                                                @break
+                                                @case(4)
+                                                开牙合I
+                                                @case(5)
+                                                开牙合II
+                                                @break
+                                                @case(6)
+                                                开牙合III
+                                                @break
+                                                @default
+                                                正常
+                                            @endswitch
+                                        </p>
+                                        <p>前牙覆盖：
+                                            @switch($data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'])
+                                                @case(1)
+                                                深覆盖I
+                                                @break
+                                                @case(2)
+                                                深覆盖II
+                                                @case(3)
+                                                深覆盖III
+                                                @break
+                                                @case(4)
+                                                反覆盖I
+                                                @case(5)
+                                                反覆盖II
+                                                @break
+                                                @case(6)
+                                                反覆盖III
+                                                @break
+                                                @default
+                                                正常
+                                            @endswitch
+                                        </p>
+                                        <p>
+                                            尖牙关系&ensp;左侧:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['left_fangs'])
+                                                @case(1)
+                                                近中
+                                                @break
+                                                @case(2)
+                                                远中
+                                                @break
+                                                @default
+                                                中性
+                                                @endswitch
+                                                &ensp;&ensp;右侧:
+                                                @switch($data[0]['orthodontics_diagnostic_design']['right_fangs'])
+                                                    @case(1)
+                                                    近中
+                                                    @break
+                                                    @case(2)
+                                                    远中
+                                                    @break
+                                                    @default
+                                                    中性
+                                                    @endswitch
+                                                    &ensp;<br/>
+                                                    磨牙关系&ensp;左侧:
+                                                    @switch($data[0]['orthodontics_diagnostic_design']['left_molar_fangs'])
+                                                        @case(1)
+                                                        近中
+                                                        @break
+                                                        @case(2)
+                                                        远中
+                                                        @break
+                                                        @default
+                                                        中性
+                                                        @endswitch
+                                                        &ensp;&ensp;右侧:
+                                                        @switch($data[0]['orthodontics_diagnostic_design']['right_molar_fangs'])
+                                                            @case(1)
+                                                            近中
+                                                            @break
+                                                            @case(2)
+                                                            远中
+                                                            @break
+                                                            @default
+                                                            中性
+                                                            @endswitch
+                                                            &ensp;
+                                        </p>
+                                        <p>其他目标:{{$data[0]['orthodontics_diagnostic_design']['treatment_other_target']}}</p>
+                                    </div>
+                                    <div class="zhuSuTitle">
+                                        治疗计划
+                                    </div>
+                                    <div class="zhuSuDesc">
+                                        <p>{{$data[0]['orthodontics_diagnostic_design']['treatment_plan']}}</p>
+                                    </div>
 
                                 </div>
 
@@ -483,12 +1454,11 @@
                            <h3>治疗方案1</h3>
                        </div>
                        <div class="fanAn1Cont">
-                           <p>第1次内容：<span class="graySpan">（1）无托槽隐形矫治。。。。。。。。。。。</span></p>
-                           <p>方案审核：<span class="redSpan">建议修改</span></p>
-                           <p>理由：<span>基本同意，需要增加内容。。。</span></p>
-                           <p>第2次内容：<span>（1）拔出四颗第三磨牙（2）无托槽隐形矫正。。。。。。。。。。。。。。。</span></p>
-                           <p>方案审核：<span class="greenSpan">同意</span></p>
-                           <p>目标位审核：<span class="greenSpan" style="margin-right: 20px"> 通过</span><span class="graySpan">2016-03-31</span></p>
+                           @foreach($data[0]['orthodontics_treatment_process'] as $key =>$val)
+
+                           <p>{{$val['name']}}：<span class="graySpan">{{$val['content']}}</span></p>
+                               <p>方案审核:{{$val['expert_respone']}}</p>
+                            @endforeach
                        </div>
                    </div>
                </div>
@@ -496,7 +1466,7 @@
         </div>
     </div>
     <!--流程进展-->
-    <div class="serverBox">
+  {{--  <div class="serverBox">
         <div class="content">
             <div class="server">
                 <div class="serverL" id="serverL4">流程进展</div>
@@ -515,14 +1485,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 </div>
-<<<<<<< HEAD
 
-=======
-</body>
-</html>
->>>>>>> 307dc6baf60dc9ab49474f3c6acf3a9d1a6ce189
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>
@@ -581,7 +1546,7 @@
         $('#serverCont4').slideToggle();
     });
 
-    var cbtn = document.getElementsByClassName('c1');
+   /* var cbtn = document.getElementsByClassName('c1');
     var div = document.getElementsByClassName('try');
 
     for (var i =0;i<cbtn.length;i++) {
@@ -597,7 +1562,7 @@
                 }
             }
         })(i);
-    }
+    }*/
     jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
     window.onload = function ()
     {
@@ -616,4 +1581,4 @@
 </script>
 </body>
 </html>
-@stop
+@endsection

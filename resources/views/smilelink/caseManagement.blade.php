@@ -1,5 +1,5 @@
 @extends('smilelink.header')
-        @section('content')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,23 +89,26 @@
         <input type="hidden" name="doctor_id" value="{{session()->get('doctor.id')}}"/>
         <input type="hidden" name="page" value="1"/>
 
-<script>
-    $('input').focus(function(){
-        //alert(123);
-        $(this).next().slideDown();
-
-    });
-    //给输入框赋值
-    $('.mySelect li').click(function () {
-        var value = $(this).html();//获取li的内容
-        //找input
-        $(this).parent().parent().find('input').val(value);//赋值
-        $(this).parent().slideUp();//消失
-    });
-
-</script>
+    </div>
+</div>
+</form>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+        <script>
+            $('input').focus(function(){
+                //alert(123);
+                $(this).next().slideDown();
+
+            });
+            //给输入框赋值
+            $('.mySelect li').click(function () {
+                var value = $(this).html();//获取li的内容
+                //找input
+                $(this).parent().parent().find('input').val(value);//赋值
+                $(this).parent().slideUp();//消失
+            });
+
+        </script>
 <script>
     $.ajax({
         type: 'get',
@@ -128,7 +131,7 @@
                     var perfect='';
                     if( v.status=='1' ){
                         status ='档案已建立';
-                        option_service = '<a href="#">选择服务</a>';
+                        option_service = '<a href="{{url('caseOne?orthodontics_id=')}}'+oid+'">选择服务</a>';
                         perfect = '<a href="/">完善档案</a>';
                     }else if(v.status=='2'){
                         status ='档案已提交';
@@ -172,4 +175,4 @@
 </script>
 </body>
 </html>
-@stop
+@endsection
