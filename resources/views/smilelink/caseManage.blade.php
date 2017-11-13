@@ -1178,23 +1178,180 @@
                                     <p> <span></span>拥挤度：上颌{{$data[0]['orthodontics_diagnostic_design']['maxillary']}}mm 下颌{{$data[0]['orthodontics_diagnostic_design']['jaws']}}mm</p>
 
                                 </div>
-                                <div class="historyTitle">诊断</div>
+                                <div class="zhuSuTitle">诊断</div>
                                 <div class="historyDesc">
-                                    <p><span></span>是否患有或曾患有以下疾病：</p>
-                                    <p><span></span>是否对以下各项过敏：</p>
-                                    <p><span></span>近几年是否一直在服用某种药物：</p>
-                                    <p><span></span>是否准备或在怀孕或哺乳（女性）：</p>
-                                    <p><span></span>患者或患者家长是否在较长时间里一致配合医生治疗：</p>
-                                    <p><span></span>是否有过牙齿或颌面部外伤史：</p>
-                                    <p><span></span>患者的家族成员中是否有类似牙齿错牙合情况：</p>
-                                    <p><span></span>是否有或曾有以下口腔习惯：</p>
-                                    <p><span></span>是否接受过正畸治疗：</p>
-                                    <p><span></span>患者或家长是否还有担心或要说明的情况：</p>
-
-
-
-
-
+                                    <p><span></span>骨性 :
+                                        @switch($data[0]['orthodontics_diagnostic_design']['diagnosis_bone_nature'])
+                                            @case(1)
+                                            II类
+                                            @break
+                                            @case(2)
+                                            III类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p><span></span>牙性（安氏）：
+                                        @switch($data[0]['orthodontics_diagnostic_design']['diagnosis_teeth_nature'])
+                                            @case(1)
+                                            II类I分类
+                                            @break
+                                            @case(2)
+                                            II类I分类亚类
+                                            @case(3)
+                                            II类II分类
+                                            @break
+                                            @case(4)
+                                            II类II分类亚类
+                                            @case(5)
+                                            III类
+                                            @break
+                                            @case(6)
+                                            III类亚类
+                                            @break
+                                            @default
+                                            I类
+                                        @endswitch
+                                    </p>
+                                    <p>其他诊断:{{$data[0]['orthodontics_diagnostic_design']['other_diagnosis']}}</p>
+                                    <div class="zhuSuTitle">
+                                        治疗目标
+                                    </div>
+                                    <div class="zhuSuDesc">
+                                        <p>面型 :
+                                            @switch($data[0]['orthodontics_diagnostic_design']['face_type'])
+                                                @case(1)
+                                                改善
+                                                @break
+                                                @default
+                                                维持
+                                            @endswitch
+                                        </p>
+                                        <p>上颌中线:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['maxillary_midline'])
+                                                @case(1)
+                                                右偏斜
+                                                @break
+                                                @case(2)
+                                                左偏斜
+                                                @break
+                                                @default
+                                                居中
+                                            @endswitch
+                                        </p>
+                                        <p>上颌中线:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['mandibular_midline'])
+                                                @case(1)
+                                                右偏斜
+                                                @break
+                                                @case(2)
+                                                左偏斜
+                                                @break
+                                                @default
+                                                居中
+                                            @endswitch
+                                        </p>
+                                        <p>前牙覆牙合:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_overbite'])
+                                                @case(1)
+                                                深覆牙合I
+                                                @break
+                                                @case(2)
+                                                II深覆牙合II
+                                                @case(3)
+                                                深覆牙合III
+                                                @break
+                                                @case(4)
+                                                开牙合I
+                                                @case(5)
+                                                开牙合II
+                                                @break
+                                                @case(6)
+                                                开牙合III
+                                                @break
+                                                @default
+                                                正常
+                                            @endswitch
+                                        </p>
+                                        <p>前牙覆盖：
+                                            @switch($data[0]['orthodontics_diagnostic_design']['target_anterior_teeth_covered'])
+                                                @case(1)
+                                                深覆盖I
+                                                @break
+                                                @case(2)
+                                                深覆盖II
+                                                @case(3)
+                                                深覆盖III
+                                                @break
+                                                @case(4)
+                                                反覆盖I
+                                                @case(5)
+                                                反覆盖II
+                                                @break
+                                                @case(6)
+                                                反覆盖III
+                                                @break
+                                                @default
+                                                正常
+                                            @endswitch
+                                        </p>
+                                        <p>
+                                            尖牙关系&ensp;左侧:
+                                            @switch($data[0]['orthodontics_diagnostic_design']['left_fangs'])
+                                                @case(1)
+                                                近中
+                                                @break
+                                                @case(2)
+                                                远中
+                                                @break
+                                                @default
+                                                中性
+                                                @endswitch
+                                                &ensp;&ensp;右侧:
+                                                @switch($data[0]['orthodontics_diagnostic_design']['right_fangs'])
+                                                    @case(1)
+                                                    近中
+                                                    @break
+                                                    @case(2)
+                                                    远中
+                                                    @break
+                                                    @default
+                                                    中性
+                                                    @endswitch
+                                                    &ensp;<br/>
+                                                    磨牙关系&ensp;左侧:
+                                                    @switch($data[0]['orthodontics_diagnostic_design']['left_molar_fangs'])
+                                                        @case(1)
+                                                        近中
+                                                        @break
+                                                        @case(2)
+                                                        远中
+                                                        @break
+                                                        @default
+                                                        中性
+                                                        @endswitch
+                                                        &ensp;&ensp;右侧:
+                                                        @switch($data[0]['orthodontics_diagnostic_design']['right_molar_fangs'])
+                                                            @case(1)
+                                                            近中
+                                                            @break
+                                                            @case(2)
+                                                            远中
+                                                            @break
+                                                            @default
+                                                            中性
+                                                            @endswitch
+                                                            &ensp;
+                                        </p>
+                                        <p>其他目标:{{$data[0]['orthodontics_diagnostic_design']['treatment_other_target']}}</p>
+                                    </div>
+                                    <div class="zhuSuTitle">
+                                        治疗计划
+                                    </div>
+                                    <div class="zhuSuDesc">
+                                        <p>{{$data[0]['orthodontics_diagnostic_design']['treatment_plan']}}</p>
+                                    </div>
 
                                 </div>
 
@@ -1350,5 +1507,3 @@
 </script>
 </body>
 </html>
-@stop
-
