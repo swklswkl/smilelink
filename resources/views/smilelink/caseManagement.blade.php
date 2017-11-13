@@ -39,7 +39,7 @@
         <input type="text">
     </div>
     <div class="searchButton">
-        <button>查询</button>
+        <button id="search">查询</button>
     </div>
 </div>
 </div>
@@ -132,7 +132,7 @@
                     if( v.status=='1' ){
                         status ='档案已建立';
                         option_service = '<a href="{{url('caseOne?orthodontics_id=')}}'+oid+'">选择服务</a>';
-                        perfect = '<a href="/">完善档案</a>';
+                        perfect = '<a href="{{url('createZhenJiCaseOne?orthodontics_id=')}}'+oid+'">完善档案</a>';
                     }else if(v.status=='2'){
                         status ='档案已提交';
                         perfect = '<a href="/editprogram?orthodontics_id='+oid+'">维护方案</a>';
