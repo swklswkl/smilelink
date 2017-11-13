@@ -98,11 +98,13 @@
                 <div class="li-top">
                     <p style="color: #e47138">详细资料<button type="button" onclick="editinfo()"></button>
                     <p>
+                        <input type="hidden" id="doctor_id" value="{{session()->get('doctor.id')}}">
                         姓名：<input type="text" name="name" id="name" value="{{$data['name']}}" style="width: 522px;height: 40px;font-size: 18px;padding-left: 10px;border: 1px solid gainsboro" disabled>
                     </p>
                     <p>性别：
-                        <input type="radio" name="sex" id="sex1" {{$data['sex']==0 ? 'checked' : ''}} style="width: 16px;height: 16px" disabled>男
-                        <input type="radio" name="sex" id="sex2" {{$data['sex']==1 ? 'checked' : ''}} style="margin-left: 50px;width: 16px;height: 16px" disabled>女
+                        <input type="hidden" id="sexall" value="{{$data['sex']}}">
+                        <input type="radio" onclick="sexsex(this.value)" value="0" name="sex" id="sex1" {{$data['sex']==0 ? 'checked' : ''}} style="width: 16px;height: 16px" disabled>男
+                        <input type="radio" onclick="sexsex(this.value)" value="1" name="sex" id="sex2" {{$data['sex']==1 ? 'checked' : ''}} style="margin-left: 50px;width: 16px;height: 16px" disabled>女
                     </p>
                     <p>生日：<input type="date" value="{{$data['birthday']}}" id="bir" style="width: 522px;height: 40px;font-size: 18px;padding-left: 10px;border: 1px solid gainsboro" disabled></p>
                     <p>
@@ -113,8 +115,8 @@
                             <option value="">{{$data['city']}}</option>
                         </select>
                     </p>
-                    <span style="display:inline-block;text-align:center;line-height:34px;background-color:#69be28;color:#fff;width:100px;height:34px;cursor: hand" id="save">保存</span>
-                    <span style="display:inline-block;text-align:center;line-height:34px;background-color:#69be28;color:#fff;width:100px;height:34px;cursor: hand" id="cance">取消</span>
+                    <span style="display:none;text-align:center;line-height:34px;background-color:#69be28;color:#fff;width:100px;height:34px;cursor: hand" id="save" onclick="saved()">保存</span>
+                    <span style="display:none;text-align:center;line-height:34px;background-color:#69be28;color:#fff;width:100px;height:34px;cursor: hand" id="cance" onclick="canced()">取消</span>
                 </div>
             </li>
             <!--安全设置-->
@@ -148,7 +150,7 @@
             var pro = $('#phppro').val();
             for (var i =0;i<data.length;i++)
             {
-                $('#province').append((data[i]['text']==pro)?'<option'+' selected'+' value='+data[i]['id']+'>'+data[i]['text']+'</option>':'<option'+' value='+data[i]['id']+'>'+data[i]['text']+'</option>');
+                $('#province').append((data[i]['text']==pro)?'<option'+' selected'+' value='+data[i]['id']+'>'+data[i]['text']+'</option>':'<option'+'tuom value='+data[i]['id']+'>'+data[i]['text']+'</option>');
             }
         }
     });
@@ -242,6 +244,45 @@
         $('#bir').removeAttr('disabled');
         $('#province').removeAttr('disabled');
         $('#city').removeAttr('disabled');
+        $('#save').css('display','inline-block');
+        $('#cance').css('display','inline-block');
+    }
+
+    function saved ()
+    {
+        $.ajax({
+            method: 'post',
+            url: '/api/doctor/updateInformation',
+            data: {
+                name:$('#name').val(),
+                sex:$('#sexall').val(),
+                birthday:$('#bir').val(),
+                sex:$('#sex').val(),
+                birthday:$('#birthday').val(),
+                province:$('#province').find("option:selected").text(),
+                city:$('#city').find("option:selected").text(),
+            },
+            success: function (data) {
+                eval('var res = ' + data);
+                if (res['code'] == 200) {
+                    $('#name').attr('disabled');
+                    $('#sex1').attr('disabled');
+                    $('#sex2').attr('disabled');
+                    $('#bir').attr('disabled');
+                    $('#province').attr('disabled');
+                    $('#city').attr('disabled');
+                    $('#save').css('display','none');
+                    $('#cance').css('display','none');
+                } else {
+
+                }
+            }
+        });
+    }
+
+    function sexsex(num)
+    {
+        $('#sexall').val(num);
     }
 </script>
 </body>

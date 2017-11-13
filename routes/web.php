@@ -86,3 +86,10 @@ Route::get('safeSet','DoctorController@safeSet');
 
 /*-------------------------------测试接口-------------------------------*/
 
+Route::get('editCase1','OrthodonticCaseController@page1');
+Route::get('editCase2','OrthodonticCaseController@page2');
+Route::get('editCase3','OrthodonticCaseController@page3');
+Route::get('editCase4','OrthodonticCaseController@page4');
+Route::get('editCase5','OrthodonticCaseController@page5');
+Route::get('editCase6','OrthodonticCaseController@page6');
+Route::get('editCase7','OrthodonticCaseController@page7');
