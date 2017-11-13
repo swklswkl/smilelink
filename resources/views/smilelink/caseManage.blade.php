@@ -1,4 +1,5 @@
-
+@extends('smilelink.header')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,26 +70,40 @@
             </div>
             <div class="serverCont" id="serverCont1">
                 <div class="part1">
-
-
                         <div class="part1Cont">
 
-                                <input class="c1 no1" type="checkbox" switch="0" >
-                                <input  class="c1 no2" type="checkbox" switch="0" >
-                                <input class="c1 no3" type="checkbox" switch="0" >
-                                <input  class="c1 no4" type="checkbox" switch="0" >
-                                <input class="c1 no5" type="checkbox" switch="0" >
+
+                                <input  class="c1 no2" type="checkbox" switch="0"  checked>
+                                <input class="c1 no3" type="checkbox" switch="0" checked>
+                                <input  class="c1 no4" type="checkbox" switch="0" checked>
+                                <input class="c1 no5" type="checkbox" switch="0"  checked>
 
 
 
                             <div class="tryBox">
-                                <div class="try ">X片分析</div>
-                                <div class="try">面部照片分析</div>
-                                <div  class="try">正畸档案</div>
-                                <div class="try">治疗计划专家指导</div>
-                                <div class="try">隐适美矫治方案</div>
+                                <?php
+                                $a=explode(',',$data[0]['service_id']) ;
+                                //                                        dump(count($a));die;
+                                for($i=0;$i<count($a);$i++){
+                                    switch ($a[$i]){
+                                        case 3:
+                                            echo "<div class=\"try \" style=\"background: url('reception/img/yes3.png')\">X片分析</div>";
+                                            break;
+                                        case 4:
+                                            echo "<div class=\"try\" style=\"background: url('reception/img/yes3.png')\">面部照片分析</div>";
+                                            break;
+                                        case 1:
+                                            echo "<div  class=\"try\" style=\"background: url('reception/img/yes3.png')\">正畸档案</div>";
+                                            break;
+                                        case 7:
+                                            echo "<div class=\"try\" style=\"background: url('reception/img/yes3.png')\">治疗计划专家指导</div>";
+                                            break;
+                                        default:
 
-
+                                            break;
+                                    }
+                                }
+                                ?>
                             </div>
 
 
@@ -103,7 +118,6 @@
 
         </div>
     </div>
-{{dump($data)}}
     <!--临床资料-->
     <div class="serverBox">
         <div class="content">
@@ -682,7 +696,11 @@
                                             @endif
                                             &ensp;</p>
                                     <p><span></span>牙齿状态其它:</p>
-                                    <p>{{$data[0]['orthodontics_clinical_examination']['teeth_condition_other']}}</p>
+                                    <p>
+                                        @isset($data[0]['orthodontics_clinical_examination']['teeth_condition_other'])
+                                        {{$data[0]['orthodontics_clinical_examination']['teeth_condition_other']}}
+                                        @endisset
+                                    </p>
                                 </div>
 
                                 <div class="checkTitle">
@@ -716,6 +734,7 @@
                                     <p><span></span>弹响：
                                     </p>
                                     <p>左侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_sound'])
                                         @switch($data[0]['orthodontics_clinical_examination']['left_sound'])
                                             @case(4)
                                             闭口末
@@ -732,9 +751,11 @@
                                             @default
                                             无
                                         @endswitch
+                                                @endisset
                                             &ensp;
                                     </p>
                                     <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_sound'])
                                         @switch($data[0]['orthodontics_clinical_examination']['right_sound'])
                                             @case(1)
                                             张口初
@@ -751,11 +772,13 @@
                                             @default
                                             无
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p><span></span>摩擦音</p>
 
                                     <p>左侧：
-                                        @switch($data[0]['orthodontics_clinical_examination']['left_friction_sound'])
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_sound'])
+                                        @switch($data[0]['orthodontics_clinical_examination']['right_sound'])
                                             @case(1)
                                             张口
                                             @break
@@ -765,8 +788,10 @@
                                             @default
                                             无
                                         @endswitch
+                                            @endisset
                                     </p>
                                     <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_friction_sound'])
                                         @switch($data[0]['orthodontics_clinical_examination']['right_friction_sound'])
                                             @case(1)
                                             张口
@@ -777,9 +802,11 @@
                                             @default
                                             无
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p><span></span>疼痛</p>
                                     <p>左侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_pain'])
                                         @switch($data[0]['orthodontics_clinical_examination']['left_pain'])
                                             @case(1)
                                             大张口
@@ -799,8 +826,10 @@
                                             @default
                                             无
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p>右侧：
+                                        @isset($data[0]['orthodontics_clinical_examination']['right_pain'])
                                         @switch($data[0]['orthodontics_clinical_examination']['right_pain'])
                                             @case(1)
                                             大张口
@@ -820,15 +849,21 @@
                                             @default
                                             无
                                         @endswitch
+                                        @endisset
                                     </p>
-                                    <p>其它：{{$data[0]['orthodontics_clinical_examination']['joint_examination_other']}}</p>
+                                    <p>其它：
+                                        @isset($data[0]['orthodontics_clinical_examination']['joint_examination_other'])
+                                        {{$data[0]['orthodontics_clinical_examination']['joint_examination_other']}}
+                                        @endisset
+                                    </p>
                                 </div>
                                 <div class="checkTitle">
                                     <h3>错颌问题：</h3>
                                 </div>
                                 <div class="checkCont">
+                                    @isset($data[0]['orthodontics_clinical_examination']['joint_examination_other'])
                                     <p>{{$data[0]['orthodontics_clinical_examination']['malocclusion_problem']}}</p>
-
+                                    @endisset
 
                                 </div>
 
@@ -838,6 +873,7 @@
                                 <div class="checkCont">
                                     <p><span></span>上下牙弓关系</p>
                                     <p>矢状关系：<br/> 前牙覆盖:
+                                        @isset($data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'])
                                         @switch($data[0]['orthodontics_clinical_examination']['anterior_teeth_covered'])
                                             @case(1)
                                             深覆盖I度
@@ -860,8 +896,10 @@
                                             @default
                                             正常
                                         @endswitch
+                                        @endisset
                                                 <br/>
                                         尖牙关系&ensp;左侧:
+                                        @isset($data[0]['orthodontics_clinical_examination']['left_fangs'])
                                             @switch($data[0]['orthodontics_clinical_examination']['left_fangs'])
                                                 @case(1)
                                                 近中
@@ -872,7 +910,9 @@
                                                 @default
                                                 中性
                                                 @endswitch
+                                                        @endisset
                                                 &ensp;&ensp;右侧:
+                                                @isset($data[0]['orthodontics_clinical_examination']['right_fangs'])
                                                 @switch($data[0]['orthodontics_clinical_examination']['right_fangs'])
                                                     @case(1)
                                                     近中
@@ -884,7 +924,9 @@
                                                     中性
                                                     @endswitch
                                                     &ensp;<br/>
+                                                        @endisset
                                                 磨牙关系&ensp;左侧:
+                                                    @isset($data[0]['orthodontics_clinical_examination']['left_molar_fangs'])
                                                 @switch($data[0]['orthodontics_clinical_examination']['left_molar_fangs'])
                                                     @case(1)
                                                     近中
@@ -895,7 +937,9 @@
                                                     @default
                                                     中性
                                                     @endswitch
+                                                    @endisset
                                                     &ensp;&ensp;右侧:
+                                                                @isset($data[0]['orthodontics_clinical_examination']['right_molar_fangs'])
                                                     @switch($data[0]['orthodontics_clinical_examination']['right_molar_fangs'])
                                                         @case(1)
                                                         近中
@@ -907,10 +951,12 @@
                                                         中性
                                                         @endswitch
                                                         &ensp;
+                                            @endisset
 
                                     </p>
                                     <p>垂直关系:</p>
                                     <p>speed曲线:
+                                        @isset($data[0]['orthodontics_clinical_examination']['speed_curve'])
                                     @switch($data[0]['orthodontics_clinical_examination']['speed_curve'])
                                             @case(1)
                                             反向
@@ -922,8 +968,10 @@
                                             正常
                                             @endswitch
                                             &ensp;
+                                            @endisset
                                     </p>
                                     <p>前牙覆牙合:
+                                        @isset($data[0]['orthodontics_clinical_examination']['deep_bite'])
                                         @switch($data[0]['orthodontics_clinical_examination']['deep_bite'])
                                             @case(1)
                                             深覆牙合I度
@@ -946,8 +994,10 @@
                                             @default
                                             正常
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p>后牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['posterior_teeth'])
                                         @switch($data[0]['orthodontics_clinical_examination']['posterior_teeth'])
                                             @case(1)
                                             左侧开牙合I度
@@ -970,9 +1020,11 @@
                                             @default
                                             正常
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p>横向关系:</p>
                                     <p>上颌弓牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
                                         @switch($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
                                             @case(1)
                                             狭窄
@@ -983,8 +1035,10 @@
                                             @default
                                             正常
                                             @endswitch
+                                        @endisset
                                     </p>
                                     <p>下颌弓牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
                                         @switch($data[0]['orthodontics_clinical_examination']['maxillary_arch_teeth'])
                                             @case(1)
                                             狭窄
@@ -995,8 +1049,10 @@
                                             @default
                                             正常
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p>上颌中线:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
                                         @switch($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
                                             @case(1)
                                             右偏斜{{$data[0]['orthodontics_clinical_examination']['maxillary_midline_right']}}
@@ -1007,8 +1063,10 @@
                                             @default
                                             居中
                                         @endswitch
+                                        @endisset
                                     </p>
                                     <p>下颌中线&ensp;后牙:
+                                        @isset($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
                                         @switch($data[0]['orthodontics_clinical_examination']['maxillary_midline'])
                                             @case(1)
                                             左侧反牙合
@@ -1031,10 +1089,27 @@
                                             @default
                                             正常
                                         @endswitch
+                                        @endisset
                                     </p>
-                                    <p>拥挤度:&ensp;上颌:{{$data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary']}}&ensp;下颌:{{$data[0]['orthodontics_clinical_examination']['crowded_degree_jaw']}}</p>
+                                    <p>拥挤度:&ensp;上颌:
+                                        @isset($data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary'])
+                                        {{$data[0]['orthodontics_clinical_examination']['crowd_degree_maxillary']}}
+                                        @endisset
+                                        &ensp;下颌:
+                                        @isset($data[0]['orthodontics_clinical_examination']['crowded_degree_jaw'])
+                                        {{$data[0]['orthodontics_clinical_examination']['crowded_degree_jaw']}}
+                                        @endisset
+                                    </p>
 
-                                    <p>Bolton指数:&ensp;前牙比:{{$data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth']}}&ensp;全牙比:{{$data[0]['orthodontics_clinical_examination']['bolton_all_teeth']}}</p>
+                                    <p>Bolton指数:&ensp;前牙比:
+                                        @isset($data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth'])
+                                        {{$data[0]['orthodontics_clinical_examination']['bolton_anterior_teeth']}}
+                                        @endisset
+                                        &ensp;全牙比:
+                                        @isset($data[0]['orthodontics_clinical_examination']['bolton_all_teeth'])
+                                        {{$data[0]['orthodontics_clinical_examination']['bolton_all_teeth']}}
+                                        @endisset
+                                    </p>
 
                                 </div>
 
@@ -1379,12 +1454,11 @@
                            <h3>治疗方案1</h3>
                        </div>
                        <div class="fanAn1Cont">
-                           <p>第1次内容：<span class="graySpan">（1）无托槽隐形矫治。。。。。。。。。。。</span></p>
-                           <p>方案审核：<span class="redSpan">建议修改</span></p>
-                           <p>理由：<span>基本同意，需要增加内容。。。</span></p>
-                           <p>第2次内容：<span>（1）拔出四颗第三磨牙（2）无托槽隐形矫正。。。。。。。。。。。。。。。</span></p>
-                           <p>方案审核：<span class="greenSpan">同意</span></p>
-                           <p>目标位审核：<span class="greenSpan" style="margin-right: 20px"> 通过</span><span class="graySpan">2016-03-31</span></p>
+                           @foreach($data[0]['orthodontics_treatment_process'] as $key =>$val)
+
+                           <p>{{$val['name']}}：<span class="graySpan">{{$val['content']}}</span></p>
+                               <p>方案审核:{{$val['expert_respone']}}</p>
+                            @endforeach
                        </div>
                    </div>
                </div>
@@ -1392,7 +1466,7 @@
         </div>
     </div>
     <!--流程进展-->
-    <div class="serverBox">
+  {{--  <div class="serverBox">
         <div class="content">
             <div class="server">
                 <div class="serverL" id="serverL4">流程进展</div>
@@ -1411,7 +1485,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 </div>
 
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
@@ -1472,7 +1546,7 @@
         $('#serverCont4').slideToggle();
     });
 
-    var cbtn = document.getElementsByClassName('c1');
+   /* var cbtn = document.getElementsByClassName('c1');
     var div = document.getElementsByClassName('try');
 
     for (var i =0;i<cbtn.length;i++) {
@@ -1488,7 +1562,7 @@
                 }
             }
         })(i);
-    }
+    }*/
     jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
     window.onload = function ()
     {
@@ -1507,3 +1581,4 @@
 </script>
 </body>
 </html>
+@endsection

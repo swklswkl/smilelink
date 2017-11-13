@@ -47,6 +47,6 @@
     }
 </script>
 @section('content')
-@endsection
+@show
 
 
