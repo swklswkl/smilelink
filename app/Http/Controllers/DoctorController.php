@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\CaseHistory;
 use App\Model\Doctors;
+use App\Model\Experts;
 use App\Model\Orders;
 use App\Model\Orthodontics;
 use App\Model\Service;
@@ -142,24 +143,51 @@ class DoctorController extends Controller
                 $errors = $validator->errors();
                 return $this->errorResponse($errors);
             }
-            $result = Doctors::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone,'password'=>$password])->get()->toArray();
 
-            if (sizeof($result))
+            if ($request->post('select') == 1)
             {
-                // 医生信息保存到session
-                $request->session()->put('doctor.mobilephone',$result[0]['mobilephone']);
-                $request->session()->put('doctor.id',$result[0]['id']);
+                $result = Doctors::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone,'password'=>$password])->get()->toArray();
+                if (sizeof($result))
+                {
+                    // 医生信息保存到session
+                    $request->session()->put('doctor.mobilephone',$result[0]['mobilephone']);
+                    $request->session()->put('doctor.id',$result[0]['id']);
 
-                return $this->successResponse('登录成功',$result);
+                    return $this->successResponse('登录成功',$result);
+                }else{
+                    return $this->errorResponse('账号或密码错误',402);
+                }
             }else{
-                return $this->errorResponse('账号或密码错误',402);
+                $result = Experts::select(['id','mobilephone'])->where(['mobilephone' => $mobilephone,'password'=>$password])->get()->toArray();
+                if (sizeof($result))
+                {
+                    // 专家信息保存到session
+                    $request->session()->put('expert.mobilephone',$result[0]['mobilephone']);
+                    $request->session()->put('expert.id',$result[0]['id']);
+                    return $this->successResponse('登录成功',$result);
+                }else{
+                    return $this->errorResponse('账号或密码错误',402);
+                }
             }
+
+
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');
         }
     }
 
+    public function loginOut (Request $request)
+    {
+        try
+        {
+            $request->session()->forget('doctor');
+            return $this->successResponse('退出成功');
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
     /**
      * TODO:查询医生信息
      * @param Request $request
@@ -229,7 +257,7 @@ class DoctorController extends Controller
         {
             $data = Orthodontics::select(['id','name','create_time','status','service_id'])
                 ->where(['doctor_id'=>$request->get('doctor_id')])
-                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 20 : $request->get('show_num'))
                 ->toArray();
             if ($data['data'] == [])
             {
@@ -284,7 +312,7 @@ class DoctorController extends Controller
                     $query->where('doctor_id',$request->get('doctor_id'))->where('id','like','%'.$request->get('content').'%');
                 })->orWhere(function ($query) use ($request) {
                     $query->where('doctor_id',$request->get('doctor_id'))->where('name','like','%'.$request->get('content').'%');
-                })->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))->toArray();
+                })->paginate($request->get('show_num')=='' ? 20 : $request->get('show_num'))->toArray();
 
             if ($data['data'] == [])
             {
@@ -333,12 +361,17 @@ class DoctorController extends Controller
         try
         {
             $orders = Orders::select(['number','orthodontics_id','amount','create_time','status'])
-                    ->where(['doctor_id' => $request->get('doctor_id')])
+                    ->where(['doctor_id' => $this->webOrApi($request->getRequestUri()) == 'api' ? $request->get('doctor_id') : $request->session()->get('doctor.id') ])
                     ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                     ->toArray();
             if ($orders['data'] == [])
             {
-                return $this->successResponse('暂无订单');
+                if ($this->webOrApi($request->getRequestUri()) == 'api')
+                {
+                    return $this->successResponse('暂无订单');
+                }else{
+                    return view('smilelink.myOrder');
+                }
             }
             for ($i=0;$i<sizeof($orders['data']);$i++)
             {
@@ -362,7 +395,7 @@ class DoctorController extends Controller
                             $service = [];
                             for ($k=0;$k<sizeof($service_id);$k++)
                             {
-                                $sName = Service::select(['service_name as '.$k])
+                                $sName = Service::select(['service_name'])
                                     ->where(['id'=>$service_id[$k]])
                                     ->get()
                                     ->toArray();
@@ -370,7 +403,6 @@ class DoctorController extends Controller
                                 $service[$k] = $sName;
 
                                 $data[$j]['service_name'] = $service;
-//
                             }
                         }else{
                             $ser = Service::select(['service_name'])
@@ -378,7 +410,6 @@ class DoctorController extends Controller
                                 ->get()
                                 ->toArray();
                             $data[$j]['service_name'] = $ser;
-
                         }
                     }
 
@@ -387,7 +418,12 @@ class DoctorController extends Controller
                     $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
-            return $this->successResponse('查询成功',$orders);
+            if ($this->webOrApi($request->getRequestUri()) == 'api')
+            {
+                return $this->successResponse('查询',$orders);
+            }else{
+                return view('smilelink.myOrder')->with('data',$orders);
+            }
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');

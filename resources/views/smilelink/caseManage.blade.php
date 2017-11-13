@@ -9,24 +9,6 @@
     <link rel="stylesheet" href="{{asset('reception/css/caseManage.css')}}">
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<header>
-    <div class="content">
-        <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
-        </div>
-        <div class="head-C">
-            <span ><a href="{{url('createCase')}}">新建病例</a></span>
-            <span class="span1"><a href="{{url('caseManagement')}}">病例管理</a></span>
-            <span><a href="#">我的订单</a></span>
-        </div>
-        <div class="head-R">
-            <span><a href="#">个人中心</a></span>
-            <span class="span2"><a href="#">退出</a></span>
-        </div>
-    </div>
-</header>
 <div class="content">
     <!--基本信息-->
     <div class="messageBox">
@@ -521,24 +503,11 @@
                     <p  ><span class="wrongSpan"></span><span>2016/03/31</span> <span>方案需修改</span></p>
                     <p class="wrongP">治疗方案未通过：</p>
                 </div>
-
-
-
-
-
-
-
-
             </div>
-
         </div>
     </div>
 </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-</body>
-</html>
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>
@@ -632,3 +601,4 @@
 </script>
 </body>
 </html>
+@stop

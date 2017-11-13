@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\CaseHistoryImage;
+use App\Model\Orders;
 use App\Model\Orthodontics;
 use App\Model\OrthodonticsChiefComplaint;
 use App\Model\OrthodonticsClinicalExamination;
@@ -630,8 +631,8 @@ class OrthodonticCaseController extends Controller
      */
     public function inquire (Request $request)
     {
-//        try
-//        {
+        try
+        {
            $orthodontics_id = $request->get('orthodontics_id');
            $data = Orthodontics::select(['id','name', 'sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address','service_id'])->where(['id' => $orthodontics_id])
                ->with(['OrthodonticsChiefComplaint' => function ($query){
@@ -643,7 +644,7 @@ class OrthodonticCaseController extends Controller
                },'OrthodonticXAnalysis' => function ($query) {
                    $query->select(['orthodontics_id', 'surface_fault_slice', 'other_target']);
                },'OrthodonticsDiagnosticDesign' => function ($query) {
-                   $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan']);
+                   $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan','maxillary','jaws']);
                },'OrthodonticsTreatmentProcess' => function ($query) {
                    $query->select(['id', 'orthodontics_id', 'name', 'content', 'positive_photo', 'side_photo', 'positive_smile_photo', 'upper_arch_photo', 'positive_45_photo', 'under_arch_photo', 'right_bite_photo', 'positive_bite_photo', 'left_bite_photo', 'panorama_photo', 'side_x_photo', 'positive_x_photo', 'tooth_photo', 'cbct_joint_sagittal', 'cbct_coronary_joint', 'cbct_anterior_teeth', 'cbct_under_teeth', 'abnormal_teeth', 'air_passage', 'other','create_time']);
                }])->get()->toArray();
@@ -688,10 +689,10 @@ class OrthodonticCaseController extends Controller
                     }
                 }
             }
-//        }catch (\Exception $e)
-//        {
-//            return $this->errorResponse('操作有误');
-//        }
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
     }
 
     /**
@@ -792,8 +793,9 @@ class OrthodonticCaseController extends Controller
         if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
         {
             $service_id = implode(',',$request->post('service_id'));
+        }else{
+            $service_id = $service_id[0];
         }
-
         $complained = $request->post('complained');
         if (sizeof($request->post('complained')) > 1 && sizeof($request->post('complained')) !== '')
         {
@@ -939,11 +941,27 @@ class OrthodonticCaseController extends Controller
                     'right_molar_fangs' => $request->post('right_molar_fangs'),
                     'treatment_other_target' => $request->post('treatment_other_target')
                 ]);
-            for ($i=0;$i<$num;$i++)
+            Orthodontics::where(['id' => $request->post('orthodontics_id')])
+                ->update([
+                    'status' => $request->post('issub') == 1 ? '1' : '2'
+                ]);
+            if ($request->post('issub') == 2)
+            {
+                Orders::insert([
+                    'number' => $this->createOrderNum($request->getClientIp()),
+                    'orthodontics_id' => $request->post('orthodontics_id'),
+                    'doctor_id' => $request->session()->get('doctor.id'),
+                    'status' => '1',
+                    'amount' => mt_rand(1,999),
+                    'create_time' => time(),
+                    'pay_time' => time()
+                ]);
+            }
+            for ($i=1;$i<=$num;$i++)
             {
                 Program::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
-                    'program_name' => '方案'.$request->post('program_name'.$i),
+                    'program_name' => $request->post('program_name'.$i),
                     'content' => $request->post('content'.$i)
                 ]);
             }
@@ -952,7 +970,21 @@ class OrthodonticCaseController extends Controller
         }catch (\Exception $e)
         {
             DB::rollBack();
-            return $this->errorResponse('操作有误');
+            return $this->errorResponse($e);
         }
     }
+
+//    public function editProgram (Request $request)
+//    {
+//        $data = Program::select(['program_name','content'])
+//            ->where(['orthodontics_id'=>$request->get('orthodontics_id')])
+//            ->get()
+//            ->toArray();
+//        if ($this->webOrApi($request->getRequestUri()) == 'api')
+//        {
+//            return $this->successResponse('成功',$data);
+//        }else{
+//            return view('smilelink.caseManage')->with('data',$data);
+//        }
+//    }
 }

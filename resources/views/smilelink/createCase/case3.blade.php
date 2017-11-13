@@ -42,7 +42,7 @@
             <div class="sel" id="click_event4">^</div>
         </div>
         <div class="part5Cont" id="hidden_enent4">
-            <form action="">
+            <form id="page3">
                 <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}">
                 <div class="row">
                     <div class="col-md-1 text-right">面型:</div>
@@ -276,18 +276,19 @@
                 其他目标:
                 <textarea name="treatment_other_target" id="1" cols="30" rows="10"></textarea>
 
-                <input type="hidden" name="num" value="1">
+                <input type="hidden" id="name" name="num" value="1">
                 <div class="part6Text" style="border: 2px solid #c2c2c2 ;">
                     <span>*</span>治疗方案
                     <div class="sel" id="click_event7">^</div>
                 </div>
                 <div class="part6Cont1" id="hidden_enent7">
+                        <p>    方案1：</p>
+                    <input type="hidden" name="program_name1" value="方案1">
+                        <textarea name="content1" id="" cols="30" rows="10"></textarea>
                     {{--<input type="radio">待测量分析报告上传后再填写方案，请点击勾选。--}}
-                    <p>    方案1：</p>
-                    <textarea name="content1" id="" cols="30" rows="10"></textarea>
-                    <button>+ 添加新方案</button>
                 </div>
-
+                <button type="button" onclick="add()" style="    width: 200px;height: 52px;background: #e3f0e4;border: 1px solid darkgray;margin-top: 30px;">+ 添加新方案</button>
+                <input type="hidden" name="issub" id="issub" value="1">
             </form>
 
         </div>
@@ -297,16 +298,16 @@
 
 <footer>
     <div class="footT">
-        <div class="content">
-            <input type="radio">我已认真阅读并同意该 <a href="#">《法律条款》</a>
+        {{--<div class="content">--}}
+            {{--<input type="radio">我已认真阅读并同意该 <a href="#">《法律条款》</a>--}}
 
-        </div>
+        {{--</div>--}}
 
     </div>
     <div class="content">
-        <button class="pre">保存</button>
-        <button class="sub">提交</button>
-        <a href="{{url('caseTwo')}}"><button>上一页</button></a>
+        <button class="pre" onclick="submitForm(1)">保存</button>
+        <button class="sub" onclick="submitForm(2)">提交</button>
+        {{--<a href="{{url('caseTwo')}}"><button>上一页</button></a>--}}
 
     </div>
 
@@ -317,9 +318,62 @@
 <script>
 
 
+    function submitForm(issub2)
+    {
+        $('#issub').val(issub2);
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/case/addCaseInformationPage3')}}',
+            dataType:'json',
+            data:$('#page3').serialize(),
+            success: function(data) {
+                console.log(data);
+                if (data.code == 200)
+                {
+                    window.location.href = "{{url('caseManagement')}}";
+                } else {
+                    if(data.code==401) {
+                        $.each(data.msg, function (key, val) {
+                            layer.tips(val, '#' + key);
+                        })
+                    }
+                    if(data.code==402){
+                        layer.msg(data.msg);
+                    }
+                }
+            }
+        });
 
-
-
+    }
+   function add ()
+   {
+       var num = document.getElementById('name').value;
+       if (num < 5)
+       {
+           parseInt(num);
+           ++num;
+           var odiv = document.createElement('div');
+           var div = document.getElementById('hidden_enent7');
+           var hr = document.createElement('hr');
+           var p = document.createElement('p');
+           p.innerHTML = '方案'+num;
+           var input = document.createElement('textarea');
+           var input2 = document.createElement('input');
+           input2.setAttribute('type','hidden');
+           input2.setAttribute('name','program_name'+num);
+           input2.setAttribute('value','方案'+num);
+           input.setAttribute('name','content'+num);
+           input.setAttribute('cols',30);
+           input.setAttribute('rows',10);
+           document.getElementById('name').setAttribute('value',num);
+           odiv.appendChild(hr);
+           odiv.appendChild(p);
+           odiv.appendChild(input2);
+           odiv.appendChild(input);
+           odiv.setAttribute('id','jlgl'+num);
+           div.appendChild(odiv);
+       }
+   }
     $('#click_event4').click(function(){
         $('#hidden_enent4').slideToggle();
     })
@@ -334,12 +388,7 @@
     $('#click_event7').click(function(){
         $('#hidden_enent7').slideToggle();
     });
-
-
 </script>
-
-
-
 </body>
 </html>
 @stop

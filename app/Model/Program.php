@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {
     protected $table = 'sl_program';
+//    protected $primaryKey = 'orthodontics_id';
     public $timestamps = FALSE;
 
     public function Orthodontics ()
