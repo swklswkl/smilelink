@@ -15,7 +15,6 @@
         <div class="content">
             <p>病例管理>>我的病例</p>
             <div class="messageBorder">
-
                 <div class="messageTop">
                     <div class="message-L">
                         基本信息
@@ -27,24 +26,34 @@
                 </div>
                 <div class="messageBottom">
                     <div class="messageBottom1">
-                        病例号：<span id="id"></span>
+                        病例号：<span id="id">{{$data[0]['id']}}</span>
                     </div>
                     <div class="messageBottom1">
-                        患者姓名：<span id="name">Sample</span>
+                        患者姓名：<span id="name">{{$data[0]['name']}}</span>
                     </div><div class="messageBottom1">
-                    性别：<span id="sex">男</span>
+                    性别：<span id="sex">
+                    @if($data[0]['sex']==='0')
+                        男
+                    @else
+                        女
+                    @endif
+                        </span>
                 </div><div class="messageBottom1">
-                    出生日期：<span id="birthday">1989-09-07</span>
+                    出生日期：<span id="birthday">{{$data[0]['birthday']}}</span>
                 </div>
                     <div class="messageBottom1">
-                        手机号码：<span id="mobilephone">000000000</span>
+                        手机号码：<span id="mobilephone">{{$data[0]['mobilephone']}}</span>
                     </div>
                     <div class="messageBottom1">
-                        身份证：<span id="id_number">213213132111123</span>
+                        身份证：<span id="id_number">{{$data[0]['id_number']}}</span>
                     </div><div class="messageBottom1">
-                    创建日期：<span id="create_time">123131321321321</span>
+                    创建日期：<span id="create_time">
+                            @if($data[0]['create_time']!=null)
+                                {{$data[0]['create_time']}}
+                            @endif
+                        </span>
                 </div><div class="messageBottom1">
-                    现居住地址：<span id="address">aXXXXXXXXXXXX</span>
+                    现居住地址：<span id="address">{{$data[0]['address']}}</span>
                 </div>
 
                 </div>
@@ -95,6 +104,7 @@
 
         </div>
     </div>
+{{dump($data)}}
     <!--临床资料-->
     <div class="serverBox">
         <div class="content">
@@ -507,7 +517,12 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
+=======
+</body>
+</html>
+>>>>>>> 307dc6baf60dc9ab49474f3c6acf3a9d1a6ce189
 <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>

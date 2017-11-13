@@ -634,7 +634,7 @@ class OrthodonticCaseController extends Controller
         try
         {
            $orthodontics_id = $request->get('orthodontics_id');
-           $data = Orthodontics::select(['id','name', 'sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address','service_id'])->where(['id' => $orthodontics_id])
+           $data = Orthodontics::select(['id','name', 'create_time','sex', 'birthday', 'id_number', 'mobilephone', 'province', 'city', 'address','service_id'])->where(['id' => $orthodontics_id])
                ->with(['OrthodonticsChiefComplaint' => function ($query){
                    $query->select(['orthodontics_id','complained', 'other_complained', 'height', 'weight', 'age', 'menarche_age', 'suffering_from_disease', 'disease_options', 'other_disease', 'allergy', 'allergy_options', 'other_allergy', 'keep_taking_medicine', 'drugs_name', 'pregnancy', 'coordination_treatment', 'tooth_trauma', 'tooth_wrong_teeth', 'oral_cavity_habits', 'oral_cavity_options', 'other_oral_cavity', 'orthodontic_treatment', 'orthodontic_treatment_remark', 'worry', 'worry_remark', 'other']);
                },'CaseHistoryImages' => function ($query){
