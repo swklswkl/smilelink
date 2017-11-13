@@ -79,7 +79,8 @@ Route::get('caseThree', function () {
     return view('smilelink.createCase.case3');
 });
 
-Route::get('myOrders','DoctorController@findOrders');
+Route::get('myOrders','DoctorController@all');
+Route::get('safeSet','DoctorController@safeSet');
 /*-------------------------------首页接口-------------------------------*/
 
 

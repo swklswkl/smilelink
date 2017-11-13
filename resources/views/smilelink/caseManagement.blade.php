@@ -113,7 +113,6 @@
         dataType: 'json',
         data: $('.form-horizontal').serialize(),
         success: function (data) {
-
             if (data.code == 200) {
                 console.log(data.data)
                 //遍历分页属性链接
@@ -142,8 +141,8 @@
                         status ='已完成';
                     }
                     var service='';
-                    $.each(v.service_name,function(key,val){
-                        service += val[key]+" ";
+                    $.each(v.service,function(key,val){
+                        service += val['service_name']+" ";
                     });
                     var id=v.id;
                     var content = "<tr class=\"active\">\n" +

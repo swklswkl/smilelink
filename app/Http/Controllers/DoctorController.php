@@ -177,11 +177,17 @@ class DoctorController extends Controller
         }
     }
 
+    /***
+     * TODO:退出
+     * @param Request $request
+     * @return string
+     */
     public function loginOut (Request $request)
     {
         try
         {
             $request->session()->forget('doctor');
+            $request->session()->forget('expert');
             return $this->successResponse('退出成功');
         }catch (\Exception $e)
         {
@@ -266,28 +272,9 @@ class DoctorController extends Controller
             for ($i=0;$i<sizeof($data['data']);$i++)
             {
                 $data['data'][$i]['create_time'] = date('Y-m-d H:i:s',$data['data'][$i]['create_time']);
-                $service_id = $data['data'][$i]['service_id'];
-                if (! strlen($service_id) < 1 && $service_id < 10)
-                {
-                    $service_id = explode(',',$service_id);
-                    $service = array();
-                    for ($j=0;$j<sizeof($service_id);$j++)
-                    {
-                        $sName =Service::select(['service_name as '.$j])
-                            ->where(['id'=>$service_id[$j]])
-                            ->get()
-                            ->toArray();
-                        $sName = $sName[0];
-                        $service[$j] = $sName;
-                        $data['data'][$i]['service_name'] = $service;
-                    }
-                }else{
-                    $ser = Service::select(['service_name'])
-                        ->where(['id'=>$data['data'][$i]['service_id']])
-                        ->get()
-                        ->toArray();
-                    $data['data'][$i]['service_name'] = $ser;
-                }
+                $service_id = explode(',',$data['data'][$i]['service_id']);
+                $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                $data['data'][$i]['service'] = $service_name;
             }
             return $this->successResponse('查询成功',$data);
 
@@ -321,28 +308,9 @@ class DoctorController extends Controller
             for ($i=0;$i<sizeof($data['data']);$i++)
             {
                 $data['data'][$i]['create_time'] = date('Y-m-d H:i:s',$data['data'][$i]['create_time']);
-                $service_id = $data['data'][$i]['service_id'];
-                if (! strlen($service_id) < 1 && $service_id < 10)
-                {
-                    $service_id = explode(',',$service_id);
-                    $service = [];
-                    for ($j=0;$j<sizeof($service_id);$j++)
-                    {
-                        $sName =Service::select(['service_name as '.$j])
-                            ->where(['id'=>$service_id[$j]])
-                            ->get()
-                            ->toArray();
-                        $sName = $sName[0];
-                        $service[$j] = $sName;
-                        $data['data'][$i]['service_name'] = $service;
-                    }
-                }else{
-                    $ser = Service::select(['service_name'])
-                        ->where(['id'=>$data['data'][$i]['service_id']])
-                        ->get()
-                        ->toArray();
-                    $data['data'][$i]['service_name'] = $ser;
-                }
+                $service_id = explode(',',$data['data'][$i]['service_id']);
+                $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                $data['data'][$i]['service'] = $service_name;
             }
             return $this->successResponse('查询成功',$data);
         } catch (\Exception $e)
@@ -366,12 +334,7 @@ class DoctorController extends Controller
                     ->toArray();
             if ($orders['data'] == [])
             {
-                if ($this->webOrApi($request->getRequestUri()) == 'api')
-                {
-                    return $this->successResponse('暂无订单');
-                }else{
-                    return view('smilelink.myOrder');
-                }
+                return $this->successResponse('暂无订单');
             }
             for ($i=0;$i<sizeof($orders['data']);$i++)
             {
@@ -388,42 +351,13 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name'])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
-
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
-            if ($this->webOrApi($request->getRequestUri()) == 'api')
-            {
-                return $this->successResponse('查询',$orders);
-            }else{
-                return view('smilelink.myOrder')->with('data',$orders);
-            }
+            return $this->successResponse('查询',$orders);
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');
@@ -462,33 +396,11 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name as '.$k])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
 
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
             return $this->successResponse('查询成功',$orders);
@@ -530,33 +442,10 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name as '.$k])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
-
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
             return $this->successResponse('查询成功',$orders);
@@ -598,33 +487,10 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name as '.$k])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
-
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
             return $this->successResponse('查询成功',$orders);
@@ -666,33 +532,10 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name as '.$k])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
-
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
             return $this->successResponse('查询成功',$orders);
@@ -734,33 +577,10 @@ class DoctorController extends Controller
                 {
                     for ($j=0;$j<sizeof($data);$j++)
                     {
-                        $service_id = $data[$j]['service_id'];
-                        if (! strlen($service_id) < 1 && $service_id < 10)
-                        {
-                            $service_id = explode(',',$service_id);
-                            $service = [];
-                            for ($k=0;$k<sizeof($service_id);$k++)
-                            {
-                                $sName = Service::select(['service_name as '.$k])
-                                    ->where(['id'=>$service_id[$k]])
-                                    ->get()
-                                    ->toArray();
-                                $sName = $sName[0];
-                                $service[$k] = $sName;
-                                $data[$j]['service_name'] = $service;
-                            }
-                        }else{
-                            $ser = Service::select(['service_name'])
-                                ->where(['id'=>$data[$j]['service_id']])
-                                ->get()
-                                ->toArray();
-                            $data[$j]['service_name'] = $ser;
-                        }
+                        $service_id = explode(',',$data[$j]['service_id']);
+                        $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+                        $orders['data'][$i]['service'] = $service_name;
                     }
-
-                    $orders['data'][$i]['service'] = $data;
-                    unset($orders['data'][$i]['service'][0]['service_id']);
-                    $orders['data'][$i]['service'] = $orders['data'][$i]['service'][0]['service_name'];
                 }
             }
             return $this->successResponse('查询成功',$orders);
@@ -800,4 +620,201 @@ class DoctorController extends Controller
         }
     }
 
+
+    public function all (Request $request)
+    {
+        try
+        {
+            $qbdd = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id' => $this->webOrApi($request->getRequestUri()) == 'api' ? $request->get('doctor_id') : $request->session()->get('doctor.id') ])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($qbdd['data'] == [])
+            {
+                $qbdd = null;
+            }else{
+                for ($i=0;$i<sizeof($qbdd['data']);$i++)
+                {
+                    $qbdd['data'][$i]['create_time'] = date('Y-m-d H:i:s',$qbdd['data'][$i]['create_time']);
+                    $oid = $qbdd['data'][$i]['orthodontics_id'];
+                    $service_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $service_id = explode(',',$service_id[0]['service_id']);
+                    $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
+
+                    if ($service_name == [])
+                    {
+                        $qbdd['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $qbdd['data'][$i]['service'] = $service_name;
+                    }
+                }
+            }
+
+
+            $dfk = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id'=>$request->session()->get('doctor.id'),'status'=>'0'])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($dfk['data'] == [])
+            {
+                $dfk=null;
+            }else{
+                for ($i=0;$i<sizeof($dfk['data']);$i++)
+                {
+                    $dfk['data'][$i]['create_time'] = date('Y-m-d H:i:s',$dfk['data'][$i]['create_time']);
+                    $oid = $dfk['data'][$i]['orthodontics_id'];
+                    $dfkservice_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $dfkservice_id = explode(',',$dfkservice_id[0]['service_id']);
+                    $dfkservice_name = Service::select(['service_name'])->whereIn('id',$dfkservice_id)->get()->toArray();
+
+                    if ($dfkservice_name == [])
+                    {
+                        $dfk['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $dfk['data'][$i]['service'] = $dfkservice_name;
+                    }
+                }
+            }
+
+
+            $yjd = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id'=>$request->session()->get('doctor.id'),'status'=>'2'])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($yjd['data'] == [])
+            {
+                $yjd=null;
+            }else{
+                for ($i=0;$i<sizeof($yjd['data']);$i++)
+                {
+                    $yjd['data'][$i]['create_time'] = date('Y-m-d H:i:s',$yjd['data'][$i]['create_time']);
+                    $oid = $yjd['data'][$i]['orthodontics_id'];
+                    $yjdservice_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $yjdservice_id = explode(',',$yjdservice_id[0]['service_id']);
+                    $yjdservice_name = Service::select(['service_name'])->whereIn('id',$yjdservice_id)->get()->toArray();
+
+                    if ($yjdservice_name == [])
+                    {
+                        $yjd['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $yjd['data'][$i]['service'] = $yjdservice_name;
+                    }
+                }
+            }
+
+
+
+            $yfk = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id'=>$request->session()->get('doctor.id'),'status'=>'1'])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($yfk['data'] == [])
+            {
+                $yfk=null;
+            }else{
+                for ($i=0;$i<sizeof($yfk['data']);$i++)
+                {
+                    $yfk['data'][$i]['create_time'] = date('Y-m-d H:i:s',$yfk['data'][$i]['create_time']);
+                    $oid = $yfk['data'][$i]['orthodontics_id'];
+                    $yfkservice_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $yfkservice_id = explode(',',$yfkservice_id[0]['service_id']);
+                    $yfkservice_name = Service::select(['service_name'])->whereIn('id',$yfkservice_id)->get()->toArray();
+
+                    if ($yfkservice_name == [])
+                    {
+                        $yfk['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $yfk['data'][$i]['service'] = $yfkservice_name;
+                    }
+                }
+            }
+
+
+
+            $ytjsj = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id'=>$request->session()->get('doctor.id'),'status'=>'3'])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($ytjsj['data'] == [])
+            {
+                $ytjsj=null;
+            }else{
+                for ($i=0;$i<sizeof($ytjsj['data']);$i++)
+                {
+                    $ytjsj['data'][$i]['create_time'] = date('Y-m-d H:i:s',$ytjsj['data'][$i]['create_time']);
+                    $oid = $ytjsj['data'][$i]['orthodontics_id'];
+                    $tjsjservice_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $tjsjservice_id = explode(',',$tjsjservice_id[0]['service_id']);
+                    $tjsjservice_name = Service::select(['service_name'])->whereIn('id',$tjsjservice_id)->get()->toArray();
+
+                    if ($tjsjservice_name == [])
+                    {
+                        $ytjsj['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $ytjsj['data'][$i]['service'] = $tjsjservice_name;
+                    }
+                }
+            }
+
+            $yjs = Orders::select(['number','orthodontics_id','amount','create_time','status'])
+                ->where(['doctor_id'=>$request->session()->get('doctor.id'),'status'=>'4'])
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
+                ->toArray();
+            if ($yjs['data'] == [])
+            {
+                $yjs=null;
+            }else{
+                for ($i=0;$i<sizeof($yjs['data']);$i++)
+                {
+                    $yjs['data'][$i]['create_time'] = date('Y-m-d H:i:s',$yjs['data'][$i]['create_time']);
+                    $oid = $yjs['data'][$i]['orthodontics_id'];
+                    $tjsservice_id = Orthodontics::select(['service_id'])
+                        ->where(['id' => $oid])
+                        ->get()
+                        ->toArray();
+                    $tjsservice_id = explode(',',$tjsservice_id[0]['service_id']);
+                    $yjsservice_name = Service::select(['service_name'])->whereIn('id',$tjsservice_id)->get()->toArray();
+
+                    if ($yjsservice_name == [])
+                    {
+                        $yjs['data'][$i]['service'] = '暂无服务内容';
+                    }else
+                    {
+                        $yjs['data'][$i]['service'] = $yjsservice_name;
+                    }
+                }
+            }
+
+            return view('smilelink.myOrder')->with(['qbdd'=>$qbdd,'dfk'=>$dfk,'yjd'=>$yjd,'yfk'=>$yfk,'ytjsj'=>$ytjsj,'yjs'=>$yjs]);
+        }catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function safeSet (Request $request)
+    {
+        $data = Doctors::select(['name','sex','birthday','province','city'])->where(['id'=>$request->session()->get('doctor.id')])->get()->toArray();
+        return view('smilelink.safeSet')->with('data',$data[0]);
+    }
 }

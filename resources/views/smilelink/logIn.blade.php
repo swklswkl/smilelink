@@ -31,10 +31,6 @@
             <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="" >
         </div>
         <div class="col-lg-1  col-md-2"></div>
-
-
-
-
     </div>
     <div class="box">
         <div class="col-lg-3  col-md-3"></div>

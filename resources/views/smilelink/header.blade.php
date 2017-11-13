@@ -10,7 +10,7 @@
             <span><a href="{{url('myOrders')}}">我的订单</a></span>
         </div>
         <div class="head-R">
-            <span><a href="#">个人中心</a></span>
+            <span><a href="safeSet">个人中心</a></span>
             <span onclick="loginout()" class="span2"><a href="javascript:void(0);">退出</a></span>
         </div>
         @else
@@ -47,5 +47,3 @@
 </script>
 @section('content')
 @show
-
-
