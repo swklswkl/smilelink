@@ -64,6 +64,9 @@ Route::post('odtcase/deleteTreatmentProcess','OrthodonticCaseController@deleteTr
 Route::get('odtcase/inquireTreatmentProcess','OrthodonticCaseController@inquireTreatmentProcess');
 //查询单个治疗进展详情
 Route::get('odtcase/inquireOnlyOneTreatmentProcess','OrthodonticCaseController@inquireOnlyOneTreatmentProcess');
+//变更服务
+Route::post('odtcase/optionService','OrthodonticCaseController@optionService');
+
 /*******************************************病例管理****************1*********************************/
 //新增病例-选择服务内容信息查询
 Route::get('case/seeService','CaseController@seeService');
@@ -112,6 +115,7 @@ Route::get('/doctor/findOrdersQuantity','DoctorController@findOrdersQuantity');
 Route::get('/doctor/searchOrthdonicCase','DoctorController@searchOrthdonicCase');
 //修改密码
 Route::post('/doctor/changePassword','DoctorController@changePassword');
+
 
 /*******************************************专家接口****************1*********************************/
 //查询信息

@@ -339,8 +339,12 @@ class DoctorController extends Controller
                 $service_name = Service::select(['service_name'])->whereIn('id',$service_id)->get()->toArray();
                 $data['data'][$i]['service'] = $service_name;
             }
-            return $this->successResponse('查询成功',$data);
-
+            if ($this->webOrApi($request->getRequestUri()) == 'api')
+            {
+                return $this->successResponse('成功',$data);
+            }else{
+                return view('smilelink.caseManagement')->with('data',$data);
+            }
         }catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');

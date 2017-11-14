@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Model\Doctors;
 use App\Model\Experts;
+
 use App\Model\Orders;
 use App\Model\Orthodontics;
 use App\Model\Service;
+
+use App\Model\Program;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
 use Validator;
 
 class ExpertController extends Controller
@@ -268,22 +273,34 @@ class ExpertController extends Controller
 
     public function findOrdersQuantity (Request $request)
     {
-        try
-        {
+        try {
             $allOrders = Orders::where(['expert_id' => $request->get('expert_id')])->count();
-            $orderTaking = Orders::where(['expert_id' => $request->get('expert_id'),'status' => '2'])->count();
-            $subOrders = Orders::where(['expert_id' => $request->get('expert_id'),'status' => '3'])->count();
-            $endOrders = Orders::where(['expert_id' => $request->get('expert_id'),'status' => '4'])->count();
+            $orderTaking = Orders::where(['expert_id' => $request->get('expert_id'), 'status' => '2'])->count();
+            $subOrders = Orders::where(['expert_id' => $request->get('expert_id'), 'status' => '3'])->count();
+            $endOrders = Orders::where(['expert_id' => $request->get('expert_id'), 'status' => '4'])->count();
             $data = [
                 '全部订单' => $allOrders,
                 '已接单' => $orderTaking,
                 '已提交设计' => $subOrders,
                 '已结束' => $endOrders
             ];
-            return $this->successResponse('查询成功',$data);
-        }catch (\Exception $e)
-        {
+            return $this->successResponse('查询成功', $data);
+        } catch (\Exception $e) {
             return $this->successResponse('操作有误');
+        }
+    }
+
+    public function auditOpinion(Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+            $model = Program::find($request->post('orthodontics_id'));
+            return $model;
+            DB::commit();
+        }catch (Exception $e){
+            DB::rollBack();
+
         }
     }
 }

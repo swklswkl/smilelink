@@ -79,9 +79,9 @@
 
             </div>
 
-          {{--  <div class="button1">
-                 <a href=""> <button >保存 </button></a>
-            </div>--}}
+            <div class="button1">
+                 <a href="{{url('caseManagement ')}}"> <button >确认 </button></a>
+            </div>
         </div>
     </div>
 
