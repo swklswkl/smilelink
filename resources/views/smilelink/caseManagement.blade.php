@@ -17,7 +17,13 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{{asset('reception/js/jquery.1.8.3.js')}}"></script>
-
+    <style>
+        .aa{
+            border-color: #58a51c;
+            background-color: #69bd28;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 <div class="search">
@@ -91,8 +97,12 @@
 
     </div>
 </div>
+
+
+
 </form>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="/reception/js/layer/2.1/layer.js"></script>
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
         <script>
             $('input').focus(function(){
@@ -131,7 +141,7 @@
                     var perfect='';
                     if( v.status=='1' ){
                         status ='档案已建立';
-                        option_service = '<a href="{{url('caseOne?orthodontics_id=')}}'+oid+'">选择服务</a>';
+                        option_service = '<a href="javascript:void(0);" data-id="'+oid+'"'+'onclick=selectfuwu(this.getAttribute("data-id"))>选择服务</a>';
                         perfect = '<a href="/">完善档案</a>';
                     }else if(v.status=='2'){
                         status ='档案已提交';
@@ -172,6 +182,73 @@
             }
         }
     })
+
+    function selectfuwu (id)
+    {
+        layer.open({
+            type: 1
+            ,title: '选择服务' //不显示标题栏
+            ,closeBtn: false
+            ,area: '300px;'
+            ,shade: 0.5
+            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,resize: false
+            ,moveType: 1 //拖拽模式，0或者1
+            ,content: '<div style="width:300px;height:450px;background-color:#fff;text-align:center;position:relative"><div style="width:165px;text-align:center;margin:0 auto"><h4>基础服务</h4><span style="display:inline-block;width:72px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <span style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;background:url(reception/img/yes3.png);margin-bottom:10px">正畸档案</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>影像资料分析</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <input type="checkbox" name="service_id[]" value="3" s="0" zj="0" id="xginput" style="position:absolute;left:75px;top:155px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="xg" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">X光片分析</span> <input type="checkbox" name="service_id[]" value="4" s="0" zj="0" id="mbinput" style="position:absolute;left:75px;top:204px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="mb" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">面部照片分析</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>专家指导服务</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <input type="checkbox" name="service_id[]" id="zjinput" value="8" s="0" zj="1" style="position:absolute;left:75px;top:314px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="zjzd" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">治疗计划专家指导</span></div><div style="margin-top:25px"><span class="tijiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-right: 2px;" onclick="tijiao(\''+id+'\')">提交</span><span class="quxiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-left: 2px;" onclick="guanbi()">取消</span></div></div>'
+            ,success: function(layero)
+            {
+            }
+        });
+    }
+
+    function guanbi ()
+    {
+        layer.close(layer.index);
+    }
+
+    function tijiao (id)
+    {
+        console.log(id);
+    }
+
+    function dian (dq,next)
+    {
+        var s = dq.getAttribute('s');
+        var zj = dq.getAttribute('zj');
+        if (s == 0)
+        {
+            if (zj==1)
+            {
+                console.log(1111111);
+                dq.setAttribute('s',1);
+                next.style.background= 'url("reception/img/yes3.png")';
+                next.style.border= '0px';
+                document.getElementById('xg').style.background = '';
+                document.getElementById('xg').style.border = '1px solid gray';
+                document.getElementById('xginput').setAttribute('s',0);
+                document.getElementById('xginput').checked = false;
+                document.getElementById('mbinput').setAttribute('s',0);
+                document.getElementById('mb').style.background = '';
+                document.getElementById('mb').style.border = '1px solid gray';
+                document.getElementById('mbinput').checked = false;
+            }else{
+                console.log(2222222);
+                dq.setAttribute('s',1);
+                next.style.background= 'url("reception/img/yes3.png")';
+                next.style.border = '0px';
+                document.getElementById('zjinput').setAttribute('s',0);
+                document.getElementById('zjzd').style.background = '';
+                document.getElementById('zjzd').style.border = '1px solid gray';
+                document.getElementById('zjinput').checked = false;
+            }
+
+        }else {
+            dq.setAttribute('s',0);
+            next.style.background= '';
+            next.style.border= '1px solid gray';
+        }
+
+    }
 </script>
 </body>
 </html>

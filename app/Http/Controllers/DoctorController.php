@@ -236,7 +236,8 @@ class DoctorController extends Controller
                    'city' => $request->post('city'),
                    'work_unit' => $request->post('work_unit'),
                    'certificate' => $request->post('certificate'),
-                   'working_years' => $request->post('working_years')
+                   'working_years' => $request->post('working_years'),
+                   'change_time' => time()
                ]);
             DB::commit();
             if ($data)
@@ -252,6 +253,68 @@ class DoctorController extends Controller
         }
     }
 
+    /***
+     * TODO:修改密码
+     * @param Request $request
+     * @return string
+     */
+    public function changePassword (Request $request)
+    {
+        try {
+            // 设置验证消息
+            $messages = [
+                'password.required' => '原始密码不能为空',
+                'newpassword.min' => '新密码不能小于:min位',
+                'newpassword_confirmation.min' => '新密码不能小于:min位',
+                'newpassword.required' => '新密码不能为空',
+                'newpassword_confirmation.required' => '确认新密码不能为空',
+                'newpassword.confirmed' => '两次密码不一致',
+            ];
+            // 设置验证规则
+            $validator = Validator::make($request->all(),[
+                'password' => 'required',
+                'newpassword' => 'required|confirmed|min:6',
+                'newpassword_confirmation' => 'required|min:6'
+            ],$messages);
+            if ($validator->fails())
+            {
+                $errors = $validator->errors();
+                return $this->errorResponse($errors,402);
+            }
+            $data = Doctors::select('name')->where(['id'=>$request->post('id'),'password'=>md5($request->post('password'))])->get()->toArray();
+
+            if ($data == [])
+            {
+                return $this->errorResponse('原始密码错误',402);
+            }else{
+                 $data = Doctors::where(['id'=>$request->post('id')])->update(['password' => md5($request->post('newpassword'))]);
+                if ($data)
+                {
+                    $request->session()->forget('doctor');
+                    $request->session()->forget('expert');
+                    return $this->successResponse('修改密码成功，请重新登陆');
+                }else{
+                    return $this->errorResponse('修改密码失败，请重试');
+                }
+            }
+        } catch (\Exception $e)
+        {
+            return $this->errorResponse('操作有误');
+        }
+    }
+
+
+    public function changeAliPay (Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+
+        } catch (\Exception $e)
+        {
+
+        }
+    }
     /**
      * TODO:查询医生所有病历
      * @param Request $request

@@ -93,7 +93,6 @@ class OrthodonticCaseController extends Controller
                     $errors = $validator->errors();
                     return $this->errorResponse($errors,402);
                 }
-                $id = $CaseController->createArchivesNum('sl_orthodontics_case_history');
                 Orthodontics::where(['id' => $request->post('id')])->update([
                     'name' => $request->post('name'),
                     'sex' => $request->post('sex'),

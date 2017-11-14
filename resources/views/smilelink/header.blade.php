@@ -1,4 +1,3 @@
-
 <header>
     <div class="content">
         <div class="head-L">
@@ -7,7 +6,7 @@
        @if(empty(session('expert')))
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
-            <span class="span1"><a href="{{url('caseManagement')}}">病例管理</a></span>
+            <span><a href="{{url('caseManagement')}}">病例管理</a></span>
             <span><a href="{{url('myOrders')}}">我的订单</a></span>
         </div>
         <div class="head-R">
@@ -16,11 +15,11 @@
         </div>
         @else
             <div class="head-C">
-                <span ><a href="">接单</a></span>
-                <span class="span1"><a href="">我的订单</a></span>
+                <span ><a href="orderReceiving">接单</a></span>
+                <span><a href="myOrrders">我的订单</a></span>
             </div>
             <div class="head-R">
-                <span><a href="#">个人中心</a></span>
+                <span><a href="safeSSet">个人中心</a></span>
                 <span onclick="loginout()" class="span2"><a href="javascript:void(0);">退出</a></span>
             </div>
         @endif

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>注册成功</title>
     <script src="{{asset('reception/js/jquery.min.js')}}"></script>
     <style>
         .bg{background: rgba(0,0,0,.5);height: 1000px;position: relative}

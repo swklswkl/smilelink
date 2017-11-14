@@ -31,30 +31,30 @@
     .pagination{;top: 400px;}
 </style>
 <body>
-    <div class="search">
-        <div class="content">
-            <div class="mySelect">
-                <input type="text" placeholder="请选择病例状态" class="input">
-                <ul>
-                    <li>治疗中</li>
-                    <li>分析报告已上传</li>
-                    <li>档案已指导</li>
-                    <li>资料已提交</li>
-                </ul>
-            </div>
-            <div class="input1">
-                <input type="text">
-            </div>
-            <div class="searchButton">
-                <button>查询</button>
-            </div>
-        </div>
-    </div>
+    {{--<div class="search">--}}
+        {{--<div class="content">--}}
+            {{--<div class="mySelect">--}}
+                {{--<input type="text" placeholder="请选择病例状态" class="input">--}}
+                {{--<ul>--}}
+                    {{--<li>治疗中</li>--}}
+                    {{--<li>分析报告已上传</li>--}}
+                    {{--<li>档案已指导</li>--}}
+                    {{--<li>资料已提交</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+            {{--<div class="input1">--}}
+                {{--<input type="text">--}}
+            {{--</div>--}}
+            {{--<div class="searchButton">--}}
+                {{--<button>查询</button>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <div class="content">
         <div class="slideTxtBox">
             <div class="hd">
                 <ul >
-                    <li id="qbdd">全部订单（-）</li><li id="yjd">已接单（-）</li><li id="dfk">代付款（-）</li><li id="yfk">已付款（-）</li><li id="ytjsj">已提交设计（-）</li><li id="yjs">已结束（-）</li>
+                    <li id="qbdd">全部订单（-）</li><li id="yjd">已接单（-）<li id="ytjsj">已提交设计（-）</li><li id="yjs">已结束（-）</li>
                 </ul>
             </div>
             <div class="bd">
@@ -70,7 +70,7 @@
                                         <td>服务内容</td>
                                         <td>金额</td>
                                         <td>创建日期</td>
-                                        <td>病例操作</td>
+                                        <td>操作</td>
                                     </tr>
                                     {{--{{dd($data)}}--}}
                                     @if($qbdd == null)
@@ -78,7 +78,7 @@
                                         <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
                                     </tr>
                                     @else
-                                        @foreach($qbdd['data'] as $value)
+                                        @foreach($qbdd as $value)
                                         <tr class="active" style="text-align: center">
                                             <td  style="padding-left: 31px;">{{$value['number']}}</td>
                                             <td >{{$value['orthodontics_id']}}</td>
@@ -88,7 +88,7 @@
                                                 @endforeach
                                             </td>
                                             <td>{{$value['amount']}}</td>
-                                            <td >{{$value['create_time']}}</td>
+                                            <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
                                             <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
                                         </tr>
                                         @endforeach
@@ -126,9 +126,11 @@
                     <div class="tableBox">
                         <div class="content">
                             <div class="table">
-                                <table class="table table-condensed table-hover">
+                                <table class="table table-condensed table-
+hover">
                                     <tr class="success" style="text-align:center">
-                                        <td style="padding-left: 31px;">订单编号</td>
+                                        <td style="padding-left: 31px;">订单编号
+                                        </td>
                                         <td>病历编号</td>
                                         <td>服务内容</td>
                                         <td>金额</td>
@@ -137,12 +139,15 @@
                                     </tr>
                                     @if($yjd == null)
                                         <tr class="active">
-                                            <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
+                                            <td  style="text-align: center;padding-
+left: 31px;" colspan="6">暂无订单</td>
                                         </tr>
                                     @else
-                                        @foreach($yjd['data'] as $value)
-                                            <tr class="active" style="text-align: center">
-                                                <td  style="padding-left: 31px;">{{$value['number']}}</td>
+                                        @foreach($yjd as $value)
+                                            <tr class="active" style="text-align:
+center">
+                                                <td  style="padding-left: 31px;">
+                                                    {{$value['number']}}</td>
                                                 <td >{{$value['orthodontics_id']}}</td>
                                                 <td >
                                                     @foreach($value['service'] as $v)
@@ -150,8 +155,10 @@
                                                     @endforeach
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
-                                                <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                                <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
+                                                <td ><a href="caseManage?
+orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
+                                                    </a></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -163,17 +170,20 @@
                                     <ul class="pagination" style="border: none">
                                         <li>
                                             <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
+                                                <span aria-
+                                                      hidden="true">&laquo;</span>
                                             </a>
                                         </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
+                                        <li><a href="#" style="background:
+#69be28">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li><a href="#">3</a></li>
                                         <li><a href="#">4</a></li>
                                         <li><a href="#">5</a></li>
                                         <li>
                                             <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
+                                                <span aria-
+                                                      hidden="true">&raquo;</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -183,135 +193,16 @@
                         </div>
                     </div>
                 </ul>
+
                 <ul class="u11">
                     <div class="tableBox">
                         <div class="content">
                             <div class="table">
-                                <table class="table table-condensed table-hover">
+                                <table class="table table-condensed table-
+hover">
                                     <tr class="success" style="text-align:center">
-                                        <td style="padding-left: 31px;">订单编号</td>
-                                        <td>病历编号</td>
-                                        <td>服务内容</td>
-                                        <td>金额</td>
-                                        <td>创建日期</td>
-                                        <td>病例操作</td>
-                                    </tr>
-                                    @if($dfk == null)
-                                        <tr class="active">
-                                            <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
-                                        </tr>
-                                    @else
-                                        @foreach($dfk['data'] as $value)
-                                            <tr class="active" style="text-align: center">
-                                                <td  style="padding-left: 31px;">{{$value['number']}}</td>
-                                                <td >{{$value['orthodontics_id']}}</td>
-                                                <td >
-                                                    @foreach($value['service'] as $v)
-                                                        {{$v['service_name']}}
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$value['amount']}}</td>
-                                                <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </table>
-                            </div>
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="u11">
-                    <div class="tableBox">
-                        <div class="content">
-                            <div class="table">
-                                <table class="table table-condensed table-hover">
-                                    <tr class="success" style="text-align:center">
-                                        <td style="padding-left: 31px;">订单编号</td>
-                                        <td>病历编号</td>
-                                        <td>服务内容</td>
-                                        <td>金额</td>
-                                        <td>创建日期</td>
-                                        <td>病例操作</td>
-                                    </tr>
-                                    @if($yfk == null)
-                                        <tr class="active">
-                                            <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
-                                        </tr>
-                                    @else
-                                        @foreach($yfk['data'] as $value)
-                                            <tr class="active" style="text-align: center">
-                                                <td  style="padding-left: 31px;">{{$value['number']}}</td>
-                                                <td >{{$value['orthodontics_id']}}</td>
-                                                <td >
-                                                    @foreach($value['service'] as $v)
-                                                        {{$v['service_name']}}
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$value['amount']}}</td>
-                                                <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </table>
-                            </div>
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div>
-                    </div>
-                </ul>
-                <ul class="u11">
-                    <div class="tableBox">
-                        <div class="content">
-                            <div class="table">
-                                <table class="table table-condensed table-hover">
-                                    <tr class="success" style="text-align:center">
-                                        <td style="padding-left: 31px;">订单编号</td>
+                                        <td style="padding-left: 31px;">订单编号
+                                        </td>
                                         <td>病历编号</td>
                                         <td>服务内容</td>
                                         <td>金额</td>
@@ -320,12 +211,15 @@
                                     </tr>
                                     @if($ytjsj == null)
                                         <tr class="active">
-                                            <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
+                                            <td  style="text-align: center;padding-
+left: 31px;" colspan="6">暂无订单</td>
                                         </tr>
                                     @else
-                                        @foreach($ytjsj['data'] as $value)
-                                            <tr class="active" style="text-align: center">
-                                                <td  style="padding-left: 31px;">{{$value['number']}}</td>
+                                        @foreach($ytjsj as $value)
+                                            <tr class="active" style="text-align:
+center">
+                                                <td  style="padding-left: 31px;">
+                                                    {{$value['number']}}</td>
                                                 <td >{{$value['orthodontics_id']}}</td>
                                                 <td >
                                                     @foreach($value['service'] as $v)
@@ -333,8 +227,10 @@
                                                     @endforeach
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
-                                                <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                                <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
+                                                <td ><a href="caseManage?
+orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
+                                                    </a></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -346,17 +242,20 @@
                                     <ul class="pagination" style="border: none">
                                         <li>
                                             <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
+                                                <span aria-
+                                                      hidden="true">&laquo;</span>
                                             </a>
                                         </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
+                                        <li><a href="#" style="background:
+#69be28">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li><a href="#">3</a></li>
                                         <li><a href="#">4</a></li>
                                         <li><a href="#">5</a></li>
                                         <li>
                                             <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
+                                                <span aria-
+                                                      hidden="true">&raquo;</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -370,9 +269,11 @@
                     <div class="tableBox">
                         <div class="content">
                             <div class="table">
-                                <table class="table table-condensed table-hover">
+                                <table class="table table-condensed table-
+hover">
                                     <tr class="success" style="text-align:center">
-                                        <td style="padding-left: 31px;">订单编号</td>
+                                        <td style="padding-left: 31px;">订单编号
+                                        </td>
                                         <td>病历编号</td>
                                         <td>服务内容</td>
                                         <td>金额</td>
@@ -381,12 +282,15 @@
                                     </tr>
                                     @if($yjs == null)
                                         <tr class="active">
-                                            <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
+                                            <td  style="text-align: center;padding-
+left: 31px;" colspan="6">暂无订单</td>
                                         </tr>
                                     @else
-                                        @foreach($yjs['data'] as $value)
-                                            <tr class="active" style="text-align: center">
-                                                <td  style="padding-left: 31px;">{{$value['number']}}</td>
+                                        @foreach($yjs as $value)
+                                            <tr class="active" style="text-align:
+center">
+                                                <td  style="padding-left: 31px;">
+                                                    {{$value['number']}}</td>
                                                 <td >{{$value['orthodontics_id']}}</td>
                                                 <td >
                                                     @foreach($value['service'] as $v)
@@ -394,8 +298,10 @@
                                                     @endforeach
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
-                                                <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                                <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
+                                                <td ><a href="caseManage?
+orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
+                                                    </a></td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -407,17 +313,20 @@
                                     <ul class="pagination" style="border: none">
                                         <li>
                                             <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
+                                                <span aria-
+                                                      hidden="true">&laquo;</span>
                                             </a>
                                         </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
+                                        <li><a href="#" style="background:
+#69be28">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li><a href="#">3</a></li>
                                         <li><a href="#">4</a></li>
                                         <li><a href="#">5</a></li>
                                         <li>
                                             <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
+                                                <span aria-
+                                                      hidden="true">&raquo;</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -440,14 +349,12 @@
                 {
                     eval('var data = ' + xhr.responseText);
                     document.getElementById('qbdd').innerHTML = '全部订单（'+data['data']['全部订单']+'）';
-                    document.getElementById('dfk').innerHTML = '待付款（'+data['data']['待付款']+'）';
-                    document.getElementById('yfk').innerHTML = '已付款（'+data['data']['已付款']+'）';
                     document.getElementById('ytjsj').innerHTML = '已提交设计（'+data['data']['已提交设计']+'）';
                     document.getElementById('yjs').innerHTML = '已结束（'+data['data']['已结束']+'）';
                     document.getElementById('yjd').innerHTML = '已接单（'+data['data']['已接单']+'）';
                 }
             }
-            xhr.open('get','/api/doctor/findOrdersQuantity?doctor_id={{session()->get('doctor.id')}}',true);
+            xhr.open('get','/api/expert/findOrdersQuantity?expert_id={{session()->get('expert.id')}}',true);
             xhr.send();
         }
         $('input').focus(function(){

@@ -93,3 +93,7 @@ Route::get('editCase4','OrthodonticCaseController@page4');
 Route::get('editCase5','OrthodonticCaseController@page5');
 Route::get('editCase6','OrthodonticCaseController@page6');
 Route::get('editCase7','OrthodonticCaseController@page7');
+
+Route::get('orderReceiving','ExpertController@orderReceiving');
+Route::get('safeSSet','ExpertController@safeSet');
+Route::get('myOrrders','ExpertController@myOrders');
