@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\Experts;
+use App\Model\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
 use Validator;
 
 class ExpertController extends Controller
@@ -65,6 +67,19 @@ class ExpertController extends Controller
         {
             DB::rollBack();
             return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function auditOpinion(Request $request)
+    {
+        DB::beginTransaction();
+        try
+        {
+            $model = Program::find($request->post('orthodontics_id'));
+            return $model;
+            DB::commit();
+        }catch (Exception $e){
+            DB::rollBack();
         }
     }
 }

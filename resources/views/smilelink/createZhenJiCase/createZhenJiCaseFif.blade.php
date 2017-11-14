@@ -58,21 +58,23 @@
                 <span class="span2">Part1</span>
                 <span class="span3">曲面断层</span>
             </div>
-
             <form class="form-horizontal">
                 <div class="row">
-                    <div class="col-lg-1"><input name="surface_fault_slice" value="0" type="radio">乳牙列</div>
-                    <div class="col-lg-1"><input name="surface_fault_slice" value="1" type="radio">恒牙列</div>
-                    <div class="col-lg-2"><input name="surface_fault_slice" value="2" type="radio">混合牙列</div>
+                    <div class="col-lg-1"><input name="surface_fault_slice" @isset($data[0]) @if($data[0]['surface_fault_slice']==0) checked @endif @endisset value="0" type="radio">乳牙列</div>
+                    <div class="col-lg-1"><input name="surface_fault_slice" value="1" @isset($data[0]) @if($data[0]['surface_fault_slice']==1) checked @endif @endisset type="radio">恒牙列</div>
+                    <div class="col-lg-2"><input name="surface_fault_slice" value="2" @isset($data[0]) @if($data[0]['surface_fault_slice']==2) checked @endif @endisset type="radio">混合牙列</div>
 
                 </div>
 
                 <div class="row">
                     <div class="col-lg-1 text-right">其他目标</div>
                     <div class="col-lg-1">
-                        <textarea name="other_target" id="" cols="30" rows="10" style="width: 900px"></textarea>
+                        <textarea name="other_target" id="" cols="30" rows="10" style="width: 900px">@isset($data[0]) {{$data[0]['other_target']}} @endisset</textarea>
                     </div>
                     <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}"/>
+                    @isset($data[0])
+                        <input name="edit" type="hidden" value="1"/>
+                    @endisset
 
                 </div>
 
@@ -124,7 +126,12 @@
                 console.log(data);
                 if (data.code == 200)
                 {
-                    window.location.href = "{{url('createZhenJiCaseSix?orthodontics_id=')}}"+data.data;
+                    @empty($data[0])
+                        window.location.href = "{{url('createZhenJiCaseSix?orthodontics_id=')}}"+data.data;
+                    @endempty
+                            @isset($data[0])
+                        window.location.href = "{{url('editCase6?orthodontics_id=').$_GET['orthodontics_id']}}";
+                    @endisset
                 } else {
                     if(data.code==401) {
                         $.each(data.msg, function (key, val) {
