@@ -101,7 +101,7 @@
                 <div class="li-top">
                     <p style="color: #e47138">详细资料<button type="button" onclick="editinfo()"></button>
                     <p>
-                        <input type="hidden" id="doctor_id" value="{{session()->get('doctor.id')}}">
+                        <input type="hidden" id="expert_id" value="{{session()->get('expert.id')}}">
                         姓名：<input type="text" name="name" id="name" value="{{$data['name']}}" style="width: 522px;height: 40px;font-size: 18px;padding-left: 10px;border: 1px solid gainsboro" disabled>
                     </p>
                     <p>性别：
@@ -256,9 +256,9 @@
     {
         $.ajax({
             type: 'post',
-            url: '/api/doctor/updateInformation',
+            url: '/api/expert/updateInformation',
             data: {
-                id:$('#doctor_id').val(),
+                id:$('#expert_id').val(),
                 name:$('#name').val(),
                 sex:$('#sexall').val(),
                 birthday:$('#bir').val(),
@@ -305,9 +305,9 @@
     {
         $.ajax({
             type: 'post',
-            url: '/api/doctor/changePassword',
+            url: '/api/expert/changePassword',
             data: {
-                id:document.getElementById('doctor_id').value,
+                id:document.getElementById('expert_id').value,
                 password:document.getElementById('ysmm').value,
                 newpassword:document.getElementById('xmm').value,
                 newpassword_confirmation:document.getElementById('qrmm').value,

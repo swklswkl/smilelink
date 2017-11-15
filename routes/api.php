@@ -113,6 +113,8 @@ Route::get('/doctor/findEndOrders','DoctorController@findEndOrders');
 Route::get('/doctor/findOrdersQuantity','DoctorController@findOrdersQuantity');
 //搜索病历
 Route::get('/doctor/searchOrthdonicCase','DoctorController@searchOrthdonicCase');
+//修改密码
+Route::post('/doctor/changePassword','DoctorController@changePassword');
 
 
 /*******************************************专家接口****************1*********************************/
@@ -123,3 +125,8 @@ Route::post('/expert/updateInformation','ExpertController@updateInformation');
 Route::get('createOrderNum','Controller@createOrderNum');
 //方案审核
 Route::post('expert/auditOpinion','ExpertController@auditOpinion');
+//获取可接订单的数量
+Route::get('/expert/orderNum','ExpertController@orderNum');
+Route::post('/expert/orderReceiving','ExpertController@orderRec');
+Route::get('/expert/myOrders','ExpertController@myOrders');
+Route::get('/expert/findOrdersQuantity','ExpertController@findOrdersQuantity');
