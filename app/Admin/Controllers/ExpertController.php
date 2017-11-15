@@ -75,7 +75,7 @@ class ExpertController extends Controller
     protected function grid()
     {
         return Admin::grid(Experts::class, function (Grid $grid) {
-
+            $grid->paginate(10);
 //            $grid->avatar('头像')->image(env('APP_URL').'/uploads/',40,40);
 //            $grid->name('姓名');
 //            $grid->mobilephone('手机号码');
@@ -101,7 +101,7 @@ class ExpertController extends Controller
                 $actions->disableDelete();
                 $actions->append('&ensp;<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="zjcx(this.getAttribute('."'data-id'".'))" ><i class="fa fa-eye"></i></a>');
                 $actions->append('&ensp;');
-                $actions->append('&ensp;<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="ysdel(this.getAttribute('."'data-id'".'))"><i class="fa fa-trash"></i></a>');
+//                $actions->append('&ensp;<a href="javascript:void(0);" data-id="'.$actions->row->id.'" onclick="ysdel(this.getAttribute('."'data-id'".'))"><i class="fa fa-trash"></i></a>');
             });
 //            $grid->avatar('头像')->image(env('APP_URL').'/uploads/',40,40);
             $grid->name('姓名');
@@ -122,6 +122,8 @@ class ExpertController extends Controller
                     $query->where('name', 'like', "%{$this->input}%")
                         ->orWhere('mobilephone', 'like', "%{$this->input}%");
                 },'')->placeholder('请输入姓名或手机号搜索');
+
+                $filter->equal('province','省/市')->select(ChinaAreaAdmin::Prp()->pluck('name','name'));
             });
         });
     }
@@ -150,10 +152,6 @@ class ExpertController extends Controller
                 'min'=>'密码不能小于6位'
             ]);
 
-            $form->saving(function (Form $form) {
-                $form->password = md5($form->password);
-            });
-
             $form->select('province','省份')->options(ChinaAreaAdmin::province()->pluck('name','id'))
                 ->load('city', '/admin/api/china/city')
                 ->load('test', '/api/china/city');
@@ -162,9 +160,12 @@ class ExpertController extends Controller
                 $data = ChinaAreaAdmin::options($id);
                 return $data;
             });
-
+            $form->select('certificate','医师资格证')->options(["1" => '有', "0" => '无']);
+            $form->text('work_unit','现工作单位');
+            $form->text('working_years','工作年限');
             $form->saving(function (Form $form)
             {
+                $form->password = md5($form->password);
                 if ($_SERVER['REDIRECT_URL'] == '/admin/experts')
                 {
                     $arr = ['0'=>'',"1"=>'', "2"=>"北京","3"=>"安徽","4"=>"福建","5"=>"甘肃","6"=>"广东","7"=>"广西","8"=>"贵州","9"=>"海南","10"=>"河北","11"=>"河南","12"=>"黑龙江","13"=>"湖北","14"=>"湖南","15"=>"吉林","16"=>"江苏","17"=>"江西","18"=>"辽宁","19"=>"内蒙古","20"=>"宁夏","21"=>"青海","22"=>"山东","23"=>"山西","24"=>"陕西","25"=>"上海","26"=>"四川","27"=>"天津","28"=>"西藏","29"=>"新疆","30"=>"云南","31"=>"浙江","32"=>"重庆","33"=>"香港","34"=>"澳门","35"=>"台湾"];

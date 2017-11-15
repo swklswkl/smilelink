@@ -10,51 +10,56 @@ class Orthodontics extends Model
     protected $keyType = 'string';
     public $timestamps = FALSE;
 
-    public function Doctor ()
+    public function Doctor()
     {
-        return $this->belongsTo(Doctors::class,'doctor_id');
+        return $this->belongsTo(Doctors::class, 'doctor_id');
     }
 
-    public function OrthodonticsChiefComplaint ()
+    public function OrthodonticsChiefComplaint()
     {
-        return $this->hasOne(OrthodonticsChiefComplaint::class,'orthodontics_id');
+        return $this->hasOne(OrthodonticsChiefComplaint::class, 'orthodontics_id');
     }
 
-    public function CaseHistoryImages ()
+    public function CaseHistoryImages()
     {
-        return $this->hasOne('App\Model\CaseHistoryImage','orthodontics_id');
+        return $this->hasOne('App\Model\CaseHistoryImage', 'orthodontics_id');
     }
 
-    public function OrthodonticsClinicalExamination ()
+    public function OrthodonticsClinicalExamination()
     {
-        return $this->hasOne(OrthodonticsClinicalExamination::class,'orthodontics_id');
+        return $this->hasOne(OrthodonticsClinicalExamination::class, 'orthodontics_id');
     }
 
-    public function OrthodonticXAnalysis ()
+    public function OrthodonticXAnalysis()
     {
-        return $this->hasOne(OrthodonticXAnalysis::class,'orthodontics_id');
+        return $this->hasOne(OrthodonticXAnalysis::class, 'orthodontics_id');
     }
 
-    public function OrthodonticsDiagnosticDesign ()
+    public function OrthodonticsDiagnosticDesign()
     {
-        return $this->hasOne(OrthodonticsDiagnosticDesign::class,'orthodontics_id');
+        return $this->hasOne(OrthodonticsDiagnosticDesign::class, 'orthodontics_id');
     }
 
-    public function OrthodonticsTreatmentProcess ()
+    public function OrthodonticsTreatmentProcess()
     {
-        return $this->hasMany(OrthodonticsTreatmentProcess::class,'orthodontics_id');
+        return $this->hasMany(OrthodonticsTreatmentProcess::class, 'orthodontics_id');
     }
 
     public function scopeStatus($query, $status)
     {
-        if (!in_array($status, ['1', '2','3'])) {
+        if (!in_array($status, ['1', '2', '3'])) {
             return $query;
         }
-        return $query->where('status',  $status);
+        return $query->where('status', $status);
     }
 
-    public function Program ()
+    public function Program()
     {
-        return $this->hasMany('App\Model\Program','orthodontics_id');
+        return $this->hasMany('App\Model\Program', 'orthodontics_id');
+    }
+
+    public function Orders()
+    {
+        return $this->hasOne(Orders::class,'orthodontics_id');
     }
 }

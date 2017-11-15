@@ -53,4 +53,9 @@ class ChinaAreaAdmin extends Model
         $data = $data->attributes['name'];
         return $data;
     }
+
+    public static function Prp()
+    {
+        return static::select('name')->where('type', 1);
+    }
 }

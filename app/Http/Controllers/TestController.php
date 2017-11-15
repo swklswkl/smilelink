@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Model\Doctors;
 use App\Model\Experts;
+use App\Model\Orders;
 use App\Model\OrthodonticsTreatmentProcess;
+use App\Model\Service;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -133,5 +135,31 @@ class TestController extends Controller
             DB::rollBack();
             return $this->errorResponse('操作有误');
         }
+    }
+
+    public function order (Request $request)
+    {
+        $data = Orders::where(['number'=>$request->get('number')])->get()->toArray();
+        if ( intval($data[0]['status']>=2) )
+        {
+            $expert_name = Experts::select(['id','name'])->where(['id'=>$data[0]['expert_id']])->get()->toArray();
+        }else{
+            $expert_name = '';
+        }
+        $province = Doctors::select(['id','province','name'])->where(['id'=>$data[0]['doctor_id']])->get()->toArray();
+        $service_id = Orthodontics::select(['service_id'])->where(['id' => $data[0]['orthodontics_id']])->get()->toArray()[0]['service_id'];
+        if (strlen($service_id)>1)
+        {
+            $service = explode(',',$service_id);
+        }else{
+            $service[0] = $service_id;
+        }
+        $data2 = Service::select('service_name')->whereIn('id',$service)->get()->toArray();
+        $name='';
+        for ($i=0;$i<sizeof($data2);$i++)
+        {
+            $name.=$data2[$i]['service_name'].'&ensp;&ensp;';
+        }
+        return view('admin.order')->with(['data'=>$data,'service_name'=>$name,'province'=>$province,'expert_name'=>$expert_name]);
     }
 }

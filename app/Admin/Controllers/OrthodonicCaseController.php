@@ -74,6 +74,8 @@ class OrthodonicCaseController extends Controller
     {
         return Admin::grid(Orthodontics::class, function (Grid $grid) {
 
+            $grid->paginate(10);
+
             $grid->disableCreation();
 
             $grid->model()->status(Request::get('status'));

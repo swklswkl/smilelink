@@ -193,7 +193,7 @@
             ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
             ,resize: false
             ,moveType: 1 //拖拽模式，0或者1
-            ,content: '<div style="width:300px;height:450px;background-color:#fff;text-align:center;position:relative"><div style="width:165px;text-align:center;margin:0 auto"><h4>基础服务</h4><span style="display:inline-block;width:72px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <span style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;background:url(reception/img/yes3.png);margin-bottom:10px">正畸档案</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>影像资料分析</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <input type="checkbox" name="service_id[]" value="3" s="0" zj="0" id="xginput" style="position:absolute;left:75px;top:155px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="xg" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">X光片分析</span> <input type="checkbox" name="service_id[]" value="4" s="0" zj="0" id="mbinput" style="position:absolute;left:75px;top:204px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="mb" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">面部照片分析</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>专家指导服务</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span> <input type="checkbox" name="service_id[]" id="zjinput" value="8" s="0" zj="1" style="position:absolute;left:75px;top:314px;height:41px;width:150px;cursor:hand;opacity: 0" onclick="dian(this,this.nextElementSibling)"> <span id="zjzd" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">治疗计划专家指导</span></div><div style="margin-top:25px"><span class="tijiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-right: 2px;" onclick="tijiao(\''+id+'\')">提交</span><span class="quxiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-left: 2px;" onclick="guanbi()">取消</span></div></div>'
+            ,content: '<div style="width:300px;height:450px;background-color:#fff;text-align:center;position:relative"><form id="oform"><div style="width:165px;text-align:center;margin:0 auto"><h4>基础服务</h4><span style="display:inline-block;width:72px;height:2px;background-color:#69be28;margin-bottom:5px"></span><span style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;background:url(reception/img/yes3.png);margin-bottom:10px">正畸档案</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>影像资料分析</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span><input type="checkbox" name="service_id[]" value="3" s="0" zj="0" id="xginput" style="position:absolute;left:75px;top:128px;height:41px;width:150px;cursor:hand;opacity:0" onclick="dian(this,this.nextElementSibling)"><span id="xg" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">X光片分析</span><input type="checkbox" name="service_id[]" value="4" s="0" zj="0" id="mbinput" style="position:absolute;left:75px;top:179px;height:41px;width:150px;cursor:hand;opacity:0" onclick="dian(this,this.nextElementSibling)"><span id="mb" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">面部照片分析</span></div><div style="width:165px;text-align:center;margin:0 auto"><h4>专家指导服务</h4><span style="display:inline-block;width:110px;height:2px;background-color:#69be28;margin-bottom:5px"></span><input type="checkbox" name="service_id[]" id="zjinput" value="8" s="0" zj="1" style="position:absolute;left:75px;top:274px;height:41px;width:150px;cursor:hand;opacity:0" onclick="dian(this,this.nextElementSibling)"><span id="zjzd" style="display:inline-block;width:165px;height:40px;text-align:center;line-height:40px;border:1px solid gray;margin-bottom:10px">治疗计划专家指导</span></div><div style="margin-top:25px"><input type="hidden" name="id" value="\''+id+'\'"> <span class="tijiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-right:2px" onclick="tijiao(\''+id+'\')">提交</span><span class="quxiao" style="display:inline-block;width:100px;height:30px;background-color:#69be28;line-height:30px;color:#fff;cursor:hand;margin-left:2px" onclick="guanbi()">取消</span></div></form></div>'
             ,success: function(layero)
             {
             }
@@ -207,9 +207,29 @@
 
     function tijiao (id)
     {
-        console.log(id);
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/odtcase/optionService')}}',
+            dataType:'json',
+            data:$('#oform').serialize(),
+            success: function(data) {
+                if (data['code'] == 200)
+                {
+                    layer.msg(data['msg'], {
+                        icon: 6,
+                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        window.location.href = 'caseManagement';
+                    });
+                }else{
+                    layer.msg(data['msg'], {
+                        icon: 5,
+                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                    })
+                }
+            }
+        });
     }
-
     function dian (dq,next)
     {
         var s = dq.getAttribute('s');
@@ -240,13 +260,11 @@
                 document.getElementById('zjzd').style.border = '1px solid gray';
                 document.getElementById('zjinput').checked = false;
             }
-
         }else {
             dq.setAttribute('s',0);
             next.style.background= '';
             next.style.border= '1px solid gray';
         }
-
     }
 </script>
 </body>

@@ -24,4 +24,17 @@ class Orders extends Model
     {
         return $this->belongsTo(CaseHistory::class,'case_history_id');
     }
+
+    public function Orthodontics ()
+    {
+        return $this->belongsTo(Orthodontics::class,'orthodontics_id');
+    }
+
+    public function scopeStatus($query, $status)
+    {
+        if (!in_array($status, ['0','1', '2', '3','4'])) {
+            return $query;
+        }
+        return $query->where('status', $status);
+    }
 }
