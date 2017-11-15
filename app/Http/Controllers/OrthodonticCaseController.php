@@ -1045,20 +1045,31 @@ class OrthodonticCaseController extends Controller
      */
     public function optionService(Request $request)
     {
-        $service_id = $request->post('service_id');
         if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
         {
             $service_id = implode(',',$request->post('service_id'));
         }else{
-            $service_id = $service_id[0];
+            $service_id = $request->post('service_id'[0]);
         }
         DB::beginTransaction();
         try{
-            $model =Orthodontics::find($request->post('id'));
-            $model->service = $service_id;
-            $model->save();
+            $data = Orthodontics::where(['id'=>trim($request->post('id'),"'")])->update(['status'=>'2','service_id'=>$service_id]);
+            if ($data)
+            {
+                Orders::insert([
+                    'number' => $this->createOrderNum($request->getClientIp()),
+                    'orthodontics_id' => trim($request->post('id'),"'"),
+                    'doctor_id' => $request->session()->get('doctor.id'),
+                    'status' => '1',
+                    'amount' => mt_rand(1,999),
+                    'create_time' => time(),
+                    'pay_time' => time()
+                ]);
+            }else{
+                return $this->errorResponse('提交服务失败',402);
+            }
             DB::commit();
-            return $this->successResponse();
+            return $this->successResponse('服务提交成功');
         }catch (Exception $e){
             DB::rollBack();
             return $this->errorResponse('操作有误',402);

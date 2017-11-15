@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 /*******************************************测试demo***************1*********************************/
 Route::get('/test','TestController@cx');
+Route::get('/adminorder','TestController@order');
 Route::get('/cxjz','TestController@cxjz');
 Route::get('/yscx','TestController@yscx');
 Route::get('/zjcx','TestController@zjcx');
@@ -128,3 +129,5 @@ Route::get('/expert/orderNum','ExpertController@orderNum');
 Route::post('/expert/orderReceiving','ExpertController@orderRec');
 Route::get('/expert/myOrders','ExpertController@myOrders');
 Route::get('/expert/findOrdersQuantity','ExpertController@findOrdersQuantity');
+//修改密码
+Route::post('/expert/changePassword','ExpertController@changePassword');

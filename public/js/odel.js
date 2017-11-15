@@ -1,4 +1,3 @@
-
 function del (id)
 {
     swal({
@@ -130,4 +129,20 @@ function cs ()
     $('#zlgc').addClass('active');
     $('#zhiliaojinzhan').addClass('active');
     $('#zhiliaojinzhan').addClass('in');
+}
+
+function order (number)
+{
+    $.ajax({
+        method: 'get',
+        url: '/api/adminorder',
+        data: {
+            number:number
+        },
+        success: function (data) {
+            $("#goudan").html(data);
+            $("#goudan").modal({
+            })
+        }
+    });
 }

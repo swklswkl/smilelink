@@ -96,27 +96,7 @@
                                 </table>
                             </div>
                             <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination"  style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background: #69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+
                             <div class="col-lg-4"></div>
                         </div>
                     </div>
@@ -165,30 +145,7 @@ orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                 </table>
                             </div>
                             <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-
-                                                      hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background:
-#69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-
-                                                      hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+
                             <div class="col-lg-4"></div>
                         </div>
                     </div>
@@ -237,30 +194,7 @@ orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                 </table>
                             </div>
                             <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-
-                                                      hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background:
-#69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-
-                                                      hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+
                             <div class="col-lg-4"></div>
                         </div>
                     </div>
@@ -308,30 +242,30 @@ orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                 </table>
                             </div>
                             <div class="col-lg-4"></div>
-                            <div class="col-lg-4">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination" style="border: none">
-                                        <li>
-                                            <a href="#" aria-label="Previous">
-                                                <span aria-
-                                                      hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="#" style="background:
-#69be28">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-
-                                                      hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                            {{--<div class="col-lg-4">--}}
+                                {{--<nav aria-label="Page navigation">--}}
+                                    {{--<ul class="pagination" style="border: none">--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#" aria-label="Previous">--}}
+                                                {{--<span aria---}}
+                                                      {{--hidden="true">&laquo;</span>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li><a href="#" style="background:--}}
+{{--#69be28">1</a></li>--}}
+                                        {{--<li><a href="#">2</a></li>--}}
+                                        {{--<li><a href="#">3</a></li>--}}
+                                        {{--<li><a href="#">4</a></li>--}}
+                                        {{--<li><a href="#">5</a></li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#" aria-label="Next">--}}
+                                                {{--<span aria---}}
+                                                      {{--hidden="true">&raquo;</span>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                    {{--</ul>--}}
+                                {{--</nav>--}}
+                            {{--</div>--}}
                             <div class="col-lg-4"></div>
                         </div>
                     </div>

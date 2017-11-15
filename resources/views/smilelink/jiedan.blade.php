@@ -54,13 +54,13 @@
                                     <td>创建日期</td>
                                     <td>操作</td>
                                 </tr>
-                                {{--{{dd($data)}}--}}
+
                                 @if($data == null)
                                     <tr class="active">
                                         <td  style="text-align: center;padding-left: 31px;" colspan="6">暂无订单</td>
                                     </tr>
                                 @else
-                                    @foreach($data as $value)
+@foreach($data as $value)
                                         <tr class="active" style="text-align: center">
                                             <td  style="padding-left: 31px;">{{$value['number']}}</td>
                                             <td >{{$value['orthodontics_id']}}</td>

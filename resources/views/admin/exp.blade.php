@@ -87,15 +87,15 @@
                                     <input type="number" id="working_years" name="working_years" class="form-control" value="{{$data[0]['working_years']}}" readonly>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">状态</label>
-                                <div class="col-sm-9">
-                                    <select style="cursor: default;" name="status" id="status" class="form-control" disabled>
-                                        <option value="0" {{$data[0]['status']=='0'?'selected' :''}}>禁用</option>
-                                        <option value="1" {{$data[0]['status']=='1'?'selected' :''}}>激活</option>
-                                    </select>
-                                </div>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="inputEmail3" class="col-sm-2 control-label">状态</label>--}}
+                                {{--<div class="col-sm-9">--}}
+                                    {{--<select style="cursor: default;" name="status" id="status" class="form-control" disabled>--}}
+                                        {{--<option value="0" {{$data[0]['status']=='0'?'selected' :''}}>禁用</option>--}}
+                                        {{--<option value="1" {{$data[0]['status']=='1'?'selected' :''}}>激活</option>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </form>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
             $('#certificate').removeAttr('disabled');
             $('#work_unit').removeAttr('readonly');
             $('#working_years').removeAttr('readonly');
-            $('#status').removeAttr('disabled');
+//            $('#status').removeAttr('disabled');
 
         } else {
             $.ajax({
@@ -159,7 +159,7 @@
                     certificate:$('#certificate').val(),
                     work_unit:$('#work_unit').val(),
                     working_years:$('#working_years').val(),
-                    status:$('#status').val(),
+//                    status:$('#status').val(),
                 },
                 success: function (data) {
                     eval('var res = ' + data);
@@ -175,7 +175,7 @@
                         $('#certificate').attr('disabled','true');
                         $('#work_unit').attr('readonly','true');
                         $('#working_years').attr('readonly','true');
-                        $('#status').attr('readonly','true');
+//                        $('#status').attr('readonly','true');
                         a.setAttribute('switch', 0);
                         a.innerHTML = '编辑';
                         a.setAttribute('class', 'btn btn-default');
