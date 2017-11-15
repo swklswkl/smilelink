@@ -89,7 +89,9 @@
                                             </td>
                                             <td>{{$value['amount']}}</td>
                                             <td >{{$value['create_time']}}</td>
-                                            <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                            <td >
+                                                <a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     @endif

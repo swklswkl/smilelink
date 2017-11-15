@@ -68,6 +68,7 @@ Route::get('createZhenJiCaseSeven/edit', function () {
 Route::get('createZhenJiCaseSeven/check', function () {
     return view('smilelink.createZhenJiCase.look');
 });
+
 //新增病例1模板
 Route::get('caseOne', function () {
     return view('smilelink.createCase.case1');
@@ -81,10 +82,16 @@ Route::get('caseThree', function () {
 
 Route::get('myOrders','DoctorController@all');
 Route::get('safeSet','DoctorController@safeSet');
-/*-------------------------------首页接口-------------------------------*/
-
-
-/*-------------------------------测试接口-------------------------------*/
+/*-------------------------------方案-------------------------------*/
+//专家方案审核
+Route::get('auditOpinion', 'OrthodonticCaseController@Fanganshenghe');
+//维护方案
+Route::get('editprogram', 'OrthodonticCaseController@weihufangan');
+//提交专家设计方案
+Route::get('conceptualDesign', function () {
+    return view('smilelink.conceptualDesign');
+});
+/*-------------------------------查询正畸病例-------------------------------*/
 
 Route::get('editCase1','OrthodonticCaseController@page1');
 Route::get('editCase2','OrthodonticCaseController@page2');
@@ -93,7 +100,8 @@ Route::get('editCase4','OrthodonticCaseController@page4');
 Route::get('editCase5','OrthodonticCaseController@page5');
 Route::get('editCase6','OrthodonticCaseController@page6');
 Route::get('editCase7','OrthodonticCaseController@page7');
-
+/*-------------------------------订单-------------------------------*/
 Route::get('orderReceiving','ExpertController@orderReceiving');
 Route::get('safeSSet','ExpertController@safeSet');
 Route::get('myOrrders','ExpertController@myOrders');
+

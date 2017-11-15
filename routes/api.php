@@ -130,3 +130,5 @@ Route::get('/expert/orderNum','ExpertController@orderNum');
 Route::post('/expert/orderReceiving','ExpertController@orderRec');
 Route::get('/expert/myOrders','ExpertController@myOrders');
 Route::get('/expert/findOrdersQuantity','ExpertController@findOrdersQuantity');
+//专家审核方案
+Route::post('/expert/schemeAudit','ExpertController@auditOpinion');
