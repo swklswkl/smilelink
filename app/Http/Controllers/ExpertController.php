@@ -294,8 +294,21 @@ class ExpertController extends Controller
         DB::beginTransaction();
         try
         {
-            $model = Program::find($request->post('orthodontics_id'));
-            return $model;
+            $model = Program::where('orthodontics_id',$request->post('orthodontics_id'))->get();
+            if(sizeof($model)){
+                Program::where('orthodontics_id',$request->post('orthodontics_id'))->insert([
+                    'program_name'=>$request->post('program_name'),
+                    'expert_id'=> $request->post('expert_id'),
+                    'audit_opinion'=>$request->post('audit_opinion'),
+                ]);
+            }else{
+                Program::insert([
+                    'orthodontics_id'=>$request->post('orthodontics_id'),
+                    'program_name'=>$request->post('program_name'),
+                    'expert_id'=> $request->post('expert_id'),
+                    'audit_opinion'=>$request->post('audit_opinion'),
+                ]);
+            }
             DB::commit();
         }catch (Exception $e){
             DB::rollBack();

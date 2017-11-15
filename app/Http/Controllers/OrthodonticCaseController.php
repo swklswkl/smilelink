@@ -94,7 +94,7 @@ class OrthodonticCaseController extends Controller
                     $errors = $validator->errors();
                     return $this->errorResponse($errors);
                 }
-                Orthodontics::where(['id' => $request->post('orthodontics_id')])->update([
+                    Orthodontics::where(['id' => $request->post('orthodontics_id')])->update([
                     'name' => $request->post('name'),
                     'sex' => $request->post('sex'),
                     'birthday' => $request->post('birthday'),
