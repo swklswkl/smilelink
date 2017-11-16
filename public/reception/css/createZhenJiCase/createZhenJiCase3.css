@@ -21,12 +21,12 @@
 .file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 121px;}
 .file2{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 383px;}
 .file3{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 115px;  left: 644px;}
-.file4{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 121px;}
-.file5{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 383px;}
-.file6{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 420px;  left: 644px;}
-.file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 121px;}
-.file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 383px;}
-.file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 642px;  left: 644px;}
+.file4{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 448px;  left: 121px;}
+.file5{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 448px;  left: 383px;}
+.file6{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 448px;  left: 644px;}
+.file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 701px;  left: 121px;}
+.file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 701px;  left: 383px;}
+.file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 701px;  left: 644px;}
 
 /**/
 .part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
@@ -41,13 +41,13 @@
 .part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
 .part4Cont p{margin-top: 10px;margin-bottom: 20px}
 .imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
-.file10{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 121px;}
-.file11{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 383px;}
-.file12{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 945px;  left: 644px;}
-.file13{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 121px;}
-.file14{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 383px;}
-.file15{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1167px;  left: 644px;}
-.file16{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1392px;  left: 121px;}
+.file10{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1034px;  left: 121px;}
+.file11{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1034px;  left: 383px;}
+.file12{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1034px;  left: 644px;}
+.file13{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1287px;  left: 121px;}
+.file14{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1287px;  left: 383px;}
+.file15{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1287px;  left: 644px;}
+.file16{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1542px;  left: 121px;}
 .file17{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1542px;  left: 383px;}
 .file18{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1542px;  left: 644px;}
 .file19{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 1794px;  left: 121px;}

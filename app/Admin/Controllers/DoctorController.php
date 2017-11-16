@@ -76,6 +76,7 @@ class DoctorController extends Controller
     protected function grid()
     {
         return Admin::grid(Doctors::class, function (Grid $grid) {
+            Admin::js('/js/del.js');
             $grid->paginate(10);
 //            $grid->disableActions();
 //            $grid->disableCreation();

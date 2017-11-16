@@ -64,7 +64,7 @@
                  <p><input name="birthday" id="" type="date" class="inputLong" > </p>
                  <p><input name="id_number" id="" type="text" class="inputLong"></p>
                  <p><input name="mobilephone" id="" type="number" class="inputLong"></p>
-                <p><input name="address" type="text"></p>
+                <p><input name="address" type="text" class="inputLong"></p>
              </div>
 
 

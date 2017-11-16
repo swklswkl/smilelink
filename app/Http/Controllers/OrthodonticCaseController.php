@@ -1062,7 +1062,7 @@ class OrthodonticCaseController extends Controller
         if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
         {
             $service_id = implode(',',$request->post('service_id'));
-            dd($service_id);die;
+
         }else{
             $service_id = $request->post('service_id');
             $service_id = $service_id[0];

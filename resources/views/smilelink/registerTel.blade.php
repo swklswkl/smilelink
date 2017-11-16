@@ -52,7 +52,7 @@
     </div>
     <div class="form-group">
         <div style="text-align: center">
-            <div   class="btn btn-success" onclick="submitForm()"  style="width: 180px;height: 60px;font-size: 20px">下一步</div>
+            <div   class="btn btn-success" onclick="submitForm()"  style="width: 180px;height: 60px;font-size: 20px;line-height: 51px">下一步</div>
         </div>
     </div>
 
