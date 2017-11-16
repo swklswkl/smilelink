@@ -88,6 +88,7 @@ class ExpertController extends Controller
         //查询专家的所在地区
         $province = Experts::select(['province'])->where(['id'=>$request->session()->get('expert.id')])->get()->toArray()[0]['province'];
         $doctor_id = Doctors::select(['id'])->where(['province'=>$province])->get()->toArray();
+
         if ($doctor_id == [])
         {
             return view('smilelink.jiedan')->with('data',null);
@@ -98,7 +99,9 @@ class ExpertController extends Controller
             {
                 array_push($arrId,$doctor_id[$i]['id']);
             }
+
             $orders = Orders::where(['status'=>'1'])->whereIn('doctor_id',$arrId)->get()->toArray();
+
             for ($i=0;$i<sizeof($orders);$i++)
             {
                 $oid = $orders[$i]['orthodontics_id'];
@@ -116,6 +119,7 @@ class ExpertController extends Controller
                     $orders[$i]['service'] = $service_name;
                 }
             }
+//            dd($orders);die;
             return view('smilelink.jiedan')->with('data',$orders);
         }
     }
@@ -291,20 +295,21 @@ class ExpertController extends Controller
 
     public function auditOpinion(Request $request)
     {
-        //return $request->all();
+//        //return $request->all();
         DB::beginTransaction();
         try
         {
-                $result = Program::where(['orthodontics_id'=>$request->post('orthodontics_id'),
-                    'program_name'=>$request->post('program_name')]
-                )->update([
-                    'status'=> $request->post('status'),
-                    'audit_opinion'=>$request->post('audit_opinion')
-                ]);
+//            dd($request->toArray());die;
+            $data = Program::where(['orthodontics_id'=>$request->post('orthodontics_id')])->update(['audit_opinion'=>$request->post('audit_opinion')]);
+//                $result = Program::where(['orthodontics_id'=>$request->post('orthodontics_id'),
+//                    'program_name'=>$request->post('program_name')]
+//                )->update([
+//                    'status'=> $request->post('status'),
+//                    'audit_opinion'=>$request->post('audit_opinion')
+//                ]);
 
-
-                if($result){
-                    return $this->successResponse('保存成功',$result);
+                if($data){
+                    return $this->successResponse('保存成功',$data);
                 }else{
                     return $this->errorResponse('保存失败');
                 }
