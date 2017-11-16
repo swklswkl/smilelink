@@ -291,28 +291,28 @@ class ExpertController extends Controller
 
     public function auditOpinion(Request $request)
     {
+        //return $request->all();
         DB::beginTransaction();
         try
         {
-            $model = Program::where('orthodontics_id',$request->post('orthodontics_id'))->get();
-            if(sizeof($model)){
-                Program::where('orthodontics_id',$request->post('orthodontics_id'))->insert([
-                    'program_name'=>$request->post('program_name'),
-                    'expert_id'=> $request->post('expert_id'),
-                    'audit_opinion'=>$request->post('audit_opinion'),
+                $result = Program::where(['orthodontics_id'=>$request->post('orthodontics_id'),
+                    'program_name'=>$request->post('program_name')]
+                )->update([
+                    'status'=> $request->post('status'),
+                    'audit_opinion'=>$request->post('audit_opinion')
                 ]);
-            }else{
-                Program::insert([
-                    'orthodontics_id'=>$request->post('orthodontics_id'),
-                    'program_name'=>$request->post('program_name'),
-                    'expert_id'=> $request->post('expert_id'),
-                    'audit_opinion'=>$request->post('audit_opinion'),
-                ]);
-            }
+
+
+                if($result){
+                    return $this->successResponse('保存成功',$result);
+                }else{
+                    return $this->errorResponse('保存失败');
+                }
+
             DB::commit();
         }catch (Exception $e){
             DB::rollBack();
-
+            return $this->errorResponse('操作有误',402);
         }
     }
 

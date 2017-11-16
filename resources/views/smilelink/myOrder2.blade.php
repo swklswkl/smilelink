@@ -89,7 +89,9 @@
                                             </td>
                                             <td>{{$value['amount']}}</td>
                                             <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
+
                                             <td ><a href="caseManage2?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+
                                         </tr>
                                         @endforeach
                                     @endif
@@ -138,7 +140,10 @@ center">
                                                 <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
                                                 <td ><a href="caseManage2?
 orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
-                                                    </a></td>
+                                                    </a>
+                                                    <a href="auditOpinion?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">方案审核</a>
+                                                    {{--<a href="conceptualDesign?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">提交设计方案</a>--}}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif

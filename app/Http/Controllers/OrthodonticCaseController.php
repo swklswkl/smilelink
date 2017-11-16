@@ -1076,4 +1076,21 @@ class OrthodonticCaseController extends Controller
         }
     }
 
+    public function Fanganshenghe(Request $request)
+    {
+        $data = Program::where([
+            'orthodontics_id'=>$request->get('orthodontics_id'),
+            'type'=> '0'
+        ])->get();
+            return view('smilelink.Maintenanceprogram')->with('data',$data);
+    }
+
+    public function weihufangan(Request $request)
+    {
+        $data = Program::where([
+            'orthodontics_id'=>$request->get('orthodontics_id'),
+            'type'=> '0'
+        ])->get();
+        return view('smilelink.maintain')->with('data',$data);
+    }
 }
