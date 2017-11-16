@@ -97,8 +97,6 @@
     </div>
 </div>
 
-
-
 </form>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="/reception/js/layer/2.1/layer.js"></script>
@@ -141,7 +139,7 @@
                     if( v.status=='1' ){
                         status ='档案已建立';
                         option_service = '<a href="javascript:void(0);" data-id="'+oid+'"'+'onclick=selectfuwu(this.getAttribute("data-id"))>选择服务</a>';
-                        perfect = '<a href="{{url('weihufangan?orthodontics_id=')}}'+oid+'">完善档案</a>';
+                        perfect = '<a href="{{url('editCase1?orthodontics_id=')}}'+oid+'">完善档案</a>';
                     }else if(v.status=='2'){
                         status ='档案已提交';
                         perfect = '<a href="/editprogram?orthodontics_id='+oid+'">维护方案</a>';
