@@ -1101,12 +1101,20 @@ class OrthodonticCaseController extends Controller
             return view('smilelink.Maintenanceprogram')->with('data',$data);
     }
 
+    /**
+     * TODO:方案维护
+     * @param Request $request
+     * @return $this
+     */
     public function weihufangan(Request $request)
     {
         $data = Program::where([
             'orthodontics_id'=>$request->get('orthodontics_id'),
-            'type'=> '0'
         ])->get();
+
+        foreach($data as $key => $val){
+            $data[$key]['create_time'] =date('Y-m-d H:i:s',$data[$key]['create_time']);
+        }
         return view('smilelink.maintain')->with('data',$data);
     }
 }

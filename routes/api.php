@@ -133,7 +133,9 @@ Route::get('/expert/myOrders','ExpertController@myOrders');
 Route::get('/expert/findOrdersQuantity','ExpertController@findOrdersQuantity');
 
 //专家审核方案
-Route::post('/expert/schemeAudit','ExpertController@auditOpinion');
+Route::post('expert/schemeAudit','ExpertController@auditOpinion');
+//专家提交治疗方案
+Route::post('expert/commitAudit','ExpertController@commitAudit');
 
 //修改密码
 Route::post('/expert/changePassword','ExpertController@changePassword');

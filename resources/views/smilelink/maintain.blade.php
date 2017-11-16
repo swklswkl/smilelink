@@ -50,17 +50,16 @@
 
 
 <div class=" crumbs">
-    <div class="content"><p>病例管理&gt;&gt;维护方案</p></div>
+    <div class="content"><p>病例管理&gt;&gt;方案查看</p></div>
 
 </div>
-
 <div class="content">
     <div class="slideTxtBox" >
-        <div  class="title">方案维护</div>
+        <div  class="title">方案查看</div>
         <div class="hd">
             <ul id="treatment_title">
                 @foreach($data as $key => $val)
-                <li class="fangan">查看方案{{$key+1}}</li>
+                <li class="fangan">{{$data[$key]['program_name']}}</li>
                 @endforeach
                 {{--<li style="border: none;color: #e56424" id="ap" onclick="tianJia()">+添加治疗方案</li>--}}
             </ul>
@@ -79,9 +78,9 @@
                 <button type="button" class="button1">查看x光治疗分析</button>--}}
                 <form class="form{{$key}}">
                     <div class="program_respone">
-                        <p>我的方案:
+                        <p>
                             @if($val['content']!=null)
-                            {{$val['content']}}
+                            <p><span class="green"></span><span class="px16">{{$val['create_time']}}</span> <span class="px18">{{$val['content']}}</span></p>
                             @else
                                 占时无方案内容
                             @endif
