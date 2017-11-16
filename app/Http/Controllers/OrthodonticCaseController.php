@@ -941,22 +941,35 @@ class OrthodonticCaseController extends Controller
                     'right_molar_fangs' => $request->post('right_molar_fangs'),
                     'treatment_other_target' => $request->post('treatment_other_target')
                 ]);
-            Orthodontics::where(['id' => $request->post('orthodontics_id')])
-                ->update([
-                    'status' => $request->post('issub') == 1 ? '1' : '2'
-                ]);
-            if ($request->post('issub') == 2)
+            if ($request->post('issub') == '1')
             {
-                Orders::insert([
-                    'number' => $this->createOrderNum($request->getClientIp()),
-                    'orthodontics_id' => $request->post('orthodontics_id'),
-                    'doctor_id' => $request->session()->get('doctor.id'),
-                    'status' => '1',
-                    'amount' => mt_rand(1,999),
-                    'create_time' => time(),
-                    'pay_time' => time()
-                ]);
+                Orthodontics::where(['id' => $request->post('orthodontics_id')])
+                    ->update([
+                        'status' => '1'
+                    ]);
+            }else{
+                //查询当前病历有没有服务内容
+                $service = Orthodontics::select(['service_id'])->where(['id'=>$request->post('orthodontics_id')])->get()->toArray();
+                if ($service[0]['service_id'] == '')
+                {
+                    Orthodontics::where(['id' => $request->post('orthodontics_id')])
+                        ->update([
+                            'status' => '1'
+                        ]);
+                }else{
+                    Orders::insert([
+                        'number' => $this->createOrderNum($request->getClientIp()),
+                        'orthodontics_id' => $request->post('orthodontics_id'),
+                        'doctor_id' => $request->session()->get('doctor.id'),
+                        'status' => '1',
+                        'amount' => mt_rand(1,999),
+                        'create_time' => time(),
+                        'pay_time' => time()
+                    ]);
+                }
+
             }
+
             for ($i=1;$i<=$num;$i++)
             {
                 Program::insert([
@@ -1045,11 +1058,14 @@ class OrthodonticCaseController extends Controller
      */
     public function optionService(Request $request)
     {
+
         if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
         {
             $service_id = implode(',',$request->post('service_id'));
+            dd($service_id);die;
         }else{
-            $service_id = $request->post('service_id'[0]);
+            $service_id = $request->post('service_id');
+            $service_id = $service_id[0];
         }
         DB::beginTransaction();
         try{
