@@ -200,33 +200,47 @@
 
     function guanbi ()
     {
-        layer.close(layer.index);
+        layer.closeAll();
     }
 
     function tijiao (id)
     {
-        $.ajax({
-            type: 'post',
-            url:'{{url('/api/odtcase/optionService')}}',
-            dataType:'json',
-            data:$('#oform').serialize(),
-            success: function(data) {
-                if (data['code'] == 200)
-                {
-                    layer.msg(data['msg'], {
-                        icon: 6,
-                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
-                    }, function(){
-                        window.location.href = 'caseManagement';
-                    });
-                }else{
-                    layer.msg(data['msg'], {
-                        icon: 5,
-                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
-                    })
+        var xg = document.getElementById('xginput').checked.toString();
+        var mb = document.getElementById('mbinput').checked.toString();
+        var sj = document.getElementById('zjinput').checked.toString();
+        var str = xg+mb+sj;
+
+        if ( str=='falsefalsefalse' )
+        {
+            layer.msg('请选择服务', {
+                icon: 5,
+                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+            });
+        }else{
+            $.ajax({
+                type: 'post',
+                url:'{{url('/api/odtcase/optionService')}}',
+                dataType:'json',
+                data:$('#oform').serialize(),
+                success: function(data) {
+                    if (data['code'] == 200)
+                    {
+                        layer.msg(data['msg'], {
+                            icon: 6,
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function(){
+                            window.location.href = 'caseManagement';
+                        });
+                    }else{
+                        layer.msg(data['msg'], {
+                            icon: 5,
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        })
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
     function dian (dq,next)
     {

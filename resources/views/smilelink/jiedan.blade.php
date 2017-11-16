@@ -65,9 +65,13 @@
                                             <td  style="padding-left: 31px;">{{$value['number']}}</td>
                                             <td >{{$value['orthodontics_id']}}</td>
                                             <td >
-                                                @foreach($value['service'] as $v)
-                                                    {{$v['service_name']}}
-                                                @endforeach
+                                                @if(is_array($value['service']))
+                                                    @foreach($value['service'] as $v)
+                                                        {{$v['service_name']}}
+                                                    @endforeach
+                                                @else
+                                                    暂无服务内容
+                                                @endif
                                             </td>
                                             <td>{{$value['amount']}}</td>
                                             <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>

@@ -129,21 +129,21 @@
             <div class="imgBox">
                 <div class="imgBox-T">
                     <div class="imgBox-T-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file1"  onchange="c(this)" >
                         <input name="positive_photo" class="imgurl" type="hidden" value=""/>
 
                     </div>
                     <div class="imgBox-T-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file2"  onchange="c(this)">
                         <input name="side_photo" class="imgurl" type="hidden" value=""/>
 
                     </div>
                     <div class="imgBox-T-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file3"  onchange="c(this)">
                         <input name="positive_smile_photo" class="imgurl" type="hidden" value=""/>
@@ -154,19 +154,19 @@
 
                 <div class="imgBox-C">
                     <div class="imgBox-C-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file4"   onchange="c(this)">
                         <input name="upper_arch_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-C-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file5"  onchange="c(this)">
                         <input name="positive_45_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-C-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file6"  onchange="c(this)">
                         <input name="under_arch_photo" class="imgurl" type="hidden" value=""/>
@@ -179,19 +179,19 @@
 
                 <div class="imgBox-B">
                     <div class="imgBox-B-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file7"  onchange="c(this)">
                         <input name="right_bite_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-B-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file8"  onchange="c(this)">
                         <input name="positive_bite_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-B-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file9"  onchange="c(this)">
                         <input name="left_bite_photo" class="imgurl" type="hidden" value=""/>
@@ -223,19 +223,19 @@
             <div class="imgBox">
                 <div class="imgBox-T">
                     <div class="imgBox-T-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file10"  onchange="c(this)">
                         <input name="side_x_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-T-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file11"  onchange="c(this)">
                         <input name="positive_x_photo" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-T-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file12"  onchange="c(this)">
                         <input name="tooth_photo" class="imgurl" type="hidden" value=""/>
@@ -247,19 +247,19 @@
 
                 <div class="imgBox-C">
                     <div class="imgBox-C-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file13"  onchange="c(this)">
                         <input name="cbct_joint_sagittal" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-C-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file14"  onchange="c(this)">
                         <input name="cbct_coronary_joint" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-C-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file15"  onchange="c(this)">
                         <input name="cbct_anterior_teeth" class="imgurl" type="hidden" value=""/>
@@ -272,18 +272,18 @@
 
                 <div class="imgBox-B">
                     <div class="imgBox-B-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file16"  onchange="c(this)">
                         <input name="cbct_under_teeth" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-B-C">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                         <input name="file"  type="file" class="file17"  onchange="c(this)">
                         <input name="abnormal_teeth" class="imgurl" type="hidden" value=""/>
                     </div>
                     <div class="imgBox-B-R">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
                         <input name="file"  type="file" class="file18"  onchange="c(this)">
                         <input name="air_passage" class="imgurl" type="hidden" value=""/>
                     </div>
@@ -292,7 +292,7 @@
                 </p>
                 <div class="imgBox-B">
                     <div class="imgBox-B-L">
-                        <img src="{{asset('reception/js/holder.min.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
+                        <img src="{{asset('/js/holder.js/200x200?text=暂无图片')}}" alt=""  width="200" height="200px" >
 
                         <input name="file"  type="file" class="file19"  onchange="c(this)">
                         <input name="other" class="imgurl" type="hidden" value="" />
@@ -318,7 +318,8 @@
 </footer>
 
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
-<script src="{{asset('reception/js/holder.min.js')}}"></script>
+<script src="reception/js/layer/2.1/layer.js"></script>
+<script src="{{asset('/js/holder.js')}}"></script>
 
 <script>
     var cbtn = document.getElementsByClassName('c1');
@@ -367,21 +368,23 @@
             dataType:'json',
             data:$('.form-horizontal').serialize(),
             success: function(data) {
-                console.log(data);
+                var message = '';
                 if (data.code == 200)
                 {
                     window.location.href = "{{url('caseTwo?orthodontics_id=')}}"+data.data;
-                } else {
-                    if(data.code==401) {
+                } else if(data.code==401) {
                         $.each(data.msg, function (key, val) {
                             layer.tips(val, '#' + key);
                         })
-                    }
-                    if(data.code==402){
-                        layer.msg(data.msg);
-                    }
 
+                }else if(data.code==402){
+                        $.each(data.msg,function (k,v) {
+                            message += v[0]+'</br>';
+                        });
+                    layer.msg(message);
+                    document.getElementById('layui-layer1').style.top = '300px';
                 }
+
             }
         });
 
