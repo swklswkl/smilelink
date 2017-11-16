@@ -28,7 +28,7 @@
     .slideTxtBox .hd ul{ float:left;  position:absolute; left:20px; top:-1px;   }
     .slideTxtBox .hd ul li{ float:left; padding:0 30px; cursor:pointer; font-size: 20px;color: #3c3c3c ;border-radius: 16px 16px 0 0;border: 1px  solid #ddd }
     .slideTxtBox .hd ul li.on{ height:55px;   border-bottom:4px solid #69be28; font-size: 20px;color: #5d5d5d;border: 1px  solid #ddd}
-    .slideTxtBox .bd ul{   zoom:1;  height: 450px;position: relative;border:1px solid #69be28;border-radius: 20px;padding-left: 50px;padding-top: 40px;    margin-left: 45px;}
+    .slideTxtBox .bd ul{   zoom:1;  height: 350px;position: relative;border:1px solid #69be28;border-radius: 20px;padding-left: 50px;padding-top: 40px;    margin-left: 45px;}
     .slideTxtBox .bd ul p{line-height: 30px}
     .slideTxtBox .bd ul p .px16{color:#3c3c3c;font-size: 16px;margin-right: 50px }
     .slideTxtBox .bd ul p .px18{color:#3c3c3c;font-size: 16px }
@@ -38,37 +38,17 @@
     .slideTxtBox .bd .button1{background: #69be28;border: none;border-radius: 4px;height: 38px;line-height: 38px;font-size: 16px;color: #fff;padding: 0 20px 0 20px;margin-left: 200px;margin-top: 40px}
     .title {background: url("{{url('reception/img/caseWrite.png')}}") no-repeat ;top: 10px;left: 5px;padding-left: 40px;margin-bottom: 20px;font-size: 20px;color: #69be28}
     .buttonBox {text-align: right;position: absolute;bottom: 60px;right: 80px}
-    .buttonBox  button{background: #69be28;border: none;height: 38px;line-height: 38px;font-size: 16px;color: #fff;padding: 0 20px 0 20px;margin-right: 20px;}
+    button{background: #69be28;border: none;height: 38px;line-height: 38px;font-size: 16px;color: #fff;padding: 0 20px 0 20px;float: right;}
     .ziZhuBox{margin-top: 20px;margin-bottom: 100px}
     .ziZhuBox .ziZhuBoxL{color: #e56424;float: left;margin-top: 18px}
     .ziZhuBox .ziZhuBoxR{height: 50px;width:100px ;background: #eaeaea;border: #adadad;border-radius: 6px;border:#adadad;text-align: center;line-height: 50px;float:left;position: relative;}
     .ziZhuBox .ziZhuBoxR input{display: inline-block;width: 93px;height: 50px;opacity: 0;position: absolute;top: 1px;left: 1px}
     .program_respone textarea{width: 100%;height: 100%;}
-    .program_respone{width: 95%;height: 70%;}
+    .program_respone{width: 95%;height: 85%;}
 </style>
-{{--<header>--}}
-
-    {{--<div class="content">--}}
-        {{--<div class="head-L">--}}
-            {{--<img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">--}}
-        {{--</div>--}}
-        {{--<div class="head-C">--}}
-            {{--<span ><a href="#">新建病例</a></span>--}}
-            {{--<span ><a href="#">病例管理</a></span>--}}
-            {{--<span class="span1"><a href="#">我的订单</a></span>--}}
-        {{--</div>--}}
-        {{--<div class="head-R">--}}
-            {{--<span><a href="#">个人中心</a></span>--}}
-            {{--<span class="span2"><a href="#">退出</a></span>--}}
-        {{--</div>--}}
-
-
-
-    {{--</div>--}}
-{{--</header>--}}
 
 <div class=" crumbs">
-    <div class="content"><p>病例管理&gt;&gt;维护方案</p></div>
+    <div class="content"><p>病例管理&gt;&gt;专家提交方案</p></div>
 
 </div>
 
@@ -81,6 +61,7 @@
                 <li style="border: none;color: #e56424" id="ap" onclick="tianJia()">+添加治疗方案</li>
             </ul>
         </div>
+        <form class="form">
         <div class="bd">
             <!--治疗方案1-->
             <ul >
@@ -90,18 +71,22 @@
 
                 <button type="button" class="button1">查看x光治疗分析</button>--}}
                 <div class="program_respone">
-                    <textarea></textarea>
+                    <textarea name="content[]"></textarea>
                 </div>
                 <div class="buttonBox">
                     {{--<button type="button">保存</button>--}}
-                    <button type="button">提交</button>
+
                     {{--<button type="button" style="background: white;color: #404040;border: 1px solid #a1a1a1">返回</button>--}}
 
                 </div>
 
             </ul>
 
+
         </div>
+            <button type="button" onclick="submitForm()">提交</button>
+        <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}">
+        </form>
         {{--<div  class="ziZhuBox" >--}}
             {{--<div class="ziZhuBoxL" >自主排牙：</div>--}}
             {{--<div class="ziZhuBoxR" > 浏览... <input type="file" >--}}
@@ -110,15 +95,14 @@
         {{--</div>--}}
     </div>
 </div>
-
+<script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
 <script>
 
     function submitForm()
     {
-//        alert($('.form'+a).serialize());
         $.ajax({
             type: 'post',
-            url:'{{url('/api/expert/schemeAudit')}}',
+            url:'{{url('/api/expert/commitAudit')}}',
             dataType:'json',
             data:$('.form').serialize(),
             success: function(data) {
@@ -138,12 +122,9 @@
     function  tianJia(){
         var content = "<ul >\n" +
             "<div class=\"program_respone\">\n" +
-            "<textarea></textarea>\n" +
+            "<textarea name=\"content[]\"></textarea>\n" +
             "</div>\n" +
             "<div class=\"buttonBox\">\n" +
-            "<button type=\"button\">保存</button>\n" +
-            "<button type=\"button\">提交</button>\n" +
-            "<button type=\"button\" style=\"background: white;color: #404040;border: 1px solid #a1a1a1\">返回</button>\n" +
             "\n" +
             "</div>"
             "</ul> ";

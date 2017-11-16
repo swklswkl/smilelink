@@ -289,30 +289,48 @@ class ExpertController extends Controller
         }
     }
 
+    /**
+     * TODO:专家审核
+     * @param Request $request
+     * @return string
+     */
     public function auditOpinion(Request $request)
     {
         //return $request->all();
         DB::beginTransaction();
         try
         {
-                $result = Program::where(['orthodontics_id'=>$request->post('orthodontics_id'),
-                    'program_name'=>$request->post('program_name')]
-                )->update([
-                    'status'=> $request->post('status'),
-                    'audit_opinion'=>$request->post('audit_opinion')
-                ]);
-
-
-                if($result){
-                    return $this->successResponse('保存成功',$result);
-                }else{
-                    return $this->errorResponse('保存失败');
-                }
+            // 设置验证消息
+            $messages = [
+                'status.required' => '审核状态不能为空',
+                'audit_opinion.required' => '审核内容不能为空'
+            ];
+            // 设置验证规则
+            $validator = Validator::make($request->all(),[
+                'status' => 'required',
+                'audit_opinion' => 'required'
+            ],$messages);
+            if ($validator->fails())
+            {
+                $errors = $validator->errors();
+                return $this->errorResponse($errors,402);
+            }
+            $result = Program::where(['orthodontics_id'=>$request->input('orthodontics_id'),
+                'program_name'=>$request->input('program_name')]
+            )->update([
+                'status'=> $request->input('status'),
+                'audit_opinion'=>$request->input('audit_opinion')
+            ]);
 
             DB::commit();
+            if($result){
+                return $this->successResponse('保存成功');
+            }else{
+                return $this->errorResponse('保存失败');
+            }
         }catch (Exception $e){
+            return $this->errorResponse($e,402);
             DB::rollBack();
-            return $this->errorResponse('操作有误',402);
         }
     }
 
@@ -363,6 +381,49 @@ class ExpertController extends Controller
         } catch (\Exception $e)
         {
             return $this->errorResponse('操作有误');
+        }
+    }
+
+    public function commitAudit(Request $request)
+    {
+        //return $request->all();
+        DB::beginTransaction();
+        try
+        {
+            $a = $request->all('content');
+            $b = sizeof($a['content']);
+            // 设置验证消息
+            $messages = [
+                'content.required' => '方案内容不能为空',
+            ];
+            // 设置验证规则
+            $validator = Validator::make($request->all(),[
+                'content' => 'required',
+            ],$messages);
+            if ($validator->fails())
+            {
+                $errors = $validator->errors();
+                return $this->errorResponse($errors,402);
+            }
+            for($i=0;$i<$b;$i++){
+                $c = $i+1;
+                $program_name = "专家方案".$c;
+                $result = Program::insert([
+                    'orthodontics_id'=> $request->input('orthodontics_id'),
+                    'content'=>$a['content'][$i],
+                    'program_name'=> $program_name,
+                    'type'=>'1'
+                ]);
+            }
+            DB::commit();
+            if($result){
+                return $this->successResponse('提交成功');
+            }else{
+                return $this->errorResponse('提交失败');
+            }
+        }catch (Exception $e){
+            return $this->errorResponse($e,402);
+            DB::rollBack();
         }
     }
 }

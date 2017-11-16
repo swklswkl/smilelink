@@ -86,11 +86,11 @@
                                 占时无方案内容
                             @endif
                         </p>
-                        <textarea name="audit_opinion"></textarea>
-                        <div class="col-lg-2"><input type="radio" name="status" value="1">通过</div>
+                        <textarea name="audit_opinion" class="audit_opinion"></textarea>
+                        <div class="col-lg-2"><input type="radio" name="status" class="status" value="1">通过</div>
                         <div class="col-lg-2"><input type="radio" name="status" value="0">未通过</div>
                         <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}" />
-                        <input type="hidden" name="program_name" value="方案{{$key+1}}" />
+                        <input type="hidden" name="program_name" value="{{$val['program_name']}}" />
                     </div>
                     <div class="buttonBox">
                         <button type="button" onclick="submitForm({{$key}})" >保存</button>
@@ -114,19 +114,22 @@
 <script>
     function submitForm(a)
     {
-//        alert($('.form'+a).serialize());
         $.ajax({
             type: 'post',
             url:'{{url('/api/expert/schemeAudit')}}',
             dataType:'json',
             data:$('.form'+a).serialize(),
             success: function(data) {
-                console.log(data);
                 if (data.code == 200)
                 {
                     layer.msg(data.msg);
                 } else {
-                    layer.msg(data.msg);
+                    if(data.code==402) {
+
+                        $.each(data.msg, function (key, val) {
+                            layer.tips(val[0], '#' + key);
+                        })
+                    }
                 }
             }
         });

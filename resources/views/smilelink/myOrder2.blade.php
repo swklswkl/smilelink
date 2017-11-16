@@ -142,7 +142,7 @@ center">
 orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                                     </a>
                                                     <a href="auditOpinion?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">方案审核</a>
-                                                    {{--<a href="conceptualDesign?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">提交设计方案</a>--}}
+                                                    <a href="conceptualDesign?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">提交设计方案</a>
                                                 </td>
                                             </tr>
                                         @endforeach
