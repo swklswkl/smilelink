@@ -37,7 +37,7 @@ Route::get('registerTel', function () {
 
 /*-------------------------------测试接口-------------------------------*/
 
-
+Route::get('caseManage','OrthodonticCaseController@inquire');
 
 //医生中间件
 Route::group(['middleware'=> 'login.doctor'],function () {
@@ -101,6 +101,7 @@ Route::group(['middleware'=> 'login.doctor'],function () {
 
 Route::group(['middleware' => 'login.expert'],function () {
     Route::get('orderReceiving','ExpertController@orderReceiving');
+    Route::get('caseManage2','OrthodonticCaseController@inquire');
     Route::get('safeSSet','ExpertController@safeSet');
     Route::get('myOrrders','ExpertController@myOrders');
 });

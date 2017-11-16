@@ -89,7 +89,7 @@
                                             </td>
                                             <td>{{$value['amount']}}</td>
                                             <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
-                                            <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                            <td ><a href="caseManage2?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
                                         </tr>
                                         @endforeach
                                     @endif
@@ -136,7 +136,7 @@ center">
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
                                                 <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
-                                                <td ><a href="caseManage?
+                                                <td ><a href="caseManage2?
 orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                                     </a></td>
                                             </tr>
@@ -185,7 +185,7 @@ center">
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
                                                 <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
-                                                <td ><a href="caseManage?
+                                                <td ><a href="caseManage2?
 orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                                     </a></td>
                                             </tr>
@@ -233,7 +233,7 @@ center">
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
                                                 <td >{{date('Y-m-d H:i:s',$value['create_time'])}}</td>
-                                                <td ><a href="caseManage?
+                                                <td ><a href="caseManage2?
 orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看
                                                     </a></td>
                                             </tr>
