@@ -230,6 +230,7 @@
                     <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}"/>
                     @isset($_GET['edit'])
                     <input type="hidden" name="edit" value="1"/>
+                    <input type="hidden" name="id" value="{{$_GET['id']}}"/>
                     @endisset
                 </div>
 
@@ -281,6 +282,7 @@
     //api添加/修改
     function submitForm()
     {
+//        alert($('.form-horizontal').serialize())
         $.ajax({
             type: 'post',
             @isset($_GET['edit'])

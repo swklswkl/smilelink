@@ -124,12 +124,14 @@
                 {
                     layer.msg(data.msg);
                 } else {
+                    var message='';
                     if(data.code==402) {
-
                         $.each(data.msg, function (key, val) {
-                            layer.tips(val[0], '#' + key);
+                            //console.log(key+'--'+val)
+                            message += val[0]+"<br/>";
                         })
                     }
+                    layer.msg(message);
                 }
             }
         });

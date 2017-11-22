@@ -121,7 +121,9 @@ class OrthodonticCaseController extends Controller
     public function addChiefAndComplaint (Request $request)
     {
         // 不存在edit为新增
-        if (is_null($request->post('edit')))
+
+        $orthodontics_id = OrthodonticsChiefComplaint::where('orthodontics_id', $request->input('orthodontics_id'))->get();
+        if (is_null($request->post('edit')) || $orthodontics_id=="")
         {
             DB::beginTransaction();
             try{
@@ -285,7 +287,8 @@ class OrthodonticCaseController extends Controller
     public function addClinicalExamination (Request $request)
     {
         // 不存在edit为新增
-        if (is_null($request->post('edit')))
+        $orthodontics_id = OrthodonticsChiefComplaint::where('orthodontics_id', $request->input('orthodontics_id'))->get();
+        if (is_null($request->post('edit')) || $orthodontics_id=="")
         {
             DB::beginTransaction();
             try
@@ -448,7 +451,8 @@ class OrthodonticCaseController extends Controller
     public function addDiagnosticDesign (Request $request)
     {
         // 不存在edit为新增
-        if (is_null($request->post('edit')))
+        $orthodontics_id = OrthodonticsDiagnosticDesign::where('orthodontics_id', $request->input('orthodontics_id'))->get();
+        if (is_null($request->post('edit')) && sizeof($orthodontics_id)==0)
         {
             DB::beginTransaction();
             try
@@ -643,6 +647,8 @@ class OrthodonticCaseController extends Controller
                    $query->select(['orthodontics_id', 'symmetry', 'chin_point', 'teeth_open_lips', 'smile_reveal_gums', 'plane', 'side_shape', 'nasolabial_angle', 'chin_point_view', 'periodontal_tissue', 'permanent_dentition', 'deciduous_teeth', 'teeth_condition_other', 'opening_degree', 'opening_shape', 'left_sound', 'right_sound', 'left_friction_sound', 'right_friction_sound', 'left_pain', 'right_pain', 'joint_examination_other', 'malocclusion_problem', 'anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'speed_curve', 'deep_bite', 'posterior_teeth', 'maxillary_arch_teeth', 'lower_dental_arch', 'maxillary_midline', 'maxillary_midline_left', 'maxillary_midline_right', 'mandibular_midline', 'crowd_degree_maxillary', 'crowded_degree_jaw', 'bolton_anterior_teeth', 'bolton_all_teeth']);
                },'OrthodonticXAnalysis' => function ($query) {
                    $query->select(['orthodontics_id', 'surface_fault_slice', 'other_target']);
+               },'Program' => function ($query) {
+                   $query->select(['orthodontics_id', 'program_name', 'content','type','status','audit_opinion','create_time','opinion_time']);
                },'OrthodonticsDiagnosticDesign' => function ($query) {
                    $query->select(['orthodontics_id', 'positive', 'question_bone_nature', 'growth_type', 'question_teeth_nature', 'question_anterior_teeth_overbite', 'question_anterior_teeth_covered', 'diagnosis_bone_nature', 'diagnosis_teeth_nature', 'other_diagnosis', 'face_type', 'maxillary_midline', 'mandibular_midline', 'target_anterior_teeth_overbite', 'target_anterior_teeth_covered', 'left_fangs', 'right_fangs', 'left_molar_fangs', 'right_molar_fangs', 'teeth_arrangement', 'gap', 'treatment_other_target', 'treatment_plan','maxillary','jaws']);
                },'OrthodonticsTreatmentProcess' => function ($query) {
@@ -789,6 +795,7 @@ class OrthodonticCaseController extends Controller
      */
     public function addCaseInformationPage1 (Request $request)
     {
+
         $service_id = $request->post('service_id');
         if (sizeof($request->post('service_id')) > 1 && sizeof($request->post('service_id')) !== '')
         {
@@ -800,9 +807,9 @@ class OrthodonticCaseController extends Controller
         if (sizeof($request->post('complained')) > 1 && sizeof($request->post('complained')) !== '')
         {
             $complained = implode(',',$request->post('complained'));
+        }else{
+            $complained = $complained[0];
         }
-
-
         DB::beginTransaction();
         try
         {
@@ -839,8 +846,10 @@ class OrthodonticCaseController extends Controller
                 'province' => $request->post('province'),
                 'city' => $request->post('city'),
                 'service_id' => $service_id,
+                'address' => $request->post('address'),
                 'create_time' => time()
             ]);
+
             OrthodonticsChiefComplaint::insert([
                 'orthodontics_id' => $id,
                 'complained' => $complained,
@@ -867,11 +876,12 @@ class OrthodonticCaseController extends Controller
                 'cbct_under_teeth' => $request->post('cbct_under_teeth'),
                 'abnormal_teeth' => $request->post('abnormal_teeth'),
                 'air_passage' => $request->post('air_passage'),
+                'create_time' => time(),
                 'other' => $request->post('other')
             ]);
             DB::commit();
             return $this->successResponse('添加成功',$id);
-        }catch (\Exception $e)
+        }catch (Exception $e)
         {
             DB::rollBack();
             return $this->errorResponse('操作有误');

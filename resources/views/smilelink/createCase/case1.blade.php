@@ -361,7 +361,7 @@
 
     function submitForm()
     {
-
+//        alert($('.form-horizontal').serialize())
         $.ajax({
             type: 'post',
             url:'{{url('/api/case/addCaseInformationPage1')}}',
@@ -424,7 +424,6 @@
         {
             if (zj==1)
             {
-                console.log(1111111);
                 dq.setAttribute('s',1);
                 next.style.background= 'url("reception/img/yes3.png")';
                 document.getElementById('xg').style.background = '';
@@ -434,7 +433,6 @@
                 document.getElementById('mb').style.background = '';
                 document.getElementById('mbinput').checked = false;
             }else{
-                console.log(2222222);
                 dq.setAttribute('s',1);
                 next.style.background= 'url("reception/img/yes3.png")';
                 document.getElementById('zjinput').setAttribute('s',0);
@@ -450,9 +448,6 @@
     }
 
 </script>
-
-
-
 </body>
 </html>
 @stop

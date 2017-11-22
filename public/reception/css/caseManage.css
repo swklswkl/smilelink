@@ -6,11 +6,11 @@
 .message-L{float: left;margin-top: 6px}
 .message-R{float: right}
 .messageTop{overflow: hidden;font-size: 22px;color: #69be28;margin-top: 30px;margin-left: 30px;padding-left: 40px;background-image: url("../img/message.png");background-repeat: no-repeat;background-position: 0px 1px;}
-.messageBorder{border: 2px solid darkgray;margin-top: 20px}
+.messageBorder{border: 1px solid #ddd;margin-top: 20px}
 .messageBottom .messageBottom1{float: left;width: 20%;margin-bottom: 20px;margin-left: 40px}
 .messageBottom{overflow: hidden;    margin-top: 25px;}
 .server{overflow: hidden}
-.serverBox .server{border: 2px solid darkgray;padding-left: 30px;padding-right: 30px}
+.serverBox .server{border:  1px solid #ddd;padding-left: 30px;padding-right: 30px;}
 .serverBox .server .serverL{float: left}
 .serverBox .server .serverR{float: right;width: 20px;font-size: 25px}
 /*下拉框的内容*/
@@ -20,7 +20,7 @@
 #serverL1{background-image: url("../img/content.png");background-repeat: no-repeat;background-position: 2px 30px;;padding-left: 40px;font-size: 22px;color: #69be28;}
 
 
-.part1Cont{border: 2px solid #c2c2c2;padding-left: 20px;position: relative;border-radius: 4px;padding-top: 40px}
+.part1Cont{border: 1px solid #c2c2c2;padding-left: 20px;position: relative;border-radius: 4px;padding-top: 40px}
 
 .part1Cont .try{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid gray;text-align: center;line-height: 30px;border-radius: 5px;line-height: 40px}
 .try{float: left;margin-right: 110px}
@@ -94,3 +94,6 @@
 #serverCont4 p{line-height: 35px}
 #serverCont4 .wrongP{font-size: 16px;color: #888888;padding-left: 70px}
 #serverCont4 span{font-size: 16px;color: #3c3c3c ;margin-right: 32px}
+
+
+

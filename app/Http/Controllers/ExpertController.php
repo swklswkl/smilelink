@@ -325,21 +325,6 @@ class ExpertController extends Controller
                 'status'=> $request->input('status'),
                 'audit_opinion'=>$request->input('audit_opinion')
             ]);
-//            dd($request->toArray());die;
-            $data = Program::where(['orthodontics_id'=>$request->post('orthodontics_id')])->update(['audit_opinion'=>$request->post('audit_opinion')]);
-//                $result = Program::where(['orthodontics_id'=>$request->post('orthodontics_id'),
-//                    'program_name'=>$request->post('program_name')]
-//                )->update([
-//                    'status'=> $request->post('status'),
-//                    'audit_opinion'=>$request->post('audit_opinion')
-//                ]);
-
-                if($data){
-                    return $this->successResponse('保存成功',$data);
-                }else{
-                    return $this->errorResponse('保存失败');
-                }
-
             DB::commit();
             if($result){
                 return $this->successResponse('保存成功');

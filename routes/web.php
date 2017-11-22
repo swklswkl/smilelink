@@ -74,7 +74,8 @@ Route::get('caseOne', function () {
     return view('smilelink.createCase.case1');
 });
 Route::get('caseTwo', function () {
-    return view('smilelink.createCase.case2');
+    return view('smilelink.create
+    Case.case2');
 });
 Route::get('caseThree', function () {
     return view('smilelink.createCase.case3');

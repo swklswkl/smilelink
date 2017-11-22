@@ -7,8 +7,12 @@
     <title>Title</title>
     <link rel="stylesheet" href="{{asset('reception/css/casePublic.css')}}">
     <link rel="stylesheet" href="{{asset('reception/css/caseManage.css')}}">
+    <link href="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+
 </head>
 <body>
+{{dump($data)}}
 <div class="content">
     <!--基本信息-->
     <div class="messageBox">
@@ -1432,26 +1436,54 @@
 
         </div>
     </div>
-    <!--治疗方案-->
+    <!--治疗进展-->
     <div class="serverBox">
         <div class="content">
             <div class="server">
-                <div class="serverL" id="serverL3">治疗方案</div>
+                <div class="serverL" id="serverL3">治疗进展和方案</div>
                 <div class="serverR" id="serverR3">^</div>
 
             </div>
-            <div class="serverCont" id="serverCont3">
+            <div class="serverCont" id="serverCont3" style="height: 630px;border: 1px solid #ddd;margin-bottom: 50px">
                <div class="zhiliaofangan">
                    <div class="fanAn1">
                        <div class="fanAn1Title">
-                           <h3>治疗方案1</h3>
+                           <h3>治疗进展</h3>
+                       </div>
+                       <div>
+                           <table class="table table-bordered">
+                               <tr class="active">
+                                   <th>进展名</th>
+                                   <th>资料上传时间</th>
+                                   <th>操作</th>
+                               </tr>
+                               @foreach($data[0]['orthodontics_treatment_process'] as $key =>$val)
+                               <tr class="success">
+                                   <td>{{$val['name']}}</td>
+                                   <td><?php echo date('Y-m-d H:i:s',$val['create_time'])?></td>
+                                   <td><a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=').$_GET['orthodontics_id'].'&id='.$val['id']}}">查看</a></td>
+                               </tr>
+                               @endforeach
+                           </table>
+                       </div>
+                       <div>
+                           <h3>治疗方案</h3>
                        </div>
                        <div class="fanAn1Cont">
-                           @foreach($data[0]['orthodontics_treatment_process'] as $key =>$val)
-
-                           <p>{{$val['name']}}：<span class="graySpan">{{$val['content']}}</span></p>
-                               <p>方案审核:{{$val['expert_respone']}}</p>
-                            @endforeach
+                          <div class="col-lg-12 tabSwitch-title" >
+                              <ul>
+                                  <li class="col-lg-1 " style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案1</li>
+                                  <li class="col-lg-1" style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案2</li>
+                                  <li class="col-lg-1" style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案3</li>
+                              </ul>
+                          </div>
+                           <div class="col-lg-12 tabSwitch-content" >
+                               <ul >
+                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px;" >方案11</li>
+                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px">方案22</li>
+                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px">方案33</li>
+                               </ul>
+                           </div>
                        </div>
                    </div>
                </div>
@@ -1485,45 +1517,22 @@
 <script src="{{asset('reception/js/jquery.min.js')}}"></script>
 <script src="{{asset('reception/js/jquery.SuperSlide.2.1.source.js')}}"></script>
 <script>
-   /* $.ajax({
-        type: 'get',
-        url:'{{url('/api/odtcase/inquire')}}',
-        dataType:'json',
-        data:{orthodontics_id:'{{$_GET['orthodontics_id']}}'},
-        success: function(data) {
-            console.log(data.data[0]);
-            if (data.code == 200)
-            {
-                var result = data.data[0];
-                $.each(result,function(k,v){
-                    console.log(k+"--"+v)
-                    //患者基本信息
-                    $('#'+k).html(v);
-                    $('#sex').html(function(){
-                        if((k=='sex')&(v==0)){
-                            return "男"
-                        }else if((k=='sex')&(v==1)){
-                            return "女"
-                        }
-                    });
+  //tab切换
+    $('.tabSwitch-content ul li').hide();
+    $('.tabSwitch-content ul li:first').show();
+  $('.tabSwitch-title ul li:first').css({'background':'#69b128'});
+    $('.tabSwitch-title ul li').click(function(){
+//
+        $('.tabSwitch-title ul li').css({'background':'#fff'})
+        $(this).css({'background':'#69b128'})
+//
+    $
 
-                })
+        $('.tabSwitch-content ul li').hide();
+        $('.tabSwitch-content ul li').eq($(this).index()).show();
+    })
 
 
-
-            }else {
-                if(data.code==401) {
-                    $.each(data.msg, function (key, val) {
-                        layer.tips(val, '#' + key);
-                    })
-                }
-                if(data.code==402){
-                    layer.msg(data.msg);
-                }
-
-            }
-        }
-    });*/
 </script>
 <script>
     $('#serverR1').click(function(){
