@@ -87,8 +87,8 @@
                             @endif
                         </p>
                         <textarea name="audit_opinion" class="audit_opinion"></textarea>
-                        <div class="col-lg-2"><input type="radio" name="status" class="status" value="1">通过</div>
-                        <div class="col-lg-2"><input type="radio" name="status" value="0">未通过</div>
+                        <div class="col-lg-2"><input type="radio" name="status" class="status" value="2">通过</div>
+                        <div class="col-lg-2"><input type="radio" name="status" value="1">未通过</div>
                         <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}" />
                         <input type="hidden" name="program_name" value="{{$val['program_name']}}" />
                     </div>

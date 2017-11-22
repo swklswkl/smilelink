@@ -12,7 +12,6 @@
 
 </head>
 <body>
-{{dump($data)}}
 <div class="content">
     <!--基本信息-->
     <div class="messageBox">
@@ -1472,16 +1471,46 @@
                        <div class="fanAn1Cont">
                           <div class="col-lg-12 tabSwitch-title" >
                               <ul>
-                                  <li class="col-lg-1 " style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案1</li>
-                                  <li class="col-lg-1" style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案2</li>
-                                  <li class="col-lg-1" style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">方案3</li>
+                                  @foreach($data[0]['program'] as $v)
+                                  <li class="col-lg-1 " style="border: 1px solid #ddd;width: 150px;height: 40px;text-align: center;line-height: 40px;font-size: 18px;border-radius: 15px 15px 0  0">{{$v['program_name']}}</li>
+                                  @endforeach
                               </ul>
                           </div>
                            <div class="col-lg-12 tabSwitch-content" >
                                <ul >
-                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px;" >方案11</li>
-                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px">方案22</li>
-                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px">方案33</li>
+                                   @foreach($data[0]['program'] as $v)
+                                   <li class="col-lg-12" style="border: 1px solid #ddd; height: 300px;" >
+                                       <p>
+                                           <span></span>
+                                           @if($v['type']==0)
+                                                医生提交方案-----
+                                           @else
+                                               专家提交方案-----
+                                           @endif
+                                           {{date('Y-m-d H:i:s',$v['create_time'])}}
+                                       </p>
+                                       <p>方案内容：{{$v['content']}}</p>
+                                       @if($v['type']==0)
+                                           <p>
+                                               <span></span>
+                                               方案：
+                                               @if($v['status']==0)
+                                                   未审核
+                                               @elseif($v['status']==1)
+                                                   未通过
+                                               @else
+                                                   已通过
+                                               @endif
+                                               -----
+                                               {{date('Y-m-d H:i:s',$v['opinion_time'])}}
+                                           </p>
+                                           <p>专家审核内容：{{$v['audit_opinion']}}</p>
+                                       @else
+
+                                       @endif
+
+                                   </li>
+                                   @endforeach
                                </ul>
                            </div>
                        </div>
@@ -1526,7 +1555,7 @@
         $('.tabSwitch-title ul li').css({'background':'#fff'})
         $(this).css({'background':'#69b128'})
 //
-    $
+//
 
         $('.tabSwitch-content ul li').hide();
         $('.tabSwitch-content ul li').eq($(this).index()).show();

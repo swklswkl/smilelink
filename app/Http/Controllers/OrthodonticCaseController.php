@@ -985,7 +985,8 @@ class OrthodonticCaseController extends Controller
                 Program::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
                     'program_name' => $request->post('program_name'.$i),
-                    'content' => $request->post('content'.$i)
+                    'content' => $request->post('content'.$i),
+                    'create_time' => time()
                 ]);
             }
             DB::commit();

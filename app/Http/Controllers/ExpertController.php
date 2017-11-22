@@ -323,7 +323,8 @@ class ExpertController extends Controller
                 'program_name'=>$request->input('program_name')]
             )->update([
                 'status'=> $request->input('status'),
-                'audit_opinion'=>$request->input('audit_opinion')
+                'audit_opinion'=>$request->input('audit_opinion'),
+                'opinion_time'=>time()
             ]);
             DB::commit();
             if($result){
@@ -415,6 +416,7 @@ class ExpertController extends Controller
                     'orthodontics_id'=> $request->input('orthodontics_id'),
                     'content'=>$a['content'][$i],
                     'program_name'=> $program_name,
+                    'create_time'=> time(),
                     'type'=>'1'
                 ]);
             }
