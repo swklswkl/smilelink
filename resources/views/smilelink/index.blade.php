@@ -36,13 +36,19 @@
             -webkit-align-items: center;
             align-items: center;
         }
+        .swiper-button-next, .swiper-button-prev{
+            background-size: 27px 25px;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #faf2cc;}
     </style>
 </head>
 <body>
 <header>
     <div class="content">
     <div class="nav-L">
-        <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+        <img src="{{asset('reception/img/logo0.png')}}" alt="">
 
     </div>
         <div class="nav-C">
@@ -60,11 +66,13 @@
 <div class="banner">
     <div class="content">
         <div class="banner-L">
-            <h3>Bonsmile,一个专业的正畸平台</h3>
-            <p>更舒适的体验佩戴无形让笑容无所畏惧</p>
-            <p>更少复诊次数平均减少8次复诊</p>
-            <p>更精确的治疗效果美丽与健康共享</p>
-            <p>3D动画演示牙齿移动过程遇见未来美丽笑容</p>
+            <h3>正畸牙医联盟</h3>
+            <p>汇集医德、技术、服务正畸精英的平台
+            </p>
+            <p>国内外十大名师倡议建立 、3行业杰出精英</p>
+            <p>省级教学医院正畸主任 、名人推荐、联盟邀请</p>
+
+            <p>联盟认证的“好牙医”</p>
             <div class="join">
                 <a href="{{url('registerTel')}}"><img src="{{asset('reception/img/join.png')}}" alt="" ></a>
 
@@ -106,14 +114,14 @@
         <div class="joinUsBg">
             <div class="joinUs-R">
             <p class="p1">WHY  CHOOSE  US</p>
-            <h3>与Bonsmile博思美合作优势</h3>
-            <p class="p2">Bonsmile博思美遵循"以顾客第一 医生第一"的服务宗旨</p>
-            <p class="p3">超短的交货期:一般交货期为13个工作日 <span>◆</span></p>
-            <p class="p3">快捷的快递:全面使用顺丰快递,保证您能最快速收获 <span>◆</span></p>
-            <p class="p3">周到的服务:告知医生如何操作;出货前后温馨短信提示通知 <span>◆</span></p>
-            <p class="p3">专业的客服:专业客户服务电话 <span>◆</span></p>
-            <p class="p3">市场的支持:免费提供多种市场宣传用品、定制授权牌和授权证书等 <span>◆</span></p>
-            <p class="p3">免费的工具：免费提供邻面去釉工具 <span>◆</span></p>
+                <h3>与smileLink合作优势</h3>
+                <p class="p2">smileLink遵循"以顾客第一 医生第一"的服务宗旨</p>
+                <p class="p3">倡导人和宣言、价值观、服务范围 <span>◆</span></p>
+                <p class="p3">区域好牙医，认证正畸医，每个区域合作1-3名<span>◆</span></p>
+                <p class="p3">名家推荐、客户推荐、医生简介、评价、公益案例<span>◆</span></p>
+                <p class="p3">心得分享，牙医评价，推荐牙医。<span>◆</span></p>
+                <p class="p3">每月四大名校名医案例直播教学<span>◆</span></p>
+                <p class="p3">医生、家长上传数据，专家提供方案。 <span>◆</span></p>
             <h4> 01.</h4>
             </div>
         </div>
@@ -127,15 +135,15 @@
     <div class="content">
         <div class="advBg">
             <div class="adv-L">
-                <p class="p1">OUR ADVANTAGE</p>
-                <h3>Bonsmile博思美技术力量优势</h3>
-                <p class="p2">Ravindra Nanda教授</p>
-                <p class="p3"><span>◆</span> 美国康涅狄格州立大学校友会主席、美国康涅狄格州立大学牙学院正畸科主任、《临床正畸学》（Journal of Chinial Orthodntics）</p>
-               <p class="p3">&nbsp;&nbsp;&nbsp;杂志的副编辑、正畸专科书籍五本，正畸主流期刊上发表科研及临床论文百余篇、《保持与稳点》的共同作者。</p>
-                <p class="p2" id="p2">卓瑞堂医师</p>
-                <img src="{{asset('reception/img/squ5.png')}}" alt="">
-                <p class="p3"> <span>◆</span>台北医学大学口腔医学院牙医系毕业、长庚医学中心牙医师、台北医学大学牙医再教育课程讲师、台湾BenQ集团口腔3D数位</p>
-                <p class="p3">&nbsp;&nbsp;&nbsp;技术研发顾问、台湾隐形矫正学会理事。</p>
+                <p class="p1">SERVICE  CONTENT</p>
+                <h3>指导基层好医生的工作流程</h3>
+
+                <p class="p3"><span>◆</span>1、全面准确的诊断和最佳矫正方案； </p>
+                <p class="p3"><span>◆</span>2、精准的托槽定位+全套矫正弓丝； </p>
+                <p class="p3"><span>◆</span>3、全程跟踪治疗过程； </p>
+                <p class="p3"><span>◆</span>4、解决治疗过程中的意外问题； </p>
+                <p class="p3"><span>◆</span>5、定期病例讨论，会员病例共享 </p>
+                <p class="p3"><span>◆</span>6、治疗结束病例资料整理，集结成册回寄医生。 </p>
                 <h4> 02.</h4>
             </div>
 
@@ -150,13 +158,13 @@
     <div class="content">
         <p class="p1">OUR PRODUCTS</p>
 
-        <h3>Bonsmile博思美产品优势！</h3>
+        <h3>smileLink产品优势！</h3>
 
 
     <img src="{{asset('reception/img/squ2.png')}}" alt=""  class="lineRight">
 
 
-        <p class="p3">博思美致力于为每个有需求的客户制定个性化的隐形矫正设计方案，带给他们时尚、舒适、美观、方便的口腔美容体验。</p>
+        <p class="p3">smileLink致力于为每个有需求的客户制定个性化的隐形矫正设计方案，带给他们时尚、舒适、美观、方便的口腔美容体验。</p>
         <div class="productAdv3Img">
             <div class="img3L">
                 <img src="{{asset('reception/img/squ7.png')}}" alt="" >
@@ -218,7 +226,7 @@
         </div>
         <img src="{{asset('reception/img/long.png')}}" alt="" class="lineBottom">
         <p>
-            COPYRIGHT © 2012-2017浙 ICP 备 14023781号 Bonsmile博思美（中国）医疗科技有限公司版权所有
+            COPYRIGHT © 2012-2017浙 ICP 备 14023781号 smileLink（中国）医疗科技有限公司版权所有
         </p>
     </div>
 </footer>

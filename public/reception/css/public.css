@@ -5,7 +5,7 @@ a:hover{text-decoration: underline}
     header{height: 95px;overflow: hidden}
     .nav-L,.nav-C{float: left;}
     .nav-C{padding-top: 35px}
-    .nav-L{margin-right: 150px;padding-top: 10px}
+    .nav-L{margin-right: 150px;padding-top: 22px}
     .nav-R{float: right;padding-top: 25px;margin-right: 30px}
     .nav-C1 a{color: #2d2d2d;font-size: 18px;margin-right: 50px;}
     .nav-R1,.nav-R2{display: inline-block;width: 88px;height: 38px;border: 1px solid gainsboro;line-height: 38px;text-align: center;border-radius: 15px;
@@ -18,7 +18,7 @@ a:hover{text-decoration: underline}
     header{height: 95px}
     .nav-L,.nav-C{float: left;}
     .nav-C{padding-top: 35px}
-    .nav-L{margin-right: 150px;padding-top: 10px}
+    .nav-L{margin-right: 150px;padding-top: 22px}
     .nav-R{float: right;padding-top: 25px;margin-right: 30px}
     .nav-C1 a{color: #2d2d2d;font-size: 18px;margin-right: 50px;}
     .nav-R1,.nav-R2{display: inline-block;width: 88px;height: 38px;border: 1px solid gainsboro;line-height: 38px;text-align: center;border-radius: 15px;

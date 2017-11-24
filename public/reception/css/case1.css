@@ -6,12 +6,12 @@
 .part1 .span2{color: #e56424;font-size: 30px;}
 .part1 .span3{font-size: 24px;color: #e56424}
 .part1 .span4{font-size: 16px;color: #c3c3c3}
-.part1Cont{border: 2px solid #c2c2c2;padding-left: 20px;position: relative;padding-top: 32px;border-radius: 4px}
+.part1Cont{border: 1px solid #ddd;padding-left: 20px;position: relative;padding-top: 32px;border-radius: 4px}
 .part1Cont h3{font-size: 22px;color: #0c0c0c;font-weight: normal;margin-bottom: 12px}
 .part1Cont h3 span{font-size: 26px;color: #69be28}
 .part1Cont p{font-size: 14px;color: #4d4d4d;margin-bottom: 20px}
-.part1Cont .try{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid gray;text-align: center;line-height: 30px;border-radius: 4px;line-height: 40px}
-.part1Cont .try111{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid gray;text-align: center;line-height: 30px;border-radius: 4px;line-height: 40px}
+.part1Cont .try{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid #ddd;text-align: center;line-height: 30px;border-radius: 4px;line-height: 40px}
+.part1Cont .try111{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid #ddd;text-align: center;line-height: 30px;border-radius: 4px;line-height: 40px}
 .try0{float: left;margin-right: 50px}
 .try1{float: left}
 .tryBox{overflow: hidden}
@@ -44,7 +44,7 @@
 
 .part3 .span3{font-size: 24px;color: #e56424}
 .part3Title {padding-bottom: 40px}
-.part3Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+.part3Cont {background:#e3f0e4;border: 1px solid #ddd;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 20px;padding-top: 35px}
 .part3Cont input{width: 15px;height: 15px}
 .part3Cont .s1{margin-right: 80px}
@@ -67,16 +67,16 @@ textarea{width:1135px;height: 156px;resize:none ;font-size: 16px}
 
 .part4 .span3{font-size: 24px;color: #e56424}
 .part4Title {padding-bottom: 40px}
-.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+.part4Cont {background:#e3f0e4;border: 1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 120px;padding-top: 35px;position: relative}
 .part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
 .part4Text span{color: #e56424 ;}
 .part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
 
 /*九个图片*/
-.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px;}
-.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
-.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid gray;float: left;margin-right: 60px}
+.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px;}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px}
 .part4Cont p{margin-top: 10px;margin-bottom: 20px}
 .imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
 .file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 121px;}
@@ -90,9 +90,9 @@ textarea{width:1135px;height: 156px;resize:none ;font-size: 16px}
 .file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 644px;}
 
 /**/
-.part4Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+.part4Cont {background:#e3f0e4;border: 1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 120px;padding-top: 35px;position: relative}
-.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text{background: white;height: 60px;line-height: 60px;border:1px solid #ddd  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
 .part4Text span{color: #e56424 ;}
 .part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
 .part4 input{opacity: 0}

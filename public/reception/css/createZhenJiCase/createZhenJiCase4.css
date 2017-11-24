@@ -10,7 +10,7 @@
 .part4Title {padding-bottom: 40px}
 .part4Cont {background:#e3f0e4;border: 1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 50px;padding-top: 35px;position: relative}
-.part4Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part4Text{background: white;height: 60px;line-height: 60px;border:1px solid #ddd  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
 .part4Text span{color: #e56424 ;}
 
 

@@ -4,11 +4,11 @@
 
 .part5 .span3{font-size: 24px;color: #e56424}
 .part5Title {padding-bottom: 40px}
-.part5Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+.part5Cont {background:#e3f0e4;border:1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 50px;padding-top: 35px}
 .part5Cont p{line-height: 30px}
 
-.part5Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part5Text{background: white;height: 60px;line-height: 60px;border:1px solid #ddd  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
 .part5Text span{color: #e56424 ;}
 .part5Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
 textarea{width:1100px;height: 156px;resize:none ;font-size: 16px}
@@ -19,11 +19,11 @@ textarea{width:1100px;height: 156px;resize:none ;font-size: 16px}
 
 .part6 .span3{font-size: 24px;color: #e56424}
 .part6Title {padding-bottom: 40px}
-.part6Cont {background:#e3f0e4;border: 2px solid #c2c2c2 ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
+.part6Cont {background:#e3f0e4;border: 1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;
     padding-left: 40px;padding-top: 35px}
 .part6Cont p{line-height: 30px}
 
-.part6Text{background: white;height: 60px;line-height: 60px;border:2px solid #c2c2c2  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
+.part6Text{background: white;height: 60px;line-height: 60px;border:1px solid #ddd  ;border-bottom: none;color: #555555;font-size: 24px;padding-left: 20px}
 .part6Text span{color: #e56424 ;}
 .part6Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
 

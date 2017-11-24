@@ -227,16 +227,20 @@
 
                     </div>
                     <p><span style="margin-right: 230px;margin-left: 75px">气道</span> <span >其他</span> </p>
+
+
                     <input type="hidden" name="orthodontics_id" value="{{$_GET['orthodontics_id']}}"/>
                     @isset($_GET['edit'])
                     <input type="hidden" name="edit" value="1"/>
                     <input type="hidden" name="id" value="{{$_GET['id']}}"/>
                     @endisset
                 </div>
-
+            <p style="margin-left: -85px">  内容：</p>
+            <textarea name="content"  value="" id="" cols="30" rows="10" style="width: 1000px;margin-left: -28px;font-size: 17px"></textarea>
 
 
         </div>
+
     </div>
 
 </div>
