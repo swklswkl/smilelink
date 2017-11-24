@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use App\Model\ChinaAreaAdmin;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\Facades\Input;
 
 class ExpertController extends Controller
 {
@@ -160,7 +161,7 @@ class ExpertController extends Controller
                 $data = ChinaAreaAdmin::options($id);
                 return $data;
             });
-            $form->select('certificate','医师资格证')->options(["1" => '有', "0" => '无']);
+            $form->image('certificate','医师资格证');
             $form->text('work_unit','现工作单位');
             $form->text('working_years','工作年限');
             $form->saving(function (Form $form)
@@ -177,12 +178,24 @@ class ExpertController extends Controller
                 }
             });
 
+            $form->currency('amount','价格')->symbol('￥');
 
-
-//            $form->currency('amount','金额')->symbol('￥');
             $form->radio('sex','性别')->options(['0' => '男', '1'=> '女'])->default('0');
 
             $form->hidden('create_time')->value(time());
         });
+    }
+
+    public function upzgz(Request $request)
+    {
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $photo = $request->file('file');
+            $store_result = \Storage::disk('public')->put('uploads',$photo);
+            $output = [
+                'image_url' => env('APP_URL').'/'.$store_result
+            ];
+            Experts::where(['id'=>Input::get('id')])->update(['certificate' => $output['image_url']]);
+        }
+        return $this->errorResponse('未获取到上传文件或上传过程出错');
     }
 }

@@ -1,3 +1,14 @@
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <img style="height: 600px;" id="motaiimg" src="" alt="">
+            {{--<div class="modal-footer">--}}
+                {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
+            {{--</div>--}}
+        </div>
+    </div>
+</div>
+
 <div class="modal-dialog" id="mmda" style="min-width: 1150px">
     <div class="modal-content" id="contenta">
         <div class="modal-body">
@@ -5,9 +16,17 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-sm-10" style="width: 100%;">
-                            <div style="width: 150px;height: 150px;margin: 0 auto">
-                                <img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510756939&di=26504912dbd3c396f578b4a6f00f2ad7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg2.duitang.com%2Fuploads%2Fitem%2F201301%2F23%2F20130123223541_V2vMk.thumb.200_0.gif" alt="..." class="img-thumbnail">
+                            <div style="width: 200px;height:200px;margin: 0 auto">
+                                @if ($data[0]['certificate'])
+                                    <input id="upfile" onchange="upfile(this)" style="position: absolute; top: 2px; width: 199px; height: 196px; opacity: 0;" type="file" name="certificate">
+                                    <div id="maska" style="width: 200px;height: 200px;background-color: rgba(0,0,0,0.5);text-align:center;position: absolute;line-height: 200px;color:white;">点击查看资格证</div>
+                                    <img id="zgz"  style="width: 200px;height: 200px;"  src="{{$data[0]['certificate']}}" alt="..." class="img-thumbnail">
+                                @else
+                                    <input id="upfile" onchange="upfile(this)" style="position: absolute; top: 2px; width: 199px; height: 196px; opacity: 0;" type="file" name="certificate">
+                                    <img id="zgz" style="width: 200px;height: 200px;"  src="holder.js/200x200?text=暂无资格证"  class="img-thumbnail">
+                                @endif
                             </div>
+                            <input type="hidden" value="" id="zgzgz">
                         </div>
                     </div>
                     <div class="form-horizontal">
@@ -44,6 +63,14 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">价格</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="amount" class="form-control" name="amount" value="{{$data[0]['amount']}}" readonly>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">出生日期</label>
                                 <div class="col-sm-9">
@@ -63,15 +90,6 @@
                                 <div class="col-sm-9">
                                     <select id="city" style="cursor: default;" name="city" class="form-control" disabled>
                                         <option selected>{{$data[0]['city']}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">医师资格证</label>
-                                <div class="col-sm-9">
-                                    <select style="cursor: default;" name="certificate" id="certificate" class="form-control" disabled>
-                                        <option value="0" {{$data[0]['certificate']=='0'?'selected' :''}}>无</option>
-                                        <option value="1" {{$data[0]['certificate']=='1'?'selected' :''}}>有</option>
                                     </select>
                                 </div>
                             </div>
@@ -112,7 +130,11 @@
         </div>
     </div>
 </div><!-- /.modal-content -->
+<script src="/js/holder.js"></script>
+<script src="/js/app.js"></script>
 <script>
+    $('#upfile').hide();
+    $('#motaikuang').hide();
     $.ajax({
         method: 'get',
         url: '/api/china/province',
@@ -136,11 +158,15 @@
             $('#email').removeAttr('readonly');
             $('#sex').removeAttr('disabled');
             $('#birthday').removeAttr('readonly');
+            $('#amount').removeAttr('readonly');
             $('#province').removeAttr('disabled');
             $('#city').removeAttr('disabled');
             $('#certificate').removeAttr('disabled');
             $('#work_unit').removeAttr('readonly');
             $('#working_years').removeAttr('readonly');
+            $('#zgz').attr('src','/images/clickup.svg');
+            $('#upfile').show();
+            $('#maska').hide();
 //            $('#status').removeAttr('disabled');
 
         } else {
@@ -159,6 +185,8 @@
                     certificate:$('#certificate').val(),
                     work_unit:$('#work_unit').val(),
                     working_years:$('#working_years').val(),
+                    certificate:$('#zgzgz').val(),
+                    amount:$('#amount').val(),
 //                    status:$('#status').val(),
                 },
                 success: function (data) {
@@ -175,6 +203,8 @@
                         $('#certificate').attr('disabled','true');
                         $('#work_unit').attr('readonly','true');
                         $('#working_years').attr('readonly','true');
+                        $('#amount').attr('readonly','true');
+                        $('#upfile').hide();
 //                        $('#status').attr('readonly','true');
                         a.setAttribute('switch', 0);
                         a.innerHTML = '编辑';
@@ -206,4 +236,39 @@
             }
         });
     }
+
+    function upfile (imgFile)
+    {
+        var oMyForm = new FormData();
+        oMyForm.append("file", imgFile.files[0]);
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/file/upload')}}',
+            dataType:'json',
+            data:oMyForm,
+            processData: false,
+            contentType: false,
+            async: false,
+        }).done(function(res) {
+            document.getElementById('zgz').src = res.data.image_url;
+            document.getElementById('zgzgz').value = res.data.image_url;
+        }).fail(function(res) {});
+    }
+
+    document.getElementById('maska').onmouseover = function ()
+    {
+        $('#maska').css('background-color','rgba(0,0,0,0.6)');
+    }
+
+    document.getElementById('maska').onmouseout = function ()
+    {
+        $('#maska').css('background-color','rgba(0,0,0,0.5)');
+    }
+
+    document.getElementById('maska').onclick = function ()
+    {
+        $('#motaiimg').attr('src',$('#zgz').attr('src'));
+        $('#myModal2').modal();
+    }
+
 </script>

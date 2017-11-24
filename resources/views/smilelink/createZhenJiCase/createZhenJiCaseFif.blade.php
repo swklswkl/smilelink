@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,33 +76,40 @@
                     @isset($data[0])
                         <input name="edit" type="hidden" value="1"/>
                     @endisset
-
+                    <input type="hidden" id="xfenxi" name="x_file" value="@isset($data) {{$data[0]['x_file']}} @endisset">
                 </div>
-
-
-
-              {{--  <div class="part4Title">
-                    <span class="span2">Part2</span>
-                    <span class="span3">头颅侧位片</span>
-                </div>
-                <div>
-                    <img src="{{asset('reception/img/矩形3拷.png')}}" alt="">
-                </div>
-
-
-
---}}
-
             </form>
+            <div style="width: 300px;position: relative">
+                @if (isset($data))
+                    @if($data[0]['x_file'])
+                        <input type="hidden" id="flag" value="1">
+                        <a id="xzx" href="{{$data[0]['x_file']}}" class="btn btn-success" target="_blank">下载X光</a>
+                        <a id="cxsc" href="javascript:void(0);" onclick="reup()" class="btn btn-success" target="_blank">重新上传</a>
+                    @else
+                        <input type="hidden" id="flag" value="0">
+                    @endif
+                @endif
+                <form id="upX">
+                    上传X光：<input id="xg" onchange="upX(this)" type="file" name="file">
+                </form>
+                <div id="jdt1" style="margin-top: 6px;width: 100.67%;height: 15px;border: 1px solid black;opacity: 0.3;"></div>
+                <div id="jdt2" style="margin-top: 6px;width: 0%;height: 13px;background-color: rgb(105, 190, 40);position: absolute;top: 46px;left: 1px;"></div>
+                <span id="jindutiao"></span>
+                <span id="jindutiao2"></span>
+                <button style="position: absolute;left: 200px;z-index: 9999999999"  onclick="haha(this.innerHTML)" id="yichu" type="button"></button>
+            </div>
+                {{--<div class="part4Title">--}}
+                    {{--<span class="span2">Part2</span>--}}
+                    {{--<span class="span3">头颅侧位片</span>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<img src="{{asset('reception/img/矩形3拷.png')}}" alt="">--}}
+                {{--</div>--}}
 
             <div class="button1">
                 <a> <button type="button" onclick="submitForm()">下一步 </button></a>
             </div>
         </div>
-
-
-
-
     </div>
 
 </div>
@@ -115,6 +123,18 @@
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('reception/js/layer/2.1/layer.js')}}"></script>
 <script>
+    if (document.getElementById('flag').value == 1)
+    {
+        $('#jdt1').hide();
+        $('#jdt2').hide();
+        $('#yichu').hide();
+        $('#upX').hide();
+    }else{
+        $('#jdt1').hide();
+        $('#jdt2').hide();
+        $('#yichu').hide();
+    }
+
     function submitForm()
     {
         $.ajax({
@@ -129,7 +149,7 @@
                     @empty($data[0])
                         window.location.href = "{{url('createZhenJiCaseSix?orthodontics_id=')}}"+data.data;
                     @endempty
-                            @isset($data[0])
+                    @isset($data[0])
                         window.location.href = "{{url('editCase6?orthodontics_id=').$_GET['orthodontics_id']}}";
                     @endisset
                 } else {
@@ -141,12 +161,119 @@
                     if(data.code==402){
                         layer.msg(data.msg);
                     }
-
                 }
             }
         });
+    }
 
+    function upX()
+    {
 
+        var index = layer.load();
+        $('#jindutiao').show();
+        $('#jindutiao').html('');
+        $('#jdt1').show();
+        $('#jdt2').show();
+        var data = new FormData(document.getElementById('upX'));
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function ()
+        {
+            if (xhr.readyState == 4 && xhr.status == 200)
+            {
+                eval('var data = '+xhr.responseText);
+                if (data['code'] !== 200 )
+                {
+                    document.getElementById('jdt2').style.width = '0%';
+                    layer.msg(data['msg']);
+                    $('#yichu').text('移除文件');
+                    layer.close(index);
+                }else{
+                    layer.close(index);
+                    $('#jindutiao2').hide();
+                    layer.msg('上传X光成功');
+//                    document.getElementById('jindutiao').style.color = '';
+                    document.getElementById('jindutiao').innerHTML = '上传成功';
+                    document.getElementById('xfenxi').value = data['data']['file'];
+                    $('#yichu').show();
+                    $('#yichu').text('移除文件');
+                }
+
+            }
+
+            if (xhr.readyState == 4 && xhr.status != 200)
+            {
+                if (xhr.status == 413)
+                {
+                    document.getElementById('jdt2').style.width = '0%';
+                    layer.close(index);
+                    $('#jindutiao').hide();
+                    $('#jindutiao2').show();
+                    document.getElementById('jindutiao2').style.color = 'red';
+                    document.getElementById('jindutiao2').innerHTML = '上传失败，文件不能超过100MB';
+                    $('#yichu').show();
+                    $('#yichu').text('移除文件');
+                    layer.msg('上传X光失败');
+                }else{
+                    document.getElementById('jdt2').style.width = '0%';
+                    layer.close(index);
+                    $('#jindutiao').hide();
+                    $('#jindutiao2').show();
+                    document.getElementById('jindutiao2').style.color = 'red';
+                    document.getElementById('jindutiao2').innerHTML = '上传失败，请重新上传';
+                    $('#yichu').show();
+                    $('#yichu').text('移除文件');
+                    layer.msg('上传X光失败');
+                }
+
+            }
+        }
+        xhr.upload.onprogress = function (e)
+        {
+            if (window.navigator.onLine == true)
+            {
+                e = e || event;
+                var scale = (e.loaded / e.total) * 100;
+                var scale = scale.toFixed(2);
+                document.getElementById('jdt2').style.width = scale+ '%';
+                document.getElementById('jindutiao').style.color = '';
+                document.getElementById('jindutiao').innerHTML = '正在上传：'+ document.getElementById('jdt2').style.width;
+            }else{
+                $('#jindutiao2').hide();
+                document.getElementById('jindutiao').style.color = 'red';
+                document.getElementById('jindutiao').innerHTML = '网络错误';
+                $('#yichu').show();
+                $('#yichu').text('移除文件');
+            }
+
+        }
+        xhr.open('post','/api/file/upX',true);
+        xhr.send(data);
+    }
+
+    function haha(a)
+    {
+        if (a == '取消上传')
+        {
+            xhr.abort();
+        }
+
+        if (a == '移除文件')
+        {
+            $('#yichu').hide();
+            document.getElementById('xfenxi').value = '';
+            $('#upX').html('上传X光：<input id="xg" onchange="upX(this)" type="file" name="file">');
+            $('#jdt1').hide();
+            $('#jdt2').hide();
+            $('#jindutiao2').hide();
+            $('#jindutiao').hide();
+        }
+    }
+
+    function reup ()
+    {
+        $('#xzx').hide();
+        $('#cxsc').hide();
+        $('#upX').show();
     }
 </script>
 </body>

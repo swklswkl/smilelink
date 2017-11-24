@@ -416,7 +416,8 @@ class OrthodonticCaseController extends Controller
                 OrthodonticXAnalysis::insert([
                     'orthodontics_id' => $request->post('orthodontics_id'),
                     'surface_fault_slice' => $request->post('surface_fault_slice'),
-                    'other_target' => $request->post('other_target')
+                    'other_target' => $request->post('other_target'),
+                    'x_file' => $request->post('x_file')
                 ]);
                 DB::commit();
                 return $this->successResponse('添加成功',$request->post('orthodontics_id'));
@@ -431,7 +432,8 @@ class OrthodonticCaseController extends Controller
             {
                 OrthodonticXAnalysis::where(['orthodontics_id' => $request->post('orthodontics_id')])->update([
                     'surface_fault_slice' => $request->post('surface_fault_slice'),
-                    'other_target' => $request->post('other_target')
+                    'other_target' => $request->post('other_target'),
+                    'x_file' => $request->post('x_file')
                 ]);
                 DB::commit();
                 return $this->successResponse('更新成功',$request->post('orthodontics_id'));
@@ -938,6 +940,7 @@ class OrthodonticCaseController extends Controller
         DB::beginTransaction();
         try
         {
+//            dd($request->post());die;
             //方案数量
             $num = $request->post('num');
             OrthodonticsDiagnosticDesign::where(['orthodontics_id' => $request->post('orthodontics_id')])
@@ -969,15 +972,35 @@ class OrthodonticCaseController extends Controller
                             'status' => '1'
                         ]);
                 }else{
-                    Orders::insert([
-                        'number' => $this->createOrderNum($request->getClientIp()),
-                        'orthodontics_id' => $request->post('orthodontics_id'),
-                        'doctor_id' => $request->session()->get('doctor.id'),
-                        'status' => '1',
-                        'amount' => mt_rand(1,999),
-                        'create_time' => time(),
-                        'pay_time' => time()
-                    ]);
+                    if ($request->post('expert_id'))
+                    {
+                        Orders::insert([
+                            'number' => $this->createOrderNum($request->getClientIp()),
+                            'orthodontics_id' => $request->post('orthodontics_id'),
+                            'doctor_id' => $request->session()->get('doctor.id'),
+                            'expert_id' => $request->post('expert_id'),
+                            'status' => '2',
+                            'amount' => $request->post('amount'),
+                            'create_time' => time(),
+                            'pay_time' => time()
+                        ]);
+
+                        Orthodontics::where(['id' => $request->post('orthodontics_id')])
+                            ->update([
+                                'status' => '2'
+                            ]);
+                    }else{
+                        Orders::insert([
+                            'number' => $this->createOrderNum($request->getClientIp()),
+                            'orthodontics_id' => $request->post('orthodontics_id'),
+                            'doctor_id' => $request->session()->get('doctor.id'),
+                            'expert_id' => $request->post('expert_id'),
+                            'status' => '1',
+                            'amount' => $request->post('amount'),
+                            'create_time' => time(),
+                            'pay_time' => time()
+                        ]);
+                    }
                 }
 
             }
@@ -1026,7 +1049,8 @@ class OrthodonticCaseController extends Controller
     {
         $orthodontics_id = $request->get('orthodontics_id');
         $data = OrthodonticsChiefComplaint::select(['orthodontics_id','complained', 'other_complained', 'height', 'weight', 'age', 'menarche_age', 'suffering_from_disease', 'disease_options', 'other_disease', 'allergy', 'allergy_options', 'other_allergy', 'keep_taking_medicine', 'drugs_name', 'pregnancy', 'coordination_treatment', 'tooth_trauma', 'tooth_wrong_teeth', 'oral_cavity_habits', 'oral_cavity_options', 'other_oral_cavity', 'orthodontic_treatment', 'orthodontic_treatment_remark', 'worry', 'worry_remark', 'other'])->where(['orthodontics_id' => $orthodontics_id])->get()->toArray();
-        return view('smilelink.createZhenJiCase.createZhenJiCaseTwo')->with('data',$data);
+        $data2 = Orthodontics::select(['birthday'])->where(['id' => $orthodontics_id])->get()->toArray();
+        return view('smilelink.createZhenJiCase.createZhenJiCaseTwo')->with(['data'=>$data,'bir'=>$data2]);
     }
 
     public function page3 (Request $request)
@@ -1046,7 +1070,8 @@ class OrthodonticCaseController extends Controller
     public function page5 (Request $request)
     {
         $orthodontics_id = $request->get('orthodontics_id');
-        $data = OrthodonticXAnalysis::select(['orthodontics_id', 'surface_fault_slice', 'other_target'])->where(['orthodontics_id' => $orthodontics_id])->get()->toArray();
+        $data = OrthodonticXAnalysis::select(['orthodontics_id', 'surface_fault_slice', 'other_target','x_file'])->where(['orthodontics_id' => $orthodontics_id])->get()->toArray();
+
         return view('smilelink.createZhenJiCase.createZhenJiCaseFif')->with('data',$data);
     }
 
@@ -1130,4 +1155,12 @@ class OrthodonticCaseController extends Controller
         }
         return view('smilelink.maintain')->with('data',$data);
     }
+
+    public function findAge (Request $request)
+    {
+        $bir = Orthodontics::select(['birthday'])->where(['id'=>$request->get('orthodontics_id')])->get()->toArray();
+        $age = date('Y',time()) - substr($bir[0]['birthday'],0,4);
+        return view('smilelink.createZhenJiCase.createZhenJiCaseTwo')->with('age',$age);
+    }
+
 }

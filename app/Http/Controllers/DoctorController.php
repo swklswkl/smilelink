@@ -305,17 +305,17 @@ class DoctorController extends Controller
     }
 
 
-    public function changeAliPay (Request $request)
-    {
-        DB::beginTransaction();
-        try
-        {
-
-        } catch (\Exception $e)
-        {
-
-        }
-    }
+//    public function changeAliPay (Request $request)
+//    {
+//        DB::beginTransaction();
+//        try
+//        {
+//
+//        } catch (\Exception $e)
+//        {
+//
+//        }
+//    }
     /**
      * TODO:查询医生所有病历
      * @param Request $request

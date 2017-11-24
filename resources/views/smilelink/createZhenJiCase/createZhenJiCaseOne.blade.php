@@ -57,7 +57,7 @@
                     <p><input name="name" id="name" type="text" class="inputLong" value="@isset($data) {{$data[0]['name']}} @endisset"></p>
                     <p><input name="sex" id="" type="radio" class="inputChe" value="0"@isset($data[0]) @if($data[0]['sex']==0) checked @endif @endisset name="sex">男
                         <input name="sex" id="" type="radio" @isset($data[0])  @if($data[0]['sex']==1) checked @endif @endisset class="inputChe" name="sex" value="1">女</p>
-                    <p><input name="birthday" id="birthday" value="@isset($data[0]) {{$data[0]['birthday']}} @endisset " type="text" class="inputLong" > </p>
+                    <p><input name="birthday" type="date" id="birthday" value="<?= isset($data[0]['birthday']) ? $data[0]['birthday'] :  '' ?>" class="inputLong" > </p>
                     <p><input name="id_number" id="id_number" value="@isset($data[0]){{$data[0]['id_number']}} @endisset " type="text" class="inputLong"></p>
                     <p><input name="mobilephone" id="mobilephone" value="@isset($data[0]) {{$data[0]['mobilephone']}} @endisset " type="text" class="inputLong"></p>
                     <p><input name="address" id="address" value="@isset($data[0]){{$data[0]['address']}} @endisset " type="text" class="inputLong"></p>

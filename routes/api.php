@@ -21,6 +21,7 @@ Route::get('/zjcx','TestController@zjcx');
 /*******************************************公共接口****************1*********************************/
 //文件上传接口
 Route::post('file/upload','CommonController@uploadPictures');
+Route::post('file/upX','CommonController@upX');
 Route::post('/test','CaseController@createArchivesNum');
 Route::get('china/city', 'ChinaController@city');
 Route::get('china/province', 'ChinaController@province');
@@ -123,6 +124,7 @@ Route::post('/doctor/changePassword','DoctorController@changePassword');
 Route::get('/expert/information','ExpertController@information');
 //修改资料
 Route::post('/expert/updateInformation','ExpertController@updateInformation');
+Route::post('/expert/upzgz/{id}','ExpertController@upzgz');
 Route::get('createOrderNum','Controller@createOrderNum');
 //方案审核
 Route::post('expert/auditOpinion','ExpertController@auditOpinion');
@@ -139,3 +141,7 @@ Route::post('expert/commitAudit','ExpertController@commitAudit');
 
 //修改密码
 Route::post('/expert/changePassword','ExpertController@changePassword');
+
+
+
+
