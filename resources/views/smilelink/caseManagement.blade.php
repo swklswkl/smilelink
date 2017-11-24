@@ -1,3 +1,4 @@
+<div id="motai" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 999999;"></div>
 @extends('smilelink.header')
 @section('content')
 <!DOCTYPE html>
@@ -98,6 +99,29 @@
 </div>
 
 </form>
+
+<div id="selectzhuanjia" style="width: 500px; min-height: 120px; background-color: #fff; position: fixed; top: 20%; left: 37%;z-index: 9999999;text-align: center">
+    <div style="width: 300px;margin:10px auto;">
+        <div class="form-group">
+            <label for="exampleInputEmail1">指定专家</label>
+            <input type="text" style="width: 300px; position: absolute; top: 34px; left: 100px;" onkeydown="cj(this.value)" onkeyup="cj(this.value)"  class="form-control" id="exampleInputEmail11111"  placeholder="请输入专家姓名">
+        </div>
+        <div id="amount" style="position: absolute; top: 77px;">
+            <span id="samount">订单金额：1000.00元</span>
+        </div>
+        <ul style="width: 300px; padding-top: 23px; text-align: left; border: 1px solid #ccd0d2;" id="uul">
+
+        </ul>
+        <div style="margin-top: 70px">
+            <button id="pay" style="width: 264px;margin-bottom: 10px" class="btn btn-default" type="button" onclick="zhifu()">支付</button>
+            <button class="btn btn-default" type="button" onclick="nozhuanjia()"  data-toggle="tooltip" data-placement="left" data-original-title="不选择指定专家，让其他专家自己接单">不选择指定专家，让其他专家自己接单</button>
+        </div>
+
+    </div>
+</div>
+<input type="hidden" id="expert_id" name="expert_id" value="">
+<input type="hidden" id="jine"  name="amount" value="">
+
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="/reception/js/layer/2.1/layer.js"></script>
 <script src="{{asset('reception/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
@@ -117,6 +141,11 @@
 
         </script>
 <script>
+    $('#motai').hide();
+    $('#pay').hide();
+    $('#selectzhuanjia').hide();
+    $('#uul').hide();
+    $('#amount').hide();
     $.ajax({
         type: 'get',
         url: '{{url('/api/doctor/findOrthdonicCase')}}',
@@ -229,7 +258,10 @@
                             icon: 6,
                             time: 2000 //2秒关闭（如果不配置，默认是3秒）
                         }, function(){
-                            window.location.href = 'caseManagement';
+                            layer.closeAll();
+                            $('#motai').show();
+                            $('#selectzhuanjia').show();
+//                            window.location.href = 'caseManagement';
                         });
                     }else{
                         layer.msg(data['msg'], {
@@ -277,6 +309,89 @@
             next.style.background= '';
             next.style.border= '1px solid gray';
         }
+    }
+
+    function cj(a)
+    {
+        $('#amount').hide();
+        $('#pay').hide();
+        $('#uul').show();
+        document.getElementById('uul').innerHTML = '查询中..';
+        var pendingRequests = {};
+        jQuery.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+            var key = options.url;
+            if (!pendingRequests[key]) {
+                pendingRequests[key] = jqXHR;
+            }else{
+                pendingRequests[key].abort();   // 放弃先触发的提交，保留最后一次ajax请求
+            }
+
+            var complete = options.complete;
+            options.complete = function(jqXHR, textStatus) {
+                pendingRequests[key] = null;
+                if (jQuery.isFunction(complete)) {
+                    complete.apply(this, arguments);
+                }
+            };
+        });
+        $.ajax({
+            type: 'get',
+            url:'{{url('selectExperts')}}',
+            dataType:'json',
+            data:{
+                text:a
+            },
+            success: function(data) {
+                if (data['code'] == 200)
+                {
+                    document.getElementById('uul').innerHTML = '';
+                    for (var i =0;i<data['data'].length;i++)
+                    {
+                        var li = document.createElement('li');
+                        li.innerHTML = '&nbsp;'+data['data'][i]['name']+'&nbsp;&nbsp;'+data['data'][i]['province']+'&nbsp;&nbsp;'+data['data'][i]['work_unit'];
+                        li.setAttribute('data-id',data['data'][i]['id']);
+                        li.setAttribute('name',data['data'][i]['name']);
+                        li.setAttribute('amount',data['data'][i]['amount']);
+                        li.setAttribute('onmousemove','lala(this)');
+                        li.setAttribute('onmouseout','lalala(this)');
+                        li.setAttribute('onclick','meme(this.getAttribute("name"),this.getAttribute("data-id"),this.getAttribute("amount"))');
+                        li.setAttribute('class','lalala');
+                        document.getElementById('uul').appendChild(li);
+                    }
+                }else if(data['code'] == 402){
+                    document.getElementById('uul').innerHTML = '';
+                    var li = document.createElement('li');
+                    li.innerHTML = data['msg'];
+                    document.getElementById('uul').appendChild(li);
+                }
+            }
+        });
+    }
+
+    function lala (a)
+    {
+        a.style.color = '#fff';
+        a.style.backgroundColor = '#1e90ff';
+        a.style.cursor = 'hand';
+    }
+
+    function lalala (a)
+    {
+        a.style.color = '#636b6f';
+        a.style.backgroundColor = '#fff';
+        a.style.cursor = 'hand';
+    }
+
+    function meme (name,id,amount)
+    {
+        $('#uul').hide();
+        $('#uul').html('');
+        $('#samount').html('订单金额：'+amount+'元');
+        $('#amount').show();
+        document.getElementById('exampleInputEmail11111').value = name;
+        document.getElementById('expert_id').value = id;
+        document.getElementById('jine').value = amount;
+        $('#pay').show();
     }
 </script>
 </body>

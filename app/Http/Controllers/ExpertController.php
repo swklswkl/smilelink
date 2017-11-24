@@ -60,6 +60,7 @@ class ExpertController extends Controller
                     'city' => $request->post('city'),
                     'work_unit' => $request->post('work_unit'),
                     'certificate' => $request->post('certificate'),
+                    'amount' => $request->post('amount'),
                     'working_years' => $request->post('working_years'),
                     'status' => $request->post('status'),
                     'change_time' => time()
@@ -429,6 +430,21 @@ class ExpertController extends Controller
         }catch (Exception $e){
             return $this->errorResponse($e,402);
             DB::rollBack();
+        }
+    }
+
+    public function selectExperts (Request $request)
+    {
+        if ($request->get('text') == null)
+        {
+            return $this->errorResponse('请输入专家姓名',402);
+        }
+        $data = Experts::select(['id','name','province','city','work_unit','amount'])->where('name','like','%'.$request->get('text').'%')->get()->toArray();
+        if ($data == [])
+        {
+            return $this->errorResponse('未查询到指定专家',402);
+        }else{
+            return $this->successResponse('ok',$data);
         }
     }
 }

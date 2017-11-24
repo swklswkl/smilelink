@@ -78,8 +78,7 @@
                 <p>
                     <span>身高：<input name="height" id="" value="@isset($data[0]) {{$data[0]['height']}} @endisset" type="text">cm</span>
                     <span>体重：<input name="weight" id="" value="@isset($data[0]) {{$data[0]['weight']}} @endisset" type="text">kg</span>
-                    <span>年龄：<input name="age" id="" value="@isset($data[0]) {{$data[0]['age']}} @endisset" type="text">岁</span>
-
+                    <span>年龄：<input name="age" id="" value="<?=isset($bir[0]) ? substr(date('Y-m-d',time()),0,4) - substr($bir[0]['birthday'],0,4) : $age ?>" type="text">岁</span>
                 </p>
                 <p>
                     <span>

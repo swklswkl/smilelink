@@ -42,9 +42,8 @@ Route::get('createCase', function () {
 Route::get('createZhenJiCaseOne', function () {
     return view('smilelink.createZhenJiCase.createZhenJiCaseOne');
 });
-Route::get('createZhenJiCaseTwo', function () {
-    return view('smilelink.createZhenJiCase.createZhenJiCaseTwo');
-});
+Route::get('createZhenJiCaseTwo','OrthodonticCaseController@findAge');
+
 Route::get('createZhenJiCaseThree', function () {
     return view('smilelink.createZhenJiCase.createZhenJiCaseThree');
 });
@@ -127,9 +126,7 @@ Route::group(['middleware'=> 'login.doctor'],function () {
     Route::get('createZhenJiCaseOne', function () {
         return view('smilelink.createZhenJiCase.createZhenJiCaseOne');
     });
-    Route::get('createZhenJiCaseTwo', function () {
-        return view('smilelink.createZhenJiCase.createZhenJiCaseTwo');
-    });
+    Route::get('createZhenJiCaseTwo','OrthodonticCaseController@findAge');
     Route::get('createZhenJiCaseThree', function () {
         return view('smilelink.createZhenJiCase.createZhenJiCaseThree');
     });
@@ -172,6 +169,7 @@ Route::group(['middleware'=> 'login.doctor'],function () {
     Route::get('editCase5','OrthodonticCaseController@page5');
     Route::get('editCase6','OrthodonticCaseController@page6');
     Route::get('editCase7','OrthodonticCaseController@page7');
+    Route::get('star','OrthodonticCaseController@star');
 });
 
 Route::group(['middleware' => 'login.expert'],function () {
@@ -181,3 +179,9 @@ Route::group(['middleware' => 'login.expert'],function () {
     Route::get('myOrrders','ExpertController@myOrders');
 });
 
+Route::group(['middleware' => 'throttle:100,1'], function () {
+
+    //选择专家
+    Route::get('selectExperts','ExpertController@selectExperts');
+
+});
