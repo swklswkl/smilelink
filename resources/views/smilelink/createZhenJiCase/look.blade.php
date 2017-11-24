@@ -12,7 +12,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>

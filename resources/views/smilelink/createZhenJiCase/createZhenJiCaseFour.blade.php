@@ -23,7 +23,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
@@ -374,36 +374,30 @@
                     <div class="col-lg-2 text-right"></div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-1">磨牙关系</div>
-                    {{--<div class="col-lg-1">左侧</div>--}}
+                    <div class="col-lg-1">左侧</div>
                     <div class="col-lg-1"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==0) checked @endif @endisset  value="0">中性</div>
-                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==1) checked @endif @endisset  value="1">中性偏远中</div>
-                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==2) checked @endif @endisset  value="2">中性偏近中</div>
-                    <div class="col-lg-1" ><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==3) checked @endif @endisset  value="3">远中</div>
-                    <div class="col-lg-1" ><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==4) checked @endif @endisset  value="4">近中</div>
+                    <div class="col-lg-1" ><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==1) checked @endif @endisset  value="1">远中</div>
+                    <div class="col-lg-1" ><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==2) checked @endif @endisset  value="2">近中</div>
+                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==3) checked @endif @endisset  value="3">中性偏远中</div>
+                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==4) checked @endif @endisset  value="4">中性偏近中</div>
+
                     </div>
+
+
 
                 <div class="row">
                     <div class="col-lg-2 text-right"></div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-1"></div>
-                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==5) checked @endif @endisset  value="5">近中尖对尖</div>
-                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==6) checked @endif @endisset  value="6">远中尖尖对</div>
-                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==7) checked @endif @endisset  value="7">完全近中关系</div>
-                    <div class="col-lg-1"><input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==8) checked @endif @endisset  value="8">完全远中关系</div>
+                    <div class="col-lg-1">右侧</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==0) checked @endif @endisset  value="0">中性</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==1) checked @endif @endisset  value="1">近中</div>
+                    <div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==2) checked @endif @endisset  value="2">远中</div>
+                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==3) checked @endif @endisset  value="3">中性偏远中</div>
+                    <div class="col-lg-2" style="width: 120px"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==4) checked @endif @endisset  value="4">中性偏近中</div>
 
 
                 </div>
-
-                {{--<div class="row">--}}
-                    {{--<div class="col-lg-2 text-right"></div>--}}
-                    {{--<div class="col-lg-1"></div>--}}
-                    {{--<div class="col-lg-1"></div>--}}
-                    {{--<div class="col-lg-1">右侧</div>--}}
-                    {{--<div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==0) checked @endif @endisset  value="0">中性</div>--}}
-                    {{--<div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==1) checked @endif @endisset  value="1">近中</div>--}}
-                    {{--<div class="col-lg-1"><input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==2) checked @endif @endisset  value="2">远中</div>--}}
-
-                {{--</div>--}}
 
                 <!--垂直关系-->
 

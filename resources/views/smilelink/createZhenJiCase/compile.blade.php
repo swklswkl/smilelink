@@ -12,7 +12,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
@@ -236,7 +236,7 @@
                     @endisset
                 </div>
             <p style="margin-left: -85px">  内容：</p>
-            <textarea name="content"  value="" id="" cols="30" rows="10" style="width: 1000px;margin-left: -28px;font-size: 17px"></textarea>
+            <textarea name="treat_content"  value="" id="" cols="30" rows="10" style="width: 1000px;margin-left: -28px;font-size: 17px"></textarea>
 
 
         </div>
@@ -379,6 +379,7 @@
                 if (data.code == 200)
                 {
                     $('textarea[name=content]').val(data.data[0].content);
+                    $('textarea[name=treat_content]').val(data.data[0].treat_content);
                     $.each(data.data[0],function(key,val){
                        // console.log(key+'=='+val)
                         $('input[name='+key+']').prev().prev('img').attr('src',val);

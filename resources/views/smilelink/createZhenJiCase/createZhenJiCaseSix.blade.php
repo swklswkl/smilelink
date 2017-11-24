@@ -29,7 +29,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
@@ -158,12 +158,12 @@
 
                     </div>
                     <div class="col-md-2">
-
                     </div>
                     <div class="col-md-2">
 
 
                     </div>
+
                     <div class="col-md-3">
 
                     </div>
@@ -515,7 +515,8 @@
                         <input type="radio" name="left_fangs" @isset($data[0]) @if($data[0]['left_fangs']==2) checked @endif @endisset value="2">远中
 
                     </div>
-                    <div class="col-md-6"></div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -560,7 +561,18 @@
                         <input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==2) checked @endif @endisset value="2">远中
 
                     </div>
-                    <div class="col-md-6"></div>
+
+                    <div class="col-md-2" style="width: 160px">
+                        <input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==3) checked @endif @endisset value="3">中性偏远中
+
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="left_molar_fangs" @isset($data[0]) @if($data[0]['left_molar_fangs']==4) checked @endif @endisset value="4">中性偏近中
+
+                    </div>
+
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -580,7 +592,12 @@
                         <input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==2) checked @endif @endisset value="2">远中
                     </div>
 
-                    <div class="col-md-6"></div>
+                    <div class="col-md-2" style="width: 160px">
+                        <input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==3) checked @endif @endisset value="3">中性偏远中
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="right_molar_fangs" @isset($data[0]) @if($data[0]['right_molar_fangs']==4) checked @endif @endisset value="4">中性偏近中
+                    </div>
 
                 </div>
                 其他目标:

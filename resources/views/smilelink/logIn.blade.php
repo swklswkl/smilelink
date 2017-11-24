@@ -27,7 +27,7 @@
         <div class="col-lg-3 col-md-3"></div>
         <div class="col-lg-4 col-md-3"></div>
         <div class="col-lg-4  col-md-4 logImg">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="" >
+            <img src="{{asset('reception/img/logo0.png')}}" alt=""  style="height: 65px">
         </div>
         <div class="col-lg-1  col-md-2"></div>
     </div>

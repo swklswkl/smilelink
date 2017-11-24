@@ -346,7 +346,7 @@
 <footer>
     <div class="content">
         {{--<a href="{{url('caseOne')}}"><button class="pre">上一页</button></a>--}}
-        <button onclick="submitForm()">下一页</button>
+        <button onclick="submitForm()" style="margin-left: 43%">下一页</button>
     </div>
 
 </footer>

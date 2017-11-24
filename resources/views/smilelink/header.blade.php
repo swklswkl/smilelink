@@ -1,7 +1,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt=""  style="height: 65px">
         </div>
        @if(empty(session('expert')))
         <div class="head-C">

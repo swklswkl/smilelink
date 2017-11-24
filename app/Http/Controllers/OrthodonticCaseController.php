@@ -581,6 +581,7 @@ class OrthodonticCaseController extends Controller
                     'abnormal_teeth' => $request->post('abnormal_teeth'),
                     'air_passage' => $request->post('air_passage'),
                     'other' => $request->post('other'),
+                    'treat_content' => $request->post('treat_content'),
                     'create_time' => time()
                 ]);
                 DB::commit();
@@ -616,6 +617,7 @@ class OrthodonticCaseController extends Controller
                     'cbct_under_teeth' => $request->post('cbct_under_teeth'),
                     'abnormal_teeth' => $request->post('abnormal_teeth'),
                     'air_passage' => $request->post('air_passage'),
+                    'treat_content' => $request->post('treat_content'),
                     'other' => $request->post('other'),
                 ]);
                 DB::commit();

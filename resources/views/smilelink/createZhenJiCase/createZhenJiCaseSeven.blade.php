@@ -24,7 +24,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
@@ -103,7 +103,7 @@
                    $('.table.table-condensed.table-hover').append('<tr class="success">\n' +
                             '                        <td >'+val.name+'</td>\n' +
                             '                        <td >'+val.create_time+'</td>\n' +
-                            '                        <td ><a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'">查看</a> <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'&edit=1">编辑</a> <a onclick="Delplan('+val.id+')">删除</a></td>\n' +
+                            '                        <td ><a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'">查看</a> <a href="{{url('createZhenJiCaseSeven/edit?orthodontics_id=')}}'+val.orthodontics_id+'&id='+val.id+'&edit=1">编辑</a> <a onclick="fn('+val.id+')">删除</a></td>\n' +
                             '                    </tr>');
                    })
                } else {
@@ -130,6 +130,7 @@
             success: function (data) {
                 if (data.code == 200) {
                     window.location.href = "{{url('createZhenJiCaseSeven?orthodontics_id=').$_GET['orthodontics_id']}}";
+                    layer.msg('删除成功')
                 } else {
                     if (data.code == 401) {
                         $.each(data.msg, function (key, val) {
@@ -144,6 +145,18 @@
             }
         });
     }
+    function fn(a){
+        //询问框
+        layer.confirm('您确定要删除么？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                Delplan(a)
+            }
+            , function(){
+                layer.msg('取消成功!')
+            });
+    }
+
 </script>
 </body>
 </html>

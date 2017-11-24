@@ -93,7 +93,7 @@
                         <input type="hidden" name="program_name" value="{{$val['program_name']}}" />
                     </div>
                     <div class="buttonBox">
-                        <button type="button" onclick="submitForm({{$key}})" >保存</button>
+                        <button type="button" onclick="fn({{$key}})" >保存</button>
                         {{--<button type="button" >提交</button>--}}
                         {{--<button type="button" style="background: white;color: #404040;border: 1px solid #a1a1a1">返回</button>--}}
 
@@ -122,7 +122,7 @@
             success: function(data) {
                 if (data.code == 200)
                 {
-                    layer.msg(data.msg);
+                    layer.msg(data.msg, {icon: 1});
                 } else {
                     var message='';
                     if(data.code==402) {
@@ -162,6 +162,18 @@
         $(this).parent().parent().find('input').val(value);//赋值
         $(this).parent().slideUp();//消失
     });
+    function fn(a){
+        //询问框
+        layer.confirm('您确定保存么？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                submitForm(a);
+            }
+            , function(){
+                layer.msg('取消成功!')
+            });
+    }
+
 </script>
 </body>
 </html>

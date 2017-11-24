@@ -12,7 +12,7 @@
 <header>
     <div class="content">
         <div class="head-L">
-            <img src="{{asset('reception/img/bonsmilelogo.png')}}" alt="">
+            <img src="{{asset('reception/img/logo0.png')}}" alt="" style="height: 65px">
         </div>
         <div class="head-C">
             <span ><a href="{{url('createCase')}}">新建病例</a></span>
@@ -54,12 +54,12 @@
                     <span class="s1"> <input name="complained[]" value="1" @isset($data[0])  <?php if(in_array('1',$a) ){ ?>checked="checked"<?php } ?> @endisset id="" type="checkbox">牙齿排列不齐（拥挤）</span>
                     <span class="s1"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('2',$a) ){ ?>checked="checked"<?php } ?> @endisset value="2" type="checkbox">牙齿稀疏（间隙）</span>
                     <span class="s1"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('3',$a) ){ ?>checked="checked"<?php } ?> @endisset value="3" type="checkbox">牙齿龅牙（前突）</span>
-                    <span class="s1"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> @endisset value="4" type="checkbox">前牙地包天（前牙反咬合）</span>
+                    <span class="s1"><input name="complained[]" id="chk1" @isset($data[0])  <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> @endisset value="4" type="checkbox"  onClick="sel1(this)">前牙地包天（前牙反咬合）</span>
                 </div>
 
                 <div class="formTop">
-                    <span class="s5"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> @endisset value="5" type="checkbox">前牙咬合不上（开牙合）</span>
-                    <span class="s6"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> @endisset value="6" type="checkbox">前牙咬合过深（深覆合）</span>
+                    <span class="s5"><input name="complained[]" id="chk2" @isset($data[0])  <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> @endisset value="5" type="checkbox"  onClick="sel2(this)">前牙咬合不上（开牙合）</span>
+                    <span class="s6"><input name="complained[]" id="chk11"u @isset($data[0])  <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> @endisset value="6" type="checkbox"  onClick="sel11(this)">前牙咬合过深（深覆合）</span>
                     <span class="s7"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('7',$a) ){ ?>checked="checked"<?php } ?> @endisset value="7" type="checkbox">深覆盖</span>
                     <span class="s8"><input name="complained[]" id="" @isset($data[0])  <?php if(in_array('8',$a) ){ ?>checked="checked"<?php } ?> @endisset value="8" type="checkbox">颞下颌关节症状</span>
                 </div>
@@ -224,6 +224,23 @@
     });
 
     }
+    function sel1(obj){
+        if(obj.checked){
+            document.all.chk2.checked=false
+        }
+    }
+    function sel2(obj){
+        if(obj.checked){
+            document.all.chk1.checked=false;
+            document.all.chk11.checked=false
+        }
+    }
+    function sel11(obj){
+        if(obj.checked){
+            document.all.chk2.checked=false
+        }
+    }
+
 </script>
 </body>
 </html>

@@ -74,9 +74,9 @@ textarea{width:1135px;height: 156px;resize:none ;font-size: 16px}
 .part4Text .sel{width: 55px;height: 20px;float: right;font-size: 30px}
 
 /*九个图片*/
-.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px;}
-.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px}
-.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid #ddd;float: left;margin-right: 60px}
+.part4Cont .imgBox-T div{width: 200px;height: 200px;border: 1px solid grey;float: left;margin-right: 60px;overflow: hidden}
+.part4Cont .imgBox-C div{width: 200px;height: 200px;border: 1px solid grey;float: left;margin-right: 60px;overflow: hidden}
+.part4Cont .imgBox-B div{width: 200px;height: 200px;border: 1px solid grey;float: left;margin-right: 60px;overflow: hidden}
 .part4Cont p{margin-top: 10px;margin-bottom: 20px}
 .imgBox-T,.imgBox-C,.imgBox-B{overflow: hidden}
 .file1{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 36px;  left: 121px;}
@@ -88,6 +88,7 @@ textarea{width:1135px;height: 156px;resize:none ;font-size: 16px}
 .file7{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 121px;}
 .file8{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 383px;}
 .file9{width: 200px;height: 200px;position: absolute;z-index: 40;    top: 542px;  left: 644px;}
+
 
 /**/
 .part4Cont {background:#e3f0e4;border: 1px solid #ddd ;border-radius: 4px;overflow: hidden;padding-bottom: 65px;

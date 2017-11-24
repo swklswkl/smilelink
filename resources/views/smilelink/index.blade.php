@@ -48,7 +48,7 @@
 <header>
     <div class="content">
     <div class="nav-L">
-        <img src="{{asset('reception/img/logo0.png')}}" alt="">
+        <img src="{{asset('reception/img/logo0.png')}}" alt=""  style="height: 65px">
 
     </div>
         <div class="nav-C">
