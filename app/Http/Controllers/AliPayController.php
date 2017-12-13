@@ -11,8 +11,8 @@ class AliPayController extends Controller
     {
         $config_biz = [
             'out_trade_no' => time(),
-            'total_amount' => '1',
-            'subject'      => 'test subject',
+            'total_amount' => '0.01',
+            'subject'      => '测试订单',
         ];
 
         return Pay::driver('alipay')->gateway()->pay($config_biz);
