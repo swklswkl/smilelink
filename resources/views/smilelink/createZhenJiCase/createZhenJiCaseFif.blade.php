@@ -92,7 +92,7 @@
                 <form id="upX">
                     上传X光：<input id="xg" onchange="upX(this)" type="file" name="file">
                 </form>
-                <div id="jdt1" style="margin-top: 6px;width: 100.67%;height: 15px;border: 1px solid black;opacity: 0.3;"></div>
+                <div id="jdt1" style="margin-top: 6px;width: 100.67%;height: 15px;border: 1px solid black;opacity: 0.3;display: none"></div>
                 <div id="jdt2" style="margin-top: 6px;width: 0%;height: 13px;background-color: rgb(105, 190, 40);position: absolute;top: 46px;left: 1px;"></div>
                 <span id="jindutiao"></span>
                 <span id="jindutiao2"></span>

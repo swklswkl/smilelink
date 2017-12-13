@@ -254,7 +254,15 @@
                         <input type="radio" name="left_molar_fangs" value="2">远中
 
                     </div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-2">
+                        <input type="radio" name="left_molar_fangs" value="3">中性偏近中
+
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="left_molar_fangs" value="4">中性偏远中
+
+                    </div>
+                    {{--<div class="col-md-6"></div>--}}
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -273,15 +281,21 @@
                     <div class="col-md-1">
                         <input type="radio" name="right_molar_fangs" value="2">远中
                     </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="right_molar_fangs" value="3">中性偏近中
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="right_molar_fangs" value="4">中性偏远中
+                    </div>
 
-                    <div class="col-md-6"></div>
+                    {{--<div class="col-md-6"></div>--}}
 
                 </div>
                 其他目标:
-                <textarea name="treatment_other_target" id="1" cols="30" rows="10"></textarea>
+                <textarea name="treatment_other_target" id="1" cols="30" rows="10" style="margin-bottom: 30px"></textarea>
 
                 <input type="hidden" id="name" name="num" value="1">
-                <div class="part6Text" style="border: 2px solid #c2c2c2 ;">
+                <div class="part6Text" style="border: 1px solid #ddd ;">
                     <span>*</span>治疗方案
                     <div class="sel" id="click_event7">^</div>
                 </div>
