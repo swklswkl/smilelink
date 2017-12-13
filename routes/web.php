@@ -189,6 +189,6 @@ Route::group(['middleware' => 'throttle:100,1'], function () {
 // 支付宝回调地址
 Route::get('alipay/return','AliPayController@return');
 // 支付宝异步通知
-Route::get('alipay/notice','AliPayController@notice');
+Route::post('alipay/notify','AliPayController@notify');
 // 支付地址
 Route::get('alipay','AliPayController@pay');
