@@ -185,3 +185,10 @@ Route::group(['middleware' => 'throttle:100,1'], function () {
     Route::get('selectExperts','ExpertController@selectExperts');
 
 });
+
+// 支付宝回调地址
+Route::get('alipay/return','AliPayController@return');
+// 支付宝异步通知
+Route::post('alipay/notify','AliPayController@notify');
+// 支付地址
+Route::get('alipay','AliPayController@pay');
