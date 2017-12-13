@@ -37,6 +37,7 @@
         <div class="part2Title">
             <img src="{{asset('reception/img/one.png')}}" alt="" >
 
+
         </div>
         <div class="part2Cont">
             <div class="part2Title">

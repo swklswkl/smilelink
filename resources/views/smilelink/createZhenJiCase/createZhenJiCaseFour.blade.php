@@ -72,7 +72,7 @@
                     <div class="col-lg-1"><input type="radio" name="symmetry" @isset($data[0]) @if($data[0]['symmetry']==1) checked @endif @endisset  value="1">不对称</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2 text-right">頦点：</div>
+                    <div class="col-lg-2 text-right">颏点：</div>
                     <div class="col-lg-1"><input type="radio" name="chin_point" @isset($data[0]) @if($data[0]['chin_point']==0) checked @endif @endisset  value="0">居中</div>
                     <div class="col-lg-1"><input type="radio" name="chin_point" @isset($data[0]) @if($data[0]['chin_point']==1) checked @endif @endisset  value="1">偏左</div>
                     <div class="col-lg-1"><input type="radio" name="chin_point" @isset($data[0]) @if($data[0]['chin_point']==2) checked @endif @endisset  value="2">偏右</div>
@@ -113,7 +113,7 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-lg-2 text-right">頦部凸度：</div>
+                    <div class="col-lg-2 text-right">颏部凸度：</div>
 
                     <div class="col-lg-1"><input type="radio" name="chin_point_view" @isset($data[0]) @if($data[0]['chin_point_view']==0) checked @endif @endisset  value="0">正常</div>
                     <div class="col-lg-1"><input type="radio" name="chin_point_view" @isset($data[0]) @if($data[0]['chin_point_view']==1) checked @endif @endisset  value="1">后缩</div>

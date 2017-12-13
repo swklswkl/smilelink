@@ -90,12 +90,12 @@
                     <span class="s1"> <input name="complained[]" id="" type="checkbox" value="1">牙齿排列不齐（拥挤）</span>
                     <span class="s2"><input name="complained[]" id="" type="checkbox" value="2">牙齿稀疏（间隙）</span>
                     <span class="s3"><input name="complained[]" id="" type="checkbox" value="3">牙齿龅牙（前突）</span>
-                    <span class="s4"><input name="complained[]" id="" type="checkbox" value="4">前牙地包天（前牙反咬合）</span>
+                    <span class="s4"><input name="complained[]"  type="checkbox" @isset($data[0])  <?php if(in_array('4',$a) ){ ?>checked="checked"<?php } ?> @endisset value="4" id="chk1" onClick="sel1(this)">前牙地包天（前牙反咬合）</span>
             </div>
 
             <div class="formTop">
-                <span class="s5"><input name="complained[]" id="" type="checkbox" value="5">前牙咬合不上（开牙合）</span>
-                <span class="s6"><input name="complained[]" id="" type="checkbox" value="6">前牙咬合过深（深覆合）</span>
+                <span class="s5"><input name="complained[]"  type="checkbox" @isset($data[0])  <?php if(in_array('5',$a) ){ ?>checked="checked"<?php } ?> @endisset value="5" id="chk2"  onClick="sel2(this)">前牙咬合不上（开牙合）</span>
+                <span class="s6"><input name="complained[]"  type="checkbox" @isset($data[0])  <?php if(in_array('6',$a) ){ ?>checked="checked"<?php } ?> @endisset value="6" id="chk11"  onClick="sel11(this)">前牙咬合过深（深覆合）</span>
                 <span class="s7"><input name="complained[]" id="" type="checkbox" value="7">深覆盖</span>
                 <span class="s8"><input name="complained[]" id="" type="checkbox" value="8">颞下颌关节症状</span>
             </div>
@@ -322,6 +322,7 @@
 <script src="{{asset('/js/holder.js')}}"></script>
 
 <script>
+
     var cbtn = document.getElementsByClassName('c1');
     var div = document.getElementsByClassName('try');
 
@@ -445,6 +446,22 @@
             next.style.background= '';
         }
 
+    }
+    function sel1(obj){
+        if(obj.checked){
+            document.all.chk2.checked=false
+        }
+    }
+    function sel2(obj){
+        if(obj.checked){
+            document.all.chk1.checked=false;
+            document.all.chk11.checked=false
+        }
+    }
+    function sel11(obj){
+        if(obj.checked){
+            document.all.chk2.checked=false
+        }
     }
 
 </script>
