@@ -228,7 +228,7 @@
                                                 <td >{{$value['create_time']}}</td>
                                                 <td >
                                                     <a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a>
-                                                    <a onclick="fukuan()" number="{{base64_encode($value['number'])}}">付款</a>
+                                                    <a style="cursor:hand;" onclick="fukuan(this.getAttribute('number'))" number="{{base64_encode($value['number'])}}">付款</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -492,9 +492,9 @@
         });
         jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
 
-        function fukuan ()
+        function fukuan (number)
         {
-
+           window.location.href = 'pay?dd='+number;
         }
     </script>
 </body>

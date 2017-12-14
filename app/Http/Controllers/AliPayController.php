@@ -29,7 +29,7 @@ class AliPayController extends Controller
             if ($data)
             {
                 $number = $data['out_trade_no'];
-                $n = Orders::where(['number'=>$number])->update(['status'=>'1']);
+                $n = Orders::where(['number'=>$number])->update(['status'=>'1','pay_time'=>time()]);
                 if ($n)
                 {
                     return view('smilelink.paySuccess');
