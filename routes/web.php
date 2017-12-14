@@ -196,3 +196,8 @@ Route::get('alipay/return','AliPayController@backURL');
 Route::post('alipay/notify','AliPayController@notify');
 // 支付地址
 Route::get('alipay','AliPayController@pay');
+
+//微信支付链接
+Route::get('wechat/payLink','WechatPayController@payLink');
+//回掉
+Route::post('wechat/callback','WechatPayController@notify');
