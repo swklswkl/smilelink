@@ -2,25 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Orders;
+use Pay;
 use Illuminate\Http\Request;
-use Yansongda\LaravelPay\Facades\Pay;
 
 class AliPayController extends Controller
 {
-    public function pay ()
+    public function pay (Request $request)
     {
+        $number = $request->get('dd');
+        $amount = Orders::select(['amount'])->where(['number'=>$number])->get()->toArray()[0]['amount'];
         $config_biz = [
-            'out_trade_no' => time(),
-            'total_amount' => '0.01',
-            'subject'      => '测试订单',
+            'out_trade_no' => $number,
+            'total_amount' => $amount,
+            'subject'      => 'SmileLink服务购买',
         ];
 
         return Pay::driver('alipay')->gateway()->pay($config_biz);
     }
 
-    public function return(Request $request)
+    public function backURL(Request $request)
     {
-        return Pay::driver('alipay')->gateway()->verify($request->all());
+        if (Pay::driver('alipay')->gateway()->verify($request->all()))
+        {
+            $data = Pay::driver('alipay')->gateway()->verify($request->all());
+            if ($data)
+            {
+                $number = $data['out_trade_no'];
+                $n = Orders::where(['number'=>$number])->update(['status'=>'1','pay_time'=>time()]);
+                if ($n)
+                {
+                    return view('smilelink.paySuccess');
+                }
+            }else{
+                echo '支付失败';
+            }
+        }
     }
 
     public function notify(Request $request)

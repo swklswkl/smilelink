@@ -226,7 +226,10 @@
                                                 </td>
                                                 <td>{{$value['amount']}}</td>
                                                 <td >{{$value['create_time']}}</td>
-                                                <td ><a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a></td>
+                                                <td >
+                                                    <a href="caseManage?orthodontics_id={{$value['orthodontics_id']}}" target="_blank">查看</a>
+                                                    <a style="cursor:hand;" onclick="fukuan(this.getAttribute('number'))" number="{{base64_encode($value['number'])}}">付款</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -488,6 +491,11 @@
             $(this).parent().slideUp();//消失
         });
         jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
+
+        function fukuan (number)
+        {
+           window.location.href = 'pay?dd='+number;
+        }
     </script>
 </body>
 </html>

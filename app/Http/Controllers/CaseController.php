@@ -21,7 +21,7 @@ class CaseController extends Controller
         try{
             $result =  Service::where('status','1')->get();
             if(!$result){
-                return $this->errorResponse('占时没有数据');
+                return $this->errorResponse('暂时没有数据');
             }
             return $this->successResponse('ok',$result);
         }catch (Exception $exception){

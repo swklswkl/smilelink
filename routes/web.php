@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('smilelink.index');
 });
+Route::get('paySuccess',function () {
+    return view('smilelink.paySuccess');
+});
+Route::get('pay','OrthodonticCaseController@pay');
 /*-----------------------------账号模板-----------------------------*/
 Route::get('login', function () {
     return view('smilelink.logIn');
@@ -187,7 +191,7 @@ Route::group(['middleware' => 'throttle:100,1'], function () {
 });
 
 // 支付宝回调地址
-Route::get('alipay/return','AliPayController@return');
+Route::get('alipay/return','AliPayController@backURL');
 // 支付宝异步通知
 Route::post('alipay/notify','AliPayController@notify');
 // 支付地址
