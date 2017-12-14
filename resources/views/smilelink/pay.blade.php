@@ -162,8 +162,12 @@
             layer.msg('请选择支付方式');
         }else if(flag == 1)
         {
+            //支付宝支付
             var number = document.getElementById('ddbh').innerHTML;
             window.location.href = 'alipay?dd='+number;
+        }else if(flag == 2)
+        {
+            // 这里写微信支付的逻辑
         }
     }
 </script>
