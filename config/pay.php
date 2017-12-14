@@ -20,7 +20,7 @@ return [
 
     'wechat' => [
         // 公众号APPID
-        'app_id' => '',
+        'app_id' => 'ww60453a86a96dcdcc',
 
         // 小程序APPID
         'miniapp_id' => '',
@@ -29,7 +29,7 @@ return [
         'appid' => '',
 
         // 微信支付分配的微信商户号
-        'mch_id' => '',
+        'mch_id' => '1491685292',
 
         // 微信支付异步通知地址
         'notify_url' => '',
