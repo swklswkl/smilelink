@@ -26,6 +26,7 @@ Route::post('/test','CaseController@createArchivesNum');
 Route::get('china/city', 'ChinaController@city');
 Route::get('china/province', 'ChinaController@province');
 Route::get('china/district', 'ChinaController@district');
+Route::get('case/setOrder', 'OrthodonticCaseController@setOrder');
 /*******************************************正畸病历*************************************************/
 Route::post('addInformation','OrthodonticCaseController@addInformation');
 //新增患者基本信息

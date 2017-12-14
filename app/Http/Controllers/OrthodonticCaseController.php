@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\CaseHistoryImage;
+use App\Model\Experts;
 use App\Model\Orders;
 use App\Model\Orthodontics;
 use App\Model\OrthodonticsChiefComplaint;
@@ -940,6 +941,7 @@ class OrthodonticCaseController extends Controller
         DB::beginTransaction();
         try
         {
+            $odnum = $this->createOrderNum($request->getClientIp());
 //            dd($request->post());die;
             //方案数量
             $num = $request->post('num');
@@ -975,11 +977,11 @@ class OrthodonticCaseController extends Controller
                     if ($request->post('expert_id'))
                     {
                         Orders::insert([
-                            'number' => $this->createOrderNum($request->getClientIp()),
+                            'number' => $odnum,
                             'orthodontics_id' => $request->post('orthodontics_id'),
                             'doctor_id' => $request->session()->get('doctor.id'),
                             'expert_id' => $request->post('expert_id'),
-                            'status' => '2',
+                            'status' => '0',
                             'amount' => $request->post('amount'),
                             'create_time' => time(),
                             'pay_time' => time()
@@ -991,11 +993,11 @@ class OrthodonticCaseController extends Controller
                             ]);
                     }else{
                         Orders::insert([
-                            'number' => $this->createOrderNum($request->getClientIp()),
+                            'number' => $odnum,
                             'orthodontics_id' => $request->post('orthodontics_id'),
                             'doctor_id' => $request->session()->get('doctor.id'),
                             'expert_id' => $request->post('expert_id'),
-                            'status' => '1',
+                            'status' => '0',
                             'amount' => $request->post('amount'),
                             'create_time' => time(),
                             'pay_time' => time()
@@ -1015,7 +1017,7 @@ class OrthodonticCaseController extends Controller
                 ]);
             }
             DB::commit();
-            return $this->successResponse('保存成功');
+            return $this->successResponse($odnum);
         }catch (\Exception $e)
         {
             DB::rollBack();
@@ -1110,20 +1112,22 @@ class OrthodonticCaseController extends Controller
             $data = Orthodontics::where(['id'=>trim($request->post('id'),"'")])->update(['status'=>'2','service_id'=>$service_id]);
             if ($data)
             {
-                Orders::insert([
-                    'number' => $this->createOrderNum($request->getClientIp()),
-                    'orthodontics_id' => trim($request->post('id'),"'"),
-                    'doctor_id' => $request->session()->get('doctor.id'),
-                    'status' => '1',
-                    'amount' => mt_rand(1,999),
-                    'create_time' => time(),
-                    'pay_time' => time()
-                ]);
+//                Orders::insert([
+//                    'number' => $this->createOrderNum($request->getClientIp()),
+//                    'orthodontics_id' => trim($request->post('id'),"'"),
+//                    'doctor_id' => $request->session()->get('doctor.id'),
+//                    'status' => '1',
+//                    'amount' => mt_rand(1,999),
+//                    'create_time' => time(),
+//                    'pay_time' => time()
+//                ]);
+                DB::commit();
+                return $this->successResponse('服务提交成功');
             }else{
+                DB::rollBack();
                 return $this->errorResponse('提交服务失败',402);
             }
-            DB::commit();
-            return $this->successResponse('服务提交成功');
+
         }catch (Exception $e){
             DB::rollBack();
             return $this->errorResponse('操作有误',402);
@@ -1163,4 +1167,58 @@ class OrthodonticCaseController extends Controller
         return view('smilelink.createZhenJiCase.createZhenJiCaseTwo')->with('age',$age);
     }
 
+    public function pay (Request $request)
+    {
+        $res = [];
+        $number = base64_decode($request->get('dd'));
+        $data = Orders::select(['number','amount','expert_id','orthodontics_id'])->where(['number'=>$number])->get()->toArray();
+        $expert = Experts::select(['name','work_unit'])->where(['id'=>$data[0]['expert_id']])->get()->toArray();
+        $service_id = Orthodontics::select(['service_id'])->where(['id'=>$data[0]['orthodontics_id']])->get()->toArray();
+        $service_name = '';
+        if (sizeof($service_id))
+        {
+            $service_id = $service_id[0]['service_id'];
+            if (strlen($service_id)>1)
+            {
+                $service_id = explode(',',$service_id);
+                for($i=0;$i<sizeof($service_id);$i++)
+                {
+                    $service_name .= ' '.Service::select(['service_name'])->where(['id'=>$service_id[$i]])->get()->toArray()[0]['service_name'];
+                }
+            }else{
+                $service_name = Service::select(['service_name'])->where(['id'=>$service_id])->get()->toArray()[0]['service_name'];
+            }
+        }else{
+            $service_name = '暂未选择服务内容';
+        }
+        array_push($res,$expert[0]['name'].' '.$expert[0]['work_unit']);
+        array_push($res,$service_name);
+        array_push($res,$data[0]['amount']);
+        array_push($res,$data[0]['number']);
+        return view('smilelink.pay')->with('data',$res);
+    }
+
+    public function setOrder (Request $request)
+    {
+        $ocid = $request->get('ocid');
+        $expert_id = $request->get('eid');
+        $amount = $request->get('amount');
+        $number = $this->createOrderNum($request->getClientIp());
+        $res = Orders::insert([
+            'number' => $number,
+            'orthodontics_id' => $ocid,
+            'doctor_id' => $request->session()->get('doctor.id'),
+            'expert_id' => $expert_id,
+            'status' => '0',
+            'amount' => $amount,
+            'create_time' => time(),
+            'pay_time' => time()
+        ]);
+        if ($res)
+        {
+            return $this->successResponse($number);
+        }else{
+            return $this->errorResponse('error');
+        }
+    }
 }

@@ -1,0 +1,13 @@
+*{font-family: 'Microsoft Yahei';margin: 0;padding: 0;text-decoration: none;list-style: none;}
+a:hover{text-decoration: underline; }
+.content{width: 1200px;margin: 0  auto;}
+header{background:#f3f3f3;padding-top: 20px ;padding-bottom: 10px}
+header .content{overflow: hidden}
+header .head-L{float: left}
+header .head-C{float: left;padding-top: 20px}
+header .head-R{float: right;padding-top: 25px}
+.head-C span a{font-size: 22px;color: #515151}
+.head-C span{margin-left: 70px}
+.head-C .span1 a{color: #69be28}
+header .head-R span a{font-size: 16px;color: #515151}
+header .head-R .span2{margin-left: 30px}

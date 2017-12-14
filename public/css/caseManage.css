@@ -1,0 +1,95 @@
+/*.messageBox里面共同代码*/
+.messageBox {padding-top: 20px}
+.messageBox .content p:first-child{color: #979797;font-size: 16px}
+.message-R button{background:#69be28;color: #ffffff;padding: 12px 20px 12px 20px;border-radius: 3px;border: none;font-size: 18px ;margin-right: 30px;cursor: pointer}
+.server {line-height:100px }
+.message-L{float: left;margin-top: 6px}
+.message-R{float: right}
+.messageTop{overflow: hidden;font-size: 22px;color: #69be28;margin-top: 30px;margin-left: 30px;padding-left: 40px;background-image: url("../img/message.png");background-repeat: no-repeat;background-position: 0px 1px;}
+.messageBorder{border: 1px solid #ddd;margin-top: 20px;    margin-bottom: 40px;}
+.messageBottom .messageBottom1{float: left;width: 20%;margin-bottom: 20px;margin-left: 40px}
+.messageBottom{overflow: hidden;    margin-top: 25px;}
+.server{overflow: hidden}
+.serverBox .server{border: 1px solid #ddd;padding-left: 30px;padding-right: 30px;margin-bottom: 40px;}
+.serverBox .server .serverL{float: left}
+.serverBox .server .serverR{float: right;width: 20px;font-size: 25px}
+/*下拉框的内容*/
+.serverCont{}
+
+/*-----------服务内容--------------*/
+#serverL1{background-image: url("../img/content.png");background-repeat: no-repeat;background-position: 2px 30px;;padding-left: 40px;font-size: 22px;color: #69be28;}
+
+
+.part1Cont{border: 1px solid #ddd;padding-left: 20px;position: relative;border-radius: 4px;padding-top: 40px;margin-bottom: 40px;}
+
+.part1Cont .try{width: 165px;height: 40px;margin-bottom:30px;border: 1px solid #ddd;text-align: center;line-height: 30px;border-radius: 5px;line-height: 40px}
+.try{float: left;margin-right: 110px}
+.try1{float: left}
+.tryBox{overflow: hidden}
+.active{background: url("../img/yes3.png")}
+.c1{width: 165px;height: 40px;z-index: 10;opacity: 0}
+.no1{position: absolute;top: 41px;left: 20px}
+.no2{position: absolute;top: 41px;left: 300px}
+.no3{position: absolute;top: 41px;left: 576px}
+.no4{position: absolute;top: 41px;left: 851px}
+.no5{position: absolute;top: 114px;left: 20px}
+
+
+/*-----------临床资料---------*/
+/* 本例子css */
+.slideTxtBox{ width:1200px; border:1px solid #ddd; text-align:left;  }
+.slideTxtBox .hd{ height:30px; line-height:30px; background:white; padding:0 10px 0 20px;   border-bottom:1px solid #ddd;  position:relative; }
+.slideTxtBox .hd ul{ float:left;  position:absolute; left:20px; top:-1px; height:32px;   }
+.slideTxtBox .hd ul li{ float:left; padding:0 45px; cursor:pointer; font-size: 20px;color: #3c3c3c }
+.slideTxtBox .hd ul li.on{ height:30px;  background:#fff; border-bottom:2px solid #69be28; font-size: 20px;color: #69be28;border-top:2px solid #69be28; }
+.slideTxtBox .bd ul{ padding:15px;  zoom:1;  }
+.slideTxtBox .bd li{ height:24px; line-height:24px;   }
+.slideTxtBox .bd li .date{ float:right; }
+#serverL2{background-image: url("../img/information.png");background-repeat: no-repeat;background-position: 2px 30px;;padding-left: 40px;font-size: 22px;color: #69be28;}
+/*bd 临床资料部分 */
+/*主诉和病史*/
+
+.bd .zhuSu .zhuSuTitle{padding-top: 40px;padding-bottom: 18px;font-size: 20px;color: #3c3c3c;border-bottom: 1px solid gainsboro}
+.zhuSuDesc p  span{display: inline-block;width: 10px ;height: 10px;background: #69be28;border-radius:5px;margin-right: 10px }
+.zhuSuDesc{padding-top: 26px}
+.zhuSuDesc p{font-size: 16px;color: #3c3c3c;line-height: 30px}
+.historyTitle{padding-top: 30px;padding-bottom: 20px;border-bottom: 1px solid gainsboro;font-size: 16px;color: #3c3c3c;}
+.historyDesc{line-height: 40px;font-size: 16px;color: #3c3c3c;}
+.historyDesc p  span{display: inline-block;width: 10px ;height: 10px;background: #69be28;border-radius:5px;margin-right: 10px }
+/*图像资料*/
+/*面像照部分*/
+.imgFixed{width: 235px;height: 235px;margin-right: 20px;margin-right: 73px;margin-left: 73px}
+.faceImg .imgBigBox .imgSmallBox{float: left;text-align: center;}
+.imgBigBox {overflow: hidden}
+/*内口照*/
+.mouseImg .imgBigBox .imgSmallBox{float: left;text-align: center;}
+.imgBigBox {overflow: hidden}
+
+.imgData h3{font-size: 20px;color: #3c3c3c}
+/*X光片*/
+.XImg .imgBigBox .imgSmallBox{float: left;text-align: center;}
+.imgBigBox {overflow: hidden}
+/*主临床检查*/
+.zhuCheck span{display: inline-block;width: 10px ;height: 10px;background: #69be28;border-radius:5px;margin-right: 10px}
+.zhuCheck .checkTitle{border-bottom: 1px solid gainsboro;padding-top: 20px;padding-bottom: 20px}
+.zhuCheck p{line-height: 35px}
+
+/*-------治疗方案方案-----*/
+.zhiliaofangan{padding-left: 30px;padding-right: 30px;border: 1px  solid #ddd;margin-bottom: 40px}
+.fanAn1Title{padding-bottom: 20px;padding-top: 20px;border-bottom: 1px solid gainsboro;}
+#serverL3{background-image: url("../img/caseWrite.png");background-repeat: no-repeat;background-position: 2px 30px;;padding-left: 40px;font-size: 22px;color: #69be28;}
+.fanAn1Title h3{font-size: 20px;color: #3c3c3c;font-weight: normal;}
+.fanAn1Cont  p{font-size: 16px;color: #3c3c3c;line-height: 35px}
+.fanAn1Cont .graySpan{color: #616161}
+.fanAn1Cont .redSpan{color: #ef2d2d}
+.fanAn1Cont .greenSpan{color: #69be28}
+.fanAn1Cont{padding-bottom: 50px;padding-top: 20px}
+
+/*----流程进展-----*/
+#serverL4{background-image: url("../img/class.png");background-repeat: no-repeat;background-position: 2px 30px;;padding-left: 40px;font-size: 22px;color: #69be28;}
+#serverCont4{padding-left: 30px;padding-top: 20px;padding-bottom: 50px;border: 1px solid #ddd}
+#serverCont4 .rightSpan{display: inline-block;width: 10px ;height: 10px;background: #69be28;border-radius:5px;margin-right: 10px }
+#serverCont4 .wrongSpan{display: inline-block;width: 10px ;height: 10px;background: #ff3a3a;border-radius:5px;margin-right: 10px }
+#serverCont4 p{line-height: 35px}
+#serverCont4 .wrongP{font-size: 16px;color: #888888;padding-left: 70px}
+#serverCont4 span{font-size: 16px;color: #3c3c3c ;margin-right: 32px}
