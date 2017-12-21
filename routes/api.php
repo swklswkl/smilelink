@@ -88,6 +88,8 @@ Route::post('case/addCaseInformationPage3','OrthodonticCaseController@addCaseInf
 /*******************************************登录注册****************1*********************************/
 //手机号注册
 Route::post('/doctor/registerTel','DoctorController@registerTel');
+//注册获取验证码
+Route::post('/doctor/registerTel/sendCode','DoctorController@sendCode');
 //填写注册信息
 Route::post('/doctor/registerInfo','DoctorController@registerInfo');
 //登录

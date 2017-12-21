@@ -17,9 +17,11 @@
 <div class="bg">
     <div class="box" id="addBox">
         <div class="img">
-            <img src="/images/yes.png" alt="">
+            @if($result=='支付成功')
+                <img src="/images/yes.png" alt="">
+            @endif
         </div>
-        <h3>支付成功！</h3>
+        <h3>{{$result}}</h3>
         <p><span id="time">3</span><span>秒</span>后自动跳转到我的订单页面</p>
     </div>
 </div>
@@ -36,7 +38,7 @@
     var timer = setInterval(function(){
         if(i== -1){
             clearInterval(timer);
-            window.location.href='{{url('myOrders')}}';
+            window.location.href="{{url('myOrders')}}";
         }else{
             document.getElementById('time').innerHTML = i;
             --i;

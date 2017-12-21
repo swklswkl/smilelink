@@ -33,8 +33,11 @@
 
     <div class="form-group" style="margin-bottom: 50px">
         <label for="inputName2" class="col-sm-2 control-label" style="font-size: 20px">验证码</label>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <input name="code_number" type="text" class="form-control" id="code_number" placeholder="请输入验证码" style="height: 50px;font-size: 20px" >
+        </div>
+        <div class="col-sm-3">
+            <button  type="button" onclick="send_code()"  class="btn btn-success col-sm-12"  style="height: 50px;font-size: 20px">获取验证码</button>
         </div>
     </div>
 
@@ -71,6 +74,7 @@
             dataType:'json',
             data:$('.form-horizontal').serialize(),
             success: function(data) {
+                console.log(data);
                 if (data.code == 200)
                 {
                     layer.msg(data.msg);
@@ -78,6 +82,30 @@
                         var mobilephone = $('#mobilephone').val();
                         window.location.href = "{{url('register?mobilephone=')}}"+mobilephone;
                     },3000)
+
+                } else if(data.code==401) {
+                    $.each(data.msg,function(key,val){
+                        layer.tips(val,'#'+key);
+                    })
+                }else{
+                    layer.msg(data.msg);
+                }
+            }
+        });
+    }
+    //发送短信验证码
+    function send_code()
+    {
+        $.ajax({
+            type: 'post',
+            url:'{{url('/api/doctor/registerTel/sendCode')}}',
+            dataType:'json',
+            data:{'mobilephone':$('#mobilephone').val()},
+            success: function(data) {
+                console.log(data);
+                if (data.code == 200)
+                {
+                    layer.msg(data.msg);
 
                 } else {
                     $.each(data.msg,function(key,val){
@@ -87,6 +115,7 @@
             }
         });
     }
+
 </script>
 </body>
 </html>

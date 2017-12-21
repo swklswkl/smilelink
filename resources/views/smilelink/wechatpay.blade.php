@@ -1,17 +1,4 @@
-<div class="bg">
-    <div class="box" id="addBox">
 
-        <h3>距离成功只有一步了，</h3>
-        <h3>您确认放弃吗？</h3>
-        <div class="pay-cancel " >
-            <button style="margin-right: 20px" class="close">继续支付</button>
-            <button >确认取消</button>
-        </div>
-
-
-
-    </div>
-</div>
 @extends('smilelink.header')
 
 @section('content')
@@ -20,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/casePublic.css">
-    <link rel="stylesheet" href="css/caseManage.css">
+    <link rel="stylesheet" href="{{asset('reception/css/casePublic.css')}}">
+    <link rel="stylesheet" href="{{asset('reception/css/caseManage.css')}}">
     <style>
         .messageBox h3{font-size: 20px;color: #69be28;font-weight: normal;margin-top: 50px;margin-bottom: 34px}
         .messageBox p{font-size: 16px;color: #717171;margin-bottom: 25px}
@@ -71,27 +58,30 @@
     <!--基本信息-->
     <div class="messageBox">
         <div class="content">
-            <p>病例管理>>付款</p>
-
+            <p>病例管理>>微信付款</p>
             <h3>订单信息</h3>
-            <p>订单编号：<span id="ddbh">{{$data[3]}}</span></p>
-            <p>指定专家：<span>{{$data[0]}}</span></p>
-            <p>服务内容：<span id="service_content">{{$data[1]}}</span></p>
-            <p>服务金额：<span>{{$data[2]}}</span></p>
-            <h3>选择支付方式</h3>
-            <div class="payWays" style="text-align: center">
-                <span style="display: inline-block;position: relative">
-                    <img sw="0" fg="alipay" src="images/al.png" alt="" id="CC1" onclick="pay(this)">
-                    <img aa="0" id="zfbtp" src="images/yes.png" alt="" style="width: 40px;height: 40px;position: absolute;bottom: 10px;right: 10px;display: none">
-                </span>
-                <span style="display: inline-block;position: relative">
-                    <img sw="0" fg="wechat" src="images/wx.png" id="CC2" alt="" onclick="pay(this)">
-                    <img id="wxtp" aa="0" src="images/yes.png" alt="" style="width: 40px;height: 40px;position: absolute;bottom: 10px;right: 10px;display: none">
-                </span>
+            <p>订单编号：<span id="ddbh">{{$payInfo['out_trade_no']}}</span></p>
+            {{--<p>指定专家：<span>{{$payInfo['out_trade_no']}}</span></p>--}}
+            <p>服务内容：<span id="service_content">{{$payInfo['body']}}</span></p>
+            <p>服务金额：<span>{{$payInfo['total_fee']/100}}</span></p>
+            {{--<h3>选择支付方式</h3>--}}
+            {{--<div class="payWays" style="text-align: center">--}}
+                {{--<span style="display: inline-block;position: relative">--}}
+                    {{--<img sw="0" fg="alipay" src="images/al.png" alt="" id="CC1" onclick="pay(this)">--}}
+                    {{--<img aa="0" id="zfbtp" src="images/yes.png" alt="" style="width: 40px;height: 40px;position: absolute;bottom: 10px;right: 10px;display: none">--}}
+                {{--</span>--}}
+                {{--<span style="display: inline-block;position: relative">--}}
+                    {{--<img sw="0" fg="wechat" src="images/wx.png" id="CC2" alt="" onclick="pay(this)">--}}
+                    {{--<img id="wxtp" aa="0" src="images/yes.png" alt="" style="width: 40px;height: 40px;position: absolute;bottom: 10px;right: 10px;display: none">--}}
+                {{--</span>--}}
+            {{--</div>--}}
+            <div class="qrcode" style="width: 100%; height: 200px;" >
+                <?php echo $QrCode; ?>
+                <p style="margin-left:50px; margin-top: -13px;">微信扫码支付</p>
             </div>
             <div class="ensureAndCancel">
-                <button id="b1" sw="0" onclick="zhifu()" style="margin-left: 423px;margin-right: 57px">确认支付</button>
-                <button onclick="aa()">放弃支付</button>
+                <button id="b1" sw="0" onclick="zhifu()" style="margin-left: 23px;margin-top: 20px;">确认支付</button>
+                {{--<button onclick="aa()">放弃支付</button>--}}
             </div>
         </div>
 
@@ -106,17 +96,17 @@
 <script>
     var flag;
     function fn(b){
-//        if (b.getAttribute('aa') == 0)
-//        {
-//            b.setAttribute('aa',1);
-//            $('#b1').attr('sw',1);
-//            b.style.border='1px solid red';
-//
-//        }else{
-//            b.setAttribute('aa',0);
-//            $('#b1').attr('sw',0);
-//            b.style.border='0px solid red';
-//        }
+        if (b.getAttribute('aa') == 0)
+        {
+            b.setAttribute('aa',1);
+            $('#b1').attr('sw',1);
+            b.style.border='1px solid red';
+
+        }else{
+            b.setAttribute('aa',0);
+            $('#b1').attr('sw',0);
+            b.style.border='0px solid red';
+        }
     }
     function  aa(){
 
@@ -157,19 +147,7 @@
     }
     function zhifu ()
     {
-        if (flag == undefined)
-        {
-            layer.msg('请选择支付方式');
-        }else if(flag == 1)
-        {
-            var number = document.getElementById('ddbh').innerHTML;
-            window.location.href = 'alipay?dd='+number;
-        }else if(flag == 2)
-        {
-            var number = document.getElementById('ddbh').innerHTML;
-            var service_content = document.getElementById('service_content').innerHTML;
-            window.location.href = 'wechat/payLink?order_id='+number+'&service_content='+service_content;
-        }
+        window.location.href = "{{url('wechat/payResult?number=').$payInfo['out_trade_no']}}";
     }
 </script>
 

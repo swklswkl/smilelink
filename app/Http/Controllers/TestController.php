@@ -11,17 +11,20 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\Orthodontics;
+use Hyperbolaa\Alisms;
 
 class TestController extends Controller
 {
     public function test(Request $request)
     {
-        $data['id'] =  $request->input('id');
-        $data['name'] =  $request->input('name');
-        $data['mmm'] =  $request->input('mmm');
-        $mdkey = $request->input('mdkey');
-        $authEnd =  $this->auth($data,$mdkey);
-        return $authEnd;
+        $alisms = app('alisms.note');
+        $flag = $alisms->send('register','17717454324',['code'=>'456789']);//code 为模板中的变量名
+        if($flag === true){
+            //todo 发送成功处理
+            return $this->successResponse('发送成功');
+        }else{
+            return $this->errorResponse(dump($flag));
+        }
     }
 
     public function cx (Request $request)
@@ -162,4 +165,5 @@ class TestController extends Controller
         }
         return view('admin.order')->with(['data'=>$data,'service_name'=>$name,'province'=>$province,'expert_name'=>$expert_name]);
     }
+
 }

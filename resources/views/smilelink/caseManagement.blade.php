@@ -114,7 +114,7 @@
         </ul>
         <div style="margin-top: 70px">
             <button id="pay" style="width: 264px;margin-bottom: 10px" class="btn btn-default" type="button" onclick="zhifu()">支付</button>
-            <button class="btn btn-default" type="button" onclick="nozhuanjia()"  data-toggle="tooltip" data-placement="left" data-original-title="不选择指定专家，让其他专家自己接单">不选择指定专家，让其他专家自己接单</button>
+            {{--<button class="btn btn-default" type="button" onclick="nozhuanjia()"  data-toggle="tooltip" data-placement="left" data-original-title="不选择指定专家，让其他专家自己接单">不选择指定专家，让其他专家自己接单</button>--}}
         </div>
 
     </div>

@@ -180,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Yansongda\LaravelPay\PayServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Hyperbolaa\Alisms\AlismsServiceProvider::class,
     ],
 
     /*

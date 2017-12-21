@@ -11,6 +11,7 @@ use App\Model\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Illuminate\Support\Facades\Redis;
 
 class DoctorController extends Controller
 {
@@ -21,7 +22,6 @@ class DoctorController extends Controller
      */
     public function registerTel (Request $request)
     {
-
         // 开启事物
         DB::beginTransaction();
         try {
@@ -44,6 +44,15 @@ class DoctorController extends Controller
                 'password_confirmation' => 'required|min:6',
                 'code_number' => 'required'
             ],$messages);
+            //获取验证码
+            $code_result = Redis::get("register".$request->mobilephone);
+            if(!$code_result){
+                return $this->errorResponse('验证码失效',402);
+            }
+            if ($code_result!=$request->code_number)
+            {
+                return $this->errorResponse('验证码错误',402);
+            }
             if ($validator->fails())
             {
                 $errors = $validator->errors();
@@ -57,7 +66,7 @@ class DoctorController extends Controller
             ]);
             // 提交事务
             DB::commit();
-            return $this->successResponse('注册成功,3秒后自动跳转到信息完善页面');
+            return $this->successResponse('成功');
         }catch (\Exception $e)
         {
             // 回滚
@@ -117,6 +126,33 @@ class DoctorController extends Controller
         }
     }
 
+    /**
+     *TODO:注册发送短信验证码
+     */
+    public function sendCode(Request $request)
+    {
+        $mobile = $request->input('mobilephone');
+        $message = [
+            'mobilephone.required'=>'请输入手机号'
+        ];
+        $validator = Validator::make($request->all(),['mobilephone'=>'required'],$message);
+        if($validator->fails()){
+            $errors = $validator->errors();
+            return $this->errorResponse($errors);
+        }
+        $code = rand(100000,999999);
+        $type = 'register';
+        Redis::set($type.$mobile,$code);
+        Redis::expire($type.$mobile,60);
+        $alisms = app('alisms.note');
+        $flag = $alisms->send('register',$mobile,['code'=>$code]);//code 为模板中的变量名
+        if($flag === true){
+            //todo 发送成功处理
+            return $this->successResponse('发送成功');
+        }else{
+            return $this->errorResponse('发送失败');
+        }
+    }
     /**
      * TODO:登录
      * @param Request $request
@@ -327,7 +363,7 @@ class DoctorController extends Controller
         {
             $data = Orthodontics::select(['id','name','create_time','status','service_id'])
                 ->where(['doctor_id'=>$request->get('doctor_id')])
-                ->paginate($request->get('show_num')=='' ? 20 : $request->get('show_num'))
+                ->paginate($request->get('show_num')=='' ? 10 : $request->get('show_num'))
                 ->toArray();
             if ($data['data'] == [])
             {

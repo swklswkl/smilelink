@@ -199,5 +199,9 @@ Route::get('alipay','AliPayController@pay');
 
 //微信支付链接
 Route::get('wechat/payLink','WechatPayController@payLink');
-//回掉
+//回调
 Route::post('wechat/callback','WechatPayController@notify');
+//微信支付结果返回给用户
+Route::get('wechat/payResult','WechatPayController@payResult');
+
+Route::get('test','TestController@test');
