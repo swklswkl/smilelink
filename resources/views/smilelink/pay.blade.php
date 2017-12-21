@@ -162,6 +162,7 @@
             layer.msg('请选择支付方式');
         }else if(flag == 1)
         {
+            //支付宝支付
             var number = document.getElementById('ddbh').innerHTML;
             window.location.href = 'alipay?dd='+number;
         }else if(flag == 2)
@@ -169,6 +170,9 @@
             var number = document.getElementById('ddbh').innerHTML;
             var service_content = document.getElementById('service_content').innerHTML;
             window.location.href = 'wechat/payLink?order_id='+number+'&service_content='+service_content;
+
+            // 这里写微信支付的逻辑
+
         }
     }
 </script>
